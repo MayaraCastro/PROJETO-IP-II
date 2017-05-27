@@ -60,9 +60,40 @@ public class Exame {
 	}
 	
 	//metodos
-	public void contagemRegressiva(){
+	public String contagemRegressiva(){
 		GregorianCalendar gc = new GregorianCalendar();
-		System.out.println(gc);
+		int dia = gc.get(GregorianCalendar.DAY_OF_MONTH);
+		int mes = gc.get(GregorianCalendar.MONTH);
+		int ano=gc.get(GregorianCalendar.YEAR);
+		
+		int hora=gc.get(GregorianCalendar.HOUR);
+		int minuto=gc.get(GregorianCalendar.MINUTE);
+		
+		int contagemDia=this.data.getDia()-dia;
+		if(contagemDia<0){
+			contagemDia=0;
+		}
+		int contagemMes=this.data.getMes()-mes;
+		if(contagemMes<0){
+			contagemMes=0;
+		}
+		int contagemAno=this.data.getAno()-ano;
+		if(contagemAno<0){
+			contagemAno=0;
+		}
+		int contagemHora=this.hora.getHora()-hora;
+		if(contagemHora<0){
+			contagemHora=0;
+		}
+		int contagemMinuto=this.hora.getMinuto()-minuto;
+		if(contagemMinuto<0){
+			contagemMinuto=0;
+		}
+		
+		return ("Faltam: "+contagemAno+" Ano(s) "+contagemMes+" Mes(es) "+
+		contagemDia +" Dia(s) "+ contagemHora +" Hora(s)"+ 
+		contagemMinuto+" Minuto(s) Para a realização do Exame"); 
+		
 	}
 	
 	//toString

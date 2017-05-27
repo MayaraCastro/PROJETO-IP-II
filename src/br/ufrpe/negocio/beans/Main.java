@@ -17,7 +17,8 @@ public class Main {
 		Data data=new Data(26,5,2017);
 		Exame Va1 = new Exame(7.5,"bela professora", data, hora,disc[0]);
 		System.out.println(Va1);
-		Va1.contagemRegressiva();
+		System.out.println(Va1.contagemRegressiva());
+
 
 	}
 
