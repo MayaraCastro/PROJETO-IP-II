@@ -1,5 +1,6 @@
 package br.ufrpe.negocio.beans;
 
+import java.util.Arrays;
 
 public class Usuario {
 	private String nome;
@@ -8,7 +9,7 @@ public class Usuario {
 	private String senha;
 	private String sexo;
 	private String email;
-	//private String disciplina;
+	private Disciplina[] disciplina;
 	private Task lembrar;
 	
 	
@@ -31,8 +32,33 @@ public class Usuario {
 	}
 
 
+	
 
 
+
+	public Usuario(String nome, String dataNasc, String usuario, String senha, String sexo, String email
+			/*Disciplina[] disciplina*/) {
+		super();
+		this.nome = nome;
+		this.dataNasc = dataNasc;
+		this.usuario = usuario;
+		this.senha = senha;
+		this.sexo = sexo;
+		this.email = email;
+		/*this.disciplina = disciplina;*/
+	}
+
+
+
+	public Disciplina[] getDisciplina() {
+		return disciplina;
+	}
+
+
+
+	public void setDisciplina(Disciplina[] disciplina) {
+		this.disciplina = disciplina;
+	}
 
 
 
@@ -106,12 +132,18 @@ public class Usuario {
 	};
 	
 	
-	public void addDisc(){
-		//editar
+	public void addDisc(Disciplina[] disciplina){
+		if(disciplina != null){
+			this.setDisciplina(disciplina);
+		}
+		else{
+			System.out.println("Disciplina não existe!");
+		}
+		
 	}
 	
 	public void removerDisc(){
-		//editar
+		this.setDisciplina(null);
 	}
 	
 	/*public boolean addUsuario(){
@@ -131,9 +163,13 @@ public class Usuario {
 	}
 
 
+
 	@Override
 	public String toString() {
 		return "Usuario [nome=" + nome + ", dataNasc=" + dataNasc + ", usuario=" + usuario + ", senha=" + senha
-				+ ", sexo=" + sexo + ", email=" + email + ", lembrar=" + lembrar.toString() + "]";
+				+ ", sexo=" + sexo + ", email=" + email + ", disciplina=" + Arrays.toString(disciplina) + "]";
 	}
+
+
+	
 }
