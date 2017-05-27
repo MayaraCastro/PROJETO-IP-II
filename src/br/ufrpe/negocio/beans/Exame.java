@@ -1,14 +1,16 @@
 package br.ufrpe.negocio.beans;
 
+import java.util.GregorianCalendar;
+
 public class Exame {
 	private double nota;
 	private String descricao;
-	private String data;
-	private String hora;
+	private Data data;
+	private Horario hora;
 	private Disciplina disciplina;
 	
 	//initializer
-	public Exame(double nota,String descricao,String data,String hora,Disciplina disciplina){
+	public Exame(double nota,String descricao,Data data,Horario hora,Disciplina disciplina){
 		this.nota=nota;
 		this.descricao=descricao;
 		this.data=data;
@@ -26,10 +28,10 @@ public class Exame {
 	public String getDescricao(){
 		return this.descricao;
 	}
-	public String getData(){
+	public Data getData(){
 		return this.data;
 	}
-	public String getHora(){
+	public Horario getHora(){
 		return this.hora;
 	}
 	public Disciplina getDisciplina(){
@@ -45,11 +47,11 @@ public class Exame {
 		this.descricao=descricao;
 	}
 	
-	public void setData(String data){
+	public void setData(Data data){
 		this.data=data;
 	}
 	
-	public void setHora(String hora){
+	public void setHora(Horario hora){
 		this.hora=hora;
 	}
 	
@@ -58,8 +60,9 @@ public class Exame {
 	}
 	
 	//metodos
-	public double contagemRegressiva(){
-		return 1.123;
+	public void contagemRegressiva(){
+		GregorianCalendar gc = new GregorianCalendar();
+		System.out.println(gc);
 	}
 	
 	//toString
