@@ -32,9 +32,6 @@ public class Usuario {
 	}
 
 
-	
-
-
 
 	public Usuario(String nome, String dataNasc, String usuario, String senha, String sexo, String email
 			/*Disciplina[] disciplina*/) {
@@ -132,18 +129,19 @@ public class Usuario {
 	};
 	
 	
-	public void addDisc(Disciplina[] disciplina){
+	public boolean addDisc(Disciplina[] disciplina){
 		if(disciplina != null){
 			this.setDisciplina(disciplina);
+			return true;
 		}
 		else{
-			System.out.println("Disciplina não existe!");
+			return false;
 		}
 		
 	}
 	
-	public void removerDisc(){
-		this.setDisciplina(null);
+	public void removerDisc(Disciplina[] disciplina){
+		disciplina = null;
 	}
 	
 	/*public boolean addUsuario(){
