@@ -1,18 +1,14 @@
 package br.ufrpe.negocio.beans;
 import java.util.Scanner;
-import janelas.CadastroUsuario;
+import janelas.*;
 import repositorios.RepositorioUsuario;
 public class Main {
 
 	public static void main(String[] args) {
 		
 		RepositorioUsuario rep= new RepositorioUsuario();
-		int opcao=0;
-		do{	
-			CadastroUsuario cadastro=new CadastroUsuario(rep);
-
-			opcao++;
-		}while(opcao<2);
+		CadastroUsuario cadastro=new CadastroUsuario(rep);
+		Login login=new Login(rep);
 
 		
 //		Disciplina[] disc = new Disciplina[2];
