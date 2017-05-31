@@ -4,10 +4,10 @@ import java.util.Arrays;
 
 public class Usuario {
 	private String nome;
-	private String dataNasc;
+	private Data dataNasc;
 	private String usuario;
 	private String senha;
-	private String sexo;
+	private int sexo;//1-feminino, 2-masculino e 3-outro
 	private String email;
 	private Disciplina[] disciplina;
 	private Task lembrar;
@@ -19,7 +19,7 @@ public class Usuario {
 
 
 
-	public Usuario(String nome, String dataNasc, String usuario, String senha, String sexo, String email,
+	public Usuario(String nome, Data dataNasc, String usuario, String senha, int sexo, String email,
 			Task lembrar) {
 		super();
 		this.nome = nome;
@@ -32,9 +32,14 @@ public class Usuario {
 	}
 
 
+<<<<<<< HEAD
 
 	public Usuario(String nome, String dataNasc, String usuario, String senha, String sexo, String email
 			/*Disciplina[] disciplina*/) {
+=======
+	
+	public Usuario(String nome, Data dataNasc, String usuario, String senha, int sexo, String email) {
+>>>>>>> branch 'master' of https://github.com/MayaraCastro/PROJETO-IP-II
 		super();
 		this.nome = nome;
 		this.dataNasc = dataNasc;
@@ -42,7 +47,6 @@ public class Usuario {
 		this.senha = senha;
 		this.sexo = sexo;
 		this.email = email;
-		/*this.disciplina = disciplina;*/
 	}
 
 
@@ -79,12 +83,12 @@ public class Usuario {
 	}
 
 
-	public String getDataNasc() {
+	public Data getDataNasc() {
 		return dataNasc;
 	}
 
 
-	public void setDataNasc(String dataNasc) {
+	public void setDataNasc(Data dataNasc) {
 		this.dataNasc = dataNasc;
 	}
 
@@ -109,12 +113,12 @@ public class Usuario {
 	}
 
 
-	public String getSexo() {
+	public int getSexo() {
 		return sexo;
 	}
 
 
-	public void setSexo(String sexo) {
+	public void setSexo(int sexo) {
 		this.sexo = sexo;
 	}
 

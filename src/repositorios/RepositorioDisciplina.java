@@ -1,4 +1,6 @@
-package br.ufrpe.negocio.beans;
+package repositorios;
+
+import br.ufrpe.negocio.beans.Disciplina;
 
 public class RepositorioDisciplina {
 	
