@@ -32,14 +32,12 @@ public class Usuario {
 	}
 
 
-<<<<<<< HEAD
 
-	public Usuario(String nome, String dataNasc, String usuario, String senha, String sexo, String email
-			/*Disciplina[] disciplina*/) {
-=======
+
+	
 	
 	public Usuario(String nome, Data dataNasc, String usuario, String senha, int sexo, String email) {
->>>>>>> branch 'master' of https://github.com/MayaraCastro/PROJETO-IP-II
+
 		super();
 		this.nome = nome;
 		this.dataNasc = dataNasc;

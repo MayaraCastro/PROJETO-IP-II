@@ -1,6 +1,7 @@
 package br.ufrpe.negocio.beans;
 import java.util.Scanner;
-import janelas.*;
+
+import negocio.*;
 import repositorios.RepositorioUsuario;
 public class Main {
 
@@ -19,8 +20,8 @@ public class Main {
 
 		Disciplina[] disc1 = {disc[0]};
 		
-		usu.addDisc(disc1);
-		System.out.println(usu.toString());
+		
+		
 		
 		
 		Horario hora=new Horario(14,00);
@@ -28,7 +29,7 @@ public class Main {
 		Exame Va1 = new Exame(7.5,"bela professora", data, hora,disc[0]);
 		System.out.println(Va1);
 		System.out.println(Va1.contagemRegressiva());
-=======
+
 //		Disciplina[] disc = new Disciplina[2];
 //		disc[0] = new Disciplina("Discreta","Segunda","14:00","Linda","Vamo","3");
 //		disc[1] = new Disciplina("Calculo","Segunda","16:00","Carla","Nada","3");
@@ -45,7 +46,6 @@ public class Main {
 //		Exame Va1 = new Exame(7.5,"bela professora", data, hora,disc[0]);
 //		System.out.println(Va1);
 //		System.out.println(Va1.contagemRegressiva());
->>>>>>> branch 'master' of https://github.com/MayaraCastro/PROJETO-IP-II
 
 
 	}
