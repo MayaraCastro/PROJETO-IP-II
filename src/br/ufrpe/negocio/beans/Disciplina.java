@@ -3,14 +3,14 @@ package br.ufrpe.negocio.beans;
 public class Disciplina {
 	//ATRIBUTOS
 	private String nome;
-	private String dia_da_semana;
+	private int dia_da_semana;
 	private Horario horario;//definir o tipo melhor para horario
 	private String professor;
 	private String obs;
 	private String periodo;
 	
 	//CONSTRUTOR
-	public Disciplina(String nome, String dia_da_semana, Horario horario, String professor, String obs, String periodo) {
+	public Disciplina(String nome, int dia_da_semana, Horario horario, String professor, String obs, String periodo) {
 		super();
 		this.nome = nome;
 		this.dia_da_semana = dia_da_semana;
@@ -38,10 +38,10 @@ public class Disciplina {
 	public void setObs(String obs) {
 		this.obs = obs;
 	}
-	public String getDia_da_semana() {
+	public int getDia_da_semana() {
 		return dia_da_semana;
 	}
-	public void setDia_da_semana(String dia_da_semana) {
+	public void setDia_da_semana(int dia_da_semana) {
 		this.dia_da_semana = dia_da_semana;
 	}
 	public Horario getHorario() {
@@ -73,10 +73,7 @@ public class Disciplina {
 		if (getClass() != obj.getClass())
 			return false;
 		Disciplina other = (Disciplina) obj;
-		if (dia_da_semana == null) {
-			if (other.dia_da_semana != null)
-				return false;
-		} else if (!dia_da_semana.equals(other.dia_da_semana))
+		if (dia_da_semana != other.dia_da_semana)
 			return false;
 		if (horario == null) {
 			if (other.horario != null)
@@ -106,6 +103,7 @@ public class Disciplina {
 		return true;
 	}
 	
+
 	
 	
 	

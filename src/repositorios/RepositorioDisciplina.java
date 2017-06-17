@@ -6,24 +6,32 @@ public class RepositorioDisciplina {
 	
 	private Disciplina[] disciplinas;
 	private int qtdDisc;
-
-	public RepositorioDisciplina(Disciplina[] disciplina, int qtdDisc) {
-		super();
-		this.disciplinas = new Disciplina[20];
+	
+	
+	public RepositorioDisciplina() {
+		this.disciplinas = new Disciplina[100];
 		this.qtdDisc = 0;
 	}
 	
 	
 	
+	public Disciplina[] getDisciplinas() {
+		return disciplinas;
+	}
+
+
+
+	public void setDisciplinas(Disciplina[] disciplinas) {
+		this.disciplinas = disciplinas;
+	}
+
+
+
 	public int getQtdDisc() {
 		return qtdDisc;
 	}
 
 
-
-	public void setQtdDisc(int qtdDisc) {
-		this.qtdDisc = qtdDisc;
-	}
 
 
 
