@@ -177,6 +177,15 @@ public class TelaTextual {
 				}
 				case 3:{
 					this.menuTask(user);
+					break;
+				}
+				case 4: {
+					break;
+				}
+				case 5:{
+					break;
+				}
+				case 6:{
 					saida=true;
 					break;
 				}

@@ -9,7 +9,7 @@ public class Usuario {
 	private String senha;
 	private int sexo;//1-feminino, 2-masculino e 3-outro
 	private String email;
-	private Disciplina[] disciplinas;
+	private Disciplina[] disciplinas;//TODO AJEITAR
 	private Calendario calendario;// adiministra as tasks e disciplinas do usuario
 	private Task lembrar;
 	
