@@ -122,11 +122,11 @@ public class Usuario {
 	}
 	
 	public boolean addDisciplina(Disciplina disciplina){
-		return(this.getCalendario().getDisciplinas().inserirDisc(disciplina));	
+		return(this.getCalendario().getDisciplinas().inserir(disciplina));	
 	}
 	
 	public boolean removerDisciplina(Disciplina disciplina){
-		return(this.getCalendario().getDisciplinas().removerDisc(disciplina));
+		return(this.getCalendario().getDisciplinas().remover(disciplina.getNome()));
 	}
 	
 	public void addExame(){

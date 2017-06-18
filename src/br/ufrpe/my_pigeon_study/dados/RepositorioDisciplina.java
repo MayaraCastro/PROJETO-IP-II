@@ -35,7 +35,7 @@ public class RepositorioDisciplina {
 
 
 
-	public boolean inserirDisc(Disciplina disc){
+	public boolean inserir(Disciplina disc){
 		if(disc != null && qtdDisc < 20){
 			this.disciplinas[qtdDisc] = disc;
 			this.qtdDisc++;
@@ -44,7 +44,7 @@ public class RepositorioDisciplina {
 		return false;
 	}
 	
-	public Disciplina buscarDisc(String disc){
+	public Disciplina buscar(String disc){
 		for(Disciplina d:this.disciplinas){
 			if(d!=null && d.getNome().equals(disc)){
 				return (d);
@@ -53,7 +53,7 @@ public class RepositorioDisciplina {
 		return null;
 	}
 	
-	public boolean alterarDisc(Disciplina newDisc,String original){
+	public boolean alterar(Disciplina newDisc,String original){
 		if(newDisc != null){
 			for(int i=0;i<20;i++){
 				if(this.disciplinas[i] != null && this.disciplinas[i].getNome().equals(original) == true){
@@ -65,8 +65,8 @@ public class RepositorioDisciplina {
 		return false;
 	}
 	
-	public boolean removerDisc(String disc){
-		if(this.buscarDisc(disc) == null){
+	public boolean remover(String disc){
+		if(this.buscar(disc) == null){
 			return false;
 		}
 		boolean s = false;
