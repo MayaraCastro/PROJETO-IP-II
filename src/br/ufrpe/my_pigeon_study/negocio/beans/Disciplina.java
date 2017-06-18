@@ -9,6 +9,7 @@ public class Disciplina {
 	private String obs;
 	private String periodo;
 	
+	
 	//CONSTRUTOR
 	public Disciplina(String nome, int dia_da_semana, Horario horario, String professor, String obs, String periodo) {
 		super();

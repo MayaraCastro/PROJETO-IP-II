@@ -26,9 +26,15 @@ public class CadastroUsuario {
 		&&(user.getDataNasc().getMes()<13 &&user.getDataNasc().getMes()>0 
 		&& user.getDataNasc().getDia()<32 &&user.getDataNasc().getDia()>0
 		&&user.getDataNasc().getAno()<2017 &&user.getDataNasc().getAno()>1900)){
-			if(this.rep.alterar(user)){
-				return(true);
-			}
+				Usuario original=this.rep.buscar(user.getUsuario());
+				original.setNome(user.getNome());
+				original.setDataNasc(user.getDataNasc());
+				original.setEmail(user.getEmail());
+				original.setSenha(user.getSenha());
+				original.setSexo(user.getSexo());
+				if(this.rep.alterar(original)){
+					return(true);
+				}
 		}
 		return(false);
 }
