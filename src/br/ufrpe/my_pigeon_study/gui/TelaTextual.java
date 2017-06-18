@@ -214,9 +214,7 @@ public class TelaTextual {
 	public void showDisciplinas(Usuario user){
 		fachada.showDisciplinas(user);
 	}
-	public void showTasks(Usuario user){
-		fachada.showTasks(user);
-	}
+
 	//TELAS DISCIPLINAS
 	public void cadastroDisciplina(Usuario user){
 		String nome;
@@ -367,6 +365,7 @@ public class TelaTextual {
 	}
 	
 	//TELAS TASK
+	
 	public void menuTask(Usuario user){
 		boolean saida=false;
 		while(!saida){
@@ -378,6 +377,7 @@ public class TelaTextual {
 			System.out.println("=====BEMVINDO=====");
 			System.out.print("RESPOSTA: ");
 			int resposta=scanner.nextInt();
+			scanner.nextLine();
 			switch(resposta){
 				case 1:{
 					this.cadastroTask();
@@ -400,17 +400,25 @@ public class TelaTextual {
 			}
 		}
 	}
+	public void showTasks(Usuario user){
+		fachada.showTasks(user);
+	}	
 	public void cadastroTask(){
 		System.out.print("Nome: ");
 		String nome=scanner.nextLine();
 		System.out.print("Tipo: ");
-		String tipo=scanner.nextLine();
-		System.out.print("Disciplina: ");//precisa modificar o tipo de disciplina de task, pra o tipo DIsciplina
+		int tipo=scanner.nextInt();
+		
+		scanner.nextLine();
+		System.out.print("Disciplina: ");//TODO precisa modificar o tipo de disciplina de task, pra o tipo DIsciplina
 		String disciplina=scanner.nextLine();
-		System.out.print("Data: ");
-		String data=scanner.nextLine();
+
+		System.out.print("Data: ");//TODO modificar pra data
+		String data=scanner.next();
+		scanner.nextLine();
 		System.out.print("Descricao: ");
 		String descricao=scanner.nextLine();
+
 		Task novaTask = new Task(data,nome,descricao,tipo,disciplina);
 		if(fachada.cadastrarTask(novaTask)){
 			System.out.println("Inserido com Sucesso");
@@ -422,6 +430,7 @@ public class TelaTextual {
 	}
 	public void buscarTask(){
 		System.out.print("Nome: ");
+		scanner.nextLine();
 		String nome=scanner.nextLine();
 		Task task=fachada.buscarTask(nome);
 		if(task==null){
@@ -450,13 +459,19 @@ public class TelaTextual {
 	public void alterarTask(String nomeOriginal){
 		System.out.println("=====NovosDados=====");
 		System.out.print("Nome: ");
+		scanner.nextLine();
 		String nome=scanner.nextLine();
+		scanner.nextLine();
 		System.out.print("Tipo: ");
-		String tipo=scanner.nextLine();
+		int tipo=scanner.nextInt();
+		
+		scanner.nextLine();
 		System.out.print("Disciplina: ");//TODO precisa modificar o tipo de disciplina de task, pra o tipo DIsciplina
 		String disciplina=scanner.nextLine();
-		System.out.print("Data: ");
-		String data=scanner.nextLine();
+
+		System.out.print("Data: ");//TODO modificar pra data
+		String data=scanner.next();
+		scanner.nextLine();
 		System.out.print("Descricao: ");
 		String descricao=scanner.nextLine();
 		Task novaTask = new Task(data,nome,descricao,tipo,disciplina);

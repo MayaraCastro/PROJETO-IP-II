@@ -11,7 +11,7 @@ public class Usuario {
 	private String email;
 	private Disciplina[] disciplinas;//TODO AJEITAR
 	private Calendario calendario;// adiministra as tasks e disciplinas do usuario
-	private Task lembrar;
+	private Task[] tasks;
 	
 	
 	public Usuario() {
@@ -21,20 +21,7 @@ public class Usuario {
 		this.senha=senha;
 		this.usuario=usuario;
 	}
-	public Usuario(String nome, Data dataNasc, String usuario, String senha, int sexo, String email,
-			Task lembrar) {
-		super();
-		this.nome = nome;
-		this.dataNasc = dataNasc;
-		this.usuario = usuario;
-		this.senha = senha;
-		this.sexo = sexo;
-		this.email = email;
-		this.lembrar = lembrar;
-		this.calendario= new Calendario();
-	}
 	public Usuario(String nome, Data dataNasc, String usuario, String senha, int sexo, String email) {
-
 		super();
 		this.nome = nome;
 		this.dataNasc = dataNasc;
@@ -53,13 +40,13 @@ public class Usuario {
 		this.calendario = calendario;
 	}
 
-	public Task getLembrar() {
-		return lembrar;
+	public Task[] getLembrar() {
+		return tasks;
 	}
 
 
-	public void setLembrar(Task lembrar) {
-		this.lembrar = lembrar;
+	public void setLembrar(Task[] tasks) {
+		this.tasks = tasks;
 	}
 
 
@@ -142,7 +129,7 @@ public class Usuario {
 		return(this.calendario.showDisciplinas());
 	}
 	public String showTasks(){
-		return(this.calendario.showTasks());
+		return(Arrays.toString(this.tasks));
 	}
 
 	@Override

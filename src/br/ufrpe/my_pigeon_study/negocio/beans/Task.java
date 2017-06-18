@@ -5,7 +5,7 @@ public class Task {
 	private String data;
 	private String nome;
 	private String descricao;
-	private String tipo;
+	private int tipo;
 	private String disciplina;
 
 
@@ -15,7 +15,7 @@ public class Task {
 		
 	}
 	
-	public Task(String data, String nome, String descricao, String tipo, String disciplina) {
+	public Task(String data, String nome, String descricao, int tipo, String disciplina) {
 		super();
 		this.data = data;
 		this.nome = nome;
