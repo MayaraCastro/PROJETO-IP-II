@@ -4,13 +4,14 @@ import java.util.Arrays;
 public class Calendario {
 	private Task[] tasks;
 	private Disciplina[] discis;
-	//private Exame[] exames;
+	//private Task[] exames;
 	
 	//CONSTRUTOR
 	public Calendario() {
 		super();
 		this.tasks= new Task[100];
 		this.discis= new Disciplina[100];
+		//this.exames= new Task[100];
 	}
 	
 	//METODOS

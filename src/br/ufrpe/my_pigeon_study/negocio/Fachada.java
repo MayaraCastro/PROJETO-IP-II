@@ -1,6 +1,4 @@
 package br.ufrpe.my_pigeon_study.negocio;
-import br.ufrpe.my_pigeon_study.dados.*;
-import br.ufrpe.my_pigeon_study.negocio.*;
 import br.ufrpe.my_pigeon_study.negocio.beans.*;
 public class Fachada {
 	

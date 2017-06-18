@@ -224,7 +224,6 @@ public class TelaTextual {
 		Horario horario = new Horario();
 		String professor;
 		String obs;
-		String periodo = null;
 	
 		System.out.println("\tCADASTRAR DISCIPLINA");
 		System.out.println("Nome:");
@@ -248,12 +247,8 @@ public class TelaTextual {
 			
 		System.out.println("Observação:");
 		obs=scanner.next();
-			
-		System.out.println("Periodo: ");
-		obs=scanner.next();
-		System.out.flush();
-			
-		Disciplina disci = new Disciplina(nome,dia_da_semana,horario,professor,obs,periodo);
+
+		Disciplina disci = new Disciplina(nome,dia_da_semana,horario,professor,obs);
 		if(fachada.cadastrarDisciplina(user,disci)){
 			System.out.println("Cadastro com sucesso!");
 		}
@@ -328,7 +323,6 @@ public class TelaTextual {
 		Horario horario = new Horario();
 		String professor;
 		String obs;
-		String periodo = null;
 	
 		System.out.println("Nome:");
 		System.out.flush();
@@ -352,11 +346,8 @@ public class TelaTextual {
 		System.out.println("Observação:");
 		obs=scanner.next();
 			
-		System.out.println("Periodo: ");
-		obs=scanner.next();
-		System.out.flush();
 			
-		Disciplina disci = new Disciplina(nome,dia_da_semana,horario,professor,obs,periodo);
+		Disciplina disci = new Disciplina(nome,dia_da_semana,horario,professor,obs);
 		if(fachada.alterarDisciplina(user,disci,nomeOriginal)){
 			System.out.println("Alterado com Sucesso");
 		}

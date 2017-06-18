@@ -7,17 +7,16 @@ public class Disciplina {
 	private Horario horario;//definir o tipo melhor para horario
 	private String professor;
 	private String obs;
-	private String periodo;
+
 	
 	//CONSTRUTOR
-	public Disciplina(String nome, int dia_da_semana, Horario horario, String professor, String obs, String periodo) {
+	public Disciplina(String nome, int dia_da_semana, Horario horario, String professor, String obs) {
 		super();
 		this.nome = nome;
 		this.dia_da_semana = dia_da_semana;
 		this.horario = horario;
 		this.professor = professor;
 		this.obs = obs;
-		this.periodo = periodo;
 	}
 	//METODOS GET/SET
 	public String getNome() {
@@ -50,19 +49,13 @@ public class Disciplina {
 	public void setHorario(Horario horario) {
 		this.horario = horario;
 	}
-	public String getPeriodo() {
-		return periodo;
-	}
-	public void setPeriodo(String periodo) {
-		this.periodo = periodo;
-	}
 	
 	
 	//TOSTRING
 	@Override
 	public String toString() {
 		return "Disciplina [nome=" + nome + ", dia_da_semana=" + dia_da_semana + ", horario=" + horario + ", professor="
-				+ professor + ", obs=" + obs + ", periodo=" + periodo + "]";
+				+ professor + ", obs=" + obs + "]";
 	}
 	
 	public boolean equals(Object obj) {
@@ -89,11 +82,6 @@ public class Disciplina {
 			if (other.obs != null)
 				return false;
 		} else if (!obs.equals(other.obs))
-			return false;
-		if (periodo == null) {
-			if (other.periodo != null)
-				return false;
-		} else if (!periodo.equals(other.periodo))
 			return false;
 		if (professor == null) {
 			if (other.professor != null)

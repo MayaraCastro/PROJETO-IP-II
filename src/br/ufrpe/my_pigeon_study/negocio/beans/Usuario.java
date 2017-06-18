@@ -123,7 +123,7 @@ public class Usuario {
 	}
 	
 	public boolean addDisciplina(Disciplina disciplina){
-		return(this.getCalendario().getDisciplinas().inserir(disciplina));	
+		return(this.disciplinas[]=disciplina));	
 	}
 	
 	public boolean removerDisciplina(Disciplina disciplina){
