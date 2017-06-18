@@ -4,13 +4,22 @@ import br.ufrpe.my_pigeon_study.negocio.*;
 import java.util.Scanner;
 
 public class TelaTextual {
-	Scanner scanner=new Scanner(System.in);
-	private Fachada fachada=Fachada.getInstancia();
+	Scanner scanner;
+	private Fachada fachada;
+	private static TelaTextual instancia;
 	
-	public static void main(String[] args){
-		TelaTextual tela= new TelaTextual();
-		tela.menuInicial();
+	public TelaTextual(){
+		this.scanner=new Scanner(System.in);
+		this.fachada=Fachada.getInstancia();
 	}
+	
+	public static TelaTextual getInstancia(){
+		if(instancia==null){
+			instancia=new TelaTextual();
+		}
+		return(instancia);
+	}
+	
 	
 
 	public void menuInicial(){
@@ -53,8 +62,8 @@ public class TelaTextual {
 		System.out.flush();
 		String senha=scanner.next();
 		Usuario user= new Usuario(usuario,senha);
-		
-		if(this.fachada.logar(user)){
+		user=this.fachada.logar(user);
+		if(user!=null){
 			System.out.println("Login com sucesso!");
 			this.telaInicial(user);
 		}

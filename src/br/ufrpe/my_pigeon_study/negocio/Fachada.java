@@ -32,7 +32,8 @@ public class Fachada {
 	public boolean alterarUsuario(Usuario user){
 		return(this.cadastroU.alterar(user));
 	}
-	public boolean logar(Usuario user){
+
+	public Usuario logar(Usuario user){
 		return(this.login.logar(user));
 	}
 	public String showDisciplinas(Usuario user){

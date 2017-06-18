@@ -7,15 +7,15 @@ public class Login {
 	public Login(){
 		this.rep= RepositorioUsuario.getInstancia();
 	}
-	public boolean logar(Usuario user){
+	public Usuario logar(Usuario user){
 			Usuario usuario= new Usuario();
 			usuario=this.rep.buscar(user.getUsuario());	
 			if(usuario!=null){
 				if(usuario.getSenha().equals(user.getSenha())){
-					return(true);
+					return(usuario);
 				}
 			}
-			return(false);
+			return(null);
 	}
 	
 
