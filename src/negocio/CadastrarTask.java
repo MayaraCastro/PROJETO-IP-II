@@ -4,6 +4,13 @@ import java.util.Scanner;
 import br.ufrpe.negocio.beans.*;
 
 public class CadastrarTask {
+	private RepositorioTask repo;
+
+	public CadastrarTask(RepositorioTask rep) {
+		
+		this.repo = new RepositorioTask();
+	}
+	
 	public void Cadastro() {
 		int saida=0;
 		RepositorioTask repositorio=new RepositorioTask();
