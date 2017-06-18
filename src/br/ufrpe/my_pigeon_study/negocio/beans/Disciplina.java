@@ -1,4 +1,4 @@
-package br.ufrpe.negocio.beans;
+package br.ufrpe.my_pigeon_study.negocio.beans;
 
 public class Disciplina {
 	//ATRIBUTOS

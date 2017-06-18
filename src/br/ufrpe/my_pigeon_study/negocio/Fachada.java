@@ -1,78 +1,61 @@
-package janelas;
-import br.ufrpe.negocio.beans.*;
-import negocio.*;
-import repositorios.*;
+package br.ufrpe.my_pigeon_study.negocio;
+import br.ufrpe.my_pigeon_study.dados.*;
+import br.ufrpe.my_pigeon_study.negocio.*;
+import br.ufrpe.my_pigeon_study.negocio.beans.*;
 public class Fachada {
 	
-	Calendario calendario;
-	Disciplina disciplina;
-	Exame exame;
-	Task task;
-	Usuario usuario;
+	private Login login;
+	private CadastroUsuario cadastroU;
+	private CadastroDisciplina cadastroD;
+	private CadastroTask cadastroT;
 	
-	public Fachada(Calendario calendario, Disciplina disciplina, Exame exame, Task task, Usuario usuario){
-		this.calendario=calendario;
-		this.disciplina=disciplina;
-		this.exame=exame;
-		this.task=task;
-		this.usuario=usuario;
+	public Fachada(){
+		this.login=new Login();
+		this.cadastroU=new CadastroUsuario();
+		this.cadastroD=new CadastroDisciplina();
+		this.cadastroT=new CadastroTask();
 	}
-	
-
-	public Calendario getCalendario() {
-		return calendario;
+	//USUARIO
+	public boolean cadastrarUsuario(Usuario user){
+		return(this.cadastroU.cadastrar(user));
 	}
-
-	public void setCalendario(Calendario calendario) {
-		this.calendario = calendario;
+	public boolean alterarUsuario(Usuario user){
+		return(this.cadastroU.alterar(user));
 	}
-
-	public Disciplina getDisciplina() {
-		return disciplina;
+	public boolean logar(Usuario user){
+		return(this.login.logar(user));
 	}
-
-	public void setDisciplina(Disciplina disciplina) {
-		this.disciplina = disciplina;
+	public String showDisciplinas(Usuario user){
+		return(cadastroU.showDisciplinas(user));
 	}
-
-	public Exame getExame() {
-		return exame;
-	}
-
-	public void setExame(Exame exame) {
-		this.exame = exame;
-	}
-
-	public Task getTask() {
-		return task;
-	}
-
-	public void setTask(Task task) {
-		this.task = task;
-	}
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-	
-	public void CadastrarUser(Usuario user){
-		RepositorioUsuario rep= new RepositorioUsuario();
-		CadastroUsuario cadastro=new CadastroUsuario(rep);	
+	public String showTasks(Usuario user){
+		return(cadastroU.showTasks(user));
 	}
 	
-	public void CadastroTask(Task task){
-		RepositorioTask rep= new RepositorioTask();
-		CadastrarTask cadastro=new CadastrarTask(rep);	
+	//DISCIPLINA
+	public boolean cadastrarDisciplina(Usuario user, Disciplina disci){
+		return(this.cadastroD.cadastrar(user, disci));
 	}
-	
-	public void CadastrarDisciplina(Disciplina disciplina){
-		RepositorioDisciplina rep= new RepositorioDisciplina();
-		CadastroDisciplina cadastro=new CadastroDisciplina();	
+	public Disciplina buscarDisciplina(Usuario user, String disci){
+		return(this.cadastroD.buscar(user, disci));
 	}
-
+	public boolean alterarDisciplina(Usuario user,Disciplina disci,String nomeoriginal){
+		return(this.cadastroD.alterar(user, disci,nomeoriginal));
+	}
+	public boolean deletarDisciplina(Usuario user,String nomeoriginal){
+		return(this.cadastroD.remover(user, nomeoriginal));
+	}
+	//TASK
+	public boolean cadastrarTask(Task task){
+		return(this.cadastroT.cadastrar(task));
+	}
+	public Task buscarTask(String nome){
+		return(this.cadastroT.buscar(nome));
+	}
+	public boolean alterarTask(Task novaTask,String nomeOriginal){
+		return(cadastroT.alterar(novaTask,nomeOriginal));
+	}
+	public boolean deletarTask(String nome){
+		return(this.cadastroT.deletar(nome));
+	}
 }

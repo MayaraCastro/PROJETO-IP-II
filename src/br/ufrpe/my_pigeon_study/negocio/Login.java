@@ -1,44 +1,24 @@
-package negocio;
-import br.ufrpe.negocio.beans.*;
-import java.util.Scanner;
-import repositorios.RepositorioUsuario;
+package br.ufrpe.my_pigeon_study.negocio;
+import br.ufrpe.my_pigeon_study.dados.RepositorioUsuario;
+import br.ufrpe.my_pigeon_study.negocio.beans.*;
+
 public class Login {
-	public Login(RepositorioUsuario rep){
-		this.log(rep);
+	private RepositorioUsuario rep;
+	public Login(){
+		this.rep= new RepositorioUsuario();
 	}
-	public void log(RepositorioUsuario rep){
-		Scanner ler=new Scanner(System.in);
-		boolean sair=false;
-		
-		String usuario=new String();
-		String senha=new String();
-		Usuario user;
-		do{
-			System.out.println("\tLOGIN");
-			System.out.println("Usuario");
-			System.out.flush();
-			usuario=ler.next();
-			
-			System.out.println("Senha");
-			System.out.flush();
-			senha=ler.next();
-			user=rep.buscar(usuario);
-			if(user!=null){
-				if(user.getSenha().equals(senha)){
-					sair=true;
-					System.out.println("Login com sucesso!");
-				}
-				else{
-					System.out.println("senha ou usuario incorreto");
+	public Login(RepositorioUsuario rep){
+		this.rep=rep;
+	}
+	public boolean logar(Usuario user){
+			Usuario usuario= new Usuario();
+			usuario=this.rep.buscar(usuario.getUsuario());
+			if(usuario!=null){
+				if(usuario.getSenha().equals(user.getSenha())){
+					return(true);
 				}
 			}
-			else{
-				System.out.println("Usuario nao cadastrado no sistema");
-				sair=true;
-			}
-			
-		
-		}while(!sair);
+			return(false);
 	}
 	
 

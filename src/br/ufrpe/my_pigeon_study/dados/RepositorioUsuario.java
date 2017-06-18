@@ -1,5 +1,5 @@
-package repositorios;
-import br.ufrpe.negocio.beans.*;
+package br.ufrpe.my_pigeon_study.dados;
+import br.ufrpe.my_pigeon_study.negocio.beans.*;
 public class RepositorioUsuario {
 	private Usuario[] usuarios;
 	private int quantUsuarios;
