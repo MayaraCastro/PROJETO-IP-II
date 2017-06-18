@@ -19,12 +19,12 @@ public class CadastroDisciplina {
 		
 	}
 	public Disciplina buscar(Usuario user, String nome){
-		return(user.getCalendario().getDisciplinas().buscarDisc(nome));
+		return(user.getCalendario().getDisciplinas().buscar(nome));
 	}
 	public boolean alterar(Usuario user,Disciplina disci, String original){
-		return(user.getCalendario().getDisciplinas().alterarDisc(disci,original));
+		return(user.getCalendario().getDisciplinas().alterar(disci,original));
 	}
 	public boolean remover(Usuario user, String disci){
-		return(user.getCalendario().getDisciplinas().removerDisc(disci));
+		return(user.getCalendario().getDisciplinas().remover(disci));
 	}
 }
