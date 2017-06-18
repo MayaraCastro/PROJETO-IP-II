@@ -5,7 +5,7 @@ import br.ufrpe.my_pigeon_study.negocio.beans.*;
 public class CadastroUsuario {
 	private RepositorioUsuario rep;
 	public CadastroUsuario(){
-		this.rep=new RepositorioUsuario();
+		this.rep=RepositorioUsuario.getInstancia();
 	}
 	public boolean cadastrar(Usuario user){
 			if(user.getNome()!=""&&user.getEmail()!=""&&user.getUsuario()!=""
@@ -18,7 +18,7 @@ public class CadastroUsuario {
 				}
 				
 			}
-			return(true);
+			return(false);
 	}
 	public boolean alterar(Usuario user){
 		if(user.getNome()!=""&&user.getEmail()!=""&&user.getUsuario()!=""
@@ -30,7 +30,7 @@ public class CadastroUsuario {
 				return(true);
 			}
 		}
-		return(true);
+		return(false);
 }
 	public Usuario buscar(String usuario){
 		return(this.rep.buscar(usuario));

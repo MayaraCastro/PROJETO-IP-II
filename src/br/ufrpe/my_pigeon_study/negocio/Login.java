@@ -5,14 +5,11 @@ import br.ufrpe.my_pigeon_study.negocio.beans.*;
 public class Login {
 	private RepositorioUsuario rep;
 	public Login(){
-		this.rep= new RepositorioUsuario();
-	}
-	public Login(RepositorioUsuario rep){
-		this.rep=rep;
+		this.rep= RepositorioUsuario.getInstancia();
 	}
 	public boolean logar(Usuario user){
 			Usuario usuario= new Usuario();
-			usuario=this.rep.buscar(usuario.getUsuario());
+			usuario=this.rep.buscar(user.getUsuario());	
 			if(usuario!=null){
 				if(usuario.getSenha().equals(user.getSenha())){
 					return(true);

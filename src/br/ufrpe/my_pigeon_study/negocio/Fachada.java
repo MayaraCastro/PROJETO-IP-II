@@ -9,12 +9,22 @@ public class Fachada {
 	private CadastroDisciplina cadastroD;
 	private CadastroTask cadastroT;
 	
+	private static Fachada instancia;
+	
 	public Fachada(){
 		this.login=new Login();
 		this.cadastroU=new CadastroUsuario();
 		this.cadastroD=new CadastroDisciplina();
 		this.cadastroT=new CadastroTask();
 	}
+	
+	public static Fachada getInstancia(){
+		if(instancia==null){
+			instancia= new Fachada();
+		}
+		return(instancia);
+	}
+	
 	//USUARIO
 	public boolean cadastrarUsuario(Usuario user){
 		return(this.cadastroU.cadastrar(user));

@@ -3,11 +3,18 @@ import br.ufrpe.my_pigeon_study.negocio.beans.*;
 public class RepositorioUsuario {
 	private Usuario[] usuarios;
 	private int quantUsuarios;
+	private static RepositorioUsuario instancia;
 	
 	//CONSTRUTOR
 	public RepositorioUsuario(){
 		this.usuarios=new Usuario[100];
 		this.quantUsuarios=0;
+	}
+	public static RepositorioUsuario getInstancia(){
+		if(instancia==null){
+			instancia=new RepositorioUsuario();
+		}
+		return(instancia);
 	}
 	
 	//METODOS GET
