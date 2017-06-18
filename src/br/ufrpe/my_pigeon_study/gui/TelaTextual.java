@@ -6,7 +6,11 @@ import java.util.Scanner;
 public class TelaTextual {
 	Scanner scanner=new Scanner(System.in);
 	Fachada fachada= new Fachada();
-	
+	public static void main(String[] args){
+		TelaTextual tela= new TelaTextual();
+		tela.menuInicial();
+	}
+
 	public void menuInicial(){
 		boolean saida=false;
 		while(!saida){
