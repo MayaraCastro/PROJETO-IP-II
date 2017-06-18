@@ -3,6 +3,8 @@ package social;
 import java.util.Calendar;
 import java.util.Date;
 
+import br.ufrpe.negocio.beans.Usuario;
+
 public class Comentario {
 	private String comentario;
 	private Comentario[] coment;

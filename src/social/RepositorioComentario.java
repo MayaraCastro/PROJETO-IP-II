@@ -1,4 +1,6 @@
-package br.ufrpe.Luna;
+package social;
+
+import br.ufrpe.negocio.beans.Usuario;
 
 public class RepositorioComentario {
 	private Comentario[] comments;
