@@ -1,4 +1,4 @@
-package br.ufrpe.negocio.beans;
+package social;
 
 import java.util.Calendar;
 import java.util.Date;
