@@ -1,4 +1,7 @@
-package social;
+package repositorios;
+
+import br.Giuseppe.Luna.beans.Post;
+import br.Giuseppe.Luna.beans.Usuario;
 
 public class RepositorioPost {
 	private Post[] postagem;
@@ -12,8 +15,8 @@ public class RepositorioPost {
 				
 	}
 
-	public Post[] getPostagem() {
-		return this.postagem;
+	public Post getPostagem(int valor) {//obter a posição da postagem
+		return this.postagem[valor];
 	}
 
 	public int getProxima() {

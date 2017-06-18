@@ -1,20 +1,17 @@
-package social;
+package br.Giuseppe.Luna.beans;
 
 import java.util.Calendar;
 import java.util.Date;
 
-import br.ufrpe.negocio.beans.Usuario;
-
 public class Comentario {
 	private String comentario;
-	private Comentario[] coment;
 	private Usuario autor;
 	private Date data;
 	private int like;
 	private int dislike;
 	Calendar c;
 
-	  
+	
 	public Comentario(String comentario, Usuario autor){
 		this.comentario=comentario;
 		this.autor=autor;
@@ -51,16 +48,6 @@ public class Comentario {
 
 	public void setComentario(String comentario) {
 		this.comentario = comentario;
-	}
-
-
-	public Comentario[] getComent() {
-		return coment;
-	}
-
-
-	public void setComent(Comentario[] coment) {
-		this.coment = coment;
 	}
 
 

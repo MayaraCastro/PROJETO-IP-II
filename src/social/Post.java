@@ -1,7 +1,6 @@
-package social;
-
+package br.Giuseppe.Luna.beans;
 public class Post {
-	private String[] comentario;
+	private Comentario[] comentario;
 	private int proximoComentario;
 	private int tamComentario;
 	private int like;
@@ -10,7 +9,7 @@ public class Post {
 	private Usuario autor;
 
 	public Post(String post, Usuario autor ){
-		this.comentario=null;
+		
 		this.like=0;
 		this.dislike=0;
 		this.comentario=null;
@@ -18,6 +17,7 @@ public class Post {
 		this.proximoComentario=0;
 		this.tamComentario=100;
 		this.autor=autor;
+		this.comentario= new Comentario[this.tamComentario];
 		
 	}
 	public Usuario getAutor() {
@@ -28,11 +28,11 @@ public class Post {
 		this.autor = autor;
 	}
 
-	public String[] getComentario() {
+	public Comentario[] getComentario() {
 		return comentario;
 	}
 
-	public boolean setComentario(String comentario) {
+	public boolean setComentario(Comentario comentario) {
 		if(comentario!=null && this.proximoComentario<=this.tamComentario)
 		{
 			this.comentario[this.proximoComentario] = comentario;
