@@ -1,4 +1,4 @@
-package janelas;
+package negocio;
 import repositorios.*;
 import java.util.Scanner;
 import br.ufrpe.negocio.beans.*;
