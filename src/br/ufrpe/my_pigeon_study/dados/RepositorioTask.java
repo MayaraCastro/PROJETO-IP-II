@@ -1,5 +1,5 @@
-package repositorios;
-import br.ufrpe.negocio.beans.*;
+package br.ufrpe.my_pigeon_study.dados;
+import br.ufrpe.my_pigeon_study.negocio.beans.*;
 public class RepositorioTask {
 	private Task[] tasks;
 	private int quantdTask;
@@ -16,7 +16,7 @@ public class RepositorioTask {
 	public int getQuantdTask(){
 		return this.quantdTask;
 	}
-	public Task Buscar(String nome){
+	public Task buscar(String nome){
 		for(int i=0;i<this.quantdTask;i++){
 			if(this.tasks[i].getNome().equals(nome) && this.tasks[i]!=null){
 				return this.tasks[i];
@@ -24,11 +24,11 @@ public class RepositorioTask {
 		}	
 		return null;
 	}
-	public boolean Inserir(Task task){
+	public boolean inserir(Task task){
 		if(this.quantdTask>this.tasks.length || task==null){
 			return false;
 		}
-		Task busca=this.Buscar(task.getNome());
+		Task busca=this.buscar(task.getNome());
 		if(busca!=null){
 			return false;
 						
@@ -38,9 +38,9 @@ public class RepositorioTask {
 		return true;
 	}
 	
-	public boolean Remover(String nome){
+	public boolean remover(String nome){
 		
-		if(this.Buscar(nome)==null){
+		if(this.buscar(nome)==null){
 			return false;
 		}
 		for(int i=0; i<this.quantdTask;i++){
@@ -59,7 +59,7 @@ public class RepositorioTask {
 		return false;
 		
 	}
-	public boolean Alterar(Task newTask, String nomeOriginal){
+	public boolean alterar(Task newTask, String nomeOriginal){
 		if(newTask!=null){
 			for(int i=0; i<this.quantdTask;i++){
 				if(this.tasks[i].getNome().equals(nomeOriginal) && this.tasks[i]!=null){

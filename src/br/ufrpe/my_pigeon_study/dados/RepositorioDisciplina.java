@@ -1,6 +1,6 @@
-package repositorios;
+package br.ufrpe.my_pigeon_study.dados;
 
-import br.ufrpe.negocio.beans.Disciplina;
+import br.ufrpe.my_pigeon_study.negocio.beans.Disciplina;
 
 public class RepositorioDisciplina {
 	
@@ -44,7 +44,7 @@ public class RepositorioDisciplina {
 		return false;
 	}
 	
-	public Disciplina buscarDisc(Disciplina disc){
+	public Disciplina buscarDisc(String disc){
 		for(Disciplina d:this.disciplinas){
 			if(d!=null && d.getNome().equals(disc)){
 				return (d);
@@ -53,10 +53,10 @@ public class RepositorioDisciplina {
 		return null;
 	}
 	
-	public boolean alterarDisc(Disciplina newDisc){
+	public boolean alterarDisc(Disciplina newDisc,String original){
 		if(newDisc != null){
 			for(int i=0;i<20;i++){
-				if(this.disciplinas[i] != null && this.disciplinas[i].getNome().equals(newDisc) == true){
+				if(this.disciplinas[i] != null && this.disciplinas[i].getNome().equals(original) == true){
 					this.disciplinas[i] = newDisc;
 					return true;
 				}
@@ -65,7 +65,7 @@ public class RepositorioDisciplina {
 		return false;
 	}
 	
-	public boolean removerDisc(Disciplina disc){
+	public boolean removerDisc(String disc){
 		if(this.buscarDisc(disc) == null){
 			return false;
 		}

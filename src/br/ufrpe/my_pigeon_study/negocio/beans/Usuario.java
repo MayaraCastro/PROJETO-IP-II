@@ -1,4 +1,4 @@
-package br.ufrpe.negocio.beans;
+package br.ufrpe.my_pigeon_study.negocio.beans;
 
 import java.util.Arrays;
 
@@ -9,16 +9,17 @@ public class Usuario {
 	private String senha;
 	private int sexo;//1-feminino, 2-masculino e 3-outro
 	private String email;
-	private Disciplina[] disciplina;
+	private Calendario calendario;// adiministra as tasks e disciplinas do usuario
 	private Task lembrar;
 	
 	
 	public Usuario() {
 		super();
 	}
-
-
-
+	public Usuario(String usuario, String senha){
+		this.senha=senha;
+		this.usuario=usuario;
+	}
 	public Usuario(String nome, Data dataNasc, String usuario, String senha, int sexo, String email,
 			Task lembrar) {
 		super();
@@ -29,13 +30,8 @@ public class Usuario {
 		this.sexo = sexo;
 		this.email = email;
 		this.lembrar = lembrar;
+		this.calendario= new Calendario();
 	}
-
-
-
-
-	
-	
 	public Usuario(String nome, Data dataNasc, String usuario, String senha, int sexo, String email) {
 
 		super();
@@ -45,21 +41,16 @@ public class Usuario {
 		this.senha = senha;
 		this.sexo = sexo;
 		this.email = email;
+		this.calendario= new Calendario();
 	}
 
-
-
-	public Disciplina[] getDisciplina() {
-		return disciplina;
+	public Calendario getCalendario() {
+		return this.calendario;
 	}
 
-
-
-	public void setDisciplina(Disciplina[] disciplina) {
-		this.disciplina = disciplina;
+	public void setCalendario(Calendario calendario) {
+		this.calendario = calendario;
 	}
-
-
 
 	public Task getLembrar() {
 		return lembrar;
@@ -128,31 +119,15 @@ public class Usuario {
 
 	public void setEmail(String email) {
 		this.email = email;
-	};
-	
-	
-	public boolean addDisc(Disciplina[] disciplina){
-		if(disciplina != null){
-			this.setDisciplina(disciplina);
-			return true;
-		}
-		else{
-			return false;
-		}
-		
 	}
 	
-	public void removerDisc(Disciplina[] disciplina){
-		disciplina = null;
+	public boolean addDisciplina(Disciplina disciplina){
+		return(this.getCalendario().getDisciplinas().inserirDisc(disciplina));	
 	}
 	
-	/*public boolean addUsuario(){
-		//editar
+	public boolean removerDisciplina(Disciplina disciplina){
+		return(this.getCalendario().getDisciplinas().removerDisc(disciplina));
 	}
-	
-	public boolean removerUsuario(){
-		//editar
-	}*/
 	
 	public void addExame(){
 		//editar
@@ -162,12 +137,17 @@ public class Usuario {
 		//editar
 	}
 
-
+	public String showDisciplinas(){
+		return(this.calendario.showDisciplinas());
+	}
+	public String showTasks(){
+		return(this.calendario.showTasks());
+	}
 
 	@Override
 	public String toString() {
 		return "Usuario [nome=" + nome + ", dataNasc=" + dataNasc + ", usuario=" + usuario + ", senha=" + senha
-				+ ", sexo=" + sexo + ", email=" + email + ", disciplina=" + Arrays.toString(disciplina) + "]";
+				+ ", sexo=" + sexo + ", email=" + email + ", disciplina=" + Arrays.toString(calendario.getDisciplinas().getDisciplinas()) + "]";
 	}
 
 
