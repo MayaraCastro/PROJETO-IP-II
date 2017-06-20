@@ -117,7 +117,7 @@ public class Usuario {
 		this.email = email;
 	}
 	
-	public boolean addAtividade(Atividade[] atividade){
+	public boolean addAtividade(Atividade atividade){
 		if(atividade != null && this.proxAtiv <= this.tamAtiv){
 			this.atividades[this.proxAtiv] = atividade;
 			this.proxAtiv++;
