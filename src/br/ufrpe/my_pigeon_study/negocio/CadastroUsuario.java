@@ -44,8 +44,8 @@ public class CadastroUsuario {
 	public boolean descadastrar(String usuario){
 		return(this.rep.remover(usuario));
 	}
-	public boolean addDisciplina(Usuario user, Disciplina disci){
-		return(user.addDisciplina(disci));
+	public Atividade addAtividade(Usuario user, Atividade ativi){
+		return(user.addAtividade(ativi));
 	}
 	public String showDisciplinas(Usuario user){
 		return(user.showDisciplinas());

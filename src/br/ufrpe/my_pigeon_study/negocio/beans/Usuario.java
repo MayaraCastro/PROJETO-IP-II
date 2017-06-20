@@ -10,7 +10,6 @@ public class Usuario {
 	private int sexo;//1-feminino, 2-masculino e 3-outro
 	private String email;
 	private Atividade[] atividades;//TODO AJEITAR
-	private Calendario calendario;// adiministra as tasks e disciplinas do usuario
 	private Task[] tasks;
 	private int tamAtiv = 100;
 	private int proxAtiv = 0;
@@ -31,12 +30,13 @@ public class Usuario {
 		this.senha = senha;
 		this.sexo = sexo;
 		this.email = email;
-		this.atividades = new Atividade[TAM];
+		this.atividades = new Atividade[tamAtiv];
 		this.tasks = new Task[100];
-		this.calendario= new Calendario();
-	}
+
+}
 	
 	
+
 
 	public Atividade[] getAtividades() {
 		return atividades;
@@ -50,12 +50,15 @@ public class Usuario {
 	public void setTasks(Task[] tasks) {
 		this.tasks = tasks;
 	}
-	public Calendario getCalendario() {
-		return this.calendario;
+
+
+	public Task[] getLembrar() {
+		return tasks;
 	}
 
-	public void setCalendario(Calendario calendario) {
-		this.calendario = calendario;
+
+	public void setLembrar(Task[] tasks) {
+		this.tasks = tasks;
 	}
 
 	public String getNome() {
@@ -127,7 +130,7 @@ public class Usuario {
 	}
 	
 	public boolean removerDisciplina(Disciplina disciplina){
-		return(this.getCalendario().getDisciplinas().remover(disciplina.getNome()));
+		
 	}
 	
 	public void addExame(){
