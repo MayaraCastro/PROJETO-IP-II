@@ -7,9 +7,6 @@ public class Task {
 	private String descricao;
 	private int tipo;
 	private String disciplina;
-
-
-	//eae
 	
 	public Task() {
 		
@@ -42,10 +39,10 @@ public class Task {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public String getTipo() {
+	public int getTipo() {
 		return tipo;
 	}
-	public void setTipo(String tipo) {
+	public void setTipo(int tipo) {
 		this.tipo = tipo;
 	}
 	public String getDisciplina() {

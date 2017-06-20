@@ -1,21 +1,19 @@
 package br.ufrpe.my_pigeon_study.negocio.beans;
 
-public class Disciplina {
+public class Atividade {
 	//ATRIBUTOS
 	private String nome;
 	private int dia_da_semana;
-	private Horario horario;//definir o tipo melhor para horario
-	private String professor;
+	private Horario horario;
 	private String obs;
 
 	
 	//CONSTRUTOR
-	public Disciplina(String nome, int dia_da_semana, Horario horario, String professor, String obs) {
+	public Atividade(String nome, int dia_da_semana, Horario horario, String obs) {
 		super();
 		this.nome = nome;
 		this.dia_da_semana = dia_da_semana;
 		this.horario = horario;
-		this.professor = professor;
 		this.obs = obs;
 	}
 	//METODOS GET/SET
@@ -25,12 +23,7 @@ public class Disciplina {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getProfessor() {
-		return professor;
-	}
-	public void setProfessor(String professor) {
-		this.professor = professor;
-	}
+	
 	public String getObs() {
 		return obs;
 	}
@@ -54,8 +47,7 @@ public class Disciplina {
 	//TOSTRING
 	@Override
 	public String toString() {
-		return "Disciplina [nome=" + nome + ", dia_da_semana=" + dia_da_semana + ", horario=" + horario + ", professor="
-				+ professor + ", obs=" + obs + "]";
+		return "Disciplina [nome=" + nome + ", dia_da_semana=" + dia_da_semana + ", horario=" + horario +", obs=" + obs + "]";
 	}
 	
 	public boolean equals(Object obj) {
@@ -65,7 +57,7 @@ public class Disciplina {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Disciplina other = (Disciplina) obj;
+		Atividade other = (Atividade) obj;
 		if (dia_da_semana != other.dia_da_semana)
 			return false;
 		if (horario == null) {
@@ -82,11 +74,6 @@ public class Disciplina {
 			if (other.obs != null)
 				return false;
 		} else if (!obs.equals(other.obs))
-			return false;
-		if (professor == null) {
-			if (other.professor != null)
-				return false;
-		} else if (!professor.equals(other.professor))
 			return false;
 		return true;
 	}
