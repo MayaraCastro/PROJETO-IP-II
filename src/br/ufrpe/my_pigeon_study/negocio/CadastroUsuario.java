@@ -44,31 +44,46 @@ public class CadastroUsuario {
 	public boolean descadastrar(String usuario){
 		return(this.rep.remover(usuario));
 	}
-	public Atividade addAtividade(Usuario user, Atividade ativi){
+	public boolean addAtividade(Usuario user, Atividade ativi){
 		return(user.addAtividade(ativi));
 	}
 	public String showDisciplinas(Usuario user){
 		return(user.showDisciplinas());
 	}
+	
+	//tasks
+	public boolean cadastrarTask(Task task){
+		if(task.getNome()!=""&&task.getDescricao()!=""&&task.getDisciplina()!=""
+				&&task.getData()!=""&&(task.getTipo()>0)){
+			if(this.rep.inserirTask(task)){
+				return(true);
+			}
+			
+		}
+		return(false);
+}
+	public boolean alterarBask(Task task){
+	if(task.getNome()!=""&&task.getDescricao()!=""&&task.getDisciplina()!=""
+	&&task.getData()!=""&&(task.getTipo()>0)){
+			Task original=this.rep.buscarTask(task.getNome());
+			original.setNome(task.getNome());
+			original.setDescricao(task.getDescricao());
+			original.setDisciplina(task.getDisciplina());
+			original.setTipo(task.getTipo());
+			original.setData(task.getData());
+			if(this.rep.alterarTask(original)){
+				return(true);
+			}
+	}
+	return(false);
+}
 	public String showTasks(Usuario user){
 		return(user.showTasks());
 	}
-<<<<<<< HEAD
-
-	public String calendario(Usuario user, int dayOfWeek){
-		Atividade[] atividades = user.getAtividades();
-		String msg=null;
-		for(Atividade a:atividades){
-			if(a!=null){
-				if(a.getDia_da_semana()==dayOfWeek){
-					msg+="\n"+a;
-				}
-			}
-		}
-		return(msg);
+	public Task buscarTasks(String Task){
+		return(this.rep.buscarTask(Task));
+	}
+	public boolean descadastrarTask(String Task){
+		return(this.rep.removerTask(Task));
 	}
 }
-=======
-	
-}
->>>>>>> master
