@@ -44,6 +44,7 @@ public class CadastroUsuario {
 	public boolean descadastrar(String usuario){
 		return(this.rep.remover(usuario));
 	}
+
 	public boolean addAtividade( Atividade ativi){
 		return(this.rep.addAtividade(ativi));
 	}
@@ -79,7 +80,6 @@ public class CadastroUsuario {
 		return(this.rep.removerTask(Task));
 	}
 
-
 	public String calendarioAtividade(Usuario user, int dayOfWeek){
 		Atividade[] atividades = user.getAtividades();
 		String msg=null;
@@ -107,5 +107,5 @@ public class CadastroUsuario {
 		}
 		return(msg);
 	}
-}
 
+}
