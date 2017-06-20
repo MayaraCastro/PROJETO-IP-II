@@ -6,19 +6,17 @@ public class Task {
 	private String nome;
 	private String descricao;
 	private int tipo;
-	private String disciplina;
 	
 	public Task() {
 		
 	}
 	
-	public Task(String data, String nome, String descricao, int tipo, String disciplina) {
+	public Task(String data, String nome, String descricao, int tipo) {
 		super();
 		this.data = data;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.tipo = tipo;
-		this.disciplina = disciplina;
 	}
 	
 	public String getData() {
@@ -45,17 +43,8 @@ public class Task {
 	public void setTipo(int tipo) {
 		this.tipo = tipo;
 	}
-	public String getDisciplina() {
-		return disciplina;
-	}
-	public void setDisciplina(String disciplina) {
-		this.disciplina = disciplina;
-	}
-
-	
 	public String toString() {
-		return "Task [data=" + data + ", nome=" + nome + ", descricao=" + descricao + ", tipo=" + tipo + ", disciplina="
-				+ disciplina + "]";
+		return "Task [data=" + data + ", nome=" + nome + ", descricao=" + descricao + ", tipo=" + tipo + "]";
 	}
 	
 }

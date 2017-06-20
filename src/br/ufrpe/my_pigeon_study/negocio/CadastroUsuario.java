@@ -53,8 +53,7 @@ public class CadastroUsuario {
 	
 	//tasks
 	public boolean cadastrarTask(Task task){
-		if(task.getNome()!=""&&task.getDescricao()!=""&&task.getDisciplina()!=""
-				&&task.getData()!=""&&(task.getTipo()>0)){
+		if(task.getNome()!=""&&task.getDescricao()!=""&&task.getData()!=""&&(task.getTipo()>0)){
 			if(this.rep.inserirTask(task)){
 				return(true);
 			}
@@ -62,13 +61,11 @@ public class CadastroUsuario {
 		}
 		return(false);
 }
-	public boolean alterarBask(Task task){
-	if(task.getNome()!=""&&task.getDescricao()!=""&&task.getDisciplina()!=""
-	&&task.getData()!=""&&(task.getTipo()>0)){
+	public boolean alterarTask(Task task){
+	if(task.getNome()!=""&&task.getDescricao()!=""&&task.getData()!=""&&(task.getTipo()>0)){
 			Task original=this.rep.buscarTask(task.getNome());
 			original.setNome(task.getNome());
 			original.setDescricao(task.getDescricao());
-			original.setDisciplina(task.getDisciplina());
 			original.setTipo(task.getTipo());
 			original.setData(task.getData());
 			if(this.rep.alterarTask(original)){
