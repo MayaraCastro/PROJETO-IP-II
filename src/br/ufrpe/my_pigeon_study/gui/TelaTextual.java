@@ -559,12 +559,12 @@ public class TelaTextual {
 	public void menuTask(Usuario user){
 		boolean saida=false;
 		while(!saida){
-			System.out.println("=====BEMVINDO=====");
+			System.out.println("=====TASK=====");
 			System.out.println("[1]Inserir");
 			System.out.println("[2]Buscar");
 			System.out.println("[3]Listar");
 			System.out.println("[4]voltar");
-			System.out.println("=====BEMVINDO=====");
+			System.out.println("=====TASK=====");
 			System.out.print("RESPOSTA: ");
 			int resposta=scanner.nextInt();
 			scanner.nextLine();

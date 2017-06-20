@@ -54,7 +54,7 @@ public class CadastroUsuario {
 		if(task.getNome()!=""&&task.getDescricao()!=""&&task.getData()!=null&&(task.getTipo()>0) && task!=null && user!=null
 				&& (task.getData().getMes()<13 &&task.getData().getMes()>0 
 				&&task.getData().getDia()<32 &&task.getData().getDia()>0
-				&&task.getData().getAno()<2017 &&task.getData().getAno()>1900)){
+				&&task.getData().getAno()>=2017)){
 			if(this.rep.inserirTask(user,task)){
 				return(true);
 			}
