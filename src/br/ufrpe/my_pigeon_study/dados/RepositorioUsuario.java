@@ -118,7 +118,7 @@ public class RepositorioUsuario {
 		return(null);
 	}
 	
-	public boolean addAtividade(Atividade atividade, Usuario user){
+	public boolean addAtividade(Atividade atividade){
 		if(atividade != null && this.qtdAtv <= this.tamAtiv){
 			if(this.buscarAtiv(atividade.getNome()) ==  null){
 				this.atividades[this.qtdAtv] = atividade;

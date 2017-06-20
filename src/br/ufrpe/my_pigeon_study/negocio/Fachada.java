@@ -30,6 +30,7 @@ public class Fachada {
 		return(this.login.logar(user));
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	/*public String showDisciplinas(Usuario user){
 		return(cadastroU.showDisciplinas(user));
 	}
@@ -38,6 +39,11 @@ public class Fachada {
 		return(cadastroU.);
 	}*/
 >>>>>>> master
+=======
+	public String showDisciplinas(Usuario user){
+		return(cadastroU.showDisciplinas(user));
+	}
+>>>>>>> parent of 8decb0c... test
 	public String showTasks(Usuario user){
 		return(cadastroU.showTasks(user));
 	}*/
@@ -47,24 +53,19 @@ public class Fachada {
 	public String calendarioTasks(Usuario user, Data data){
 		return(cadastroU.calendarioTask(user,data));
 	}
-	
 	//DISCIPLINA
-	public boolean cadastrarDisciplina(Atividade ativi){
-		return(this.cadastroU.addAtividade(ativi));
-	}
-	public Atividade buscarAtividade(String ativi){
-		return(this.cadastroU.buscarAtividade(ativi));
-	}
-	public boolean alterarAtividade(Atividade nomeoriginal){
-		return(this.cadastroU.alterarAtividade(nomeoriginal));
-	}
-	public boolean deletarAtividade(String nome){
-		return(this.cadastroU.descadastrarAtividade(nome));
-	}
-	
-	public String showAtiv(){
-		return(this.cadastroU.showAtiv());
-	}
+//	public boolean cadastrarDisciplina(Usuario user, Disciplina disci){
+//		return(this.cadastroD.cadastrar(user, disci));
+//	}
+//	public Disciplina buscarDisciplina(Usuario user, String disci){
+//		return(this.cadastroD.buscar(user, disci));
+//	}
+//	public boolean alterarDisciplina(Usuario user,Disciplina disci,String nomeoriginal){
+//		return(this.cadastroD.alterar(user, disci,nomeoriginal));
+//	}
+//	public boolean deletarDisciplina(Usuario user,String nomeoriginal){
+//		return(this.cadastroD.remover(user, nomeoriginal));
+//	}
 	//TASK
 	public boolean cadastrarTask(Usuario user,Task task){
 		return(this.cadastroU.cadastrarTask(user,task));

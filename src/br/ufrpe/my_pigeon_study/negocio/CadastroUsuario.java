@@ -44,27 +44,9 @@ public class CadastroUsuario {
 	public boolean descadastrar(String usuario){
 		return(this.rep.remover(usuario));
 	}
-	
-	//ATIVIDADES
 
 	public boolean addAtividade( Atividade ativi){
 		return(this.rep.addAtividade(ativi));
-	}
-	
-	public boolean descadastrarAtividade(String atividade){
-		return(this.rep.removerAtividade(atividade));
-	}
-	
-	public boolean alterarAtividade(Atividade novaAtiv){
-		return(this.rep.alterarAtiv(novaAtiv));
-	}
-	
-	public Atividade buscarAtividade(String atividade){
-		return(this.rep.buscarAtiv(atividade));
-	}
-	
-	public String showAtiv(){
-		return(this.rep.showAtiv());
 	}
 	
 	//tasks

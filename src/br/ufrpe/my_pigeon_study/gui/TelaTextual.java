@@ -186,8 +186,11 @@ public class TelaTextual {
 				}
 				case 5:{
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 					this.menuAtividades(user);
+=======
+>>>>>>> parent of 8decb0c... test
 					break;
 				}
 				case 6:{
@@ -218,10 +221,14 @@ public class TelaTextual {
 		}
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public void showAtividades(Usuario user){
 		fachada.showAtividades(user);
 =======
 	public String showAtividades(Usuario user){
+=======
+	public void showDisciplinas(Usuario user){
+>>>>>>> parent of 8decb0c... test
 		fachada.showDisciplinas(user);
 >>>>>>> master
 	}
@@ -256,6 +263,9 @@ public class TelaTextual {
 		
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 8decb0c... test
 //	//TELAS DISCIPLINAS
 //	public void cadastroDisciplina(Usuario user){
 //		String nome;
@@ -284,7 +294,11 @@ public class TelaTextual {
 //		professor=scanner.next();
 //		System.out.flush();
 //			
+<<<<<<< HEAD
 //		System.out.println("Observaï¿½ï¿½o:");
+=======
+//		System.out.println("Observação:");
+>>>>>>> parent of 8decb0c... test
 //		obs=scanner.next();
 //
 //		Disciplina disci = new Disciplina(nome,dia_da_semana,horario,professor,obs);
@@ -382,7 +396,11 @@ public class TelaTextual {
 //		professor=scanner.next();
 //		System.out.flush();
 //			
+<<<<<<< HEAD
 //		System.out.println("Observaï¿½ï¿½o:");
+=======
+//		System.out.println("Observação:");
+>>>>>>> parent of 8decb0c... test
 //		obs=scanner.next();
 //			
 //			
@@ -405,6 +423,7 @@ public class TelaTextual {
 //		}
 //	}
 //	
+<<<<<<< HEAD
 =======
 //TELAS DISCIPLINAS
 	public void cadastroDisciplina(Usuario user){
@@ -547,6 +566,8 @@ public class TelaTextual {
 		}
 	}	
 >>>>>>> master
+=======
+>>>>>>> parent of 8decb0c... test
 	//TELAS TASK
 	
 	public void menuTask(Usuario user){

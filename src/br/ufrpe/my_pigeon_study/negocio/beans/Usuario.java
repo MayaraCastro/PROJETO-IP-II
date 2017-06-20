@@ -163,6 +163,12 @@ public class Usuario {
 	}
 	
 
+	/*public String showDisciplinas(){
+		return(this.calendario.showDisciplinas());
+	}
+	public String showTasks(){
+		return(Arrays.toString(this.tasks));
+	}*/
 
 	@Override
 	public String toString() {
