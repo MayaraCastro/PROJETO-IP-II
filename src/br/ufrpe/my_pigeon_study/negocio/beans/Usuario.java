@@ -9,7 +9,7 @@ public class Usuario {
 	private String senha;
 	private int sexo;//1-feminino, 2-masculino e 3-outro
 	private String email;
-	private Disciplina[] disciplinas;//TODO AJEITAR
+	private Atividade[] atividades;//TODO AJEITAR
 	private Calendario calendario;// adiministra as tasks e disciplinas do usuario
 	private Task[] tasks;
 	
@@ -109,12 +109,12 @@ public class Usuario {
 		this.email = email;
 	}
 	
-	public boolean addDisciplina(Disciplina disciplina){
-		return(this.disciplinas[]=disciplina));	
+	public Atividade addAtividade(Atividade atividade){// modificado aq. o tipo de retono era boolean, mas o retorno n tava indo boolean
+		return(this.atividades[]=atividade));	
 	}
 	
-	public boolean removerDisciplina(Disciplina disciplina){
-		return(this.getCalendario().getDisciplinas().remover(disciplina.getNome()));
+	public boolean removerAtividade(Atividade ativ){
+		return(this.getCalendario().getAtividade().remover(ativ.getNome()));
 	}
 	
 	public void addExame(){

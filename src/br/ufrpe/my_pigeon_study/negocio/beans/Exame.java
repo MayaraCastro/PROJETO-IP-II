@@ -7,15 +7,15 @@ public class Exame {
 	private String descricao;
 	private Data data;
 	private Horario hora;
-	private Disciplina disciplina;
+	private Atividade atividade;
 	
 	//initializer
-	public Exame(double nota,String descricao,Data data,Horario hora,Disciplina disciplina){
+	public Exame(double nota,String descricao,Data data,Horario hora,Atividade atividade){
 		this.nota=nota;
 		this.descricao=descricao;
 		this.data=data;
 		this.hora=hora;
-		this.disciplina=disciplina;
+		this.atividade=atividade;
 	}
 	public Exame(){
 		
@@ -34,8 +34,8 @@ public class Exame {
 	public Horario getHora(){
 		return this.hora;
 	}
-	public Disciplina getDisciplina(){
-		return this.disciplina;
+	public Atividade getAtividade(){
+		return this.atividade;
 	}
 	
 	//seters
@@ -55,8 +55,8 @@ public class Exame {
 		this.hora=hora;
 	}
 	
-	public void setDisciplina(Disciplina disciplina){
-		this.disciplina=disciplina;
+	public void setDisciplina(Atividade atividade){
+		this.atividade=atividade;
 	}
 	
 	//metodos
@@ -98,7 +98,7 @@ public class Exame {
 	
 	//toString
 	public String toString(){
-		return "Disciplina:"+this.disciplina.getNome()+"[Exame[Nota: "+this.nota+", Data: "+this.data+", Horario: "+this.hora+"]]";
+		return "Disciplina:"+this.atividade.getNome()+"[Exame[Nota: "+this.nota+", Data: "+this.data+", Horario: "+this.hora+"]]";
 	}
 	
 
