@@ -13,7 +13,10 @@ public class Principal {
 		
 		//USUARIO JA PRONTO PRA TESTES
 		Data dataNasc= new Data(2,2,1999);
+		Data dataNasc1= new Data(2,2,1998);
 		Usuario user= new Usuario("Maria",dataNasc, "maria", "maria", 1, "maria@maria");
+		Usuario user1= new Usuario("Yas",dataNasc1, "yas", "yas", 1, "yas@yas");
+		fachada.cadastrarUsuario(user1);
 		fachada.cadastrarUsuario(user);
 		
 		tela.menuInicial();

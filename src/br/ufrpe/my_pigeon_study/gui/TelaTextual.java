@@ -186,6 +186,7 @@ public class TelaTextual {
 					break;
 				}
 				case 5:{
+					this.menuAtividades(user);
 					break;
 				}
 				case 6:{
@@ -214,7 +215,7 @@ public class TelaTextual {
 			}
 		}
 	}
-	public void showDisciplinas(Usuario user){
+	public String showAtividades(Usuario user){
 		fachada.showDisciplinas(user);
 	}
 	public void calendario(Usuario user){
@@ -247,155 +248,146 @@ public class TelaTextual {
 		
 		
 	}
-//	//TELAS DISCIPLINAS
-//	public void cadastroDisciplina(Usuario user){
-//		String nome;
-//		int dia_da_semana = 0;
-//		Horario horario = new Horario();
-//		String professor;
-//		String obs;
-//	
-//		System.out.println("\tCADASTRAR DISCIPLINA");
-//		System.out.println("Nome:");
-//		System.out.flush();
-//		nome=scanner.next();
-//			
-//		System.out.println("Dia da semana:");
-//		dia_da_semana = scanner.nextInt();
-//		System.out.flush();
-//			
-//		System.out.println("Horario:");
-//		horario.setHora(scanner.nextInt());	
-//		System.out.flush();
-//		System.out.print(":");
-//		System.out.flush();
-//		horario.setMinuto(scanner.nextInt());
-//			
-//		System.out.println("Professor:");
-//		professor=scanner.next();
-//		System.out.flush();
-//			
-//		System.out.println("Observação:");
-//		obs=scanner.next();
-//
-//		Disciplina disci = new Disciplina(nome,dia_da_semana,horario,professor,obs);
-//		if(fachada.cadastrarDisciplina(user,disci)){
-//			System.out.println("Cadastro com sucesso!");
-//		}
-//		else{
-//			System.out.println("Erro!");
-//		}
-//	}
-//	public void menuAtividades(Usuario user){
-//		boolean saida=false;
-//		while(!saida){
-//			System.out.println("=====BEMVINDO=====");
-//			System.out.println("[1]Inserir");
-//			System.out.println("[2]Buscar");
-//			System.out.println("[3]Listar");
-//			System.out.println("[4]voltar");
-//			System.out.println("=====BEMVINDO=====");
-//			System.out.print("RESPOSTA: ");
-//			int resposta=scanner.nextInt();
-//			switch(resposta){
-//				case 1:{
-//					this.cadastroDisciplina(user);
-//					break;
-//				}
-//				case 2:{
-//					this.buscarDisciplina(user);
-//					break;
-//				}
-//				case 3:{
-//					this.showDisciplinas(user);
-//					break;
-//				}
-//				case 4:{
-//					saida=true;
-//				}
-//				default:{
-//					System.out.println("ERROR! DIGITE UM NUMERO VALIDO");
-//				}
-//			}
-//		}
-//	}	
-//	public void buscarDisciplina(Usuario user){
-//		System.out.print("Nome: ");
-//		String nome=scanner.nextLine();
-//		Disciplina disci=fachada.buscarDisciplina(user,nome);
-//		if(disci==null){
-//			System.out.println("Erro ao Buscar");
-//		}
-//		else
-//		{
-//			System.out.println(disci);
-//			System.out.println("\n[1]Alterar\n[2]Deletar\n[3]Voltar");
-//			int resp=scanner.nextInt();
-//			switch(resp){
-//			case 1:{
-//				this.alterarDisciplina(user,disci.getNome());
-//				break;
-//			}
-//			case 2:{
-//				this.deletarDisciplina(user,disci.getNome());
-//				break;
-//			}
-//			case 3:{
-//				
-//			}
-//			}
-//		}
-//	}
-//	public void alterarDisciplina(Usuario user,String nomeOriginal){
-//		System.out.println("=====NovosDados=====");
-//		String nome;
-//		int dia_da_semana = 0;
-//		Horario horario = new Horario();
-//		String professor;
-//		String obs;
-//	
-//		System.out.println("Nome:");
-//		System.out.flush();
-//		nome=scanner.next();
-//			
-//		System.out.println("Dia da semana:");
-//		dia_da_semana = scanner.nextInt();
-//		System.out.flush();
-//			
-//		System.out.println("Horario:");
-//		horario.setHora(scanner.nextInt());	
-//		System.out.flush();
-//		System.out.print(":");
-//		System.out.flush();
-//		horario.setMinuto(scanner.nextInt());
-//			
-//		System.out.println("Professor:");
-//		professor=scanner.next();
-//		System.out.flush();
-//			
-//		System.out.println("Observação:");
-//		obs=scanner.next();
-//			
-//			
-//		Disciplina disci = new Disciplina(nome,dia_da_semana,horario,professor,obs);
-//		if(fachada.alterarDisciplina(user,disci,nomeOriginal)){
-//			System.out.println("Alterado com Sucesso");
-//		}
-//		else
-//		{
-//			System.out.println("Erro ao Alterar");
-//		}
-//	}
-//	public void deletarDisciplina(Usuario user, String nome){
-//		if(fachada.deletarDisciplina(user,nome)==true){
-//			System.out.println("Deletado Com Sucesso");
-//		}
-//		else
-//		{
-//			System.out.println("Erro ao deletar");
-//		}
-//	}
-//	
+//TELAS DISCIPLINAS
+	public void cadastroDisciplina(Usuario user){
+		String nome;
+		int dia_da_semana = 0;
+		Horario horario = new Horario();
+		String obs;
+	
+		System.out.println("\tCADASTRAR DISCIPLINA");
+		System.out.println("Nome:");
+		System.out.flush();
+		nome=scanner.next();
+			
+		System.out.println("Dia da semana:");
+		dia_da_semana = scanner.nextInt();
+		System.out.flush();
+			
+		System.out.println("Horario:");
+		horario.setHora(scanner.nextInt());	
+		System.out.flush();
+		System.out.print(":");
+		System.out.flush();
+		horario.setMinuto(scanner.nextInt());
+			
+			
+		System.out.println("Observação:");
+		obs=scanner.next();
+
+		Atividade ativi = new Atividade(nome,dia_da_semana,horario,obs);
+		if(fachada.cadastrarDisciplina(ativi)){
+			System.out.println("Cadastro com sucesso!");
+		}
+		else{
+			System.out.println("Erro!");
+		}
+	}
+	public void menuAtividades(Usuario user){
+		boolean saida=false;
+		while(!saida){
+			System.out.println("=====BEMVINDO=====");
+			System.out.println("[1]Inserir");
+			System.out.println("[2]Buscar");
+			System.out.println("[3]Listar");
+			System.out.println("[4]voltar");
+			System.out.println("=====BEMVINDO=====");
+			System.out.print("RESPOSTA: ");
+			int resposta=scanner.nextInt();
+			switch(resposta){
+				case 1:{
+					this.cadastroDisciplina(user);
+					break;
+				}
+				case 2:{
+					this.buscarDisciplina(user);
+					break;
+				}
+				case 3:{
+					//this.showDisciplinas(user);
+					break;
+				}
+				case 4:{
+					saida=true;
+				}
+				default:{
+					System.out.println("ERROR! DIGITE UM NUMERO VALIDO");
+				}
+			}
+		}
+	}	
+	public void buscarDisciplina(Usuario user){
+		System.out.print("Nome: ");
+		String nome=scanner.next();
+		System.out.flush();
+		Atividade ativi=fachada.buscarAtividade(nome);
+		if(ativi==null){
+			System.out.println("Erro ao Buscar");
+		}
+		else
+		{
+			System.out.println(ativi);
+			System.out.println("\n[1]Alterar\n[2]Deletar\n[3]Voltar");
+			int resp=scanner.nextInt();
+			switch(resp){
+			case 1:{
+				this.alterarDisciplina(user, ativi.getNome());
+				break;
+			}
+			case 2:{
+				this.deletarDisciplina(user,ativi.getNome());
+				break;
+			}
+			case 3:{
+				
+			}
+			}
+		}
+	}
+	public void alterarDisciplina(Usuario user,String nomeOriginal){
+		System.out.println("=====NovosDados=====");
+		String nome;
+		int dia_da_semana = 0;
+		Horario horario = new Horario();
+		String obs;
+	
+		System.out.println("Nome:");
+		System.out.flush();
+		nome=scanner.next();
+			
+		System.out.println("Dia da semana:");
+		dia_da_semana = scanner.nextInt();
+		System.out.flush();
+			
+		System.out.println("Horario:");
+		horario.setHora(scanner.nextInt());	
+		System.out.flush();
+		System.out.print(":");
+		System.out.flush();
+		horario.setMinuto(scanner.nextInt());
+		
+		System.out.println("Observação:");
+		obs=scanner.next();
+			
+			
+		Atividade ativi = new Atividade(nome,dia_da_semana,horario,obs);
+	if(fachada.alterarAtividade(ativi)){
+		System.out.println("Alterado com Sucesso");
+		}
+		else
+		{
+			System.out.println("Erro ao Alterar");
+		}
+	}
+	public void deletarDisciplina(Usuario user, String nome){
+		if(fachada.deletarAtividade(nome)==true){
+			System.out.println("Deletado Com Sucesso");
+		}
+		else
+		{
+			System.out.println("Erro ao deletar");
+		}
+	}	
 	//TELAS TASK
 	
 	public void menuTask(Usuario user){
