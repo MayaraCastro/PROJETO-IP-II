@@ -63,7 +63,10 @@ public class CadastroUsuario {
 		return(false);
 	}
 	public boolean alterarTask(Usuario user,Task task,Task antiga){
-		if(task.getNome()!=""&&task.getDescricao()!=""&&task.getData()!=null&&(task.getTipo()>0)  && antiga!=null && user!=null){
+		if(task.getNome()!=""&&task.getDescricao()!=""&&task.getData()!=null&&(task.getTipo()>0)  && antiga!=null && user!=null
+			&&(task.getData().getMes()<13 &&task.getData().getMes()>0 
+			&&task.getData().getDia()<32 &&task.getData().getDia()>0
+			&&task.getData().getAno()>=2017)){
 				Task original=this.rep.buscarTask(user,antiga.getNome());
 				original.setNome(task.getNome());
 				original.setDescricao(task.getDescricao());

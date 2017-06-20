@@ -191,7 +191,7 @@ public class RepositorioUsuario {
 			if(this.buscarTask(user,task.getNome())==null){
 				Task[] tasks = user.getTasks();
 				tasks[user.getProximaTask()]=task;
-				user.setProximaTask(pxm++);
+				user.setProximaTask(++pxm);
 				user.setTasks(tasks);
 				return(true);
 			}			

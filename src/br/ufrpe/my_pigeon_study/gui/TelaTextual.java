@@ -583,6 +583,7 @@ public class TelaTextual {
 				}
 				case 4:{
 					saida=true;
+					break;
 				}
 				default:{
 					System.out.println("ERROR! DIGITE UM NUMERO VALIDO");
@@ -661,7 +662,7 @@ public class TelaTextual {
 		System.out.print("Nome: ");
 		scanner.nextLine();
 		String nome=scanner.nextLine();
-		scanner.nextLine();
+		
 		System.out.print("Tipo: ");
 		int tipo=scanner.nextInt();
 		
