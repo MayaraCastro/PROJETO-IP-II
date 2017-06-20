@@ -396,132 +396,132 @@ public class TelaTextual {
 //		}
 //	}
 //	
-//	//TELAS TASK
-//	
-//	public void menuTask(Usuario user){
-//		boolean saida=false;
-//		while(!saida){
-//			System.out.println("=====BEMVINDO=====");
-//			System.out.println("[1]Inserir");
-//			System.out.println("[2]Buscar");
-//			System.out.println("[3]Listar");
-//			System.out.println("[4]voltar");
-//			System.out.println("=====BEMVINDO=====");
-//			System.out.print("RESPOSTA: ");
-//			int resposta=scanner.nextInt();
-//			scanner.nextLine();
-//			switch(resposta){
-//				case 1:{
-//					this.cadastroTask();
-//					break;
-//				}
-//				case 2:{
-//					this.buscarTask();
-//					break;
-//				}
-//				case 3:{
-//					this.showTasks(user);
-//					break;
-//				}
-//				case 4:{
-//					saida=true;
-//				}
-//				default:{
-//					System.out.println("ERROR! DIGITE UM NUMERO VALIDO");
-//				}
-//			}
-//		}
-//	}
-//	public void showTasks(Usuario user){
-//		fachada.showTasks(user);
-//	}	
-//	public void cadastroTask(){
-//		System.out.print("Nome: ");
-//		String nome=scanner.nextLine();
-//		System.out.print("Tipo: ");
-//		int tipo=scanner.nextInt();
-//		
-//		scanner.nextLine();
-//		System.out.print("Disciplina: ");//TODO precisa modificar o tipo de disciplina de task, pra o tipo DIsciplina
-//		String disciplina=scanner.nextLine();
-//
-//		System.out.print("Data: ");//TODO modificar pra data
-//		String data=scanner.next();
-//		scanner.nextLine();
-//		System.out.print("Descricao: ");
-//		String descricao=scanner.nextLine();
-//
-//		Task novaTask = new Task(data,nome,descricao,tipo,disciplina);
-//		if(fachada.cadastrarTask(novaTask)){
-//			System.out.println("Inserido com Sucesso");
-//		}
-//		else
-//		{
-//			System.out.println("Erro ao Inserir");
-//		}
-//	}
-//	public void buscarTask(){
-//		System.out.print("Nome: ");
-//		scanner.nextLine();
-//		String nome=scanner.nextLine();
-//		Task task=fachada.buscarTask(nome);
-//		if(task==null){
-//			System.out.println("Erro ao Buscar");
-//		}
-//		else
-//		{
-//			System.out.println(task);
-//			System.out.println("\n[1]Alterar\n[2]Deletar\n[3]Voltar");
-//			int resp=scanner.nextInt();
-//			switch(resp){
-//			case 1:{
-//				this.alterarTask(task.getNome());
-//				break;
-//			}
-//			case 2:{
-//				this.deletarTask(task.getNome());
-//				break;
-//			}
-//			case 3:{
-//				
-//			}
-//			}
-//		}
-//	}
-//	public void alterarTask(String nomeOriginal){
-//		System.out.println("=====NovosDados=====");
-//		System.out.print("Nome: ");
-//		scanner.nextLine();
-//		String nome=scanner.nextLine();
-//		scanner.nextLine();
-//		System.out.print("Tipo: ");
-//		int tipo=scanner.nextInt();
-//		
-//		scanner.nextLine();
-//		System.out.print("Disciplina: ");//TODO precisa modificar o tipo de disciplina de task, pra o tipo DIsciplina
-//		String disciplina=scanner.nextLine();
-//
-//		System.out.print("Data: ");//TODO modificar pra data
-//		String data=scanner.next();
-//		scanner.nextLine();
-//		System.out.print("Descricao: ");
-//		String descricao=scanner.nextLine();
-//		Task novaTask = new Task(data,nome,descricao,tipo,disciplina);
-//		if(fachada.alterarTask(novaTask, nomeOriginal)){
-//			System.out.println("Alterado com Sucesso");
-//		}
-//		else
-//		{
-//			System.out.println("Erro ao Alterar");
-//		}
-//	}
-//	public void deletarTask(String nome){
-//		if(fachada.deletarTask(nome)==true){
-//			System.out.println("Deletado Com Sucesso");
-//		}
-//		else
-//		{
-//			System.out.println("Erro ao deletar");
-//		}
-//	}
+	//TELAS TASK
+	
+	public void menuTask(Usuario user){
+		boolean saida=false;
+		while(!saida){
+			System.out.println("=====BEMVINDO=====");
+			System.out.println("[1]Inserir");
+			System.out.println("[2]Buscar");
+			System.out.println("[3]Listar");
+			System.out.println("[4]voltar");
+			System.out.println("=====BEMVINDO=====");
+			System.out.print("RESPOSTA: ");
+			int resposta=scanner.nextInt();
+			scanner.nextLine();
+			switch(resposta){
+				case 1:{
+					this.cadastroTask();
+					break;
+				}
+				case 2:{
+					this.buscarTask();
+					break;
+				}
+				case 3:{
+					this.showTasks(user);
+					break;
+				}
+				case 4:{
+					saida=true;
+				}
+				default:{
+					System.out.println("ERROR! DIGITE UM NUMERO VALIDO");
+				}
+			}
+		}
+	}
+	public void showTasks(Usuario user){
+		fachada.showTasks(user);
+	}	
+	public void cadastroTask(){
+		System.out.print("Nome: ");
+		String nome=scanner.nextLine();
+		System.out.print("Tipo: ");
+		int tipo=scanner.nextInt();
+		
+		scanner.nextLine();
+		System.out.print("Disciplina: ");//TODO precisa modificar o tipo de disciplina de task, pra o tipo DIsciplina
+		String disciplina=scanner.nextLine();
+
+		System.out.print("Data: ");//TODO modificar pra data
+		String data=scanner.next();
+		scanner.nextLine();
+		System.out.print("Descricao: ");
+		String descricao=scanner.nextLine();
+
+		Task novaTask = new Task(data,nome,descricao,tipo,disciplina);
+		if(fachada.cadastrarTask(novaTask)){
+			System.out.println("Inserido com Sucesso");
+		}
+		else
+		{
+			System.out.println("Erro ao Inserir");
+		}
+	}
+	public void buscarTask(){
+		System.out.print("Nome: ");
+		scanner.nextLine();
+		String nome=scanner.nextLine();
+		Task task=fachada.buscarTask(nome);
+		if(task==null){
+			System.out.println("Erro ao Buscar");
+		}
+		else
+		{
+			System.out.println(task);
+			System.out.println("\n[1]Alterar\n[2]Deletar\n[3]Voltar");
+			int resp=scanner.nextInt();
+			switch(resp){
+			case 1:{
+				this.alterarTask(task.getNome());
+				break;
+			}
+			case 2:{
+				this.deletarTask(task.getNome());
+				break;
+			}
+			case 3:{
+				
+			}
+			}
+		}
+	}
+	public void alterarTask(String nomeOriginal){
+		System.out.println("=====NovosDados=====");
+		System.out.print("Nome: ");
+		scanner.nextLine();
+		String nome=scanner.nextLine();
+		scanner.nextLine();
+		System.out.print("Tipo: ");
+		int tipo=scanner.nextInt();
+		
+		scanner.nextLine();
+		System.out.print("Disciplina: ");//TODO precisa modificar o tipo de disciplina de task, pra o tipo DIsciplina
+		String disciplina=scanner.nextLine();
+
+		System.out.print("Data: ");//TODO modificar pra data
+		String data=scanner.next();
+		scanner.nextLine();
+		System.out.print("Descricao: ");
+		String descricao=scanner.nextLine();
+		Task novaTask = new Task(data,nome,descricao,tipo,disciplina);
+		if(fachada.alterarTask(novaTask, nomeOriginal)){
+			System.out.println("Alterado com Sucesso");
+		}
+		else
+		{
+			System.out.println("Erro ao Alterar");
+		}
+	}
+	public void deletarTask(String nome){
+		if(fachada.deletarTask(nome)==true){
+			System.out.println("Deletado Com Sucesso");
+		}
+		else
+		{
+			System.out.println("Erro ao deletar");
+		}
+	}
 }

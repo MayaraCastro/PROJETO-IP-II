@@ -54,17 +54,17 @@ public class Fachada {
 //	public boolean deletarDisciplina(Usuario user,String nomeoriginal){
 //		return(this.cadastroD.remover(user, nomeoriginal));
 //	}
-//	//TASK
-//	public boolean cadastrarTask(Task task){
-//		return(this.cadastroT.cadastrar(task));
-//	}
-//	public Task buscarTask(String nome){
-//		return(this.cadastroT.buscar(nome));
-//	}
-//	public boolean alterarTask(Task novaTask,String nomeOriginal){
-//		return(cadastroT.alterar(novaTask,nomeOriginal));
-//	}
-//	public boolean deletarTask(String nome){
-//		return(this.cadastroT.deletar(nome));
-//	}
+	//TASK
+	public boolean cadastrarTask(Task task){
+		return(this.cadastroU.cadastrarTask(task));
+	}
+	public Task buscarTask(String nome){
+		return(this.cadastroU.buscarTasks(nome));
+	}
+	public boolean alterarTask(Task novaTask,String nomeOriginal){
+		return(cadastroU.alterarTask(novaTask,nomeOriginal));
+	}
+	public boolean deletarTask(String nome){
+		return(this.cadastroU.descadastrarTask(nome));
+	}
 }
