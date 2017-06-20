@@ -14,6 +14,7 @@ public class Usuario {
 	private int proximaTask;
 	private int proximaAtividade;
 	private int quantTask;
+	private int quantAtividade;
 
 
 	
@@ -34,17 +35,12 @@ public class Usuario {
 		this.senha = senha;
 		this.sexo = sexo;
 		this.email = email;
-
-
 		this.atividades=new Atividade[100];
-
 		this.tasks = new Task[100];
 		this.proximaTask=0;
 		this.proximaAtividade=0;
 		this.quantTask=100;
-
-
-		
+		this.quantAtividade=0;
 
 	}	
 	
@@ -81,8 +77,12 @@ public class Usuario {
 
 	}
 
-
-	
+	public int getQuantAtividade() {
+		return quantAtividade;
+	}
+	public void setQuantAtividade(int quantAtividade) {
+		this.quantAtividade = quantAtividade;
+	}
 	public Task[] getLembrar() {
 		return tasks;
 	}
@@ -152,24 +152,6 @@ public class Usuario {
 	}
 	
 	
-	
-	
-	public void addExame(){
-		
-	}
-	
-	public void removerExame(){
-		//editar
-	}
-	
-
-	/*public String showDisciplinas(){
-		return(this.calendario.showDisciplinas());
-	}
-	public String showTasks(){
-		return(Arrays.toString(this.tasks));
-	}*/
-
 	@Override
 	public String toString() {
 		return "Usuario [nome=" + nome + ", dataNasc=" + dataNasc + ", usuario=" + usuario + ", senha=" + senha

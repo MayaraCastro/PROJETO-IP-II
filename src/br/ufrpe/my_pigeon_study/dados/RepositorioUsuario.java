@@ -30,15 +30,7 @@ public class RepositorioUsuario {
 	public int getQuantUsuarios() {
 		return quantUsuarios;
 	}
-	
-	
-	
-	public Atividade[] getAtividades() {
-		return atividades;
-	}
-	public int getQtdAtv() {
-		return qtdAtv;
-	}
+
 	//OUTROS METODOS
 	public boolean inserir(Usuario user){
 		if(user!=null&&this.quantUsuarios<100){
@@ -101,21 +93,30 @@ public class RepositorioUsuario {
 
 	//ATIVIDADES
 	
-	public Atividade buscarAtiv(String atividade){
-		for(Atividade ativ:this.atividades){
+	public Atividade buscarAtiv(Usuario user,String atividade){
+		Atividade[] atividades = user.getAtividades();
+		for(Atividade ativ : atividades){
 			if(ativ!=null&&ativ.getNome().equals(atividade)){
 				return(ativ);
 			}
 		}
 		return(null);
 	}
-	
-	public boolean addAtividade(Atividade atividade){
-		if(atividade != null && this.qtdAtv <= this.tamAtiv){
-			if(this.buscarAtiv(atividade.getNome()) ==  null){
-				this.atividades[this.qtdAtv] = atividade;
-			this.qtdAtv++;
-			return true;
+
+
+	public boolean addAtividade(Usuario user,Atividade atividade){
+		int proxima = user.getProximaAtividade();
+		int total = user.getQuantAtividade();
+		
+		if(atividade != null && proxima < total){
+			
+			if(this.buscarAtiv(user,atividade.getNome()) ==  null){
+				
+				Atividade[] atividades = user.getAtividades();
+				atividades[user.getProximaAtividade()] = atividade;
+				user.setProximaAtividade(++proxima);
+				user.setAtividades(atividades);
+				return (true);
 			}
 			
 		}
@@ -123,54 +124,49 @@ public class RepositorioUsuario {
 	}
 	
 
-	public boolean removerAtividade(String atividade){
-		if(this.buscarAtiv(atividade)==null){
-			return(false);
+	public boolean removerAtividade(Usuario user,String atividade){
+		int proxima = user.getProximaAtividade();
+		
+		if(buscarAtiv(user,atividade) == null){
+			return (false);
 		}
+		
 		boolean entra=false;
-		for(int i=0;i<tamAtiv;i++){
-			if(this.atividades[i]!=null){
+		for(int i=0;i<100;i++){
+			if(user.getAtividades()[i] != null){
 				if(entra){
-					this.atividades[i-1]=this.atividades[i];
-					this.atividades[i]=null;
+					user.getAtividades()[i-1] = user.getAtividades()[i];
+					user.getAtividades()[i] = null;
 				}
 				else
 				{
-					if(this.atividades[i].getNome().equals(atividade)){
+					if(user.getAtividades()[i].getNome().equals(atividade)){
 						entra=true;
-						this.qtdAtv--;
-						if(this.qtdAtv<0){
-							this.qtdAtv=0;
-						}
+						int anterior = user.getProximaAtividade();
+						user.setProximaAtividade(--anterior);
+						
+						if(user.getProximaAtividade() < 0){
+							user.setProximaAtividade(0);
 					}
 				}
 			}
 		}
-		return(true);
+		
 	}
+		return (true);
+}
 	
-	public boolean alterarAtiv(Atividade novaAtiv){
-		if(novaAtiv!=null){
-			for(int i=0;i<tamAtiv;i++){
-				if(this.atividades[i]!=null&&this.atividades[i].getNome().equals(novaAtiv.getNome())){
-					this.atividades[i]=novaAtiv;
+	
+	public boolean alterarAtiv(Usuario user,Atividade novaAtiv, Atividade antiga){
+		if(novaAtiv!=null && antiga != null){
+			for(int i=0;i<user.getQuantAtividade();i++){
+				if(user.getAtividades()[i] != null && user.getAtividades()[i].getNome().equals(antiga.getNome())){
+					user.getAtividades()[i] = novaAtiv;
 					return(true);
 				}
 			}
 		}
 		return(false);
-	}
-	
-	public String showAtiv(){
-		for(Atividade a: this.atividades){
-			if(a != null){
-				a.toString();
-			}
-			else{
-				return null;
-			}
-		}
-		return null;
 	}
 		
 
