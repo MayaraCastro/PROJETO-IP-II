@@ -3,7 +3,6 @@ import br.ufrpe.my_pigeon_study.negocio.beans.*;
 import br.ufrpe.my_pigeon_study.negocio.*;
 import java.util.Scanner;
 import java.util.Calendar;
-import java.util.Date;
 
 public class TelaTextual {
 	Scanner scanner;
@@ -176,7 +175,7 @@ public class TelaTextual {
 					break;
 				}
 				case 2:{
-
+					this.calendario(user);
 					break;
 				}
 				case 3:{
@@ -228,9 +227,15 @@ public class TelaTextual {
 		
 		this.calendario.set(ano, mes, dia);
 		int dayOfWeek = calendario.get(Calendar.DAY_OF_WEEK);
-		if(dayOfWeek==2){
-			System.out.println("terça");
+		
+		String msg=this.fachada.calendarioAtividades(user, dayOfWeek);
+		if(msg==null){
+			System.out.println("Voce nao tem nada para este dia");
+		}else{
+			System.out.println("a"+msg);
 		}
+		
+		
 	}
 //	//TELAS DISCIPLINAS
 //	public void cadastroDisciplina(Usuario user){

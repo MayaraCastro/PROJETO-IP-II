@@ -53,4 +53,17 @@ public class CadastroUsuario {
 	public String showTasks(Usuario user){
 		return(user.showTasks());
 	}
+
+	public String calendario(Usuario user, int dayOfWeek){
+		Atividade[] atividades = user.getAtividades();
+		String msg=null;
+		for(Atividade a:atividades){
+			if(a!=null){
+				if(a.getDia_da_semana()==dayOfWeek){
+					msg+="\n"+a;
+				}
+			}
+		}
+		return(msg);
+	}
 }

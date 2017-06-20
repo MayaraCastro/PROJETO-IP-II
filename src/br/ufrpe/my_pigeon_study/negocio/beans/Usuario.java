@@ -28,9 +28,16 @@ public class Usuario {
 		this.senha = senha;
 		this.sexo = sexo;
 		this.email = email;
+		this.atividades=new Atividade[100];
 	}
 
 
+	public Atividade[] getAtividades() {
+		return atividades;
+	}
+	public void setAtividades(Atividade[] atividades) {
+		this.atividades = atividades;
+	}
 	public Task[] getLembrar() {
 		return tasks;
 	}
