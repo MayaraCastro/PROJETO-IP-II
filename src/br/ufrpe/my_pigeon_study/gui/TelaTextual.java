@@ -442,16 +442,20 @@ public class TelaTextual {
 		int tipo=scanner.nextInt();
 		
 		scanner.nextLine();
-		System.out.print("Disciplina: ");//TODO precisa modificar o tipo de disciplina de task, pra o tipo DIsciplina
-		String disciplina=scanner.nextLine();
-
 		System.out.print("Data: ");//TODO modificar pra data
-		String data=scanner.next();
+		Data data=new Data();
+		System.out.println("DIA:");
+		data.setDia(scanner.nextInt());
+		System.out.println("MES:");
+		data.setMes(scanner.nextInt());
+		System.out.println("ANO:");
+		data.setAno(scanner.nextInt());
+		
 		scanner.nextLine();
 		System.out.print("Descricao: ");
 		String descricao=scanner.nextLine();
 
-		Task novaTask = new Task(data,nome,descricao,tipo,disciplina);
+		Task novaTask = new Task(data,nome,descricao,tipo);
 		if(fachada.cadastrarTask(novaTask)){
 			System.out.println("Inserido com Sucesso");
 		}
@@ -498,15 +502,20 @@ public class TelaTextual {
 		int tipo=scanner.nextInt();
 		
 		scanner.nextLine();
-		System.out.print("Disciplina: ");//TODO precisa modificar o tipo de disciplina de task, pra o tipo DIsciplina
-		String disciplina=scanner.nextLine();
-
-		System.out.print("Data: ");//TODO modificar pra data
-		String data=scanner.next();
+		
+		System.out.print("Data: ");
+		System.out.println("DIA:");
+		Data data= new Data();
+		data.setDia(scanner.nextInt());
+		System.out.println("MES:");
+		data.setMes(scanner.nextInt());
+		System.out.println("ANO:");
+		data.setAno(scanner.nextInt());
+		
 		scanner.nextLine();
 		System.out.print("Descricao: ");
 		String descricao=scanner.nextLine();
-		Task novaTask = new Task(data,nome,descricao,tipo,disciplina);
+		Task novaTask = new Task(data,nome,descricao,tipo);
 		if(fachada.alterarTask(novaTask, nomeOriginal)){
 			System.out.println("Alterado com Sucesso");
 		}

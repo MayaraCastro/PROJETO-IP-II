@@ -10,11 +10,6 @@ public class Task {
 	public Task() {
 		
 	}
-	
-
-	public Task(String data, String nome, String descricao, int tipo) {
-		
-	}
 
 	public Task(Data data, String nome, String descricao, int tipo) {
 
