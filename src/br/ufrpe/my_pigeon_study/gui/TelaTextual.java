@@ -179,7 +179,7 @@ public class TelaTextual {
 					break;
 				}
 				case 3:{
-					//this.menuTask(user);
+					this.menuTask(user);
 					break;
 				}
 				case 4: {
