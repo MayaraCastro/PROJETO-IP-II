@@ -53,4 +53,5 @@ public class CadastroUsuario {
 	public String showTasks(Usuario user){
 		return(user.showTasks());
 	}
+	
 }
