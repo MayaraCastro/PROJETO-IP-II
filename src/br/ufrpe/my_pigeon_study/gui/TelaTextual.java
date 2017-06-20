@@ -643,11 +643,11 @@ public class TelaTextual {
 			int resp=scanner.nextInt();
 			switch(resp){
 			case 1:{
-				this.alterarTask(task.getNome());
+				this.alterarTask(user,task);
 				break;
 			}
 			case 2:{
-				this.deletarTask(task.getNome());
+				this.deletarTask(user,task.getNome());
 				break;
 			}
 			case 3:{
@@ -656,7 +656,7 @@ public class TelaTextual {
 			}
 		}
 	}
-	public void alterarTask(String nomeOriginal){
+	public void alterarTask(Usuario user,Task Original){
 		System.out.println("=====NovosDados=====");
 		System.out.print("Nome: ");
 		scanner.nextLine();
@@ -680,7 +680,7 @@ public class TelaTextual {
 		System.out.print("Descricao: ");
 		String descricao=scanner.nextLine();
 		Task novaTask = new Task(data,nome,descricao,tipo);
-		if(fachada.alterarTask(novaTask, nomeOriginal)){
+		if(fachada.alterarTask(user,novaTask, Original)){
 			System.out.println("Alterado com Sucesso");
 		}
 		else
@@ -688,8 +688,8 @@ public class TelaTextual {
 			System.out.println("Erro ao Alterar");
 		}
 	}
-	public void deletarTask(String nome){
-		if(fachada.deletarTask(nome)==true){
+	public void deletarTask(Usuario user,String nome){
+		if(fachada.deletarTask(user,nome)==true){
 			System.out.println("Deletado Com Sucesso");
 		}
 		else
