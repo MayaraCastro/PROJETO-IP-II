@@ -4,12 +4,7 @@ public class RepositorioUsuario {
 	private Usuario[] usuarios;
 	private int quantUsuarios;
 
-	private Atividade[] atividades;
-	private int qtdAtv;
-	private int tamAtiv = 100;
-
-	private int quantTask;
-	private Task[] tasks;
+	
 
 	private static RepositorioUsuario instancia;
 	
@@ -18,10 +13,7 @@ public class RepositorioUsuario {
 		this.usuarios=new Usuario[100];
 		this.quantUsuarios=0;
 
-		this.atividades = new Atividade[tamAtiv];
-		this.qtdAtv = 0;
-
-
+	
 	}
 	public static RepositorioUsuario getInstancia(){
 		if(instancia==null){
