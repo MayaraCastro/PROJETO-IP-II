@@ -210,7 +210,7 @@ public class RepositorioUsuario {
 	
 	public boolean removerTask(Usuario user,String task){
 		int pxm=user.getProximaTask();
-		if(buscar(task)==null){
+		if(buscarTask(user,task)==null){
 			return(false);
 		}
 		boolean entra=false;
@@ -225,7 +225,7 @@ public class RepositorioUsuario {
 					if(user.getTasks()[i].getNome().equals(task)){
 						entra=true;
 						int ant=user.getProximaTask();
-						user.setProximaTask(ant--);
+						user.setProximaTask(--ant);
 						if(user.getProximaTask()<0){
 							user.setProximaTask(0);
 						}
