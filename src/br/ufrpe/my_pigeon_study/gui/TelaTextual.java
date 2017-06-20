@@ -182,20 +182,13 @@ public class TelaTextual {
 					break;
 				}
 				case 4: {
+					this.menuAtividades(user);
 					break;
 				}
 				case 5:{
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-					this.menuAtividades(user);
-=======
->>>>>>> parent of 8decb0c... test
-					break;
-				}
-				case 6:{
->>>>>>> master
+
 					saida=true;
+
 					break;
 				}
 				default:{
@@ -220,17 +213,9 @@ public class TelaTextual {
 			}
 		}
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 	public void showAtividades(Usuario user){
 		fachada.showAtividades(user);
-=======
-	public String showAtividades(Usuario user){
-=======
-	public void showDisciplinas(Usuario user){
->>>>>>> parent of 8decb0c... test
-		fachada.showDisciplinas(user);
->>>>>>> master
 	}
 	public void calendario(Usuario user){
 		System.out.println("DIA:");
@@ -262,10 +247,7 @@ public class TelaTextual {
 		
 		
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of 8decb0c... test
+
 //	//TELAS DISCIPLINAS
 //	public void cadastroDisciplina(Usuario user){
 //		String nome;
@@ -294,11 +276,14 @@ public class TelaTextual {
 //		professor=scanner.next();
 //		System.out.flush();
 //			
-<<<<<<< HEAD
-//		System.out.println("Observaï¿½ï¿½o:");
-=======
+
 //		System.out.println("Observação:");
->>>>>>> parent of 8decb0c... test
+
+
+
+//		System.out.println("Observação:");
+
+
 //		obs=scanner.next();
 //
 //		Disciplina disci = new Disciplina(nome,dia_da_semana,horario,professor,obs);
@@ -396,11 +381,13 @@ public class TelaTextual {
 //		professor=scanner.next();
 //		System.out.flush();
 //			
-<<<<<<< HEAD
-//		System.out.println("Observaï¿½ï¿½o:");
-=======
+
+
 //		System.out.println("Observação:");
->>>>>>> parent of 8decb0c... test
+
+//		System.out.println("Observação:");
+
+
 //		obs=scanner.next();
 //			
 //			
@@ -423,8 +410,9 @@ public class TelaTextual {
 //		}
 //	}
 //	
-<<<<<<< HEAD
-=======
+
+
+
 //TELAS DISCIPLINAS
 	public void cadastroDisciplina(Usuario user){
 		String nome;
@@ -565,9 +553,7 @@ public class TelaTextual {
 			System.out.println("Erro ao deletar");
 		}
 	}	
->>>>>>> master
-=======
->>>>>>> parent of 8decb0c... test
+
 	//TELAS TASK
 	
 	public void menuTask(Usuario user){
@@ -604,8 +590,14 @@ public class TelaTextual {
 			}
 		}
 	}
-	public void showTasks(Usuario user){
-		fachada.showTask(user);
+	public void showTasks(Usuario user){	
+		String msg=fachada.showTask(user);
+		System.out.println("====ATIVIDADES====");
+		if(msg==null){
+			System.out.println("Voce nao tem tasks");
+		}else{
+			System.out.println("a"+msg);
+		}
 	}	
 	public void cadastroTask(Usuario user){
 		System.out.print("Nome: ");

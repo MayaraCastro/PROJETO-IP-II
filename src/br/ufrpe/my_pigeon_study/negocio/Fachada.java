@@ -29,8 +29,7 @@ public class Fachada {
 	public Usuario logar(Usuario user){
 		return(this.login.logar(user));
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 	/*public String showDisciplinas(Usuario user){
 		return(cadastroU.showDisciplinas(user));
 	}
@@ -38,15 +37,14 @@ public class Fachada {
 	/*public String showAtividade(Usuario user, Atividade ativ){
 		return(cadastroU.);
 	}*/
->>>>>>> master
-=======
+
 	public String showDisciplinas(Usuario user){
 		return(cadastroU.showDisciplinas(user));
 	}
->>>>>>> parent of 8decb0c... test
+
 	public String showTasks(Usuario user){
-		return(cadastroU.showTasks(user));
-	}*/
+		return(cadastroU.showTask(user));
+	}
 	public String calendarioAtividades(Usuario user, int dayOfWeek){
 		return(cadastroU.calendarioAtividade(user,dayOfWeek));
 	}

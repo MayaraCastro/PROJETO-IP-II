@@ -189,15 +189,18 @@ public class RepositorioUsuario {
 		int tot=user.getQuantTask();
 		if(task!=null&& pxm<tot ){
 			if(this.buscarTask(user,task.getNome())==null){
-				user.getTasks()[user.getProximaTask()]=task;
+				Task[] tasks = user.getTasks();
+				tasks[user.getProximaTask()]=task;
 				user.setProximaTask(pxm++);
+				user.setTasks(tasks);
 				return(true);
 			}			
 		}
 		return(false);
 	}
 	public Task buscarTask(Usuario user,String task){
-		for(Task tas:user.getTasks()){
+		Task[] tasks=user.getTasks();
+		for(Task tas:tasks){
 			if(tas!=null&& tas.getNome().equals(task)){
 				return(tas);
 			}

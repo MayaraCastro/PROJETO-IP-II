@@ -113,9 +113,11 @@ public class CadastroUsuario {
 	public String showTask(Usuario user) {
 		Task[] tasks = user.getTasks();
 		String msg=null;
-		msg+="Você tem "+ user.getProximaTask() +"  tasks";
+		msg+="Voce tem "+ user.getProximaTask() +"  tasks";
 		for(Task a:tasks){
-					msg+="\n"+a;
+			if(a!=null){
+				msg+="\n"+a;
+			}		
 		}
 		return(msg);
 	}
