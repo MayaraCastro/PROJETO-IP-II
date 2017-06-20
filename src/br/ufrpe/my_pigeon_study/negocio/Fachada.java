@@ -61,7 +61,7 @@ public class Fachada {
 	public Task buscarTask(String nome){
 		return(this.cadastroU.buscarTasks(nome));
 	}
-	public boolean alterarTask(Task novaTask,String nomeOriginal){
+	public boolean alterarTask(Task novaTask,Task nomeOriginal){
 		return(cadastroU.alterarTask(novaTask,nomeOriginal));
 	}
 	public boolean deletarTask(String nome){

@@ -232,10 +232,10 @@ public class RepositorioUsuario {
 		return(true);
 	}
 
-	public boolean alterarTask(Task novoTask){
-		if(novoTask!=null){
-			for(int i=0;i<100;i++){
-				if(this.tasks[i]!=null&&this.tasks[i].getNome().equals(novoTask.getNome())){
+	public boolean alterarTask(Task novoTask, Task antigaTask){
+		if(novoTask!=null && antigaTask!=null){
+			for(int i=0;i<this.quantTask;i++){
+				if(this.tasks[i]!=null&&this.tasks[i].getNome().equals(antigaTask.getNome())){
 					this.tasks[i]=novoTask;
 					return(true);
 				}
