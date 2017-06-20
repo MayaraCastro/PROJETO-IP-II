@@ -242,7 +242,7 @@ public class TelaTextual {
 		if(msg==null){
 			System.out.println("Voce nao tem tasks para este dia");
 		}else{
-			System.out.println("a"+msg);
+			System.out.println(msg);
 		}
 		
 		

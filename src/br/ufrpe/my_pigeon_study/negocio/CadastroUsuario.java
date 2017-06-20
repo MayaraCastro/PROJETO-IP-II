@@ -89,7 +89,10 @@ public class CadastroUsuario {
 		for(Atividade a:atividades){
 			if(a!=null){
 				if(a.getDia_da_semana()==dayOfWeek){
-					msg+="\n"+a;
+					if(msg==null){
+						msg=".";
+					}
+					msg+="\n"+a;		
 				}
 			}
 		}
