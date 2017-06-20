@@ -10,7 +10,6 @@ public class Usuario {
 	private int sexo;//1-feminino, 2-masculino e 3-outro
 	private String email;
 	private Atividade[] atividades;//TODO AJEITAR
-	private Calendario calendario;// adiministra as tasks e disciplinas do usuario
 	private Task[] tasks;
 	
 	
@@ -29,16 +28,8 @@ public class Usuario {
 		this.senha = senha;
 		this.sexo = sexo;
 		this.email = email;
-		this.calendario= new Calendario();
 	}
 
-	public Calendario getCalendario() {
-		return this.calendario;
-	}
-
-	public void setCalendario(Calendario calendario) {
-		this.calendario = calendario;
-	}
 
 	public Task[] getLembrar() {
 		return tasks;
