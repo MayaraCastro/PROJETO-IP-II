@@ -44,10 +44,61 @@ public class CadastroUsuario {
 	public boolean descadastrar(String usuario){
 		return(this.rep.remover(usuario));
 	}
-
-	public boolean addAtividade( Atividade ativi){
-		return(this.rep.addAtividade(ativi));
+	
+	//Atividades
+	
+	public boolean cadastrarAtividade(Usuario user, Atividade atividade){
+		
+		if(atividade.getNome() != "" && atividade.getDia_da_semana() != 0 && atividade.getHorario() != null
+				 && atividade.getObs() != ""){
+			
+			if(this.rep.addAtividade(user, atividade)){
+				
+				return (true);
+			}
+		}
+		return (false);
 	}
+	
+	public boolean alterarAtividade(Usuario user, Atividade atividade,Atividade antiga){
+		
+		if(atividade.getNome() != "" && atividade.getDia_da_semana() != 0 && atividade.getHorario() != null
+				 && atividade.getObs() != ""){
+			
+			Atividade original = this.rep.buscarAtiv(user, antiga.getNome());
+			original.setNome(atividade.getNome());
+			original.setDia_da_semana(atividade.getDia_da_semana());
+			original.setHorario(atividade.getHorario());
+			original.setObs(atividade.getObs());
+			
+			if(this.rep.alterarAtiv(user, original, antiga)){
+				return (true);
+			}
+		}
+		return (false);
+	}
+	
+	public Atividade buscarAtividade(Usuario user,String Atividade){
+		return(this.rep.buscarAtiv(user, Atividade));
+	}
+	
+	public boolean descadastrarAtividade(Usuario user,String Atividade){
+		return(this.rep.removerAtividade(user,Atividade));
+	}
+	
+	public String showAtividade(Usuario user) {
+		Atividade[] atividades = user.getAtividades();
+		String mensagem=null;
+		mensagem+="Voce tem "+ user.getProximaAtividade() +"  atividades";
+		for(Atividade a:atividades){
+			if(a!=null){
+				mensagem+="\n"+a;
+			}		
+		}
+		return(mensagem);
+	}
+	
+	
 	
 	//tasks
 	public boolean cadastrarTask(Usuario user, Task task){

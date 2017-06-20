@@ -30,17 +30,7 @@ public class Fachada {
 		return(this.login.logar(user));
 	}
 
-	/*public String showDisciplinas(Usuario user){
-		return(cadastroU.showDisciplinas(user));
-	}
-=======
-	/*public String showAtividade(Usuario user, Atividade ativ){
-		return(cadastroU.);
-	}*/
-
-	public String showDisciplinas(Usuario user){
-		return(cadastroU.showDisciplinas(user));
-	}
+	//TASKS
 
 	public String showTasks(Usuario user){
 		return(cadastroU.showTask(user));
@@ -51,20 +41,6 @@ public class Fachada {
 	public String calendarioTasks(Usuario user, Data data){
 		return(cadastroU.calendarioTask(user,data));
 	}
-	//DISCIPLINA
-//	public boolean cadastrarDisciplina(Usuario user, Disciplina disci){
-//		return(this.cadastroD.cadastrar(user, disci));
-//	}
-//	public Disciplina buscarDisciplina(Usuario user, String disci){
-//		return(this.cadastroD.buscar(user, disci));
-//	}
-//	public boolean alterarDisciplina(Usuario user,Disciplina disci,String nomeoriginal){
-//		return(this.cadastroD.alterar(user, disci,nomeoriginal));
-//	}
-//	public boolean deletarDisciplina(Usuario user,String nomeoriginal){
-//		return(this.cadastroD.remover(user, nomeoriginal));
-//	}
-	//TASK
 	public boolean cadastrarTask(Usuario user,Task task){
 		return(this.cadastroU.cadastrarTask(user,task));
 	}
@@ -80,4 +56,21 @@ public class Fachada {
 	public String showTask(Usuario user){
 	return(cadastroU.showTask(user));
 }
+	//DISCIPLINA
+	
+	public boolean cadastrarAtividade(Usuario user, Atividade atividade){
+		return(this.cadastroU.cadastrarAtividade(user, atividade));
+	}
+	public Atividade buscarAtividade(Usuario user, String nome){
+		return(this.cadastroU.buscarAtividade(user, nome));
+	}
+	public boolean alterarAtividade(Usuario user,Atividade nova,Atividade original){
+		return(this.cadastroU.alterarAtividade(user, nova,original));
+	}
+	public boolean deletarAtividade(Usuario user,String nome){
+		return(this.cadastroU.descadastrarAtividade(user, nome));
+	}
+	public String showAtividades(Usuario user){
+		return(cadastroU.showAtividade(user));
+	}
 }
