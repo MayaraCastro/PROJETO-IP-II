@@ -29,6 +29,10 @@ public class Usuario {
 		this.senha = senha;
 		this.sexo = sexo;
 		this.email = email;
+
+
+		this.atividades=new Atividade[100];
+
 		this.tasks = new Task[100];
 
 }
@@ -47,9 +51,11 @@ public class Usuario {
 	}
 	public void setTasks(Task[] tasks) {
 		this.tasks = tasks;
+
 	}
 
 
+	
 	public Task[] getLembrar() {
 		return tasks;
 	}
