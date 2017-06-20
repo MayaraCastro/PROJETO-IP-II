@@ -50,36 +50,39 @@ public class CadastroUsuario {
 	}
 	
 	//tasks
-	public boolean cadastrarTask(Task task){
-		if(task.getNome()!=""&&task.getDescricao()!=""&&task.getData()!=null&&(task.getTipo()>0) && task!=null){
-			if(this.rep.inserirTask(task)){
+	public boolean cadastrarTask(Usuario user, Task task){
+		if(task.getNome()!=""&&task.getDescricao()!=""&&task.getData()!=null&&(task.getTipo()>0) && task!=null && user!=null
+				&& (task.getData().getMes()<13 &&task.getData().getMes()>0 
+				&&task.getData().getDia()<32 &&task.getData().getDia()>0
+				&&task.getData().getAno()<2017 &&task.getData().getAno()>1900)){
+			if(this.rep.inserirTask(user,task)){
 				return(true);
 			}
 			
 		}
 		return(false);
 	}
-	public boolean alterarTask(Task task,Task antiga){
-		if(task.getNome()!=""&&task.getDescricao()!=""&&task.getData()!=null&&(task.getTipo()>0)  && antiga!=null){
-				Task original=this.rep.buscarTask(antiga.getNome());
+	public boolean alterarTask(Usuario user,Task task,Task antiga){
+		if(task.getNome()!=""&&task.getDescricao()!=""&&task.getData()!=null&&(task.getTipo()>0)  && antiga!=null && user!=null){
+				Task original=this.rep.buscarTask(user,antiga.getNome());
 				original.setNome(task.getNome());
 				original.setDescricao(task.getDescricao());
 				original.setTipo(task.getTipo());
 				original.setData(task.getData());
-				if(this.rep.alterarTask(original,antiga)){
+				if(this.rep.alterarTask(user,original,antiga)){
 					return(true);
 				}
 		}
 		return(false);
 	}
 	
-	public Task buscarTasks(String Task){
-		return(this.rep.buscarTask(Task));
+	public Task buscarTasks(Usuario user,String Task){
+		return(this.rep.buscarTask(user,Task));
 	}
-	public boolean descadastrarTask(String Task){
-		return(this.rep.removerTask(Task));
+	public boolean descadastrarTask(Usuario user,String Task){
+		return(this.rep.removerTask(user,Task));
 	}
-
+	
 	public String calendarioAtividade(Usuario user, int dayOfWeek){
 		Atividade[] atividades = user.getAtividades();
 		String msg=null;
@@ -107,5 +110,15 @@ public class CadastroUsuario {
 		}
 		return(msg);
 	}
+	public String showTask(Usuario user) {
+		Task[] tasks = user.getTasks();
+		String msg=null;
+		msg+="Você tem "+ user.getProximaTask() +"  tasks";
+		for(Task a:tasks){
+					msg+="\n"+a;
+		}
+		return(msg);
+	}
+	
 
 }

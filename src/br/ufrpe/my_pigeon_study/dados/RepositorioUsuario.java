@@ -9,7 +9,6 @@ public class RepositorioUsuario {
 	private int tamAtiv = 100;
 
 	private int quantTask;
-	private int proximaTask;
 	private Task[] tasks;
 
 	private static RepositorioUsuario instancia;
@@ -22,8 +21,6 @@ public class RepositorioUsuario {
 		this.atividades = new Atividade[tamAtiv];
 		this.qtdAtv = 0;
 
-		this.quantTask=100;
-		this.proximaTask=0;
 
 	}
 	public static RepositorioUsuario getInstancia(){
@@ -187,18 +184,20 @@ public class RepositorioUsuario {
 
 	//Metodos relacionados ao Task
 	
-	public boolean inserirTask(Task task){
-		if(task!=null&&this.proximaTask<this.quantTask){
-			if(this.buscar(task.getNome())==null){
-				this.tasks[this.proximaTask]=task;
-				this.proximaTask++;
+	public boolean inserirTask(Usuario user, Task task){
+		int pxm=user.getProximaTask();
+		int tot=user.getQuantTask();
+		if(task!=null&& pxm<tot ){
+			if(this.buscarTask(user,task.getNome())==null){
+				user.getTasks()[user.getProximaTask()]=task;
+				user.setProximaTask(pxm++);
 				return(true);
 			}			
 		}
 		return(false);
 	}
-	public Task buscarTask(String task){
-		for(Task tas:this.tasks){
+	public Task buscarTask(Usuario user,String task){
+		for(Task tas:user.getTasks()){
 			if(tas!=null&& tas.getNome().equals(task)){
 				return(tas);
 			}
@@ -206,24 +205,26 @@ public class RepositorioUsuario {
 		return(null);
 	}
 	
-	public boolean removerTask(String task){
+	public boolean removerTask(Usuario user,String task){
+		int pxm=user.getProximaTask();
 		if(buscar(task)==null){
 			return(false);
 		}
 		boolean entra=false;
 		for(int i=0;i<100;i++){
-			if(this.tasks[i]!=null){
+			if(user.getTasks()[i]!=null){
 				if(entra){
-					this.tasks[i-1]=this.tasks[i];
-					this.tasks[i]=null;
+					user.getTasks()[i-1]=user.getTasks()[i];
+					user.getTasks()[i]=null;
 				}
 				else
 				{
-					if(this.tasks[i].getNome().equals(task)){
+					if(user.getTasks()[i].getNome().equals(task)){
 						entra=true;
-						this.proximaTask--;
-						if(this.proximaTask<0){
-							this.proximaTask=0;
+						int ant=user.getProximaTask();
+						user.setProximaTask(ant--);
+						if(user.getProximaTask()<0){
+							user.setProximaTask(0);
 						}
 					}
 				}
@@ -232,11 +233,11 @@ public class RepositorioUsuario {
 		return(true);
 	}
 
-	public boolean alterarTask(Task novoTask, Task antigaTask){
+	public boolean alterarTask(Usuario user,Task novoTask, Task antigaTask){
 		if(novoTask!=null && antigaTask!=null){
-			for(int i=0;i<this.quantTask;i++){
-				if(this.tasks[i]!=null&&this.tasks[i].getNome().equals(antigaTask.getNome())){
-					this.tasks[i]=novoTask;
+			for(int i=0;i<user.getQuantTask();i++){
+				if(user.getTasks()[i]!=null&&user.getTasks()[i].getNome().equals(antigaTask.getNome())){
+					user.getTasks()[i]=novoTask;
 					return(true);
 				}
 			}
@@ -244,5 +245,6 @@ public class RepositorioUsuario {
 		return(false);
 
 	}
+	
 
 }

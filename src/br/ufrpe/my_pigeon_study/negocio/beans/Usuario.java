@@ -11,6 +11,11 @@ public class Usuario {
 	private String email;
 	private Atividade[] atividades;//TODO AJEITAR
 	private Task[] tasks;
+	private int proximaTask;
+	private int proximaAtividade;
+	private int quantTask;
+
+
 	
 	
 	
@@ -34,12 +39,34 @@ public class Usuario {
 		this.atividades=new Atividade[100];
 
 		this.tasks = new Task[100];
+		this.proximaTask=0;
+		this.proximaAtividade=0;
+		this.quantTask=100;
 
-}
+
+		
+
+	}	
 	
 	
-
-
+	public int getQuantTask() {
+		return quantTask;
+	}
+	public void setQuantTask(int quantTask) {
+		this.quantTask = quantTask;
+	}
+	public int getProximaTask() {
+		return proximaTask;
+	}
+	public void setProximaTask(int proximaTask) {
+		this.proximaTask = proximaTask;
+	}
+	public int getProximaAtividade() {
+		return proximaAtividade;
+	}
+	public void setProximaAtividade(int proximaAtividade) {
+		this.proximaAtividade = proximaAtividade;
+	}
 	public Atividade[] getAtividades() {
 		return atividades;
 	}

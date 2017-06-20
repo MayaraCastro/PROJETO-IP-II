@@ -150,10 +150,10 @@ public class TelaTextual {
 		
 		Usuario user = new Usuario(nome,dataNasc,usuario,senha,sexo,email);
 		if(fachada.alterarUsuario(user)){
-			System.out.println("Alteraçao com sucesso!");
+			System.out.println("Alteraï¿½ao com sucesso!");
 		}
 		else{
-			System.out.println("Erro ao efetuar alteraçao!");
+			System.out.println("Erro ao efetuar alteraï¿½ao!");
 		}
 	}
 	public void telaInicial(Usuario user){//TODO finalizar
@@ -210,8 +210,8 @@ public class TelaTextual {
 			}
 		}
 	}
-	public void showDisciplinas(Usuario user){
-		fachada.showDisciplinas(user);
+	public void showAtividades(Usuario user){
+		fachada.showAtividades(user);
 	}
 	public void calendario(Usuario user){
 		System.out.println("DIA:");
@@ -271,7 +271,7 @@ public class TelaTextual {
 //		professor=scanner.next();
 //		System.out.flush();
 //			
-//		System.out.println("Observação:");
+//		System.out.println("Observaï¿½ï¿½o:");
 //		obs=scanner.next();
 //
 //		Disciplina disci = new Disciplina(nome,dia_da_semana,horario,professor,obs);
@@ -369,7 +369,7 @@ public class TelaTextual {
 //		professor=scanner.next();
 //		System.out.flush();
 //			
-//		System.out.println("Observação:");
+//		System.out.println("Observaï¿½ï¿½o:");
 //		obs=scanner.next();
 //			
 //			
@@ -408,11 +408,11 @@ public class TelaTextual {
 			scanner.nextLine();
 			switch(resposta){
 				case 1:{
-					this.cadastroTask();
+					this.cadastroTask(user);
 					break;
 				}
 				case 2:{
-					this.buscarTask();
+					this.buscarTask(user);
 					break;
 				}
 				case 3:{
@@ -429,9 +429,9 @@ public class TelaTextual {
 		}
 	}
 	public void showTasks(Usuario user){
-		fachada.showTasks(user);
+		fachada.showTask(user);
 	}	
-	public void cadastroTask(){
+	public void cadastroTask(Usuario user){
 		System.out.print("Nome: ");
 		String nome=scanner.nextLine();
 		System.out.print("Tipo: ");
@@ -452,7 +452,7 @@ public class TelaTextual {
 		String descricao=scanner.nextLine();
 
 		Task novaTask = new Task(data,nome,descricao,tipo);
-		if(fachada.cadastrarTask(novaTask)){
+		if(fachada.cadastrarTask(user,novaTask)){
 			System.out.println("Inserido com Sucesso");
 		}
 		else
@@ -460,11 +460,11 @@ public class TelaTextual {
 			System.out.println("Erro ao Inserir");
 		}
 	}
-	public void buscarTask(){
+	public void buscarTask(Usuario user){
 		System.out.print("Nome: ");
-		scanner.nextLine();
 		String nome=scanner.nextLine();
-		Task task=fachada.buscarTask(nome);
+		//scanner.nextLine();
+		Task task=fachada.buscarTask(user,nome);
 		if(task==null){
 			System.out.println("Erro ao Buscar");
 		}
