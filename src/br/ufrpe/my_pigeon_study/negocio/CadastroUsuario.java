@@ -44,11 +44,8 @@ public class CadastroUsuario {
 	public boolean descadastrar(String usuario){
 		return(this.rep.remover(usuario));
 	}
-	public boolean addAtividade(Usuario user, Atividade ativi){
-		return(user.addAtividade(ativi));
-	}
-	public String showDisciplinas(Usuario user){
-		return(user.showDisciplinas());
+	public boolean addAtividade( Atividade ativi){
+		return(this.rep.addAtividade(ativi));
 	}
 	
 	//tasks
@@ -60,32 +57,27 @@ public class CadastroUsuario {
 			
 		}
 		return(false);
-}
+	}
 	public boolean alterarTask(Task task){
-	if(task.getNome()!=""&&task.getDescricao()!=""&&task.getData()!=null&&(task.getTipo()>0)){
-			Task original=this.rep.buscarTask(task.getNome());
-			original.setNome(task.getNome());
-			original.setDescricao(task.getDescricao());
-			original.setTipo(task.getTipo());
-			original.setData(task.getData());
-			if(this.rep.alterarTask(original)){
-				return(true);
-			}
+		if(task.getNome()!=""&&task.getDescricao()!=""&&task.getData()!=null&&(task.getTipo()>0)){
+				Task original=this.rep.buscarTask(task.getNome());
+				original.setNome(task.getNome());
+				original.setDescricao(task.getDescricao());
+				original.setTipo(task.getTipo());
+				original.setData(task.getData());
+				if(this.rep.alterarTask(original)){
+					return(true);
+				}
+		}
+		return(false);
 	}
-	return(false);
-}
-	public String showTasks(Usuario user){
-		return(user.showTasks());
-	}
-<<<<<<< Updated upstream
+	
 	public Task buscarTasks(String Task){
 		return(this.rep.buscarTask(Task));
 	}
 	public boolean descadastrarTask(String Task){
 		return(this.rep.removerTask(Task));
 	}
-}
-=======
 
 
 	public String calendarioAtividade(Usuario user, int dayOfWeek){
@@ -100,6 +92,7 @@ public class CadastroUsuario {
 		}
 		return(msg);
 	}
+	
 	public String calendarioTask(Usuario user, Data data){
 		Task[] tasks = user.getTasks();
 		String msg=null;
@@ -116,4 +109,3 @@ public class CadastroUsuario {
 	}
 }
 
->>>>>>> Stashed changes
