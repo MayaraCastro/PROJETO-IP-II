@@ -11,6 +11,8 @@ public class Usuario {
 	private String email;
 	private Atividade[] atividades;//TODO AJEITAR
 	private Task[] tasks;
+	private int tamAtiv = 100;
+	private int proxAtiv = 0;
 	
 	
 	public Usuario() {
@@ -28,7 +30,29 @@ public class Usuario {
 		this.senha = senha;
 		this.sexo = sexo;
 		this.email = email;
+<<<<<<< HEAD
 		this.atividades=new Atividade[100];
+=======
+		this.atividades = new Atividade[tamAtiv];
+		this.tasks = new Task[100];
+
+}
+	
+	
+
+
+	public Atividade[] getAtividades() {
+		return atividades;
+	}
+	public void setAtividades(Atividade[] atividades) {
+		this.atividades = atividades;
+	}
+	public Task[] getTasks() {
+		return tasks;
+	}
+	public void setTasks(Task[] tasks) {
+		this.tasks = tasks;
+>>>>>>> master
 	}
 
 
@@ -46,7 +70,6 @@ public class Usuario {
 	public void setLembrar(Task[] tasks) {
 		this.tasks = tasks;
 	}
-
 
 	public String getNome() {
 		return nome;
@@ -107,16 +130,21 @@ public class Usuario {
 		this.email = email;
 	}
 	
-	public Atividade addAtividade(Atividade atividade){// modificado aq. o tipo de retono era boolean, mas o retorno n tava indo boolean
-		return(this.atividades[]=atividade));	
+	public boolean addAtividade(Atividade atividade){
+		if(atividade != null && this.proxAtiv <= this.tamAtiv){
+			this.atividades[this.proxAtiv] = atividade;
+			this.proxAtiv++;
+			return true;
+		}
+		return false;
 	}
 	
-	public boolean removerAtividade(Atividade ativ){
-		return(this.getCalendario().getAtividade().remover(ativ.getNome()));
+	public boolean removerDisciplina(Disciplina disciplina){
+		
 	}
 	
 	public void addExame(){
-		//editar
+		
 	}
 	
 	public void removerExame(){

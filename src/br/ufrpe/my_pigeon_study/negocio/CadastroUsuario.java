@@ -53,6 +53,7 @@ public class CadastroUsuario {
 	public String showTasks(Usuario user){
 		return(user.showTasks());
 	}
+<<<<<<< HEAD
 
 	public String calendario(Usuario user, int dayOfWeek){
 		Atividade[] atividades = user.getAtividades();
@@ -67,3 +68,7 @@ public class CadastroUsuario {
 		return(msg);
 	}
 }
+=======
+	
+}
+>>>>>>> master
