@@ -163,9 +163,8 @@ public class TelaTextual {
 			System.out.println("[1]Perfil");
 			System.out.println("[2]Calendario");
 			System.out.println("[3]Tasks");
-			System.out.println("[4]Exames");
-			System.out.println("[5]Atividades");
-			System.out.println("[6]Sair");
+			System.out.println("[4]Atividades");
+			System.out.println("[5]Sair");
 			System.out.println("=====BEMVINDO=====");
 			System.out.print("RESPOSTA: ");
 			int resposta=scanner.nextInt();
@@ -186,9 +185,6 @@ public class TelaTextual {
 					break;
 				}
 				case 5:{
-					break;
-				}
-				case 6:{
 					saida=true;
 					break;
 				}
