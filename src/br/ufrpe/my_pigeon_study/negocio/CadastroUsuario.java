@@ -91,7 +91,7 @@ public class CadastroUsuario {
 		mensagem+="Voce tem "+ user.getProximaAtividade() +"  atividades";
 		for(Atividade a:atividades){
 			if(a!=null){
-				mensagem+="\n"+a;
+				a.toString();
 			}		
 		}
 		return(mensagem);
@@ -172,7 +172,7 @@ public class CadastroUsuario {
 		msg+="Voce tem "+ user.getProximaTask() +"  tasks";
 		for(Task a:tasks){
 			if(a!=null){
-				msg+="\n"+a;
+				a.toString();
 			}		
 		}
 		return(msg);
