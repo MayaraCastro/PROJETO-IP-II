@@ -49,8 +49,7 @@ public class CadastroUsuario {
 	
 	public boolean cadastrarAtividade(Usuario user, Atividade atividade){
 		
-		if(atividade.getNome() != "" && atividade.getDia_da_semana() != 0 && atividade.getHorario() != null
-				 && atividade.getObs() != ""){
+		if(atividade.getNome() != "" && atividade.getDia_da_semana() != 0 && atividade.getHorario() != null){
 			
 			if(this.rep.addAtividade(user, atividade)){
 				

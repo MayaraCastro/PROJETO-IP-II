@@ -65,7 +65,7 @@ public class Fachada {
 		return(this.cadastroU.buscarAtividade(user, nome));
 	}
 	public boolean alterarAtividade(Usuario user,Atividade nova,Atividade original){
-		return(this.cadastroU.alterarAtividade(user, nova,original));
+		return(cadastroU.alterarAtividade(user, nova,original));
 	}
 	public boolean deletarAtividade(Usuario user,String nome){
 		return(this.cadastroU.descadastrarAtividade(user, nome));
