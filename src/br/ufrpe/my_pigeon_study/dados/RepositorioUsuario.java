@@ -3,12 +3,17 @@ import br.ufrpe.my_pigeon_study.negocio.beans.*;
 public class RepositorioUsuario {
 	private Usuario[] usuarios;
 	private int quantUsuarios;
+	private Atividade[] atividades;
+	private int qtdAtv;
+	private int tamAtiv = 100;
 	private static RepositorioUsuario instancia;
 	
 	//CONSTRUTOR
 	public RepositorioUsuario(){
 		this.usuarios=new Usuario[100];
 		this.quantUsuarios=0;
+		this.atividades = new Atividade[tamAtiv];
+		this.qtdAtv = 0;
 	}
 	public static RepositorioUsuario getInstancia(){
 		if(instancia==null){
@@ -26,6 +31,14 @@ public class RepositorioUsuario {
 		return quantUsuarios;
 	}
 	
+	
+	
+	public Atividade[] getAtividades() {
+		return atividades;
+	}
+	public int getQtdAtv() {
+		return qtdAtv;
+	}
 	//OUTROS METODOS
 	public boolean inserir(Usuario user){
 		if(user!=null&&this.quantUsuarios<100){
@@ -83,6 +96,81 @@ public class RepositorioUsuario {
 			}
 		}
 		return(false);
+	}
+	
+	//ATIVIDADES
+	
+	public Atividade buscarAtiv(String atividade){
+		for(Atividade ativ:this.atividades){
+			if(ativ!=null&&ativ.getNome().equals(atividade)){
+				return(ativ);
+			}
+		}
+		return(null);
+	}
+	
+	public boolean addAtividade(Atividade atividade){
+		if(atividade != null && this.qtdAtv <= this.tamAtiv){
+			if(this.buscarAtiv(atividade.getNome()) ==  null){
+				this.atividades[this.qtdAtv] = atividade;
+			this.qtdAtv++;
+			return true;
+			}
+			
+		}
+		return false;
+	}
+	
+
+	public boolean removerAtividade(String atividade){
+		if(this.buscarAtiv(atividade)==null){
+			return(false);
+		}
+		boolean entra=false;
+		for(int i=0;i<tamAtiv;i++){
+			if(this.atividades[i]!=null){
+				if(entra){
+					this.atividades[i-1]=this.atividades[i];
+					this.atividades[i]=null;
+				}
+				else
+				{
+					if(this.atividades[i].getNome().equals(atividade)){
+						entra=true;
+						this.qtdAtv--;
+						if(this.qtdAtv<0){
+							this.qtdAtv=0;
+						}
+					}
+				}
+			}
+		}
+		return(true);
+	}
+	
+	public boolean alterarAtiv(Atividade novaAtiv){
+		if(novaAtiv!=null){
+			for(int i=0;i<tamAtiv;i++){
+				if(this.atividades[i]!=null&&this.atividades[i].getNome().equals(novaAtiv.getNome())){
+					this.atividades[i]=novaAtiv;
+					return(true);
+				}
+			}
+		}
+		return(false);
+	}
+	
+	public String showAtiv(){
+		for(Atividade a: this.atividades){
+			if(a != null){
+				a.toString();
+			}
+			else{
+				return null;
+			}
+		}
+		return null;
+		
 	}
 
 }

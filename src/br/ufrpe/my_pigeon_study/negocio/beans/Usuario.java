@@ -11,8 +11,7 @@ public class Usuario {
 	private String email;
 	private Atividade[] atividades;//TODO AJEITAR
 	private Task[] tasks;
-	private int tamAtiv = 100;
-	private int proxAtiv = 0;
+	
 	
 	
 	public Usuario() {
@@ -30,7 +29,6 @@ public class Usuario {
 		this.senha = senha;
 		this.sexo = sexo;
 		this.email = email;
-		this.atividades = new Atividade[tamAtiv];
 		this.tasks = new Task[100];
 
 }
@@ -120,18 +118,8 @@ public class Usuario {
 		this.email = email;
 	}
 	
-	public boolean addAtividade(Atividade atividade){
-		if(atividade != null && this.proxAtiv <= this.tamAtiv){
-			this.atividades[this.proxAtiv] = atividade;
-			this.proxAtiv++;
-			return true;
-		}
-		return false;
-	}
 	
-	public boolean removerDisciplina(Disciplina disciplina){
-		
-	}
+	
 	
 	public void addExame(){
 		
@@ -140,18 +128,20 @@ public class Usuario {
 	public void removerExame(){
 		//editar
 	}
+	
 
-	public String showDisciplinas(){
+	/*public String showDisciplinas(){
 		return(this.calendario.showDisciplinas());
 	}
 	public String showTasks(){
 		return(Arrays.toString(this.tasks));
-	}
+	}*/
 
 	@Override
 	public String toString() {
 		return "Usuario [nome=" + nome + ", dataNasc=" + dataNasc + ", usuario=" + usuario + ", senha=" + senha
-				+ ", sexo=" + sexo + ", email=" + email + ", disciplina=" + Arrays.toString(calendario.getDisciplinas().getDisciplinas()) + "]";
+				+ ", sexo=" + sexo + ", email=" + email + ", atividades=" + Arrays.toString(atividades) + ", tasks="
+				+ Arrays.toString(tasks) + "]";
 	}
 
 
