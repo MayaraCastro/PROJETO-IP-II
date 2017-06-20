@@ -30,9 +30,9 @@ public class Usuario {
 		this.senha = senha;
 		this.sexo = sexo;
 		this.email = email;
-<<<<<<< HEAD
+
 		this.atividades=new Atividade[100];
-=======
+
 		this.atividades = new Atividade[tamAtiv];
 		this.tasks = new Task[100];
 
@@ -52,7 +52,7 @@ public class Usuario {
 	}
 	public void setTasks(Task[] tasks) {
 		this.tasks = tasks;
->>>>>>> master
+
 	}
 
 

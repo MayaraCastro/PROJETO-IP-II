@@ -2,7 +2,7 @@ package br.ufrpe.my_pigeon_study.negocio.beans;
 
 public class Task {
 
-	private String data;
+	private Data data;
 	private String nome;
 	private String descricao;
 	private int tipo;
@@ -11,7 +11,13 @@ public class Task {
 		
 	}
 	
+
 	public Task(String data, String nome, String descricao, int tipo) {
+		
+	}
+
+	public Task(Data data, String nome, String descricao, int tipo) {
+
 		super();
 		this.data = data;
 		this.nome = nome;
@@ -19,10 +25,10 @@ public class Task {
 		this.tipo = tipo;
 	}
 	
-	public String getData() {
+	public Data getData() {
 		return data;
 	}
-	public void setData(String data) {
+	public void setData(Data data) {
 		this.data = data;
 	}
 	public String getNome() {
@@ -43,6 +49,7 @@ public class Task {
 	public void setTipo(int tipo) {
 		this.tipo = tipo;
 	}
+
 	public String toString() {
 		return "Task [data=" + data + ", nome=" + nome + ", descricao=" + descricao + ", tipo=" + tipo + "]";
 	}

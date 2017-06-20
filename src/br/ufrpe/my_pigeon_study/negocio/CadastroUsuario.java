@@ -77,6 +77,7 @@ public class CadastroUsuario {
 	public String showTasks(Usuario user){
 		return(user.showTasks());
 	}
+<<<<<<< Updated upstream
 	public Task buscarTasks(String Task){
 		return(this.rep.buscarTask(Task));
 	}
@@ -84,3 +85,35 @@ public class CadastroUsuario {
 		return(this.rep.removerTask(Task));
 	}
 }
+=======
+
+
+	public String calendarioAtividade(Usuario user, int dayOfWeek){
+		Atividade[] atividades = user.getAtividades();
+		String msg=null;
+		for(Atividade a:atividades){
+			if(a!=null){
+				if(a.getDia_da_semana()==dayOfWeek){
+					msg+="\n"+a;
+				}
+			}
+		}
+		return(msg);
+	}
+	public String calendarioTask(Usuario user, Data data){
+		Task[] tasks = user.getTasks();
+		String msg=null;
+		for(Task a:tasks){
+			if(a!=null){
+				if(a.getData().getDia()==data.getDia()
+				&& a.getData().getMes()==data.getMes()
+				&& a.getData().getAno()==data.getAno()){
+					msg+="\n"+a;
+				}
+			}
+		}
+		return(msg);
+	}
+}
+
+>>>>>>> Stashed changes

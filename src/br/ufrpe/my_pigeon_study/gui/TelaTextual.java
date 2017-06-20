@@ -219,18 +219,28 @@ public class TelaTextual {
 	}
 	public void calendario(Usuario user){
 		System.out.println("DIA:");
-		int dia=scanner.nextInt();
+		Data data= new Data();
+		data.setDia(scanner.nextInt());
 		System.out.println("MES:");
-		int mes= scanner.nextInt();
+		data.setMes(scanner.nextInt());
 		System.out.println("ANO:");
-		int ano= scanner.nextInt();
+		data.setAno(scanner.nextInt());
 		
-		this.calendario.set(ano, mes, dia);
+		this.calendario.set(data.getAno(), data.getMes(), data.getDia());
 		int dayOfWeek = calendario.get(Calendar.DAY_OF_WEEK);
 		
 		String msg=this.fachada.calendarioAtividades(user, dayOfWeek);
+		System.out.println("====ATIVIDADES====");
 		if(msg==null){
-			System.out.println("Voce nao tem nada para este dia");
+			System.out.println("Voce nao tem atividades para este dia");
+		}else{
+			System.out.println("a"+msg);
+		}
+		
+		msg=this.fachada.calendarioTasks(user, data);
+		System.out.println("====TASKS====");
+		if(msg==null){
+			System.out.println("Voce nao tem tasks para este dia");
 		}else{
 			System.out.println("a"+msg);
 		}

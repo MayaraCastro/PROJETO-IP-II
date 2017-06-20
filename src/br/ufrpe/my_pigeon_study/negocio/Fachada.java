@@ -36,7 +36,10 @@ public class Fachada {
 		return(cadastroU.showTasks(user));
 	}
 	public String calendarioAtividades(Usuario user, int dayOfWeek){
-		return(cadastroU.calendario(user,dayOfWeek));
+		return(cadastroU.calendarioAtividade(user,dayOfWeek));
+	}
+	public String calendarioTasks(Usuario user, Data data){
+		return(cadastroU.calendarioTask(user,data));
 	}
 	//DISCIPLINA
 //	public boolean cadastrarDisciplina(Usuario user, Disciplina disci){
