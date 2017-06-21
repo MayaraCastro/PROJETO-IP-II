@@ -52,7 +52,6 @@ public class CadastroUsuario {
 		if(atividade.getNome() != "" && atividade.getDia_da_semana() >0 &&atividade.getDia_da_semana() <=7 && atividade.getHorario() != null){
 			
 			if(this.rep.addAtividade(user, atividade)){
-				
 				return (true);
 			}
 		}
@@ -61,7 +60,7 @@ public class CadastroUsuario {
 	
 	public boolean alterarAtividade(Usuario user, Atividade atividade,Atividade antiga){
 		
-		if(atividade.getNome() != "" && atividade.getDia_da_semana() != 0 && atividade.getHorario() != null
+		if(atividade.getNome() != "" && atividade.getDia_da_semana() >0 &&atividade.getDia_da_semana() <=7 && atividade.getHorario() != null
 				 && atividade.getObs() != ""){
 			
 			Atividade original = this.rep.buscarAtiv(user, antiga.getNome());

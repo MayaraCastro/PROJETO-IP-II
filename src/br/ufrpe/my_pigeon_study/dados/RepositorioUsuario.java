@@ -110,7 +110,7 @@ public class RepositorioUsuario {
 		int total = user.getQuantAtividade();
 		
 		if(atividade != null && proxima < total){
-			
+			System.out.println("alo");
 			if(this.buscarAtiv(user,atividade.getNome()) ==  null){
 				
 				Atividade[] atividades = user.getAtividades();

@@ -249,15 +249,16 @@ public class TelaTextual {
 
 //TELAS Atividades
 	public void cadastroAtividade(Usuario user){
-		String nome;
+		String nome=new String();
 		int dia_da_semana = 0;
 		Horario horario = new Horario();
-		String obs;
+		String obs= new String();
 	
 		System.out.println("\tCADASTRAR DISCIPLINA");
+		scanner.nextLine();
 		System.out.println("Nome:");
 		System.out.flush();
-		nome=scanner.next();
+		nome=scanner.nextLine();
 			
 		System.out.println("Dia da semana:");
 		dia_da_semana = scanner.nextInt();
@@ -270,9 +271,9 @@ public class TelaTextual {
 		System.out.flush();
 		horario.setMinuto(scanner.nextInt());
 		
-			
+		scanner.nextLine();
 		System.out.println("Observação:");
-		obs=scanner.next();
+		obs=scanner.nextLine();
 		System.out.flush();
 
 		Atividade atividade = new Atividade(nome,dia_da_semana,horario,obs);
@@ -353,7 +354,7 @@ public class TelaTextual {
 	
 		System.out.println("Nome:");
 		System.out.flush();
-		nome=scanner.next();
+		nome=scanner.nextLine();
 			
 		System.out.println("Dia da semana:");
 		dia_da_semana = scanner.nextInt();
@@ -367,7 +368,7 @@ public class TelaTextual {
 		horario.setMinuto(scanner.nextInt());
 		
 		System.out.println("Observação:");
-		obs=scanner.next();
+		obs=scanner.nextLine();
 			
 			
 		Atividade novaAtivi = new Atividade(nome,dia_da_semana,horario,obs);

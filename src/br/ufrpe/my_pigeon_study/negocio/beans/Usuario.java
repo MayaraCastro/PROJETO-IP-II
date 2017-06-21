@@ -40,7 +40,7 @@ public class Usuario {
 		this.proximaTask=0;
 		this.proximaAtividade=0;
 		this.quantTask=100;
-		this.quantAtividade=0;
+		this.quantAtividade=100;
 
 	}	
 	
