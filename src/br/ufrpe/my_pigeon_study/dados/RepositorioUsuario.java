@@ -67,6 +67,7 @@ public class RepositorioUsuario {
 				{
 					if(this.usuarios[i].getUsuario().equals(user)){
 						entra=true;
+						this.usuarios[i]=null;
 						this.quantUsuarios--;
 						if(this.quantUsuarios<0){
 							this.quantUsuarios=0;
@@ -142,6 +143,7 @@ public class RepositorioUsuario {
 				{
 					if(user.getAtividades()[i].getNome().equals(atividade)){
 						entra=true;
+						user.getAtividades()[i] = null;
 						int anterior = user.getProximaAtividade();
 						user.setProximaAtividade(--anterior);
 						
@@ -202,16 +204,18 @@ public class RepositorioUsuario {
 			return(false);
 		}
 		boolean entra=false;
+		Task[] tasks = user.getTasks();
 		for(int i=0;i<100;i++){
-			if(user.getTasks()[i]!=null){
+			if(tasks[i]!=null){
 				if(entra){
-					user.getTasks()[i-1]=user.getTasks()[i];
-					user.getTasks()[i]=null;
+					tasks[i-1]=tasks[i];
+					tasks[i]=null;
 				}
 				else
 				{
-					if(user.getTasks()[i].getNome().equals(task)){
+					if(tasks[i].getNome().equals(task)){
 						entra=true;
+						tasks[i]=null;
 						int ant=user.getProximaTask();
 						user.setProximaTask(--ant);
 						if(user.getProximaTask()<0){
@@ -221,7 +225,8 @@ public class RepositorioUsuario {
 				}
 			}
 		}
-		return(true);
+		user.setTasks(tasks);
+		return(entra);
 	}
 
 	public boolean alterarTask(Usuario user,Task novoTask, Task antigaTask){
