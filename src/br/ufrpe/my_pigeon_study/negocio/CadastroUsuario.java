@@ -1,18 +1,20 @@
 package br.ufrpe.my_pigeon_study.negocio;
+import java.util.ArrayList;
+
 import br.ufrpe.my_pigeon_study.dados.RepositorioUsuario;
 import br.ufrpe.my_pigeon_study.negocio.beans.*;
 
 public class CadastroUsuario {
 	private RepositorioUsuario rep;
 	public CadastroUsuario(){
-		this.rep=RepositorioUsuario.getInstancia();
+		this.rep = RepositorioUsuario.getInstancia();
 	}
 	public boolean cadastrar(Usuario user){
-			if(user.getNome()!=""&&user.getEmail()!=""&&user.getUsuario()!=""
-			&&user.getSenha()!=""&&(user.getSexo()<4 && user.getSexo()>0)
-			&&(user.getDataNasc().getMes()<13 &&user.getDataNasc().getMes()>0 
-			&& user.getDataNasc().getDia()<32 &&user.getDataNasc().getDia()>0
-			&&user.getDataNasc().getAno()<2017 &&user.getDataNasc().getAno()>1900)){
+			if(user.getNome() != "" && user.getEmail() != "" && user.getUsuario() != ""
+			&& user.getSenha() != "" && (user.getSexo()<4 && user.getSexo() > 0)
+			&& (user.getDataNasc().getMes() < 13 && user.getDataNasc().getMes() > 0 
+			&& user.getDataNasc().getDia() < 32 && user.getDataNasc().getDia() > 0
+			&& user.getDataNasc().getAno() < 2017 && user.getDataNasc().getAno() > 1900)){
 				if(this.rep.inserir(user)){
 					return(true);
 				}
@@ -85,11 +87,13 @@ public class CadastroUsuario {
 	}
 	
 	public String showAtividade(Usuario user) {
-		Atividade[] atividades = user.getAtividades();
+		
+		ArrayList<Atividade> atividades = user.getAtividades();
 		String mensagem=null;
-		mensagem+="Voce tem "+ user.getProximaAtividade() +"  atividades";
-		for(Atividade a:atividades){
-			if(a!=null){
+		
+		mensagem += "Voce tem "+ user.getAtividades().size() +"  atividades";
+		for(Atividade a : atividades){
+			if(a != null){
 				a.toString();
 			}		
 		}
@@ -136,7 +140,7 @@ public class CadastroUsuario {
 	}
 	
 	public String calendarioAtividade(Usuario user, int dayOfWeek){
-		Atividade[] atividades = user.getAtividades();
+		ArrayList<Atividade> atividades = user.getAtividades();
 		String msg=null;
 		for(Atividade a:atividades){
 			if(a!=null){
@@ -152,7 +156,7 @@ public class CadastroUsuario {
 	}
 	
 	public String calendarioTask(Usuario user, Data data){
-		Task[] tasks = user.getTasks();
+		ArrayList<Task> tasks = user.getTasks();
 		String msg=null;
 		for(Task a:tasks){
 			if(a!=null){
@@ -166,9 +170,9 @@ public class CadastroUsuario {
 		return(msg);
 	}
 	public String showTask(Usuario user) {
-		Task[] tasks = user.getTasks();
+		ArrayList<Task> tasks = user.getTasks();
 		String msg=null;
-		msg+="Voce tem "+ user.getProximaTask() +"  tasks";
+		msg+="Voce tem "+ user.getTasks().size() +"  tasks";
 		for(Task a:tasks){
 			if(a!=null){
 				a.toString();

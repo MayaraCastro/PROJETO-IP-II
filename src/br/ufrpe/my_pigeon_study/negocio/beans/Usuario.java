@@ -1,6 +1,6 @@
 package br.ufrpe.my_pigeon_study.negocio.beans;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class Usuario {
 	private String nome;
@@ -9,17 +9,9 @@ public class Usuario {
 	private String senha;
 	private int sexo;//1-feminino, 2-masculino e 3-outro
 	private String email;
-	private Atividade[] atividades;//TODO AJEITAR
-	private Task[] tasks;
-	private int proximaTask;
-	private int proximaAtividade;
-	private int quantTask;
-	private int quantAtividade;
+	private ArrayList<Atividade> atividades;
+	private ArrayList<Task> tasks;
 
-
-	
-	
-	
 	public Usuario() {
 		super();
 	}
@@ -35,62 +27,25 @@ public class Usuario {
 		this.senha = senha;
 		this.sexo = sexo;
 		this.email = email;
-		this.atividades=new Atividade[100];
-		this.tasks = new Task[100];
-		this.proximaTask=0;
-		this.proximaAtividade=0;
-		this.quantTask=100;
-		this.quantAtividade=100;
+		this.atividades = new ArrayList<Atividade>();
+		this.tasks = new ArrayList<Task>();
 
 	}	
-	
-	
-	public int getQuantTask() {
-		return quantTask;
-	}
-	public void setQuantTask(int quantTask) {
-		this.quantTask = quantTask;
-	}
-	public int getProximaTask() {
-		return proximaTask;
-	}
-	public void setProximaTask(int proximaTask) {
-		this.proximaTask = proximaTask;
-	}
-	public int getProximaAtividade() {
-		return proximaAtividade;
-	}
-	public void setProximaAtividade(int proximaAtividade) {
-		this.proximaAtividade = proximaAtividade;
-	}
-	public Atividade[] getAtividades() {
+
+	public ArrayList<Atividade> getAtividades() {
 		return atividades;
 	}
-	public void setAtividades(Atividade[] atividades) {
+	public void setAtividades(ArrayList<Atividade> atividades) {
 		this.atividades = atividades;
 	}
-	public Task[] getTasks() {
+	public ArrayList<Task> getTasks() {
 		return tasks;
 	}
-	public void setTasks(Task[] tasks) {
+	public void setTasks(ArrayList<Task> tasks) {
 		this.tasks = tasks;
 
 	}
 
-	public int getQuantAtividade() {
-		return quantAtividade;
-	}
-	public void setQuantAtividade(int quantAtividade) {
-		this.quantAtividade = quantAtividade;
-	}
-	public Task[] getLembrar() {
-		return tasks;
-	}
-
-
-	public void setLembrar(Task[] tasks) {
-		this.tasks = tasks;
-	}
 
 	public String getNome() {
 		return nome;
@@ -155,8 +110,8 @@ public class Usuario {
 	@Override
 	public String toString() {
 		return "Usuario [nome=" + nome + ", dataNasc=" + dataNasc + ", usuario=" + usuario + ", senha=" + senha
-				+ ", sexo=" + sexo + ", email=" + email + ", atividades=" + Arrays.toString(atividades) + ", tasks="
-				+ Arrays.toString(tasks) + "]";
+				+ ", sexo=" + sexo + ", email=" + email + ", atividades=" + atividades.toString() + ", tasks="
+				+ tasks.toString() + "]";
 	}
 
 
