@@ -6,7 +6,7 @@ public class Fachada {
 	private CadastroUsuario cadastroU;
 	private static Fachada instancia;
 	
-	public Fachada(){
+	private Fachada(){
 		this.login=new Login();
 		this.cadastroU=new CadastroUsuario();
 	}
