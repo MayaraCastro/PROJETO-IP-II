@@ -1,21 +1,15 @@
 package br.ufrpe.my_pigeon_study.negocio.beans;
 
-public class Task {
+public class Task extends Atividade{
 
 	private Data data;
-	private String nome;
 	private String descricao;
 	private int tipo;
 	
-	public Task() {
-		
-	}
+	public Task(Data data, String nome, String descricao, int tipo, int dia_da_semana, Horario horario, String obs) {
 
-	public Task(Data data, String nome, String descricao, int tipo) {
-
-		super();
+		super(nome, dia_da_semana,horario, obs);
 		this.data = data;
-		this.nome = nome;
 		this.descricao = descricao;
 		this.tipo = tipo;
 	}
@@ -26,12 +20,7 @@ public class Task {
 	public void setData(Data data) {
 		this.data = data;
 	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+	
 	public String getDescricao() {
 		return descricao;
 	}
@@ -46,7 +35,7 @@ public class Task {
 	}
 
 	public String toString() {
-		return "Task [data=" + data + ", nome=" + nome + ", descricao=" + descricao + ", tipo=" + tipo + "]";
+		return "Task [data=" + this.getData() + ", nome=" + this.getNome() + ", descricao=" + this.getDescricao() + ", tipo=" + this.getTipo() + "]";
 	}
 	
 }
