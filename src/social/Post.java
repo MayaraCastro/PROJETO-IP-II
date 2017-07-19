@@ -1,4 +1,4 @@
-package br.Giuseppe.Luna.beans;
+package social;
 public class Post {
 	private Comentario[] comentario;
 	private int proximoComentario;

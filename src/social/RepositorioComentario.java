@@ -1,7 +1,5 @@
 package social;
 
-import br.ufrpe.negocio.beans.Usuario;
-
 public class RepositorioComentario {
 	private Comentario[] comments;
 	private int proxima;
@@ -34,7 +32,7 @@ public class RepositorioComentario {
 		return null;
 	}
 	
-	public boolean inserir(Post posgem){
+	public boolean inserir(Comentario posgem){
 		
 		if(posgem!=null & this.buscar(posgem.getAutor())==null & this.proxima<=this.totUser){
 			this.comments[this.proxima]=posgem;

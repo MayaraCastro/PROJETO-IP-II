@@ -1,7 +1,4 @@
-package repositorios;
-
-import br.Giuseppe.Luna.beans.Post;
-import br.Giuseppe.Luna.beans.Usuario;
+package social;
 
 public class RepositorioPost {
 	private Post[] postagem;

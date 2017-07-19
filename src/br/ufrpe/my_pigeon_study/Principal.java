@@ -14,8 +14,10 @@ public class Principal {
 		//USUARIO JA PRONTO PRA TESTES
 		Data dataNasc= new Data(2,2,1999);
 		Usuario user= new Usuario("Maria",dataNasc, "maria", "maria", 1, "maria@maria");
+		Usuario usera= new Usuario("mayara",dataNasc, "mayara", "mayara", 1, "mayara@mayara");
 		fachada.cadastrarUsuario(user);
-		
+		fachada.cadastrarUsuario(usera);
+
 		tela.menuInicial();
 	}
 }

@@ -30,8 +30,30 @@ public class Fachada {
 		return(this.login.logar(user));
 	}
 
+	//AMIGOS
+	public Amigo buscarAmigos(Usuario user, String userAmg){
+		return(cadastroU.buscarAmigos(user, userAmg));
+	}
+	public String listarAmigos(Usuario user){
+		return(cadastroU.listarAmigos(user));
+	}
+	public Amigo buscarAmigosPendentes(Usuario user, String userAmg){
+		return(cadastroU.buscarAmigosPendentes(user, userAmg));
+	}
+	public String listarAmigosPendentes(Usuario user){
+		return(cadastroU.listarAmigosPendentes(user));
+	}
+	public Amigo buscarGeral(Usuario user, String userAmg){
+		return(cadastroU.buscarGeral(user, userAmg));
+	}
+	public boolean addAmigo(Usuario user, Amigo amg){
+		return(cadastroU.addAmigo(user, amg));
+	}
+	public boolean delAmigo(Usuario user, Amigo amg){
+		return(cadastroU.delAmigo(user, amg));
+	}
+	
 	//TASKS
-
 	public String showTasks(Usuario user){
 		return(cadastroU.showTask(user));
 	}

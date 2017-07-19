@@ -1,4 +1,4 @@
-package repositorios;
+package social;
 
 public class RepositorioPendentes {
 

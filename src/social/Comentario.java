@@ -1,4 +1,4 @@
-package br.Giuseppe.Luna.beans;
+package social;
 
 import java.util.Calendar;
 import java.util.Date;

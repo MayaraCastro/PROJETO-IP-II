@@ -1,7 +1,5 @@
-package aplicacoes;
+package social;
 
-import br.Giuseppe.Luna.beans.*;
-import repositorios.*;
 
 public class AplicacaoRepositorioUsuario {
 	public static void main(String[] args) {
@@ -22,7 +20,7 @@ public class AplicacaoRepositorioUsuario {
 		System.out.println(novo.getRepPost().getPostagem(0));
 		
 		//testeamigos
-		Amigos novoamigo= new Amigos();
+		Amigo novoamigo= new Amigo();
 		novoamigo.setNome(novonovo.getNome());
 		novoamigo.setEmail(novonovo.getEmail());
 		

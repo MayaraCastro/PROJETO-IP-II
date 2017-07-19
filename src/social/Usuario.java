@@ -1,22 +1,24 @@
-package br.Giuseppe.Luna.beans;
+package social;
 
-import repositorios.*;
+import java.util.ArrayList;
+
 public class Usuario {
 	
 	private String password;
 	private String email;
+	private String user;
 	private String telefone;
 	private String nome;
 	private String sobrenome;
 	private String dataNascimento;
 	private String sexo;
-	private RepositorioAmigos repAmigos;
-	private RepositorioAmigosPendentes repAmigosPendentes;
+	private ArrayList<Amigo> amigos;
+	private ArrayList<Amigo> amigosPendentes;
 	private RepositorioPost repPost;
 	
-	public Usuario(String email,String password ,String telefone, String nome,
+	public Usuario(String user, String email,String password ,String telefone, String nome,
 	String sobrenome, String dataNascimento, String sexo)
-	{
+	{	this.user = user;
 		//atributos basicos do usuario inicializados
 		this.email=email;
 		this.password=password;
@@ -28,13 +30,36 @@ public class Usuario {
 		
 		//repositorios de amigos inicializados
 		
-		this.repAmigos= new RepositorioAmigos();
-		this.repAmigosPendentes= new RepositorioAmigosPendentes();
+		this.amigos= new ArrayList<Amigo>();
+		this.amigosPendentes= new ArrayList<Amigo>();
 		
 		//repositorio de posts inicializados
 		this.repPost= new RepositorioPost();
 		
 		
+	}
+	
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
+	}
+
+	public boolean addAmigo(Amigo amg){
+		if( amg != null && !this.amigos.contains(amg)){
+			if(this.amigosPendentes.contains(amg)){
+				this.amigos.add(amg);
+				this.amigosPendentes.remove(amg);
+				
+			}
+			else{
+				this.amigosPendentes.add(amg);
+			}
+			return true;
+		}
+		return false;
 	}
 	
 	public String getPassword() {
@@ -97,12 +122,12 @@ public class Usuario {
 		return repPost;
 	}
 	
-	public RepositorioAmigos getRepAmigos() {
-		return repAmigos;
+	public ArrayList<Amigo> getRepAmigos() {
+		return amigos;
 	}
 
-	public RepositorioAmigosPendentes getRepAmigosPendentes() {
-		return repAmigosPendentes;
+	public ArrayList<Amigo> getRepAmigosPendentes() {
+		return amigosPendentes;
 	}
 
 	public String toString(){

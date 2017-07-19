@@ -1,6 +1,5 @@
-package repositorios;
+package social;
 
-import br.Giuseppe.Luna.beans.Usuario;
 
 public class RepositorioUsuario {
 	private Usuario[] users;

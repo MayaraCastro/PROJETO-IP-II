@@ -47,6 +47,75 @@ public class CadastroUsuario {
 		return(this.rep.remover(usuario));
 	}
 	
+	//TODO implementar comunidades e depoimentos
+	//Amigos
+	
+	public Amigo buscarAmigos(Usuario user, String userAmg){
+		int i = user.getAmigos().indexOf(new Amigo(userAmg));
+		if(i == -1){
+			return(null);
+		}
+		else{
+			return(user.getAmigos().get(i));
+		}	
+	}
+	public String listarAmigos(Usuario user){
+		ArrayList<Amigo> amigos = user.getAmigos();
+		String mensagem = "Voce tem "+ user.getAmigos().size() +"  amigos";
+		for(Amigo a : amigos){
+			if(a != null){
+				mensagem +="\n-----------------\n"+ a.toString();
+			}		
+		}
+		return(mensagem);
+	}
+	public Amigo buscarAmigosPendentes(Usuario user, String userAmg){
+		int i = user.getAmigosPendentes().indexOf(new Amigo(userAmg));
+		if(i == -1){
+			return(null);
+		}
+		else{
+			return(user.getAmigosPendentes().get(i));
+		}	
+	}
+	public String listarAmigosPendentes(Usuario user){
+		ArrayList<Amigo> amigos = user.getAmigosPendentes();
+		String mensagem = "Voce tem "+ user.getAmigosPendentes().size() +"  amigos pendentes";
+		for(Amigo a : amigos){
+			if(a != null){
+				mensagem +="\n-----------------\n"+ a.toString();
+			}		
+		}
+		return(mensagem);
+	}
+	public Amigo buscarGeral(Usuario user, String userAmg){
+		Usuario u = rep.buscar(userAmg);
+		if(u!= null && u.getUsuario()!= user.getUsuario()){
+			return(new Amigo(u.getNome(),u.getDataNasc(),u.getUsuario(),
+					u.getSexo(),u.getEmail()));
+		}
+		return null;
+	}
+	public boolean addAmigo(Usuario user, Amigo amg){
+		if(user.addAmigo(amg)){
+			System.out.println(amg.getConvite());
+			rep.buscar(amg.getUsuario()).addAmigo(new Amigo(user.getNome(),user.getDataNasc(),user.getUsuario(),
+						user.getSexo(),user.getEmail(),1));
+			
+			return(true);
+		}
+		return(false);
+		
+	}
+	public boolean delAmigo(Usuario user, Amigo amg){
+		if(user.delAmigo(amg)){
+			rep.buscar(amg.getUsuario()).delAmigo(new Amigo(user.getNome(),user.getDataNasc(),user.getUsuario(),
+					user.getSexo(),user.getEmail()));
+			return(true);
+		}
+		return(false);
+	}
+	
 	//Atividades
 	
 	public boolean cadastrarAtividade(Usuario user, Atividade atividade){
@@ -89,12 +158,10 @@ public class CadastroUsuario {
 	public String showAtividade(Usuario user) {
 		
 		ArrayList<Atividade> atividades = user.getAtividades();
-		String mensagem=null;
-		
-		mensagem += "Voce tem "+ user.getAtividades().size() +"  atividades";
+		String mensagem = "Voce tem "+ user.getAtividades().size() +"  atividades";
 		for(Atividade a : atividades){
 			if(a != null){
-				a.toString();
+				mensagem += "\n-----------------\n" + a.toString();
 			}		
 		}
 		return(mensagem);
@@ -171,11 +238,10 @@ public class CadastroUsuario {
 	}
 	public String showTask(Usuario user) {
 		ArrayList<Task> tasks = user.getTasks();
-		String msg=null;
-		msg+="Voce tem "+ user.getTasks().size() +"  tasks";
+		String msg = "Voce tem "+ user.getTasks().size() +"  tasks";
 		for(Task a:tasks){
 			if(a!=null){
-				a.toString();
+				msg += "\n-----------------\n" + a.toString();
 			}		
 		}
 		return(msg);

@@ -11,6 +11,8 @@ public class Usuario {
 	private String email;
 	private ArrayList<Atividade> atividades;
 	private ArrayList<Task> tasks;
+	private ArrayList<Amigo> amigos;
+	private ArrayList<Amigo> amigosPendentes;
 
 	public Usuario() {
 		super();
@@ -27,11 +29,43 @@ public class Usuario {
 		this.senha = senha;
 		this.sexo = sexo;
 		this.email = email;
+		
 		this.atividades = new ArrayList<Atividade>();
 		this.tasks = new ArrayList<Task>();
+		this.amigos= new ArrayList<Amigo>();
+		this.amigosPendentes= new ArrayList<Amigo>();
 
-	}	
-
+	}
+	
+	//METODO PARA ADICIONAR AMIGO
+	public boolean addAmigo(Amigo amg){
+		if(!this.amigos.contains(amg)){
+			if(this.amigosPendentes.contains(amg) && amg.getConvite() == 1){ 
+				this.amigos.add(amg);
+				this.amigosPendentes.remove(amg);	
+			}
+			else{
+				this.amigosPendentes.add(amg);
+			}
+			return true;
+		}
+		return false;
+	}
+	public boolean delAmigo(Amigo amg){
+		if(!this.amigos.contains(amg)){
+			if(this.amigosPendentes.contains(amg)){
+				this.amigosPendentes.remove(amg);
+				return true;	
+			}
+		}
+		else{
+			this.amigos.remove(amg);
+			return(true);
+		}
+		return false;
+	}
+	
+	//GETTERS AND SETTERS
 	public ArrayList<Atividade> getAtividades() {
 		return atividades;
 	}
@@ -106,6 +140,19 @@ public class Usuario {
 		this.email = email;
 	}
 	
+	
+	public ArrayList<Amigo> getAmigos() {
+		return amigos;
+	}
+	public void setAmigos(ArrayList<Amigo> amigos) {
+		this.amigos = amigos;
+	}
+	public ArrayList<Amigo> getAmigosPendentes() {
+		return amigosPendentes;
+	}
+	public void setAmigosPendentes(ArrayList<Amigo> amigosPendentes) {
+		this.amigosPendentes = amigosPendentes;
+	}
 	
 	@Override
 	public String toString() {

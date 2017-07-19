@@ -1,21 +1,23 @@
 package social;
 
-
-public class AplicacaoRepositorioComentario {
+public class AplicacaoRepositorioPost {
 	public static void main(String[] args) {
-		RepositorioComentario repositorio= new RepositorioComentario();
+		RepositorioPost repositorio= new RepositorioPost();
 		Usuario novo = new Usuario("netogiuseppe@hotmail.com","recife97","81 9 87704889",
 				"Giuseppe","Fiorentino Neto","26/01/1997","Masculino");
 		Usuario newnovo= new Usuario("netogiuseppe@hotmail.com","recife1997","81 9 87704889",
 				"Giuseppe","Fiorentino","26/01/1997","Masculino");
-		Comentario comenta= new Comentario("Quero saber quem transa. Quem transa nessa porra",novo);
-		Comentario newcomenta= new Comentario("Quero saber quem transa. Quem transa nessaaaa porra",novo);
-		System.out.println("Inserir: "+repositorio.inserir(comenta));
+		Post posgem= new Post("Bom dia galerinha do zap zap.",novo);
+		Post newposgem= new Post("Quero saber quem transa. Quem transa nessaaaa porra",novo);
+		
+		
+		System.out.println("Inserir: "+repositorio.inserir(posgem));
 		System.out.println("Busca: "+repositorio.buscar(novo));
-		System.out.println("Alterar: "+repositorio.alterar(newcomenta));
+		System.out.println("Alterar: "+repositorio.alterar(newposgem));
 		System.out.println("Busca: "+repositorio.buscar(novo));
-		System.out.println("Remover: "+repositorio.remover(comenta));
+		System.out.println("Remover: "+repositorio.remover(posgem));
 		System.out.println("Busca: "+repositorio.buscar(novo));
 		
 	}
+	
 }
