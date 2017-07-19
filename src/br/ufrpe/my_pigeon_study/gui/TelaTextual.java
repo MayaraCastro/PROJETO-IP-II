@@ -743,21 +743,23 @@ public class TelaTextual {
 		data.setMes(scanner.nextInt());
 		System.out.println("ANO:");
 		data.setAno(scanner.nextInt());
-		System.out.println("Dia da semana:");
-		int dia_da_semana=scanner.nextInt();
-		System.out.println("Horario: ");
-		Horario horario= new Horario();
-		System.out.println("HORA");
-		horario.setHora(scanner.nextInt());
-		System.out.println("MUNUTO:");
-		horario.setMinuto(scanner.nextInt());
-		System.out.println("OBS: ");
-		String obs= scanner.nextLine();
 		
+	    System.out.println("Dia da semana:");
+	    int dia_da_semana=scanner.nextInt();
+	    System.out.println("Horario: ");
+	    Horario horario= new Horario();
+	    System.out.println("HORA");
+	    horario.setHora(scanner.nextInt());
+	    System.out.println("MUNUTO:");
+	    horario.setMinuto(scanner.nextInt());
+	    System.out.println("OBS: ");
+	    String obs= scanner.nextLine();
+	 
+	    
 		scanner.nextLine();
 		System.out.print("Descricao: ");
 		String descricao=scanner.nextLine();
-		 
+
 		Task novaTask = new Task(data, nome, descricao, tipo, dia_da_semana, horario, obs );
 		if(fachada.cadastrarTask(user,novaTask)){
 			System.out.println("Inserido com Sucesso");
@@ -814,21 +816,23 @@ public class TelaTextual {
 		data.setMes(scanner.nextInt());
 		System.out.println("ANO:");
 		data.setAno(scanner.nextInt());
-		System.out.println("Dia da semana:");
-		int dia_da_semana=scanner.nextInt();
-		System.out.println("Horario: ");
-		Horario horario= new Horario();
-		System.out.println("HORA");
-		horario.setHora(scanner.nextInt());
-		System.out.println("MUNUTO:");
-		horario.setMinuto(scanner.nextInt());
-		System.out.println("OBS: ");
-		String obs= scanner.nextLine();
 		
+	    System.out.println("Dia da semana:");
+	    int dia_da_semana=scanner.nextInt();
+	    System.out.println("Horario: ");
+	    Horario horario= new Horario();
+	    System.out.println("HORA");
+	    horario.setHora(scanner.nextInt());
+	    System.out.println("MUNUTO:");
+	    horario.setMinuto(scanner.nextInt());
+	    System.out.println("OBS: ");
+	    String obs= scanner.nextLine();
+	    
 		scanner.nextLine();
 		System.out.print("Descricao: ");
 		String descricao=scanner.nextLine();
 		Task novaTask = new Task(data, nome, descricao, tipo, dia_da_semana, horario, obs);
+		 
 		if(fachada.alterarTask(user,novaTask, Original)){
 			System.out.println("Alterado com Sucesso");
 		}
