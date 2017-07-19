@@ -1,7 +1,5 @@
 package social;
 
-import java.util.ArrayList;
-
 public class Principal {
 	public static void main(String[] args){
 		Usuario novo = new Usuario("giu","netogiuseppe@hotmail.com","recife97","(81) 9 8770-4889",
