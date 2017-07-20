@@ -48,8 +48,31 @@ public class CadastroUsuario {
 	}
 	
 	//TODO implementar comunidades e depoimentos
+	//Depoimentos
+	public boolean postarDepoimento(Usuario user, Amigo amg, String depo){
+		if(user.contemAmigo(amg)){
+			//pega o indice referente ao usuario no amigo dele
+			int i = rep.buscar(amg.getUsuario()).getAmigos().indexOf(new Amigo(user.getUsuario()));
+			//cria o depoimento com o Amigo referente ao usuario
+			Depoimento depos = new Depoimento(rep.buscar(amg.getUsuario()).getAmigos().get(i), depo);
+			//add o depoimento ao amigo
+			rep.buscar(amg.getUsuario()).getDepoimentos().add(depos);
+			return true;
+		}
+		return false;
+	}
+	public String listarDepoimentos(Amigo amg){
+		Usuario user = rep.buscar(amg.getUsuario());
+		ArrayList<Depoimento> depos = user.getDepoimentos();
+		String mensagem = user.getDepoimentos().size() +"  Depoimentos";
+		for(Depoimento a : depos){
+			if(a != null){
+				mensagem +="\n-----------------\n"+ a.toString();
+			}		
+		}
+		return(mensagem);
+	}
 	//Amigos
-	
 	public Amigo buscarAmigos(Usuario user, String userAmg){
 		int i = user.getAmigos().indexOf(new Amigo(userAmg));
 		if(i == -1){
@@ -98,7 +121,6 @@ public class CadastroUsuario {
 	}
 	public boolean addAmigo(Usuario user, Amigo amg){
 		if(user.addAmigo(amg)){
-			System.out.println(amg.getConvite());
 			rep.buscar(amg.getUsuario()).addAmigo(new Amigo(user.getNome(),user.getDataNasc(),user.getUsuario(),
 						user.getSexo(),user.getEmail(),1));
 			

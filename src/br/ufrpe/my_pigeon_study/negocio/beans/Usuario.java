@@ -13,7 +13,7 @@ public class Usuario {
 	private ArrayList<Task> tasks;
 	private ArrayList<Amigo> amigos;
 	private ArrayList<Amigo> amigosPendentes;
-
+	private ArrayList<Depoimento> depoimentos;
 	public Usuario() {
 		super();
 	}
@@ -34,7 +34,7 @@ public class Usuario {
 		this.tasks = new ArrayList<Task>();
 		this.amigos= new ArrayList<Amigo>();
 		this.amigosPendentes= new ArrayList<Amigo>();
-
+		this.depoimentos = new ArrayList<Depoimento>();
 	}
 	
 	//METODO PARA ADICIONAR AMIGO
@@ -65,7 +65,20 @@ public class Usuario {
 		return false;
 	}
 	
+	public boolean contemAmigo(Amigo amg){
+		if(this.amigos.contains(amg)){
+				return true;		
+		}
+		return false;
+	}
+	
 	//GETTERS AND SETTERS
+	public ArrayList<Depoimento> getDepoimentos() {
+		return depoimentos;
+	}
+	public void setDepoimentos(ArrayList<Depoimento> depoimentos) {
+		this.depoimentos = depoimentos;
+	}
 	public ArrayList<Atividade> getAtividades() {
 		return atividades;
 	}

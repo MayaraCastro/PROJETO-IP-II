@@ -25,11 +25,18 @@ public class Fachada {
 	public boolean alterarUsuario(Usuario user){
 		return(this.cadastroU.alterar(user));
 	}
-
 	public Usuario logar(Usuario user){
 		return(this.login.logar(user));
 	}
-
+	
+	//DEPOIMENTOS
+	public boolean postarDepoimento(Usuario user, Amigo amg, String depo){
+		return(cadastroU.postarDepoimento(user, amg, depo));
+	}
+	public String listarDepoimentos(Amigo amg){
+		return(cadastroU.listarDepoimentos(amg));
+	}
+	
 	//AMIGOS
 	public Amigo buscarAmigos(Usuario user, String userAmg){
 		return(cadastroU.buscarAmigos(user, userAmg));

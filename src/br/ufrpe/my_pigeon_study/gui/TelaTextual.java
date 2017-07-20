@@ -209,7 +209,7 @@ public class TelaTextual {
 		System.out.println("Nome :"+user.getNome());
 		System.out.println("Usuario: "+ user.getUsuario());
 		System.out.println("Data de Nascimento: "+ user.getDataNasc());
-		System.out.println("\n[1]Alterar\n[2]Voltar");
+		System.out.println("\n[1]Alterar\n[2]Ver Depoimentos\n[3]Voltar");
 		int resp=scanner.nextInt();
 			switch(resp){
 			case 1:{
@@ -217,6 +217,11 @@ public class TelaTextual {
 				break;
 			}
 			case 2:{
+				this.listarDepoimentos(new Amigo(user.getUsuario()));
+				break;
+			}
+			case 3:{
+				
 			}
 		}
 	}
@@ -321,11 +326,11 @@ public class TelaTextual {
 					break;
 				}
 				case 2:{
-					//TODO fazer o listar depoimentos
+					this.listarDepoimentos(amigo);
 					break;
 				}
 				case 3:{
-					//TODO fazer o postar depoimento
+					this.postarDepoimento(user, amigo);
 					break;
 				}
 				case 4:{
@@ -366,7 +371,7 @@ public class TelaTextual {
 					break;
 				}
 				case 3:{
-					//TODO fazer o listar depoimento
+					this.listarDepoimentos(amigo);
 					break;
 				}
 				case 4:{
@@ -384,7 +389,7 @@ public class TelaTextual {
 		String mensagem = fachada.listarAmigos(user);
 		System.out.println("====Amigos====");
 		if(mensagem == null){
-			System.out.println("Voce nao tem atividades");
+			System.out.println("Voce nao tem amigos");
 		}else{
 			System.out.println(mensagem);
 		}
@@ -393,7 +398,7 @@ public class TelaTextual {
 		String mensagem = fachada.listarAmigosPendentes(user);
 		System.out.println("====Amigos====");
 		if(mensagem == null){
-			System.out.println("Voce nao tem atividades");
+			System.out.println("Voce nao tem amigos pendentes");
 		}else{
 			System.out.println(mensagem);
 		}
@@ -423,6 +428,7 @@ public class TelaTextual {
 							break;
 						}
 						case 2:{
+							this.listarDepoimentos(amigo);
 							//TODO fazer o listar depoimento
 							break;
 						}
@@ -455,7 +461,7 @@ public class TelaTextual {
 								break;
 							}
 							case 3:{
-								//TODO fazer o listar depoimento
+								this.listarDepoimentos(amigo);
 								break;
 							}
 							case 4:{
@@ -479,7 +485,7 @@ public class TelaTextual {
 									break;
 								}
 								case 2:{
-									//TODO fazer o listar depoimento
+									this.listarDepoimentos(amigo);
 									break;
 								}
 								case 3:{
@@ -507,11 +513,11 @@ public class TelaTextual {
 						break;
 					}
 					case 2:{
-						//TODO fazer o listar depoimentos
+						this.listarDepoimentos(amigo);
 						break;
 					}
 					case 3:{
-						//TODO fazer o postar depoimento
+						this.postarDepoimento(user, amigo);
 						break;
 					}
 					case 4:{
@@ -526,9 +532,31 @@ public class TelaTextual {
 			}
 		}
 	}
-	
+	public void listarDepoimentos(Amigo amigo){
+		String mensagem = fachada.listarDepoimentos(amigo);
+		System.out.println("====Depoimentos====");
+		if(mensagem == null){
+			System.out.println("Nenhum Depoimento");
+		}else{
+			System.out.println(mensagem);
+		}
+	}
+	public void postarDepoimento(Usuario user, Amigo amigo){
+			System.out.print("Mensagem: ");
+			scanner.nextLine();
+			String msg = scanner.nextLine();
+			System.out.flush();
+			boolean a = fachada.postarDepoimento(user, amigo, msg);
+			if(a == false){
+				System.out.println("Erro ao Buscar");
+			}
+			else
+			{
+				System.out.println("Postado com sucesso!");
+			}
+	}
 	//ATIVIDADE
-//TELAS Atividades
+	//TELAS Atividades
 	public void cadastroAtividade(Usuario user){
 		String nome=new String();
 		int dia_da_semana = 0;

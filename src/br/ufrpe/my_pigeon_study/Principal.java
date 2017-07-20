@@ -17,6 +17,8 @@ public class Principal {
 		Usuario usera= new Usuario("mayara",dataNasc, "mayara", "mayara", 1, "mayara@mayara");
 		fachada.cadastrarUsuario(user);
 		fachada.cadastrarUsuario(usera);
+		Amigo amg = new Amigo(user.getNome(), user.getDataNasc(),user.getUsuario() , 0,user.getEmail() );
+		fachada.addAmigo(usera, amg);
 
 		tela.menuInicial();
 	}
