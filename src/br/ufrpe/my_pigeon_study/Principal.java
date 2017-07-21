@@ -13,11 +13,11 @@ public class Principal {
 		
 		//USUARIO JA PRONTO PRA TESTES
 		Data dataNasc= new Data(2,2,1999);
-		Usuario user= new Usuario("Maria",dataNasc, "maria", "maria", 1, "maria@maria");
-		Usuario usera= new Usuario("mayara",dataNasc, "mayara", "mayara", 1, "mayara@mayara");
+		Usuario user= new Usuario("Maria", "maria", "maria", 1, "maria@maria",dataNasc);
+		Usuario usera= new Usuario("mayara", "mayara", "mayara", 1, "mayara@mayara",dataNasc);
 		fachada.cadastrarUsuario(user);
 		fachada.cadastrarUsuario(usera);
-		Amigo amg = new Amigo(user.getNome(), user.getDataNasc(),user.getUsuario() , 0,user.getEmail() );
+		Amigo amg = new Amigo(user.getNome(),user.getUsuario() , 0,user.getEmail(),user.getDataNasc());
 		fachada.addAmigo(usera, amg);
 
 		tela.menuInicial();

@@ -2,39 +2,38 @@ package br.ufrpe.my_pigeon_study.negocio.beans;
 
 import java.util.ArrayList;
 
-public class Usuario {
-	private String nome;
-	private Data dataNasc;
+public class Usuario extends Pessoa{
 	private String usuario;
 	private String senha;
-	private int sexo;//1-feminino, 2-masculino e 3-outro
 	private String email;
 	private ArrayList<Atividade> atividades;
 	private ArrayList<Task> tasks;
 	private ArrayList<Amigo> amigos;
 	private ArrayList<Amigo> amigosPendentes;
 	private ArrayList<Depoimento> depoimentos;
-	public Usuario() {
-		super();
+	private ArrayList<Comunidade> comunidade;
+	private ArrayList<Post> postagem;
+	
+	public Usuario(){
+
 	}
 	public Usuario(String usuario, String senha){
-		this.senha=senha;
 		this.usuario=usuario;
+		this.senha=senha;
 	}
-	public Usuario(String nome, Data dataNasc, String usuario, String senha, int sexo, String email) {
-		super();
-		this.nome = nome;
-		this.dataNasc = dataNasc;
+
+	public Usuario(String nome, String usuario, String senha, int sexo, String email, Data dataNasc) {
+		super(nome,sexo,dataNasc);
+		
 		this.usuario = usuario;
 		this.senha = senha;
-		this.sexo = sexo;
 		this.email = email;
 		
 		this.atividades = new ArrayList<Atividade>();
 		this.tasks = new ArrayList<Task>();
 		this.amigos= new ArrayList<Amigo>();
 		this.amigosPendentes= new ArrayList<Amigo>();
-		this.depoimentos = new ArrayList<Depoimento>();
+
 	}
 	
 	//METODO PARA ADICIONAR AMIGO
@@ -71,6 +70,36 @@ public class Usuario {
 		}
 		return false;
 	}
+	//MANUPULAÇÃO da Comunidade
+	public boolean addComunidade(Comunidade cmd){
+		if(!this.comunidade.contains(cmd)){
+			this.comunidade.add(cmd);
+			return true;
+		}
+		return false;
+	}
+	public boolean delComunidade(Comunidade cmd){
+		if(this.comunidade.contains(cmd)){
+			this.comunidade.remove(cmd);
+			return(true);
+		}
+		return false;
+	}
+	//MANIPULAÇÃO DE POST
+	public boolean addpOST(Post post){
+		if(!this.postagem.contains(post)){
+			this.postagem.add(post);
+			return true;
+		}
+		return false;
+	}
+	public boolean delPost(Post post){
+		if(!this.postagem.contains(post)){
+			this.postagem.remove(post);
+			return(true);
+		}
+		return false;
+	}
 	
 	//GETTERS AND SETTERS
 	public ArrayList<Depoimento> getDepoimentos() {
@@ -93,27 +122,6 @@ public class Usuario {
 
 	}
 
-
-	public String getNome() {
-		return nome;
-	}
-
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-
-	public Data getDataNasc() {
-		return dataNasc;
-	}
-
-
-	public void setDataNasc(Data dataNasc) {
-		this.dataNasc = dataNasc;
-	}
-
-
 	public String getUsuario() {
 		return usuario;
 	}
@@ -132,17 +140,6 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-
-
-	public int getSexo() {
-		return sexo;
-	}
-
-
-	public void setSexo(int sexo) {
-		this.sexo = sexo;
-	}
-
 
 	public String getEmail() {
 		return email;
@@ -166,11 +163,26 @@ public class Usuario {
 	public void setAmigosPendentes(ArrayList<Amigo> amigosPendentes) {
 		this.amigosPendentes = amigosPendentes;
 	}
+	public ArrayList<Comunidade> getComunidade() {
+		return comunidade;
+	}
+
+	public void setComunidade(ArrayList<Comunidade> comunidade) {
+		this.comunidade = comunidade;
+	}
 	
+	public ArrayList<Post> getPostagem() {
+		return postagem;
+	}
+
+	public void setPostagem(ArrayList<Post> postagem) {
+		this.postagem = postagem;
+	}
+
 	@Override
 	public String toString() {
-		return "Usuario [nome=" + nome + ", dataNasc=" + dataNasc + ", usuario=" + usuario + ", senha=" + senha
-				+ ", sexo=" + sexo + ", email=" + email + ", atividades=" + atividades.toString() + ", tasks="
+		return "Usuario [nome=" + this.getNome() + ", dataNasc=" + this.getDataNasc() + ", usuario=" + usuario + ", senha=" + senha
+				+ ", sexo=" + this.getSexo() + ", email=" + email + ", atividades=" + atividades.toString() + ", tasks="
 				+ tasks.toString() + "]";
 	}
 

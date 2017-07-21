@@ -114,15 +114,15 @@ public class CadastroUsuario {
 	public Amigo buscarGeral(Usuario user, String userAmg){
 		Usuario u = rep.buscar(userAmg);
 		if(u!= null && u.getUsuario()!= user.getUsuario()){
-			return(new Amigo(u.getNome(),u.getDataNasc(),u.getUsuario(),
-					u.getSexo(),u.getEmail()));
+			return(new Amigo(u.getNome(),u.getUsuario(),
+					u.getSexo(),u.getEmail(),u.getDataNasc()));
 		}
 		return null;
 	}
 	public boolean addAmigo(Usuario user, Amigo amg){
 		if(user.addAmigo(amg)){
-			rep.buscar(amg.getUsuario()).addAmigo(new Amigo(user.getNome(),user.getDataNasc(),user.getUsuario(),
-						user.getSexo(),user.getEmail(),1));
+			rep.buscar(amg.getUsuario()).addAmigo(new Amigo(user.getNome(),user.getUsuario(),
+						user.getSexo(),1,user.getEmail(),user.getDataNasc()));
 			
 			return(true);
 		}
@@ -131,8 +131,8 @@ public class CadastroUsuario {
 	}
 	public boolean delAmigo(Usuario user, Amigo amg){
 		if(user.delAmigo(amg)){
-			rep.buscar(amg.getUsuario()).delAmigo(new Amigo(user.getNome(),user.getDataNasc(),user.getUsuario(),
-					user.getSexo(),user.getEmail()));
+			rep.buscar(amg.getUsuario()).addAmigo(new Amigo(user.getNome(),user.getUsuario(),
+			user.getSexo(),1,user.getEmail(),user.getDataNasc()));
 			return(true);
 		}
 		return(false);

@@ -110,7 +110,7 @@ public class TelaTextual {
 		sexo=scanner.nextInt();
 		System.out.flush();
 		
-		Usuario user = new Usuario(nome,dataNasc,usuario,senha,sexo,email);
+		Usuario user = new Usuario(nome,usuario,senha,sexo,email,dataNasc);
 		if(fachada.cadastrarUsuario(user)){
 			System.out.println("Cadastro com sucesso!");
 		}
@@ -148,7 +148,7 @@ public class TelaTextual {
 		sexo=scanner.nextInt();
 		System.out.flush();
 		
-		Usuario user = new Usuario(nome,dataNasc,usuario,senha,sexo,email);
+		Usuario user = new Usuario(nome,usuario,senha,sexo,email,dataNasc);
 		if(fachada.alterarUsuario(user)){
 			System.out.println("Altera�ao com sucesso!");
 		}

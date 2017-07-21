@@ -1,38 +1,28 @@
 package br.ufrpe.my_pigeon_study.negocio.beans;
 
-public class Amigo {
-	private String nome;
-	private Data dataNasc;
-	private String usuario;
-	private int sexo;//1-feminino, 2-masculino e 3-outro
+public class Amigo extends Pessoa{
+	private int convite;
 	private String email;
-	private int convite;//1 se o amigo q enviou o convite, 0 se o amigo q recebeu o convite 
-	
-	//CONSTRUTOR
-	public Amigo(String user){
-		this.usuario = user;
+	private String usuario;
+	private Data dataNasc;
+
+	public Amigo(String usuario){
+		this.usuario=usuario;
 	}
-	public Amigo(String nome, Data dataNasc, String usuario, int sexo, String email) {
-		super();
-		this.nome = nome;
-		this.dataNasc = dataNasc;
-		this.usuario = usuario;
-		this.sexo = sexo;
-		this.email = email;
+	public Amigo(){
+		
 	}
-	public Amigo(String nome, Data dataNasc, String usuario, int sexo, String email, int convite) {
-		super();
-		this.nome = nome;
-		this.dataNasc = dataNasc;
-		this.usuario = usuario;
-		this.sexo = sexo;
-		this.email = email;
-		this.convite=convite;
+	public Amigo(String nome, String usuario,  int sexo, String email, Data dataNasc){
+		super(nome, sexo, dataNasc);
+		this.email=email;
+		this.usuario=usuario;
+		this.dataNasc=dataNasc;
 	}
-	//GETTERS AND SETTERS
-	
-	public String getNome() {
-		return nome;
+	public Amigo(String nome, String usuario, int sexo, int convite, String email, Data dataNasc){
+		super(nome, sexo, dataNasc);
+		this.email=email;
+		this.usuario=usuario;
+		this.dataNasc=dataNasc;
 	}
 	public int getConvite() {
 		return convite;
@@ -40,32 +30,23 @@ public class Amigo {
 	public void setConvite(int convite) {
 		this.convite = convite;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
 	public Data getDataNasc() {
 		return dataNasc;
 	}
 	public void setDataNasc(Data dataNasc) {
 		this.dataNasc = dataNasc;
 	}
-	public String getUsuario() {
-		return usuario;
-	}
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-	public int getSexo() {
-		return sexo;
-	}
-	public void setSexo(int sexo) {
-		this.sexo = sexo;
-	}
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 	
 	//EQUALS
@@ -88,10 +69,10 @@ public class Amigo {
 	//TOSTRING
 	@Override
 	public String toString() {
-		return "Amigo [nome: " + nome + 
+		return "Amigo [nome: " + this.getNome() + 
 				"\nDataNasc: " + dataNasc +
 				"\nUsuario: " + usuario + 
-				"\nSexo: " + sexo+ 
+				"\nSexo: " + this.getSexo()+ 
 				"\nEmail="
 				+ email + "]";
 	}
