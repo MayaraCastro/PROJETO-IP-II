@@ -164,8 +164,7 @@ public class TelaTextual {
 			System.out.println("[2]Calendario");
 			System.out.println("[3]Tasks");
 			System.out.println("[4]Atividades");
-			System.out.println("[5]Amigos");
-			System.out.println("[6]Sair");
+			System.out.println("[5]Sair");
 			System.out.println("=====BEMVINDO=====");
 			System.out.print("RESPOSTA: ");
 			int resposta=scanner.nextInt();
@@ -188,12 +187,6 @@ public class TelaTextual {
 				}
 				case 5:{
 
-					this.menuAmigos(user);
-
-					break;
-				}
-				case 6:{
-
 					saida=true;
 
 					break;
@@ -209,7 +202,7 @@ public class TelaTextual {
 		System.out.println("Nome :"+user.getNome());
 		System.out.println("Usuario: "+ user.getUsuario());
 		System.out.println("Data de Nascimento: "+ user.getDataNasc());
-		System.out.println("\n[1]Alterar\n[2]Ver Depoimentos\n[3]Voltar");
+		System.out.println("\n[1]Alterar\n[2]Voltar");
 		int resp=scanner.nextInt();
 			switch(resp){
 			case 1:{
@@ -217,11 +210,7 @@ public class TelaTextual {
 				break;
 			}
 			case 2:{
-				this.listarDepoimentos(new Amigo(user.getUsuario()));
 				break;
-			}
-			case 3:{
-				
 			}
 		}
 	}
@@ -258,304 +247,7 @@ public class TelaTextual {
 		
 	}
 	
-	//AMIGOS
-	public void menuAmigos(Usuario user){
-		boolean saida=false;
-		while(!saida){
-			System.out.println("=====BEMVINDO=====");
-			System.out.println("[1]Buscar Amigos");
-			System.out.println("[2]Listar Amigos");
-			System.out.println("[3]Buscar Amigos Pendentes");
-			System.out.println("[4]Listar Amigos Pendentes");
-			System.out.println("[5]Buscar Geral");
-			System.out.println("[6]voltar");
-			System.out.println("=====BEMVINDO=====");
-			System.out.print("RESPOSTA: ");
-			int resposta=scanner.nextInt();
-			switch(resposta){
-				case 1:{
-					this.buscarAmigos(user);
-					break;
-				}
-				case 2:{
-					this.listarAmigos(user);
-					break;
-				}
-				case 3:{
-					this.buscarAmigosPendentes(user);
-					break;
-				}
-				case 4:{
-					this.listarAmigosPendentes(user);
-					break;
-				}
-				case 5:{
-					this.buscaGeral(user);
-					break;
-				}
-				case 6:{
-					saida=true;
-					break;
-				}
-				default:{
-					System.out.println("ERROR! DIGITE UM NUMERO VALIDO");
-				}
-			}
-		}
-	}
-	public void buscarAmigos(Usuario user){
-		System.out.print("Usuario: ");
-		String userAmigo=scanner.next();
-		System.out.flush();
-		Amigo amigo=fachada.buscarAmigos(user,userAmigo);
-		if(amigo==null){
-			System.out.println("Erro ao Buscar");
-		}
-		else
-		{
-			System.out.println(amigo);
-			System.out.println("\n[1]Remover Amigo"
-							+ "\n[2]Ver Depoimentos"
-							+ "\n[3]Postar Depoimento"
-							+ "\n[4]Ver Comunidades"
-							+ "\n[5]Voltar");
-			int resp=scanner.nextInt();
-			switch(resp){
-				case 1:{
-					fachada.delAmigo(user, amigo);
-					break;
-				}
-				case 2:{
-					this.listarDepoimentos(amigo);
-					break;
-				}
-				case 3:{
-					this.postarDepoimento(user, amigo);
-					break;
-				}
-				case 4:{
-					//TODO fazer o listar comunidades
-					break;
-				}
-				case 5:{
-					
-					break;
-				}
-			}
-		}
-	}
-	public void buscarAmigosPendentes(Usuario user){
-		System.out.print("Usuario: ");
-		String userAmigo=scanner.next();
-		System.out.flush();
-		Amigo amigo=fachada.buscarAmigosPendentes(user,userAmigo);
-		if(amigo==null){
-			System.out.println("Erro ao Buscar");
-		}
-		else
-		{
-			System.out.println(amigo);
-			System.out.println("\n[1]Aceitar Amizade"
-							+ "\n[2]Recusar Amizade"
-							+ "\n[3]Ver Depoimentos"
-							+ "\n[4]Ver Comunidades"
-							+ "\n[5]Voltar");
-			int resp=scanner.nextInt();
-			switch(resp){
-				case 1:{
-					fachada.addAmigo(user, amigo);
-					break;
-				}
-				case 2:{
-					fachada.delAmigo(user, amigo);
-					break;
-				}
-				case 3:{
-					this.listarDepoimentos(amigo);
-					break;
-				}
-				case 4:{
-					//TODO fazer o listar comunidades
-					break;
-				}
-				case 5:{
-					
-					break;
-				}
-			}
-		}
-	}
-	public void listarAmigos(Usuario user){
-		String mensagem = fachada.listarAmigos(user);
-		System.out.println("====Amigos====");
-		if(mensagem == null){
-			System.out.println("Voce nao tem amigos");
-		}else{
-			System.out.println(mensagem);
-		}
-	}
-	public void listarAmigosPendentes(Usuario user){
-		String mensagem = fachada.listarAmigosPendentes(user);
-		System.out.println("====Amigos====");
-		if(mensagem == null){
-			System.out.println("Voce nao tem amigos pendentes");
-		}else{
-			System.out.println(mensagem);
-		}
-	}
-	public void buscaGeral(Usuario user){
-		System.out.print("Buscar Usuario: ");
-		String userAmigo=scanner.next();
-		System.out.flush();
-		Amigo amigo = fachada.buscarGeral(user, userAmigo);
-		if(amigo==null){
-			System.out.println("Erro ao Buscar");
-		}
-		else
-		{	
-			System.out.println(amigo);
-			if( fachada.buscarAmigos(user, userAmigo) == null){
-				if(fachada.buscarAmigosPendentes(user, userAmigo) == null){
-					
-					System.out.println("\n[1]Enviar Pedido de Amizade"
-									+ "\n[2]Ver Depoimentos"
-									+ "\n[3]Ver Comunidades"
-									+ "\n[4]Voltar");
-					int resp=scanner.nextInt();
-					switch(resp){
-						case 1:{
-							fachada.addAmigo(user, amigo);
-							break;
-						}
-						case 2:{
-							this.listarDepoimentos(amigo);
-							//TODO fazer o listar depoimento
-							break;
-						}
-						case 3:{
-							//TODO fazer o listar comunidades
-							break;
-						}
-						case 4:{
-							
-							break;
-						}
-					}
-				}
-				else{
-					amigo = fachada.buscarAmigosPendentes(user, userAmigo);
-					if(amigo.getConvite() == 1){
-						System.out.println("\n[1]Aceitar Amizade"
-							+ "\n[2]Recusar Amizade"
-							+ "\n[3]Ver Depoimentos"
-							+ "\n[4]Ver Comunidades"
-							+ "\n[5]Voltar");
-						int resp=scanner.nextInt();
-						switch(resp){
-							case 1:{
-								fachada.addAmigo(user, amigo);
-								break;
-							}
-							case 2:{
-								fachada.delAmigo(user, amigo);
-								break;
-							}
-							case 3:{
-								this.listarDepoimentos(amigo);
-								break;
-							}
-							case 4:{
-								//TODO fazer o listar comunidades
-								break;
-							}
-							case 5:{
-								
-								break;
-							}
-						}
-					}else{
-						System.out.println("\n[1]Remover Pedido de Amizade"
-								+ "\n[2]Ver Depoimentos"
-								+ "\n[3]Ver Comunidades"
-								+ "\n[4]Voltar");
-							int resp=scanner.nextInt();
-							switch(resp){
-								case 1:{
-									fachada.delAmigo(user, amigo);
-									break;
-								}
-								case 2:{
-									this.listarDepoimentos(amigo);
-									break;
-								}
-								case 3:{
-									//TODO fazer o listar comunidades
-									break;
-								}
-								case 4:{
-									
-									break;
-								}
-							}
-					}
-					
-				}
-			}else{
-				System.out.println("\n[1]Remover Amigo"
-						+ "\n[2]Ver Depoimentos"
-						+ "\n[3]Postar Depoimento"
-						+ "\n[4]Ver Comunidades"
-						+ "\n[5]Voltar");
-				int resp=scanner.nextInt();
-				switch(resp){
-					case 1:{
-						fachada.delAmigo(user, amigo);
-						break;
-					}
-					case 2:{
-						this.listarDepoimentos(amigo);
-						break;
-					}
-					case 3:{
-						this.postarDepoimento(user, amigo);
-						break;
-					}
-					case 4:{
-						//TODO fazer o listar comunidades
-						break;
-					}
-					case 5:{
-						
-						break;
-					}
-				}
-			}
-		}
-	}
-	public void listarDepoimentos(Amigo amigo){
-		String mensagem = fachada.listarDepoimentos(amigo);
-		System.out.println("====Depoimentos====");
-		if(mensagem == null){
-			System.out.println("Nenhum Depoimento");
-		}else{
-			System.out.println(mensagem);
-		}
-	}
-	public void postarDepoimento(Usuario user, Amigo amigo){
-			System.out.print("Mensagem: ");
-			scanner.nextLine();
-			String msg = scanner.nextLine();
-			System.out.flush();
-			boolean a = fachada.postarDepoimento(user, amigo, msg);
-			if(a == false){
-				System.out.println("Erro ao Buscar");
-			}
-			else
-			{
-				System.out.println("Postado com sucesso!");
-			}
-	}
-	//ATIVIDADE
+//ATIVIDADE
 	//TELAS Atividades
 	public void cadastroAtividade(Usuario user){
 		String nome=new String();
