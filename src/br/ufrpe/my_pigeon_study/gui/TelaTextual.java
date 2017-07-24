@@ -2,6 +2,10 @@ package br.ufrpe.my_pigeon_study.gui;
 import br.ufrpe.my_pigeon_study.negocio.beans.*;
 import br.ufrpe.my_pigeon_study.negocio.*;
 import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+import javax.swing.text.InternationalFormatter;
+
 import java.util.Calendar;
 
 public class TelaTextual {
@@ -111,12 +115,22 @@ public class TelaTextual {
 		System.out.flush();
 		
 		Usuario user = new Usuario(nome,usuario,senha,sexo,email,dataNasc);
-		if(fachada.cadastrarUsuario(user)){
+		try{
+			fachada.cadastrarUsuario(user);
+		}catch(InformacaoEmBrancoException e){
+			JOptionPane.showMessageDialog(null, e.getMessage());
+		}catch(InformacaoInvalidaException e1){
+			
+			System.out.println(e1.getMessage());
+			JOptionPane.showMessageDialog(null, e1.getMessage().toString() );
+		}
+		
+		/*if(){
 			System.out.println("Cadastro com sucesso!");
 		}
 		else{
 			System.out.println("Erro ao efetuar cadastro!");
-		}
+		}*/
 	}
 	public void alterarUsuario(String usuario){
 		String nome=new String();
@@ -149,12 +163,17 @@ public class TelaTextual {
 		System.out.flush();
 		
 		Usuario user = new Usuario(nome,usuario,senha,sexo,email,dataNasc);
-		if(fachada.alterarUsuario(user)){
+		try{
+			fachada.alterarUsuario(user);
+		}catch(Exception e){
+			JOptionPane.showMessageDialog(null, e.getMessage());
+		}
+		/*if(){
 			System.out.println("Altera�ao com sucesso!");
 		}
 		else{
 			System.out.println("Erro ao efetuar altera�ao!");
-		}
+		}*/
 	}
 	public void telaInicial(Usuario user){//TODO fazer o comunidade
 		boolean saida=false;
@@ -278,12 +297,18 @@ public class TelaTextual {
 		System.out.flush();
 
 		Atividade atividade = new Atividade(nome,dia_da_semana,horario,obs);
-		if(fachada.cadastrarAtividade(user, atividade)){
+		try{
+			fachada.cadastrarAtividade(user, atividade);
+		}catch(Exception e){
+			JOptionPane.showMessageDialog(null, e.getMessage());
+		}
+		
+		/*if(){
 			System.out.println("Cadastro com sucesso!");
 		}
 		else{
 			System.out.println("Erro!");
-		}
+		}*/
 	}
 	public void menuAtividades(Usuario user){
 		boolean saida=false;
@@ -374,13 +399,19 @@ public class TelaTextual {
 			
 			
 		Atividade novaAtivi = new Atividade(nome,dia_da_semana,horario,obs);
-	if(fachada.alterarAtividade(user,novaAtivi,nomeOriginal)){
+		
+		try{
+			fachada.alterarAtividade(user,novaAtivi,nomeOriginal);
+		}catch(Exception e){
+			JOptionPane.showMessageDialog(null, e.getMessage());
+		}
+		/*if(){
 		System.out.println("Alterado com Sucesso");
 		}
 		else
 		{
 			System.out.println("Erro ao Alterar");
-		}
+		}*/
 	}
 	public void deletarDisciplina(Usuario user, String nome){
 		if(fachada.deletarAtividade(user, nome) == true){
@@ -481,13 +512,19 @@ public class TelaTextual {
 		String descricao=scanner.nextLine();
 
 		Task novaTask = new Task(data, nome, descricao, tipo, dia_da_semana, horario, obs );
-		if(fachada.cadastrarTask(user,novaTask)){
+		try{
+			fachada.cadastrarTask(user,novaTask);
+		}catch(Exception e){
+			JOptionPane.showMessageDialog(null, e.getMessage());
+		}
+		
+		/*if(){
 			System.out.println("Inserido com Sucesso");
 		}
 		else
 		{
 			System.out.println("Erro ao Inserir");
-		}
+		}*/
 	}
 	public void buscarTask(Usuario user){
 		System.out.print("Nome: ");
@@ -552,14 +589,19 @@ public class TelaTextual {
 		System.out.print("Descricao: ");
 		String descricao=scanner.nextLine();
 		Task novaTask = new Task(data, nome, descricao, tipo, dia_da_semana, horario, obs);
-		 
-		if(fachada.alterarTask(user,novaTask, Original)){
+		try{
+			fachada.alterarTask(user,novaTask, Original);
+		}catch(Exception e){
+			JOptionPane.showMessageDialog(null, e.getMessage());
+		}
+		/*
+		if(){
 			System.out.println("Alterado com Sucesso");
 		}
 		else
 		{
 			System.out.println("Erro ao Alterar");
-		}
+		}*/
 	}
 	public void deletarTask(Usuario user,String nome){
 		if(fachada.deletarTask(user,nome)==true){

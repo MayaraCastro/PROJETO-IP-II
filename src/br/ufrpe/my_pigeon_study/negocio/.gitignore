@@ -6,3 +6,5 @@
 /CadastroTask.class
 /CadastroComunidade.class
 /CadastroForum.class
+/InformacaoEmBrancoException.class
+/InformacaoInvalidaException.class

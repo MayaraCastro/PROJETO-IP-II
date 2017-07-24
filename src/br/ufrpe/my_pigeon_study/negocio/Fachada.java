@@ -19,10 +19,10 @@ public class Fachada {
 	}
 	
 	//USUARIO
-	public boolean cadastrarUsuario(Usuario user){
+	public boolean cadastrarUsuario(Usuario user)throws InformacaoInvalidaException, InformacaoEmBrancoException{
 		return(this.cadastroU.cadastrar(user));
 	}
-	public boolean alterarUsuario(Usuario user){
+	public boolean alterarUsuario(Usuario user)throws InformacaoInvalidaException, InformacaoEmBrancoException{
 		return(this.cadastroU.alterar(user));
 	}
 	public Usuario logar(Usuario user){
@@ -41,13 +41,13 @@ public class Fachada {
 	public String calendarioTasks(Usuario user, Data data){
 		return(cadastroU.calendarioTask(user,data));
 	}
-	public boolean cadastrarTask(Usuario user,Task task){
+	public boolean cadastrarTask(Usuario user,Task task)throws InformacaoInvalidaException, InformacaoEmBrancoException{
 		return(this.cadastroU.cadastrarTask(user,task));
 	}
 	public Task buscarTask(Usuario user,String nome){
 		return(this.cadastroU.buscarTasks(user,nome));
 	}
-	public boolean alterarTask(Usuario user,Task novaTask,Task nomeOriginal){
+	public boolean alterarTask(Usuario user,Task novaTask,Task nomeOriginal)throws InformacaoInvalidaException, InformacaoEmBrancoException{
 		return(cadastroU.alterarTask(user,novaTask,nomeOriginal));
 	}
 	public boolean deletarTask(Usuario user,String nome){
@@ -58,13 +58,13 @@ public class Fachada {
 }
 	//DISCIPLINA
 	
-	public boolean cadastrarAtividade(Usuario user, Atividade atividade){
+	public boolean cadastrarAtividade(Usuario user, Atividade atividade)throws InformacaoInvalidaException, InformacaoEmBrancoException{
 		return(this.cadastroU.cadastrarAtividade(user, atividade));
 	}
 	public Atividade buscarAtividade(Usuario user, String nome){
 		return(this.cadastroU.buscarAtividade(user, nome));
 	}
-	public boolean alterarAtividade(Usuario user,Atividade nova,Atividade original){
+	public boolean alterarAtividade(Usuario user,Atividade nova,Atividade original)throws InformacaoInvalidaException, InformacaoEmBrancoException{
 		return(cadastroU.alterarAtividade(user, nova,original));
 	}
 	public boolean deletarAtividade(Usuario user,String nome){

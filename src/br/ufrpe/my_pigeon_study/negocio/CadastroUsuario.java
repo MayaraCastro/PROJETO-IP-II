@@ -9,34 +9,46 @@ public class CadastroUsuario {
 	public CadastroUsuario(){
 		this.rep = RepositorioUsuario.getInstancia();
 	}
-	public boolean cadastrar(Usuario user){
+	public boolean cadastrar(Usuario user)throws InformacaoInvalidaException, InformacaoEmBrancoException{
 			if(user.getNome() != "" && user.getEmail() != "" && user.getUsuario() != ""
-			&& user.getSenha() != "" && (user.getSexo()<4 && user.getSexo() > 0)
-			&& (user.getDataNasc().getMes() < 13 && user.getDataNasc().getMes() > 0 
-			&& user.getDataNasc().getDia() < 32 && user.getDataNasc().getDia() > 0
-			&& user.getDataNasc().getAno() < 2017 && user.getDataNasc().getAno() > 1900)){
-				if(this.rep.inserir(user)){
-					return(true);
-				}
-				
+				&& user.getSenha() != "" ){
+				if((user.getSexo()<4 && user.getSexo() > 0)
+					&& (user.getDataNasc().getMes() < 13 && user.getDataNasc().getMes() > 0 
+					&& user.getDataNasc().getDia() < 32 && user.getDataNasc().getDia() > 0
+					&& user.getDataNasc().getAno() < 2017 && user.getDataNasc().getAno() > 1900)){
+					
+					if(this.rep.inserir(user)){
+						return(true);
+					}
+				}else{
+					throw new InformacaoInvalidaException();
+				}	
+			}else{
+				throw new InformacaoEmBrancoException();
 			}
 			return(false);
 	}
-	public boolean alterar(Usuario user){
+	public boolean alterar(Usuario user)throws InformacaoInvalidaException, InformacaoEmBrancoException{
 		if(user.getNome()!=""&&user.getEmail()!=""&&user.getUsuario()!=""
-		&&user.getSenha()!=""&&(user.getSexo()<4 && user.getSexo()>0)
-		&&(user.getDataNasc().getMes()<13 &&user.getDataNasc().getMes()>0 
-		&& user.getDataNasc().getDia()<32 &&user.getDataNasc().getDia()>0
-		&&user.getDataNasc().getAno()<2017 &&user.getDataNasc().getAno()>1900)){
-				Usuario original=this.rep.buscar(user.getUsuario());
-				original.setNome(user.getNome());
-				original.setDataNasc(user.getDataNasc());
-				original.setEmail(user.getEmail());
-				original.setSenha(user.getSenha());
-				original.setSexo(user.getSexo());
-				if(this.rep.alterar(original)){
-					return(true);
+		&&user.getSenha()!=""){
+			if((user.getSexo()<4 && user.getSexo()>0)
+				&&(user.getDataNasc().getMes()<13 &&user.getDataNasc().getMes()>0 
+				&& user.getDataNasc().getDia()<32 &&user.getDataNasc().getDia()>0
+				&&user.getDataNasc().getAno()<2017 &&user.getDataNasc().getAno()>1900)){
+					Usuario original=this.rep.buscar(user.getUsuario());
+					original.setNome(user.getNome());
+					original.setDataNasc(user.getDataNasc());
+					original.setEmail(user.getEmail());
+					original.setSenha(user.getSenha());
+					original.setSexo(user.getSexo());
+					if(this.rep.alterar(original)){
+						return(true);
+					}
+				}else{
+					throw new InformacaoInvalidaException();
 				}
+		}else{
+			throw new InformacaoEmBrancoException();
 		}
 		return(false);
 }
@@ -50,31 +62,43 @@ public class CadastroUsuario {
 	
 	//Atividades
 	
-	public boolean cadastrarAtividade(Usuario user, Atividade atividade){
+	public boolean cadastrarAtividade(Usuario user, Atividade atividade)throws InformacaoInvalidaException, InformacaoEmBrancoException{
 		
-		if(atividade.getNome() != "" && atividade.getDia_da_semana() >0 &&atividade.getDia_da_semana() <=7 && atividade.getHorario() != null){
+		if(atividade.getNome() != "" ){
+			if(atividade.getDia_da_semana() >0 &&atividade.getDia_da_semana() <=7 && atividade.getHorario() != null){
 			
-			if(this.rep.addAtividade(user, atividade)){
-				return (true);
+				if(this.rep.addAtividade(user, atividade)){
+					return (true);
+				}
+			}else{
+				throw new InformacaoInvalidaException();
 			}
+		}else{
+			throw new InformacaoEmBrancoException();
 		}
 		return (false);
 	}
 	
-	public boolean alterarAtividade(Usuario user, Atividade atividade,Atividade antiga){
+	public boolean alterarAtividade(Usuario user, Atividade atividade,Atividade antiga)throws InformacaoInvalidaException, InformacaoEmBrancoException{
 		
-		if(atividade.getNome() != "" && atividade.getDia_da_semana() >0 &&atividade.getDia_da_semana() <=7 && atividade.getHorario() != null
+		if(atividade.getNome() != ""){
+			if(atividade.getDia_da_semana() >0 &&atividade.getDia_da_semana() <=7 && atividade.getHorario() != null
 				 && atividade.getObs() != ""){
 			
-			Atividade original = this.rep.buscarAtiv(user, antiga.getNome());
-			original.setNome(atividade.getNome());
-			original.setDia_da_semana(atividade.getDia_da_semana());
-			original.setHorario(atividade.getHorario());
-			original.setObs(atividade.getObs());
-			
-			if(this.rep.alterarAtiv(user, original, antiga)){
-				return (true);
+				Atividade original = this.rep.buscarAtiv(user, antiga.getNome());
+				original.setNome(atividade.getNome());
+				original.setDia_da_semana(atividade.getDia_da_semana());
+				original.setHorario(atividade.getHorario());
+				original.setObs(atividade.getObs());
+				
+				if(this.rep.alterarAtiv(user, original, antiga)){
+					return (true);
+				}
+			}else{
+				throw new InformacaoInvalidaException();
 			}
+		}else{
+			throw new InformacaoEmBrancoException();
 		}
 		return (false);
 	}
@@ -102,31 +126,42 @@ public class CadastroUsuario {
 	
 	
 	//tasks
-	public boolean cadastrarTask(Usuario user, Task task){
-		if(task.getNome()!=""&&task.getDescricao()!=""&&task.getData()!=null&&(task.getTipo()>0) && task!=null && user!=null
+	public boolean cadastrarTask(Usuario user, Task task)throws InformacaoInvalidaException, InformacaoEmBrancoException{
+		if(task.getNome()!=""&&task.getDescricao()!=""){
+			if(task.getData()!=null&&(task.getTipo()>0) && task!=null && user!=null
 				&& (task.getData().getMes()<13 &&task.getData().getMes()>0 
 				&&task.getData().getDia()<32 &&task.getData().getDia()>0
 				&&task.getData().getAno()>=2017)){
-			if(this.rep.inserirTask(user,task)){
-				return(true);
+				if(this.rep.inserirTask(user,task)){
+					return(true);
+				}
+			}else{
+				throw new InformacaoInvalidaException();
 			}
-			
+		}else{
+			throw new InformacaoEmBrancoException();
 		}
 		return(false);
 	}
-	public boolean alterarTask(Usuario user,Task task,Task antiga){
-		if(task.getNome()!=""&&task.getDescricao()!=""&&task.getData()!=null&&(task.getTipo()>0)  && antiga!=null && user!=null
-			&&(task.getData().getMes()<13 &&task.getData().getMes()>0 
-			&&task.getData().getDia()<32 &&task.getData().getDia()>0
-			&&task.getData().getAno()>=2017)){
-				Task original=this.rep.buscarTask(user,antiga.getNome());
-				original.setNome(task.getNome());
-				original.setDescricao(task.getDescricao());
-				original.setTipo(task.getTipo());
-				original.setData(task.getData());
-				if(this.rep.alterarTask(user,original,antiga)){
-					return(true);
-				}
+	public boolean alterarTask(Usuario user,Task task,Task antiga)throws InformacaoInvalidaException, InformacaoEmBrancoException{
+		if(task.getNome()!=""&&task.getDescricao()!=""){
+			if(task.getData()!=null&&(task.getTipo()>0) && task!=null && user!=null
+				&& (task.getData().getMes()<13 &&task.getData().getMes()>0 
+				&&task.getData().getDia()<32 &&task.getData().getDia()>0
+				&&task.getData().getAno()>=2017)){
+					Task original=this.rep.buscarTask(user,antiga.getNome());
+					original.setNome(task.getNome());
+					original.setDescricao(task.getDescricao());
+					original.setTipo(task.getTipo());
+					original.setData(task.getData());
+					if(this.rep.alterarTask(user,original,antiga)){
+						return(true);
+					}
+			}else{
+				throw new InformacaoInvalidaException();
+			}
+		}else{
+			throw new InformacaoEmBrancoException();
 		}
 		return(false);
 	}
