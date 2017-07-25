@@ -25,7 +25,7 @@ public class Fachada {
 	public boolean alterarUsuario(Usuario user)throws InformacaoInvalidaException, InformacaoEmBrancoException{
 		return(this.cadastroU.alterar(user));
 	}
-	public Usuario logar(Usuario user){
+	public Usuario logar(Usuario user) throws InformacaoInvalidaException{
 		return(this.login.logar(user));
 	}
 	
@@ -33,44 +33,93 @@ public class Fachada {
 	
 	//TASKS
 	public String showTasks(Usuario user){
-		return(cadastroU.showTask(user));
+		try {
+			return(cadastroU.showTask(user));
+		} catch (InformacaoInvalidaException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
+	
 	public String calendarioAtividades(Usuario user, int dayOfWeek){
-		return(cadastroU.calendarioAtividade(user,dayOfWeek));
+		try {
+			return(cadastroU.calendarioAtividade(user,dayOfWeek));
+		} catch (InformacaoInvalidaException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	public String calendarioTasks(Usuario user, Data data){
-		return(cadastroU.calendarioTask(user,data));
+		try {
+			return(cadastroU.calendarioTask(user,data));
+		} catch (InformacaoInvalidaException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	public boolean cadastrarTask(Usuario user,Task task)throws InformacaoInvalidaException, InformacaoEmBrancoException{
 		return(this.cadastroU.cadastrarTask(user,task));
 	}
 	public Task buscarTask(Usuario user,String nome){
-		return(this.cadastroU.buscarTasks(user,nome));
+		try {
+			return(this.cadastroU.buscarTasks(user,nome));
+		} catch (InformacaoInvalidaException e) {
+			e.printStackTrace();
+		}
+		return null;
+
 	}
 	public boolean alterarTask(Usuario user,Task novaTask,Task nomeOriginal)throws InformacaoInvalidaException, InformacaoEmBrancoException{
 		return(cadastroU.alterarTask(user,novaTask,nomeOriginal));
 	}
 	public boolean deletarTask(Usuario user,String nome){
-		return(this.cadastroU.descadastrarTask(user,nome));
+		try {
+			return(this.cadastroU.descadastrarTask(user,nome));
+		} catch (InformacaoInvalidaException e) {
+			e.printStackTrace();
+		}
+		return (Boolean) null;
+
 	}
 	public String showTask(Usuario user){
-	return(cadastroU.showTask(user));
-}
+		try {
+			return(cadastroU.showTask(user));
+		} catch (InformacaoInvalidaException e) {
+			e.printStackTrace();
+		}
+		return null;
+
+	}
 	//DISCIPLINA
 	
 	public boolean cadastrarAtividade(Usuario user, Atividade atividade)throws InformacaoInvalidaException, InformacaoEmBrancoException{
 		return(this.cadastroU.cadastrarAtividade(user, atividade));
 	}
 	public Atividade buscarAtividade(Usuario user, String nome){
-		return(this.cadastroU.buscarAtividade(user, nome));
+		try {
+			return(this.cadastroU.buscarAtividade(user, nome));
+		} catch (InformacaoInvalidaException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	public boolean alterarAtividade(Usuario user,Atividade nova,Atividade original)throws InformacaoInvalidaException, InformacaoEmBrancoException{
 		return(cadastroU.alterarAtividade(user, nova,original));
 	}
 	public boolean deletarAtividade(Usuario user,String nome){
-		return(this.cadastroU.descadastrarAtividade(user, nome));
+		try {
+			return(this.cadastroU.descadastrarAtividade(user, nome));
+		} catch (InformacaoInvalidaException e) {
+			e.printStackTrace();
+		}
+		return (Boolean) null;
 	}
 	public String showAtividades(Usuario user){
-		return(cadastroU.showAtividade(user));
+		try {
+			return(cadastroU.showAtividade(user));
+		} catch (InformacaoEmBrancoException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

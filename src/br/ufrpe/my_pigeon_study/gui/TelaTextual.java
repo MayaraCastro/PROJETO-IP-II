@@ -29,7 +29,7 @@ public class TelaTextual {
 	
 	
 	//TELAS
-	public void menuInicial(){
+	public void menuInicial() throws InformacaoInvalidaException{
 		boolean saida=false;
 		while(!saida){
 			System.out.println("=====BEMVINDO=====");
@@ -53,7 +53,7 @@ public class TelaTextual {
 					break;
 				}
 				default:{
-					System.out.println("ERROR! DIGITE UM NUMERO VALIDO");
+					throw new InformacaoInvalidaException();
 				}
 			}
 		}
@@ -69,10 +69,18 @@ public class TelaTextual {
 		System.out.flush();
 		String senha=scanner.next();
 		Usuario user= new Usuario(usuario,senha);
-		user=this.fachada.logar(user);
+		try {
+			user=this.fachada.logar(user);
+		} catch (InformacaoInvalidaException e) {
+			e.printStackTrace();
+		}
 		if(user!=null){
 			System.out.println("Login com sucesso!");
-			this.telaInicial(user);
+			try {
+				this.telaInicial(user);
+			} catch (InformacaoInvalidaException e) {
+				e.printStackTrace();
+			}
 		}
 		else{
 			System.out.println("senha ou usuario incorreto");
@@ -93,7 +101,9 @@ public class TelaTextual {
 		nome=scanner.next();
 		
 		System.out.println("Data de Nascimento:");
+		
 		dataNasc.setDia(scanner.nextInt());
+		
 		System.out.flush();
 		System.out.print("/");
 		System.out.flush();
@@ -132,7 +142,10 @@ public class TelaTextual {
 			System.out.println("Erro ao efetuar cadastro!");
 		}*/
 	}
-	public void alterarUsuario(String usuario){
+	public void alterarUsuario(String usuario)throws InformacaoInvalidaException{
+		if(usuario==null){
+			throw new InformacaoInvalidaException();
+		}
 		String nome=new String();
 		Data dataNasc=new Data();
 		String senha=new String();
@@ -175,7 +188,10 @@ public class TelaTextual {
 			System.out.println("Erro ao efetuar altera�ao!");
 		}*/
 	}
-	public void telaInicial(Usuario user){//TODO fazer o comunidade
+	public void telaInicial(Usuario user) throws InformacaoInvalidaException{
+		if(user==null){
+			throw new InformacaoInvalidaException();
+		}
 		boolean saida=false;
 		while(!saida){
 			System.out.println("=====BEMVINDO=====");
@@ -211,12 +227,15 @@ public class TelaTextual {
 					break;
 				}
 				default:{
-					System.out.println("ERROR! DIGITE UM NUMERO VALIDO");
+					throw new InformacaoInvalidaException();
 				}
 			}
 		}
 	}
-	public void perfil(Usuario user){
+	public void perfil(Usuario user) throws InformacaoInvalidaException{
+		if(user==null){
+			throw new InformacaoInvalidaException();
+		}
 		System.out.println("=====BEMVINDO=====");
 		System.out.println("Nome :"+user.getNome());
 		System.out.println("Usuario: "+ user.getUsuario());
@@ -235,7 +254,10 @@ public class TelaTextual {
 	}
 
 	
-	public void calendario(Usuario user){
+	public void calendario(Usuario user) throws InformacaoInvalidaException{
+		if(user==null){
+			throw new InformacaoInvalidaException();
+		}
 		System.out.println("DIA:");
 		Data data= new Data();
 		data.setDia(scanner.nextInt());
@@ -268,7 +290,10 @@ public class TelaTextual {
 	
 //ATIVIDADE
 	//TELAS Atividades
-	public void cadastroAtividade(Usuario user){
+	public void cadastroAtividade(Usuario user)throws InformacaoInvalidaException{
+		if(user==null){
+			throw new InformacaoInvalidaException();
+		}
 		String nome=new String();
 		int dia_da_semana = 0;
 		Horario horario = new Horario();
@@ -310,7 +335,10 @@ public class TelaTextual {
 			System.out.println("Erro!");
 		}*/
 	}
-	public void menuAtividades(Usuario user){
+	public void menuAtividades(Usuario user)throws InformacaoInvalidaException{
+		if(user==null){
+			throw new InformacaoInvalidaException();
+		}
 		boolean saida=false;
 		while(!saida){
 			System.out.println("=====BEMVINDO=====");
@@ -344,7 +372,10 @@ public class TelaTextual {
 			}
 		}
 	}	
-	public void buscarAtividade(Usuario user){
+	public void buscarAtividade(Usuario user)throws InformacaoInvalidaException{
+		if(user==null){
+			throw new InformacaoInvalidaException();
+		}
 		System.out.print("Nome: ");
 		String nome=scanner.next();
 		System.out.flush();
@@ -372,7 +403,10 @@ public class TelaTextual {
 			}
 		}
 	}
-	public void alterarAtividade(Usuario user,Atividade nomeOriginal){
+	public void alterarAtividade(Usuario user,Atividade nomeOriginal)throws InformacaoInvalidaException{
+		if(user==null  || nomeOriginal==null){
+			throw new InformacaoInvalidaException();
+		}
 		System.out.println("=====NovosDados=====");
 		String nome;
 		int dia_da_semana = 0;
@@ -413,7 +447,10 @@ public class TelaTextual {
 			System.out.println("Erro ao Alterar");
 		}*/
 	}
-	public void deletarDisciplina(Usuario user, String nome){
+	public void deletarDisciplina(Usuario user, String nome)throws InformacaoInvalidaException{
+		if(user==null || nome==null){
+			throw new InformacaoInvalidaException();
+		}
 		if(fachada.deletarAtividade(user, nome) == true){
 			System.out.println("Deletado Com Sucesso");
 		}

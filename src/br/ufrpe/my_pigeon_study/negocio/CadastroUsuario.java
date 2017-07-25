@@ -52,10 +52,16 @@ public class CadastroUsuario {
 		}
 		return(false);
 }
-	public Usuario buscar(String usuario){
+	public Usuario buscar(String usuario)throws InformacaoInvalidaException{
+		if(usuario==null){
+			throw new InformacaoInvalidaException();
+		}
 		return(this.rep.buscar(usuario));
 	}
-	public boolean descadastrar(String usuario){
+	public boolean descadastrar(String usuario)throws InformacaoInvalidaException{
+		if(usuario==null){
+			throw new InformacaoInvalidaException();
+		}
 		return(this.rep.remover(usuario));
 	}
 	
@@ -103,15 +109,24 @@ public class CadastroUsuario {
 		return (false);
 	}
 	
-	public Atividade buscarAtividade(Usuario user,String Atividade){
+	public Atividade buscarAtividade(Usuario user,String Atividade) throws InformacaoInvalidaException{
+		if(user==null | Atividade==null){
+			throw new InformacaoInvalidaException();
+		}
 		return(this.rep.buscarAtiv(user, Atividade));
 	}
 	
-	public boolean descadastrarAtividade(Usuario user,String Atividade){
+	public boolean descadastrarAtividade(Usuario user,String Atividade) throws InformacaoInvalidaException{
+		if(user==null | Atividade==null){
+			throw new InformacaoInvalidaException();
+		}
 		return(this.rep.removerAtividade(user,Atividade));
 	}
 	
-	public String showAtividade(Usuario user) {
+	public String showAtividade(Usuario user) throws InformacaoEmBrancoException{
+		if(user==null){
+			 throw new InformacaoEmBrancoException();
+		}
 		
 		ArrayList<Atividade> atividades = user.getAtividades();
 		String mensagem = "Voce tem "+ user.getAtividades().size() +"  atividades";
@@ -166,14 +181,23 @@ public class CadastroUsuario {
 		return(false);
 	}
 	
-	public Task buscarTasks(Usuario user,String Task){
+	public Task buscarTasks(Usuario user,String Task) throws  InformacaoInvalidaException{
+		if(user==null | Task==null){
+			throw new InformacaoInvalidaException();
+		}
 		return(this.rep.buscarTask(user,Task));
 	}
-	public boolean descadastrarTask(Usuario user,String Task){
+	public boolean descadastrarTask(Usuario user,String Task) throws  InformacaoInvalidaException{
+		if(user==null | Task==null){
+			throw new InformacaoInvalidaException();
+		}
 		return(this.rep.removerTask(user,Task));
 	}
 	
-	public String calendarioAtividade(Usuario user, int dayOfWeek){
+	public String calendarioAtividade(Usuario user, int dayOfWeek) throws  InformacaoInvalidaException{
+		if(user==null){
+			throw new InformacaoInvalidaException();
+		}
 		ArrayList<Atividade> atividades = user.getAtividades();
 		String msg=null;
 		for(Atividade a:atividades){
@@ -189,7 +213,10 @@ public class CadastroUsuario {
 		return(msg);
 	}
 	
-	public String calendarioTask(Usuario user, Data data){
+	public String calendarioTask(Usuario user, Data data) throws InformacaoInvalidaException{
+		if(user==null | data==null){
+			throw new InformacaoInvalidaException();
+		}
 		ArrayList<Task> tasks = user.getTasks();
 		String msg=null;
 		for(Task a:tasks){
@@ -203,7 +230,10 @@ public class CadastroUsuario {
 		}
 		return(msg);
 	}
-	public String showTask(Usuario user) {
+	public String showTask(Usuario user) throws InformacaoInvalidaException{
+		if(user==null){
+			throw new InformacaoInvalidaException();
+		}
 		ArrayList<Task> tasks = user.getTasks();
 		String msg = "Voce tem "+ user.getTasks().size() +"  tasks";
 		for(Task a:tasks){

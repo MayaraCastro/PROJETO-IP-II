@@ -7,7 +7,10 @@ public class Login {
 	public Login(){
 		this.rep= RepositorioUsuario.getInstancia();
 	}
-	public Usuario logar(Usuario user){
+	public Usuario logar(Usuario user) throws InformacaoInvalidaException{
+			if(user==null){
+				throw new InformacaoInvalidaException();
+			}
 			Usuario usuario= new Usuario();
 			usuario=this.rep.buscar(user.getUsuario());	
 			if(usuario!=null){
@@ -15,7 +18,7 @@ public class Login {
 					return(usuario);
 				}
 			}
-			return(null);
+			throw new InformacaoInvalidaException();
 	}
 	
 

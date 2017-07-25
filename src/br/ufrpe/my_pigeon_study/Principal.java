@@ -25,6 +25,10 @@ public class Principal {
 		}catch(Exception e){
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
-		tela.menuInicial();
+		try {
+			tela.menuInicial();
+		} catch (InformacaoInvalidaException e) {
+			JOptionPane.showMessageDialog(null, e.getMessage());
+		}
 	}
 }

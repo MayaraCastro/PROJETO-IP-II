@@ -8,3 +8,4 @@
 /CadastroForum.class
 /InformacaoEmBrancoException.class
 /InformacaoInvalidaException.class
+/InformacaoNaoExistenteException.class
