@@ -37,7 +37,7 @@ public class CadastroUsuario {
 				&&(user.getDataNasc().getMes()<13 &&user.getDataNasc().getMes()>0 
 				&& user.getDataNasc().getDia()<32 &&user.getDataNasc().getDia()>0
 				&&user.getDataNasc().getAno()<2017 &&user.getDataNasc().getAno()>1900)){
-					Usuario original=this.rep.buscar(user.getUsuario());
+					Usuario original=(Usuario) this.rep.buscar(user.getUsuario());
 					original.setNome(user.getNome());
 					original.setDataNasc(user.getDataNasc());
 					original.setEmail(user.getEmail());
@@ -58,7 +58,7 @@ public class CadastroUsuario {
 		if(usuario==null){
 			throw new InformacaoInvalidaException();
 		}
-		return(this.rep.buscar(usuario));
+		return((Usuario) this.rep.buscar(usuario));
 	}
 	public boolean descadastrar(String usuario)throws InformacaoInvalidaException{
 		if(usuario==null){

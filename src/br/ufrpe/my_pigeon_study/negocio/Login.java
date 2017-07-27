@@ -13,7 +13,7 @@ public class Login {
 				throw new InformacaoInvalidaException();
 			}
 			Usuario usuario= new Usuario();
-			usuario=this.rep.buscar(user.getUsuario());	
+			usuario=(Usuario) this.rep.buscar(user.getUsuario());	
 			if(usuario!=null){
 				if(usuario.getSenha().equals(user.getSenha())){
 					return(usuario);

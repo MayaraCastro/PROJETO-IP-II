@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 import br.ufrpe.my_pigeon_study.negocio.beans.*;
 
-public class RepositorioUsuario {
+public class RepositorioUsuario implements Repositorio{
 	private ArrayList<Usuario> usuarios;
 	
 	private static RepositorioUsuario instancia;
@@ -25,7 +25,8 @@ public class RepositorioUsuario {
 	}
 	
 	//OUTROS METODOS
-	public boolean inserir(Usuario user){
+	public boolean inserir(Object obj){
+		Usuario user=(Usuario)obj;
 		if(user!=null){
 			if(this.buscar(user.getUsuario())==null){
 				this.usuarios.add(user);
@@ -35,7 +36,7 @@ public class RepositorioUsuario {
 		return(false);
 	}
 	
-	public Usuario buscar(String usuario){
+	public Object buscar(String usuario){
 		for(Usuario user:this.usuarios){
 			if(user!=null&&user.getUsuario().equals(usuario)){
 				return(user);
@@ -67,7 +68,8 @@ public class RepositorioUsuario {
 		return(entra);
 	}
 
-	public boolean alterar(Usuario novoUser){
+	public boolean alterar(Object novoObject){
+		Usuario novoUser=(Usuario) novoObject ;
 		if(novoUser!=null){
 			for(int i=0; i < this.usuarios.size(); i++){
 				if(this.usuarios.get(i) != null && this.usuarios.get(i).getUsuario().equals(novoUser.getUsuario())){
