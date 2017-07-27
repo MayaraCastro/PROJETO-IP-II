@@ -1,9 +1,9 @@
-package br.ufrpe.my_pigeon_study.negocio;
+package Exceptions;
 
 public class InformacaoInvalidaException extends Exception{
 
 	public InformacaoInvalidaException() {
-		super("Informação dada inválida");
+		super("Informaï¿½ï¿½o dada invï¿½lida");
 	}
 
 }

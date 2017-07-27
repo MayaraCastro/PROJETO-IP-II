@@ -1,4 +1,6 @@
 package br.ufrpe.my_pigeon_study.negocio;
+import Exceptions.InformacaoEmBrancoException;
+import Exceptions.InformacaoInvalidaException;
 import br.ufrpe.my_pigeon_study.negocio.beans.*;
 public class Fachada {
 	
@@ -20,12 +22,21 @@ public class Fachada {
 	
 	//USUARIO
 	public boolean cadastrarUsuario(Usuario user)throws InformacaoInvalidaException, InformacaoEmBrancoException{
+		if(user==null){
+			throw new InformacaoInvalidaException();
+		}
 		return(this.cadastroU.cadastrar(user));
 	}
 	public boolean alterarUsuario(Usuario user)throws InformacaoInvalidaException, InformacaoEmBrancoException{
+		if(user==null){
+			throw new InformacaoInvalidaException();
+		}
 		return(this.cadastroU.alterar(user));
 	}
 	public Usuario logar(Usuario user) throws InformacaoInvalidaException{
+		if(user==null){
+			throw new InformacaoInvalidaException();
+		}
 		return(this.login.logar(user));
 	}
 	

@@ -6,6 +6,9 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 import javax.swing.text.InternationalFormatter;
 
+import Exceptions.InformacaoEmBrancoException;
+import Exceptions.InformacaoInvalidaException;
+
 import java.util.Calendar;
 
 public class TelaTextual {

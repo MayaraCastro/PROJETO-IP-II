@@ -1,4 +1,5 @@
 package br.ufrpe.my_pigeon_study.negocio;
+import Exceptions.InformacaoInvalidaException;
 import br.ufrpe.my_pigeon_study.dados.RepositorioUsuario;
 import br.ufrpe.my_pigeon_study.negocio.beans.*;
 

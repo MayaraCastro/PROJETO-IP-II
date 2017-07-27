@@ -1,9 +1,9 @@
-package br.ufrpe.my_pigeon_study.negocio;
+package Exceptions;
 
 public class InformacaoEmBrancoException extends Exception {
 
 	public InformacaoEmBrancoException() {
-		super("É preciso preencher todos as informações");
+		super("ï¿½ preciso preencher todos as informaï¿½ï¿½es");
 	}
 	
 	

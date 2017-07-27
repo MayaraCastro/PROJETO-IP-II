@@ -1,6 +1,8 @@
 package br.ufrpe.my_pigeon_study.negocio;
 import java.util.ArrayList;
 
+import Exceptions.InformacaoEmBrancoException;
+import Exceptions.InformacaoInvalidaException;
 import br.ufrpe.my_pigeon_study.dados.RepositorioUsuario;
 import br.ufrpe.my_pigeon_study.negocio.beans.*;
 
