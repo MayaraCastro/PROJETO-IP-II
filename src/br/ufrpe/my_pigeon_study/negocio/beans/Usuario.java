@@ -17,7 +17,7 @@ public class Usuario extends Pessoa{
 		this.senha=senha;
 	}
 
-	public Usuario(String nome, String usuario, String senha, int sexo, String email, Data dataNasc) {
+	public Usuario(String nome, String usuario, String senha, String sexo, String email, Data dataNasc) {
 		super(nome,sexo,dataNasc);
 		
 		this.usuario = usuario;

@@ -9,11 +9,11 @@ public class Login {
 		this.rep= RepositorioUsuario.getInstancia();
 	}
 	public Usuario logar(Usuario user) throws InformacaoInvalidaException{
-			if(user==null){
+			if(user == null){
 				throw new InformacaoInvalidaException();
 			}
-			Usuario usuario= new Usuario();
-			usuario=(Usuario) this.rep.buscar(user.getUsuario());	
+			Usuario usuario;
+			usuario = (Usuario) this.rep.buscar(user.getUsuario());	
 			if(usuario!=null){
 				if(usuario.getSenha().equals(user.getSenha())){
 					return(usuario);

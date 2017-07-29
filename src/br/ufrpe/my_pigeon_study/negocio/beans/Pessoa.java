@@ -3,13 +3,13 @@ package br.ufrpe.my_pigeon_study.negocio.beans;
 public class Pessoa {
 	private String nome;
 	private Data dataNasc;
-	private int sexo;//1-feminino, 2-masculino e 3-outro
+	private String sexo;//1-feminino, 2-masculino e 3-outro
 	
 	//CONSTRUTOR
 	public Pessoa(){
 		
 	}
-	public Pessoa(String nome,  int sexo, Data dataNasc) {
+	public Pessoa(String nome,  String sexo, Data dataNasc) {
 		this.nome = nome;
 		this.dataNasc = dataNasc;
 		this.sexo = sexo;
@@ -29,10 +29,10 @@ public class Pessoa {
 		this.dataNasc = dataNasc;
 	}
 	
-	public int getSexo() {
+	public String getSexo() {
 		return sexo;
 	}
-	public void setSexo(int sexo) {
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
 	

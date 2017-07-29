@@ -14,7 +14,7 @@ public class CadastroUsuario {
 	public boolean cadastrar(Usuario user)throws InformacaoInvalidaException, InformacaoEmBrancoException{
 			if(user.getNome() != "" && user.getEmail() != "" && user.getUsuario() != ""
 				&& user.getSenha() != "" ){
-				if((user.getSexo()<4 && user.getSexo() > 0)
+				if((user.getSexo()!= "" && user.getSexo() !=null)
 					&& (user.getDataNasc().getMes() < 13 && user.getDataNasc().getMes() > 0 
 					&& user.getDataNasc().getDia() < 32 && user.getDataNasc().getDia() > 0
 					&& user.getDataNasc().getAno() < 2017 && user.getDataNasc().getAno() > 1900)){
@@ -33,7 +33,7 @@ public class CadastroUsuario {
 	public boolean alterar(Usuario user)throws InformacaoInvalidaException, InformacaoEmBrancoException{
 		if(user.getNome()!=""&&user.getEmail()!=""&&user.getUsuario()!=""
 		&&user.getSenha()!=""){
-			if((user.getSexo()<4 && user.getSexo()>0)
+			if((user.getSexo() != "" && user.getSexo() != null)
 				&&(user.getDataNasc().getMes()<13 &&user.getDataNasc().getMes()>0 
 				&& user.getDataNasc().getDia()<32 &&user.getDataNasc().getDia()>0
 				&&user.getDataNasc().getAno()<2017 &&user.getDataNasc().getAno()>1900)){
