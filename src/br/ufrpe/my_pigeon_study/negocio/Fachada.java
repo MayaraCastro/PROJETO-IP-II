@@ -1,4 +1,6 @@
 package br.ufrpe.my_pigeon_study.negocio;
+import java.time.LocalDate;
+
 import Exceptions.InformacaoEmBrancoException;
 import Exceptions.InformacaoInvalidaException;
 import br.ufrpe.my_pigeon_study.negocio.beans.*;
@@ -60,7 +62,7 @@ public class Fachada {
 		}
 		return null;
 	}
-	public String calendarioTasks(Usuario user, Data data){
+	public String calendarioTasks(Usuario user, LocalDate data){
 		try {
 			return(cadastroU.calendarioTask(user,data));
 		} catch (InformacaoInvalidaException e) {

@@ -1,4 +1,5 @@
 package br.ufrpe.my_pigeon_study.negocio;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import Exceptions.InformacaoEmBrancoException;
@@ -15,9 +16,9 @@ public class CadastroUsuario {
 			if(user.getNome() != "" && user.getEmail() != "" && user.getUsuario() != ""
 				&& user.getSenha() != "" ){
 				if((user.getSexo()!= "" && user.getSexo() !=null)
-					&& (user.getDataNasc().getMes() < 13 && user.getDataNasc().getMes() > 0 
-					&& user.getDataNasc().getDia() < 32 && user.getDataNasc().getDia() > 0
-					&& user.getDataNasc().getAno() < 2017 && user.getDataNasc().getAno() > 1900)){
+					&& (user.getDataNasc().getMonthValue() < 13 && user.getDataNasc().getMonthValue() > 0 
+					&& user.getDataNasc().getDayOfMonth() < 32 && user.getDataNasc().getDayOfMonth() > 0
+					&& user.getDataNasc().getYear() < 2017 && user.getDataNasc().getYear() > 1900)){
 					
 					if(this.rep.inserir(user)){
 						return(true);
@@ -34,9 +35,9 @@ public class CadastroUsuario {
 		if(user.getNome()!=""&&user.getEmail()!=""&&user.getUsuario()!=""
 		&&user.getSenha()!=""){
 			if((user.getSexo() != "" && user.getSexo() != null)
-				&&(user.getDataNasc().getMes()<13 &&user.getDataNasc().getMes()>0 
-				&& user.getDataNasc().getDia()<32 &&user.getDataNasc().getDia()>0
-				&&user.getDataNasc().getAno()<2017 &&user.getDataNasc().getAno()>1900)){
+					&& (user.getDataNasc().getMonthValue() < 13 && user.getDataNasc().getMonthValue() > 0 
+					&& user.getDataNasc().getDayOfMonth() < 32 && user.getDataNasc().getDayOfMonth() > 0
+					&& user.getDataNasc().getYear() < 2017 && user.getDataNasc().getYear() > 1900)){
 					Usuario original=(Usuario) this.rep.buscar(user.getUsuario());
 					original.setNome(user.getNome());
 					original.setDataNasc(user.getDataNasc());
@@ -144,11 +145,11 @@ public class CadastroUsuario {
 	
 	//tasks
 	public boolean cadastrarTask(Usuario user, Task task)throws InformacaoInvalidaException, InformacaoEmBrancoException{
-		if(task.getNome()!=""&&task.getDescricao()!=""){
-			if(task.getData()!=null&&(task.getTipo()>0) && task!=null && user!=null
-				&& (task.getData().getMes()<13 &&task.getData().getMes()>0 
-				&&task.getData().getDia()<32 &&task.getData().getDia()>0
-				&&task.getData().getAno()>=2017)){
+		if(task.getNome()!=""){
+			if(task.getData()!=null && task!=null && user!=null
+				&& (task.getData().getMonthValue()<13 &&task.getData().getMonthValue()>0 
+				&&task.getData().getDayOfMonth()<32 &&task.getData().getDayOfMonth()>0
+				&&task.getData().getYear()>=2017)){
 				if(this.rep.inserirTask(user,task)){
 					return(true);
 				}
@@ -161,15 +162,14 @@ public class CadastroUsuario {
 		return(false);
 	}
 	public boolean alterarTask(Usuario user,Task task,Task antiga)throws InformacaoInvalidaException, InformacaoEmBrancoException{
-		if(task.getNome()!=""&&task.getDescricao()!=""){
-			if(task.getData()!=null&&(task.getTipo()>0) && task!=null && user!=null
-				&& (task.getData().getMes()<13 &&task.getData().getMes()>0 
-				&&task.getData().getDia()<32 &&task.getData().getDia()>0
-				&&task.getData().getAno()>=2017)){
+		if(task.getNome()!=""){
+			if(task.getData()!=null&& task!=null && user!=null
+					&& (task.getData().getMonthValue()<13 &&task.getData().getMonthValue()>0 
+					&&task.getData().getDayOfMonth()<32 &&task.getData().getDayOfMonth()>0
+					&&task.getData().getYear()>=2017)){
 					Task original=this.rep.buscarTask(user,antiga.getNome());
 					original.setNome(task.getNome());
-					original.setDescricao(task.getDescricao());
-					original.setTipo(task.getTipo());
+					original.setObs(task.getObs());
 					original.setData(task.getData());
 					if(this.rep.alterarTask(user,original,antiga)){
 						return(true);
@@ -215,7 +215,7 @@ public class CadastroUsuario {
 		return(msg);
 	}
 	
-	public String calendarioTask(Usuario user, Data data) throws InformacaoInvalidaException{
+	public String calendarioTask(Usuario user, LocalDate data) throws InformacaoInvalidaException{
 		if(user==null | data==null){
 			throw new InformacaoInvalidaException();
 		}
@@ -223,9 +223,7 @@ public class CadastroUsuario {
 		String msg=null;
 		for(Task a:tasks){
 			if(a!=null){
-				if(a.getData().getDia()==data.getDia()
-				&& a.getData().getMes()==data.getMes()
-				&& a.getData().getAno()==data.getAno()){
+				if(a.getData().equals(data)){
 					msg+="\n"+a;
 				}
 			}

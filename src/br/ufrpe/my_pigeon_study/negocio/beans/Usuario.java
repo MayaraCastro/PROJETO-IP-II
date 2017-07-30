@@ -1,5 +1,6 @@
 package br.ufrpe.my_pigeon_study.negocio.beans;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Usuario extends Pessoa{
@@ -17,7 +18,7 @@ public class Usuario extends Pessoa{
 		this.senha=senha;
 	}
 
-	public Usuario(String nome, String usuario, String senha, String sexo, String email, Data dataNasc) {
+	public Usuario(String nome, String usuario, String senha, String sexo, String email, LocalDate dataNasc) {
 		super(nome,sexo,dataNasc);
 		
 		this.usuario = usuario;

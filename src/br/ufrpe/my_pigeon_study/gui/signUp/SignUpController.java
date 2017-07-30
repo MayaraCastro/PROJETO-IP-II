@@ -1,7 +1,6 @@
 package br.ufrpe.my_pigeon_study.gui.signUp;
 import br.ufrpe.my_pigeon_study.gui.login.*;
 import br.ufrpe.my_pigeon_study.negocio.Fachada;
-import br.ufrpe.my_pigeon_study.negocio.beans.Data;
 import br.ufrpe.my_pigeon_study.negocio.beans.Usuario;
 
 import java.io.IOException;
@@ -55,13 +54,14 @@ public class SignUpController {
     @FXML
     private JFXButton register;
     
-    ObservableList<String> list = FXCollections.observableArrayList("Female","Male");
+
     public SignUpController(){
     	this.fachada = Fachada.getInstancia();
     }
     @FXML
 	private void initialize() 
 	{
+    	ObservableList<String> list = FXCollections.observableArrayList("Female","Male");
     	gender.setItems(list);
 	}
     @FXML
@@ -69,8 +69,8 @@ public class SignUpController {
 
     	
 		try{
-			Data data = new Data(birthday.getValue().getDayOfMonth(), birthday.getValue().getMonthValue(), birthday.getValue().getYear()) ;
-			Usuario user = new Usuario(name.getText(), userName.getText(), password.getText(), gender.getValue(), email.getText(), data);
+	
+			Usuario user = new Usuario(name.getText(), userName.getText(), password.getText(), gender.getValue(), email.getText(), birthday.getValue());
 			fachada.cadastrarUsuario(user);
 			JOptionPane.showMessageDialog(null, "Conta criada com sucesso!");
 			this.chamarTelaInicial();

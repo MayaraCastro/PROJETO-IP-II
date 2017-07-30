@@ -1,14 +1,18 @@
 package br.ufrpe.my_pigeon_study.gui.login;
 import br.ufrpe.my_pigeon_study.gui.signUp.*;
+import br.ufrpe.my_pigeon_study.gui.task.Taskk;
+import br.ufrpe.my_pigeon_study.gui.task.TaskController;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.JOptionPane;
 
 import Exceptions.InformacaoEmBrancoException;
 import Exceptions.InformacaoInvalidaException;
 import br.ufrpe.my_pigeon_study.negocio.Fachada;
-import br.ufrpe.my_pigeon_study.negocio.beans.Data;
+
 import br.ufrpe.my_pigeon_study.negocio.beans.Usuario;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,6 +31,7 @@ public class LoginController{
 	
 	private Fachada fachada;
 	
+	private static Usuario user;
     @FXML
     private Button signIn;
 
@@ -45,6 +50,9 @@ public class LoginController{
     @FXML
     private Label sair;
     
+    public static Usuario getUser(){
+    	return(user);
+    }
     public void setStage(Stage stage){
         this.stage = stage;
     }
@@ -53,9 +61,10 @@ public class LoginController{
 	{
     	this.fachada = Fachada.getInstancia();
     	//USUARIO JA PRONTO PRA TESTES
-    		Data dataNasc= new Data(2,2,1999);
-    		Usuario user= new Usuario("Maria", "maria", "maria", "female", "maria@maria",dataNasc);
-    		Usuario usera= new Usuario("mayara", "mayara", "mayara", "female", "mayara@mayara",dataNasc);
+
+    	    LocalDate localDate = LocalDate.parse("02-02-1999", DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+    		Usuario user= new Usuario("Maria", "maria", "maria", "Female", "maria@maria", localDate);
+    		Usuario usera= new Usuario("mayara", "mayara", "mayara", "Female", "mayara@mayara", localDate);
    			try{
     			fachada.cadastrarUsuario(user);
    				fachada.cadastrarUsuario(usera);
@@ -72,18 +81,31 @@ public class LoginController{
 	{
 	}
 	@FXML
-	private void entra(){
+	private void entra() throws IOException{
 		
-		Usuario user = new Usuario(userName.getText(),password.getText());
+		user = new Usuario(userName.getText(),password.getText());
 		try {
-			user=this.fachada.logar(user);
-			JOptionPane.showMessageDialog(null,"Login com sucesso!" );
-			//TODO ABRIR A GUI PRINCIPAL
+			user = this.fachada.logar(user);
+			//JOptionPane.showMessageDialog(null,"Login com sucesso!" );
+			
+			this.chamarTelaPrincipal();
+			
 		} catch (InformacaoInvalidaException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
-	
 	}
+	
+	
+    public void chamarTelaPrincipal()throws IOException{
+    	
+    	FXMLLoader loader = new FXMLLoader(Taskk.class.getResource("Task.fxml"));
+    		
+    	AnchorPane root = (AnchorPane) loader.load();
+    	TaskController controller = (TaskController) loader.getController();
+		controller.setStage(stage);
+		
+    	stage.setScene(new Scene(root));
+    }
 	@FXML
 	private void signUP(ActionEvent event)throws IOException{
 

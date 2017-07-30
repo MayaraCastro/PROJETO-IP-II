@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="cell" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="404.0" prefWidth="566.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.my_pigeon_study.gui.task.TaskCellController">
+   <children>
+      <AnchorPane fx:id="cor" layoutX="-2.0" prefHeight="99.0" prefWidth="574.0" style="-fx-background-color: #29c2;">
+         <children>
+            <JFXTextField fx:id="title" layoutX="31.0" layoutY="26.0" prefHeight="51.0" prefWidth="497.0">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </JFXTextField>
+            <Label layoutX="31.0" layoutY="19.0" text="Title" />
+         </children>
+      </AnchorPane>
+      <JFXDatePicker fx:id="date" layoutX="26.0" layoutY="149.0" prefHeight="25.0" prefWidth="205.0" />
+      <JFXTimePicker fx:id="time" layoutX="318.0" layoutY="149.0" prefHeight="25.0" prefWidth="205.0" />
+      <JFXTextArea fx:id="detail" layoutX="26.0" layoutY="202.0" prefHeight="43.0" prefWidth="497.0" />
+      <Label layoutX="26.0" layoutY="185.0" text="Detail" />
+      <Label layoutX="26.0" layoutY="118.0" text="Due Date" />
+      <Label layoutX="318.0" layoutY="118.0" text="Due Time" />
+      <JFXButton fx:id="save" layoutX="393.0" layoutY="315.0" onAction="#alterar" prefHeight="25.0" prefWidth="114.0" ripplerFill="#965f5f" style="-fx-background-color: #3432;" text="Save" textFill="#141414" />
+      <JFXButton fx:id="delete" layoutX="255.0" layoutY="315.0" onAction="#deletar" prefHeight="25.0" prefWidth="114.0" ripplerFill="#4d4d4d" style="-fx-background-color: #4323;" text="Delete" />
+   </children>
+</AnchorPane>

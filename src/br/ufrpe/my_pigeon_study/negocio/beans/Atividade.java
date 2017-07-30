@@ -1,15 +1,17 @@
 package br.ufrpe.my_pigeon_study.negocio.beans;
 
+import java.time.LocalTime;
+
 public class Atividade {
 	//ATRIBUTOS
 	private String nome;
 	private int dia_da_semana;
-	private Horario horario;
+	private LocalTime horario;
 	private String obs;
 
 	
 	//CONSTRUTOR
-	public Atividade(String nome, int dia_da_semana, Horario horario, String obs) {
+	public Atividade(String nome, int dia_da_semana, LocalTime horario, String obs) {
 		super();
 		this.nome = nome;
 		this.dia_da_semana = dia_da_semana;
@@ -36,10 +38,10 @@ public class Atividade {
 	public void setDia_da_semana(int dia_da_semana) {
 		this.dia_da_semana = dia_da_semana;
 	}
-	public Horario getHorario() {
+	public LocalTime getHorario() {
 		return horario;
 	}
-	public void setHorario(Horario horario) {
+	public void setHorario(LocalTime horario) {
 		this.horario = horario;
 	}
 	
