@@ -91,7 +91,7 @@
             </Label>
             <JFXDatePicker fx:id="birthday" defaultColor="#0b173b" layoutX="125.0" layoutY="228.0" prefHeight="25.0" prefWidth="377.0" promptText="Birthday" />
             <JFXTextField fx:id="name" layoutX="120.0" layoutY="100.0" prefHeight="25.0" prefWidth="368.0" promptText="Name" />
-            <JFXButton fx:id="save" layoutX="715.0" layoutY="467.0" onAction="#atualizar" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: cb5171;" text="Save" textFill="WHITE" />
+            <JFXButton fx:id="save" layoutX="715.0" layoutY="467.0" onAction="#save" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: cb5171;" text="Save" textFill="WHITE" />
             <Label layoutX="587.0" layoutY="106.0" text="E-mail" textFill="#cb5171">
                <font>
                   <Font name="System Bold" size="14.0" />

@@ -8,13 +8,18 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 
+import Exceptions.InformacaoInvalidaException;
 import br.ufrpe.my_pigeon_study.gui.login.Login;
 import br.ufrpe.my_pigeon_study.gui.login.LoginController;
 import br.ufrpe.my_pigeon_study.gui.profile.Profile;
 import br.ufrpe.my_pigeon_study.gui.profile.ProfileController;
 import br.ufrpe.my_pigeon_study.gui.task.Taskk;
+import br.ufrpe.my_pigeon_study.gui.task.TaskCell;
+import br.ufrpe.my_pigeon_study.gui.task.TaskCellController;
 import br.ufrpe.my_pigeon_study.gui.task.TaskController;
 import br.ufrpe.my_pigeon_study.negocio.Fachada;
+import br.ufrpe.my_pigeon_study.negocio.beans.Atividade;
+import br.ufrpe.my_pigeon_study.negocio.beans.Task;
 import br.ufrpe.my_pigeon_study.negocio.beans.Usuario;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,6 +28,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -33,8 +39,12 @@ public class CalendarioController {
 	private Fachada fachada;
 	
 	private static Usuario user;
-
-    @FXML
+	
+	private static Task task;
+	
+	private static Atividade classe;
+	
+	@FXML
     private Label userName;
 
     @FXML
@@ -56,39 +66,29 @@ public class CalendarioController {
     private AnchorPane paneTask;
 
     @FXML
-    private JFXDatePicker birthday;
+    private JFXDatePicker date;
 
     @FXML
-    private JFXTextField name;
+    private ListView<String> classesList;
 
     @FXML
-    private JFXButton save;
-
-    @FXML
-    private JFXTextField email;
-
-    @FXML
-    private JFXComboBox<String> gender;
-
-    @FXML
-    private JFXTextField username;
-
-    @FXML
-    private JFXTextField password;
-
-    @FXML
-    private Hyperlink delete;
-
-    @FXML
-    void atualizar() {
-
-    }
-
-    @FXML
-    void deletar() {
-
-    }
+    private ListView<String> taskList;
     
+    @FXML
+    private JFXButton go;
+    
+    @FXML
+    private Label nClass;
+
+    @FXML
+    private Label nTask;
+    
+    public static Task getTask() {
+    	return task;
+    }
+    public static void setTask(Task task) {
+    	CalendarioController.task = task;
+    }
     public CalendarioController(){
     	this.fachada = Fachada.getInstancia();
     }
@@ -104,21 +104,35 @@ public class CalendarioController {
     }
     
     @FXML
-	private void initialize() 
+	private void initialize() throws InformacaoInvalidaException 
 	{
-    	Usuario c = LoginController.getUser();
+    	Usuario c = fachada.buscar(LoginController.getUser().getUsuario());
     	this.setUser(c);
-    	username.setEditable(true);
-    	userName.setText(user.getNome());
-    	username.setEditable(false);
-    	name.setText(user.getNome());
-    	email.setText(user.getEmail());
-    	birthday.setValue(user.getDataNasc());
-    	ObservableList<String> list = FXCollections.observableArrayList("Female","Male");
-    	gender.setItems(list);
-    	gender.setValue(user.getSexo());
+    	
     	
 	}
+    @FXML
+    void editTask() throws IOException{
+        	FXMLLoader loader = new FXMLLoader(TaskCell.class.getResource("TaskCell.fxml"));
+    		
+    	    AnchorPane root = (AnchorPane) loader.load();
+    	    TaskCellController.setTask(fachada.buscarTask(user,taskList.getSelectionModel().getSelectedItem()));
+    		Stage s = new Stage();
+    	    s.setScene(new Scene(root));
+    	    TaskCellController.setStage(s);
+    	    s.show();
+        
+    }
+    @FXML
+    private void listar() {
+    	ObservableList<String> classes = FXCollections.observableArrayList(fachada.calendarioAtividades(user, date.getValue().getDayOfWeek().getValue()));
+    	classesList.setItems(classes);
+    	nClass.setText("(" + classes.size() + ")");
+    	
+    	ObservableList<String> tasks = FXCollections.observableArrayList(fachada.calendarioTasks(user, date.getValue()));
+    	taskList.setItems(tasks);
+    	nTask.setText("("+ tasks.size() +")");
+    }
     @FXML
     void chamarTelaInicial()throws IOException{
     	FXMLLoader loader = new FXMLLoader(Login.class.getResource("Login.fxml"));

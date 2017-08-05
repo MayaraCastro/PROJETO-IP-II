@@ -1,5 +1,6 @@
 package br.ufrpe.my_pigeon_study.negocio;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import Exceptions.InformacaoEmBrancoException;
 import Exceptions.InformacaoInvalidaException;
@@ -42,10 +43,12 @@ public class Fachada {
 		return(this.login.logar(user));
 	}
 	
-
+	public Usuario buscar(String usuario)throws InformacaoInvalidaException{
+		return(this.cadastroU.buscar(usuario));
+	}
 	
 	//TASKS
-	public String showTasks(Usuario user){
+	public ArrayList<String> showTasks(Usuario user){
 		try {
 			return(cadastroU.showTask(user));
 		} catch (InformacaoInvalidaException e) {
@@ -54,7 +57,7 @@ public class Fachada {
 		return null;
 	}
 	
-	public String calendarioAtividades(Usuario user, int dayOfWeek){
+	public ArrayList<String> calendarioAtividades(Usuario user, int dayOfWeek){
 		try {
 			return(cadastroU.calendarioAtividade(user,dayOfWeek));
 		} catch (InformacaoInvalidaException e) {
@@ -62,7 +65,7 @@ public class Fachada {
 		}
 		return null;
 	}
-	public String calendarioTasks(Usuario user, LocalDate data){
+	public ArrayList<String> calendarioTasks(Usuario user, LocalDate data){
 		try {
 			return(cadastroU.calendarioTask(user,data));
 		} catch (InformacaoInvalidaException e) {
@@ -92,15 +95,6 @@ public class Fachada {
 			e.printStackTrace();
 		}
 		return (Boolean) null;
-
-	}
-	public String showTask(Usuario user){
-		try {
-			return(cadastroU.showTask(user));
-		} catch (InformacaoInvalidaException e) {
-			e.printStackTrace();
-		}
-		return null;
 
 	}
 	//DISCIPLINA

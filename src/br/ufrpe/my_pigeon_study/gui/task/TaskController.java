@@ -11,6 +11,9 @@ import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTimePicker;
 
+import Exceptions.InformacaoInvalidaException;
+import br.ufrpe.my_pigeon_study.gui.calendar.Calendario;
+import br.ufrpe.my_pigeon_study.gui.calendar.CalendarioController;
 import br.ufrpe.my_pigeon_study.gui.login.Login;
 import br.ufrpe.my_pigeon_study.gui.login.LoginController;
 import br.ufrpe.my_pigeon_study.gui.profile.Profile;
@@ -27,20 +30,22 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
+
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.util.Callback;
+
 
 public class TaskController {
 
-	private Stage stage;
+	private static Stage stage;
 	
 	private Fachada fachada;
 	
-	private Usuario user;
+	private static Usuario user;
+	
+	private static Task task;
 	
     @FXML
     private Label userName;
@@ -84,44 +89,51 @@ public class TaskController {
     public TaskController(){
     	this.fachada = Fachada.getInstancia();
     }
-    public void setStage(Stage stage){
-        this.stage = stage;
+    public void setStage(Stage s){
+        stage = s;
     }
     
-    public void setUser(Usuario user){
-    	this.user = user;
+    public static Stage getStage() {
+		return stage;
+	}
+	public void setUser(Usuario u){
+    	user = u;
     }
     public Usuario getUser(){
-    	return(this.user);
+    	return(user);
     }
     
     @FXML
-	private void initialize() 
+	private void initialize() throws InformacaoInvalidaException 
 	{
-    	Usuario c = LoginController.getUser();
-    	this.setUser(c);
-    	ObservableList<String> tasks = FXCollections.observableArrayList();
+    	Usuario c = fachada.buscar(LoginController.getUser().getUsuario());
+    	setUser(c);
+    	ObservableList<String> tasks = FXCollections.observableArrayList(fachada.showTasks(user));
     	list.setItems(tasks);
-    	list.setPrefWidth(520);
-    	list.setPrefHeight(485);
+    	list.setPrefWidth(528);
+    	list.setPrefHeight(490);
 		
-    	userName.setText(this.user.getNome());
+    	userName.setText(user.getNome());
     	list.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
-            @Override
+            @Override//Quando selecionar no listview a task 
             public void handle(MouseEvent event) {
-                System.out.println("clicked on " + list.getSelectionModel().getSelectedItem());
+        		Task t = fachada.buscarTask(user, list.getSelectionModel().getSelectedItem());
+        		task = t;
+        		try {
+					chamarTask();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+                
             }
         });
 	}
 
-	@FXML //Quando selecionar no listview a task 
+	@FXML 
 	public void handleMouseClick(MouseEvent arg0) throws IOException {
-		Task task = fachada.buscarTask(user, list.getSelectionModel().getSelectedItem());
-		
-		this.chamarTask();
-		
-	    System.out.println("clicked on " + task);
+
 	}
     
     @FXML
@@ -135,7 +147,7 @@ public class TaskController {
 			title.clear();
 			detail.clear();
 			dueTime.setValue(null);
-			
+
 			list.getItems().add(novaTask.getNome());
 		}catch(Exception e){
 			JOptionPane.showMessageDialog(null, e.getMessage());
@@ -145,8 +157,10 @@ public class TaskController {
     	FXMLLoader loader = new FXMLLoader(TaskCell.class.getResource("TaskCell.fxml"));
 			
 	    AnchorPane root = (AnchorPane) loader.load();
+
 		Stage s = new Stage();
 	    s.setScene(new Scene(root));
+	    TaskCellController.setStage(s);
 	    s.show();
     }
     @FXML
@@ -164,8 +178,25 @@ public class TaskController {
     		
     	AnchorPane root = (AnchorPane) loader.load();
     	ProfileController controller = (ProfileController) loader.getController();
+    	ProfileController.setUser(user);
 		controller.setStage(stage);
     	stage.setScene(new Scene(root));
     }
+    @FXML
+    void chamarTelaCalendar()throws IOException{
+    	FXMLLoader loader = new FXMLLoader(Calendario.class.getResource("Calendario.fxml"));
+    		
+    	AnchorPane root = (AnchorPane) loader.load();
+    	CalendarioController controller = (CalendarioController) loader.getController();
+		controller.setStage(stage);
+    	stage.setScene(new Scene(root));
+    }
+    
+	public static Task getTask() {
+		return task;
+	}
+	public static void setTask(Task task) {
+		TaskController.task = task;
+	}
     
 }

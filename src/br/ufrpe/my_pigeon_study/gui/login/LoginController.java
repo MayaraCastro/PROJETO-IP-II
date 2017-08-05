@@ -50,7 +50,10 @@ public class LoginController{
     @FXML
     private Label sair;
     
-    public static Usuario getUser(){
+    public static void setUser(Usuario user) {
+		LoginController.user = user;
+	}
+	public static Usuario getUser(){
     	return(user);
     }
     public void setStage(Stage stage){

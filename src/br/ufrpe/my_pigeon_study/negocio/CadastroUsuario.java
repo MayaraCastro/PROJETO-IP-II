@@ -179,8 +179,9 @@ public class CadastroUsuario {
 			if(task.getData()!=null&& task!=null && user!=null
 					&& (task.getData().getMonthValue()<13 &&task.getData().getMonthValue()>0 
 					&&task.getData().getDayOfMonth()<32 &&task.getData().getDayOfMonth()>0
-					&&task.getData().getYear()>=2017)){
-					Task original=this.rep.buscarTask(user,antiga.getNome());
+					&&task.getData().getYear() >= 2017)){
+				
+					Task original = this.rep.buscarTask(user,antiga.getNome());
 					original.setNome(task.getNome());
 					original.setObs(task.getObs());
 					original.setData(task.getData());
@@ -209,52 +210,53 @@ public class CadastroUsuario {
 		return(this.rep.removerTask(user,Task));
 	}
 	
-	public String calendarioAtividade(Usuario user, int dayOfWeek) throws  InformacaoInvalidaException{
+	public ArrayList<String> calendarioAtividade(Usuario user, int dayOfWeek) throws  InformacaoInvalidaException{
 		if(user==null){
 			throw new InformacaoInvalidaException();
 		}
 		ArrayList<Atividade> atividades = user.getAtividades();
-		String msg=null;
+		ArrayList<String> list = new ArrayList<String>();
+		
 		for(Atividade a:atividades){
 			if(a!=null){
 				if(a.getDia_da_semana()==dayOfWeek){
-					if(msg==null){
-						msg=".";
-					}
-					msg+="\n"+a;		
+					list.add(a.getNome());
+							
 				}
 			}
 		}
-		return(msg);
+		return(list);
 	}
 	
-	public String calendarioTask(Usuario user, LocalDate data) throws InformacaoInvalidaException{
+	public ArrayList<String> calendarioTask(Usuario user, LocalDate data) throws InformacaoInvalidaException{
 		if(user==null | data==null){
 			throw new InformacaoInvalidaException();
 		}
 		ArrayList<Task> tasks = user.getTasks();
-		String msg=null;
+		ArrayList<String> list = new ArrayList<String>();
+		
 		for(Task a:tasks){
 			if(a!=null){
 				if(a.getData().equals(data)){
-					msg+="\n"+a;
+					list.add(a.getNome());
+					
 				}
 			}
 		}
-		return(msg);
+		return(list);
 	}
-	public String showTask(Usuario user) throws InformacaoInvalidaException{
+	public ArrayList<String> showTask(Usuario user) throws InformacaoInvalidaException{
 		if(user==null){
 			throw new InformacaoInvalidaException();
 		}
 		ArrayList<Task> tasks = user.getTasks();
-		String msg = "Voce tem "+ user.getTasks().size() +"  tasks";
+		ArrayList<String> list = new ArrayList<String>();
 		for(Task a:tasks){
 			if(a!=null){
-				msg += "\n-----------------\n" + a.toString();
+				list.add(a.getNome());
 			}		
 		}
-		return(msg);
+		return(list);
 	}
 	
 

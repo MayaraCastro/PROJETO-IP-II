@@ -3,11 +3,14 @@ package br.ufrpe.my_pigeon_study.gui.profile;
 import java.io.IOException;
 import java.time.LocalDate;
 
+import javax.swing.JOptionPane;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 
+import Exceptions.InformacaoInvalidaException;
 import br.ufrpe.my_pigeon_study.gui.calendar.Calendario;
 import br.ufrpe.my_pigeon_study.gui.calendar.CalendarioController;
 import br.ufrpe.my_pigeon_study.gui.login.Login;
@@ -80,14 +83,10 @@ public class ProfileController {
     @FXML
     private Hyperlink delete;
 
-    @FXML
-    void atualizar() {
-
-    }
 
     @FXML
     void deletar() {
-
+    	//TODO 
     }
     
     public ProfileController(){
@@ -97,7 +96,7 @@ public class ProfileController {
         this.stage = stage;
     }
     
-    public void setUser(Usuario useri){
+    public static void setUser(Usuario useri){
     	user = useri;
     }
     public static Usuario getUser(){
@@ -105,10 +104,10 @@ public class ProfileController {
     }
     
     @FXML
-	private void initialize() 
+	private void initialize() throws InformacaoInvalidaException 
 	{
-    	Usuario c = LoginController.getUser();
-    	this.setUser(c);
+    	Usuario c = fachada.buscar(LoginController.getUser().getUsuario());
+    	setUser(c);
     	userName.setText(user.getNome());
     	username.setText(user.getUsuario());
     	name.setText(user.getNome());
@@ -147,6 +146,25 @@ public class ProfileController {
     	CalendarioController controller = (CalendarioController) loader.getController();
 		controller.setStage(stage);
     	stage.setScene(new Scene(root));
+    }
+    
+    @FXML
+    private void save(){	
+    	String pass;
+    	if(password.getText().isEmpty()){
+    		pass = user.getSenha();
+    	}
+    	else{
+    		pass = password.getText();
+    	}
+    	Usuario user = new Usuario( name.getText(), getUser().getUsuario(), pass , gender.getSelectionModel().getSelectedItem(), email.getText(), birthday.getValue());
+		try{
+			fachada.alterarUsuario(user);
+			//LoginController.setUser(this.getUser());
+			//this.setUser(user);
+		}catch(Exception e){
+			JOptionPane.showMessageDialog(null, e.getMessage());
+		}
     }
 }
 
