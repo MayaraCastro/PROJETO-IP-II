@@ -1,17 +1,30 @@
 package br.ufrpe.my_pigeon_study.negocio;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 import Exceptions.InformacaoEmBrancoException;
 import Exceptions.InformacaoInvalidaException;
-import br.ufrpe.my_pigeon_study.dados.RepositorioUsuario;
+import br.ufrpe.my_pigeon_study.dados.*;
 import br.ufrpe.my_pigeon_study.negocio.beans.*;
 
 public class CadastroUsuario {
 	private RepositorioUsuario rep;
-	public CadastroUsuario(){
-		this.rep = RepositorioUsuario.getInstancia();
+	private final  String PATH="file.txt";
+
+	public CadastroUsuario() throws IOException{
+		this.Iniciar();
 	}
+	//////////salvar e iniciar arquivos//////////
+	public void Iniciar() throws IOException{
+		if(ManipuladorArquivo.leitor(PATH)!=null) this.rep=(RepositorioUsuario) ManipuladorArquivo.leitor(PATH);
+		else this.rep=RepositorioUsuario.getInstancia();
+	}
+	public void Salve() throws IOException{
+		ManipuladorArquivo.escritor(PATH, this.rep);
+	}
+		
+	////////////////////////////////////////////
 	public boolean cadastrar(Usuario user)throws InformacaoInvalidaException, InformacaoEmBrancoException{
 			if(user.getNome() != "" && user.getEmail() != "" && user.getUsuario() != ""
 				&& user.getSenha() != "" ){
