@@ -108,19 +108,13 @@ public class CalendarioController {
 	{
     	Usuario c = fachada.buscar(LoginController.getUser().getUsuario());
     	this.setUser(c);
+    	userName.setText(c.getNome());
     	
     	
 	}
     @FXML
     void editTask() throws IOException{
-        	FXMLLoader loader = new FXMLLoader(TaskCell.class.getResource("TaskCell.fxml"));
-    		
-    	    AnchorPane root = (AnchorPane) loader.load();
-    	    TaskCellController.setTask(fachada.buscarTask(user,taskList.getSelectionModel().getSelectedItem()));
-    		Stage s = new Stage();
-    	    s.setScene(new Scene(root));
-    	    TaskCellController.setStage(s);
-    	    s.show();
+        	//TODO
         
     }
     @FXML
