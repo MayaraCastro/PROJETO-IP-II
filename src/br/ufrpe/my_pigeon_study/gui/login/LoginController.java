@@ -60,7 +60,7 @@ public class LoginController{
         this.stage = stage;
     }
     
-    public LoginController() 
+    public LoginController() throws IOException 
 	{
     	this.fachada = Fachada.getInstancia();
     	//USUARIO JA PRONTO PRA TESTES
@@ -82,6 +82,7 @@ public class LoginController{
 	@FXML
 	private void initialize() 
 	{
+		
 	}
 	@FXML
 	private void entra() throws IOException{

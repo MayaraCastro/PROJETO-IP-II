@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<fx:root id="root" fx:id="root" prefHeight="171.0" prefWidth="666.0" type="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Exceptions.ErrorController">
+   <children>
+      <SplitPane dividerPositions="0.7046153846153846" layoutX="92.0" orientation="VERTICAL" prefHeight="171.0" prefWidth="666.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <ImageView fitHeight="107.0" fitWidth="102.0" layoutX="6.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+                     <image>
+                        <Image url="@error.png" />
+                     </image>
+                  </ImageView>
+                  <Label contentDisplay="CENTER" layoutX="314.0" layoutY="14.0" prefHeight="25.0" prefWidth="94.0" text="ERROR" textAlignment="CENTER" textFill="RED" AnchorPane.bottomAnchor="76.0" AnchorPane.leftAnchor="314.0" AnchorPane.rightAnchor="256.0" AnchorPane.topAnchor="14.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblmsg" layoutX="127.0" layoutY="53.0" prefHeight="46.0" prefWidth="486.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #DCDCDC;">
+               <children>
+                  <Button fx:id="btnOk" layoutX="564.0" layoutY="11.0" mnemonicParsing="false" onAction="#ClickbtnOk" prefHeight="25.0" prefWidth="55.0" text="OK" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="45.0" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</fx:root>

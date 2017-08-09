@@ -23,12 +23,14 @@ import br.ufrpe.my_pigeon_study.negocio.beans.Task;
 import br.ufrpe.my_pigeon_study.negocio.beans.Usuario;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -89,7 +91,7 @@ public class CalendarioController {
     public static void setTask(Task task) {
     	CalendarioController.task = task;
     }
-    public CalendarioController(){
+    public CalendarioController() throws IOException{
     	this.fachada = Fachada.getInstancia();
     }
     public void setStage(Stage stage){
@@ -103,6 +105,7 @@ public class CalendarioController {
     	return(user);
     }
     
+    
     @FXML
 	private void initialize() throws InformacaoInvalidaException 
 	{
@@ -110,6 +113,36 @@ public class CalendarioController {
     	this.setUser(c);
     	userName.setText(c.getNome());
     	
+    	taskList.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+            @Override//Quando selecionar no listview a task 
+            public void handle(MouseEvent event) {
+        		Task t = fachada.buscarTask(user, taskList.getSelectionModel().getSelectedItem());
+        		task = t;
+        		try {
+					chamarTaskInfo();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+                
+            }
+
+			private void chamarTaskInfo() throws IOException {
+				FXMLLoader loader = new FXMLLoader(TaskInfo.class.getResource("TaskInfo.fxml"));
+				
+			    AnchorPane root = (AnchorPane) loader.load();
+
+				Stage s = new Stage();
+				
+			    s.setScene(new Scene(root));
+			    s.setResizable(false);
+			    TaskInfoController.setStage(s);
+			    //TaskCellController.setStage(s);
+			    s.show();
+				
+			}
+        });
     	
 	}
     @FXML

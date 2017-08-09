@@ -33,6 +33,8 @@ public class Login extends Application
 		stage.setScene(scene);
 		// Set the Title to the Stage
 		stage.setTitle("My Study Life");
+		
+		stage.setResizable(false);
 		// Display the Stage
 		stage.show();
 	}

@@ -1,4 +1,5 @@
 package br.ufrpe.my_pigeon_study.negocio;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -11,12 +12,12 @@ public class Fachada {
 	private CadastroUsuario cadastroU;
 	private static Fachada instancia;
 	
-	private Fachada(){
+	private Fachada() throws IOException{
 		this.login=new Login();
 		this.cadastroU=new CadastroUsuario();
 	}
 	
-	public static Fachada getInstancia(){
+	public static Fachada getInstancia() throws IOException{
 		if(instancia==null){
 			instancia= new Fachada();
 		}
@@ -24,6 +25,12 @@ public class Fachada {
 	}
 	
 	//USUARIO
+	public boolean descadastrar(String usuario)throws InformacaoInvalidaException{
+		if(usuario==null){
+			throw new InformacaoInvalidaException();
+		}
+		return(this.cadastroU.descadastrar(usuario));
+	}
 	public boolean cadastrarUsuario(Usuario user)throws InformacaoInvalidaException, InformacaoEmBrancoException{
 		if(user==null){
 			throw new InformacaoInvalidaException();

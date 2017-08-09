@@ -86,7 +86,7 @@ public class TaskController {
     @FXML
     private AnchorPane paneTask;
 
-    public TaskController(){
+    public TaskController() throws IOException{
     	this.fachada = Fachada.getInstancia();
     }
     public void setStage(Stage s){
@@ -160,6 +160,7 @@ public class TaskController {
 
 		Stage s = new Stage();
 	    s.setScene(new Scene(root));
+	    s.setResizable(false);
 	    TaskCellController.setStage(s);
 	    s.show();
     }

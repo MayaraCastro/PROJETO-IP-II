@@ -22,7 +22,6 @@ public class Taskk extends Application
 	{
 		// Create the FXMLLoader 
 		FXMLLoader loader = new FXMLLoader(Taskk.class.getResource("Task.fxml"));
-		
 		// Create the Pane and all Details
 		AnchorPane root = (AnchorPane) loader.load();
         

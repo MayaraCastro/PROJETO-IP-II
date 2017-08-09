@@ -55,7 +55,7 @@ public class SignUpController {
     private JFXButton register;
     
 
-    public SignUpController(){
+    public SignUpController() throws IOException{
     	this.fachada = Fachada.getInstancia();
     }
     @FXML

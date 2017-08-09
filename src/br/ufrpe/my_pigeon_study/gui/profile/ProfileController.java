@@ -16,6 +16,8 @@ import br.ufrpe.my_pigeon_study.gui.calendar.CalendarioController;
 import br.ufrpe.my_pigeon_study.gui.login.Login;
 import br.ufrpe.my_pigeon_study.gui.login.LoginController;
 import br.ufrpe.my_pigeon_study.gui.task.Taskk;
+import br.ufrpe.my_pigeon_study.gui.task.TaskCell;
+import br.ufrpe.my_pigeon_study.gui.task.TaskCellController;
 import br.ufrpe.my_pigeon_study.gui.task.TaskController;
 import br.ufrpe.my_pigeon_study.negocio.Fachada;
 import br.ufrpe.my_pigeon_study.negocio.beans.Usuario;
@@ -85,11 +87,20 @@ public class ProfileController {
 
 
     @FXML
-    void deletar() {
-    	//TODO 
+    void deletar() throws IOException {
+    	FXMLLoader loader = new FXMLLoader(Delete.class.getResource("Delete.fxml"));
+		
+	    AnchorPane root = (AnchorPane) loader.load();
+
+		Stage s = new Stage();
+	    s.setScene(new Scene(root));
+	    s.setResizable(false);
+	    DeleteController.setStage(s);
+	    DeleteController.setMainStage(stage);
+	    s.show();
     }
     
-    public ProfileController(){
+    public ProfileController() throws IOException{
     	this.fachada = Fachada.getInstancia();
     }
     public void setStage(Stage stage){

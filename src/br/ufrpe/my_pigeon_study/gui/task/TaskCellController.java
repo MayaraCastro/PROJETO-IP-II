@@ -71,7 +71,7 @@ public class TaskCellController {
     	time.setValue(this.getTask().getHorario());
     	detail.setText(this.getTask().getObs());
     }
-    public  TaskCellController(){
+    public  TaskCellController() throws IOException{
     	this.fachada = Fachada.getInstancia();
     }
     public static void setStage(Stage s){
