@@ -1,13 +1,11 @@
 package br.ufrpe.my_pigeon_study.gui.signUp;
-import br.ufrpe.my_pigeon_study.gui.login.*;
+import br.ufrpe.my_pigeon_study.gui.ScreenManager;
 import br.ufrpe.my_pigeon_study.negocio.Fachada;
 import br.ufrpe.my_pigeon_study.negocio.beans.Usuario;
 
 import java.io.IOException;
 
 import javax.swing.JOptionPane;
-
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
@@ -16,22 +14,12 @@ import Exceptions.InformacaoEmBrancoException;
 import Exceptions.InformacaoInvalidaException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-
 
 public class SignUpController {
 	
-	private Stage stage;
 	
 	private Fachada fachada;
-	
-    @FXML
-    private JFXButton back;
 	
     @FXML
     private JFXTextField name;
@@ -50,10 +38,6 @@ public class SignUpController {
 
     @FXML
     private JFXComboBox<String> gender;
-
-    @FXML
-    private JFXButton register;
-    
 
     public SignUpController() throws IOException{
     	this.fachada = Fachada.getInstancia();
@@ -88,15 +72,16 @@ public class SignUpController {
     }
     @FXML
     void chamarTelaInicial()throws IOException{
-    	FXMLLoader loader = new FXMLLoader(Login.class.getResource("Login.fxml"));
-    		
-    	AnchorPane root = (AnchorPane) loader.load();
-    	LoginController controller = (LoginController) loader.getController();
-		controller.setStage(stage);
-    	stage.setScene(new Scene(root));
+    	ScreenManager.getInstance().showLogin();
     }
-    public void setStage(Stage stage){
-        this.stage = stage;
-    }
+    
+	@FXML
+	public void fechar(){
+		ScreenManager.getInstance().fecharMainStage();
+	}
+	@FXML
+	public void minimizar(){
+		ScreenManager.getInstance().minimizarMainStage();
+	}
 
 }

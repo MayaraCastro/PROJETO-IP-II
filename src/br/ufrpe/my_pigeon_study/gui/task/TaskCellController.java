@@ -3,39 +3,26 @@ package br.ufrpe.my_pigeon_study.gui.task;
 import java.io.IOException;
 
 import javax.swing.JOptionPane;
-
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTimePicker;
 
 import Exceptions.InformacaoInvalidaException;
+import br.ufrpe.my_pigeon_study.gui.ScreenManager;
 import br.ufrpe.my_pigeon_study.gui.login.LoginController;
 import br.ufrpe.my_pigeon_study.negocio.Fachada;
 import br.ufrpe.my_pigeon_study.negocio.beans.Task;
 import br.ufrpe.my_pigeon_study.negocio.beans.Usuario;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 
 public class TaskCellController {
-
-	private static Stage stage;
 	
 	private Fachada fachada;
 	
 	private Usuario user;
 	
 	private  Task task;
-	
-    @FXML
-    private AnchorPane cell;
-
-    @FXML
-    private AnchorPane cor;
 
     @FXML
     private JFXTextField title;
@@ -50,15 +37,9 @@ public class TaskCellController {
     private JFXTextArea detail;
 
     @FXML
-    private JFXButton save;
-
-    @FXML
-    private JFXButton delete;
-
-    @FXML
     void deletar() throws IOException {
     	fachada.deletarTask( user, this.getTask().getNome());
-    	stage.close();
+    	ScreenManager.getInstance().fecharInfoStage();
     	this.atualizarJanela();
     }
     @FXML
@@ -73,11 +54,7 @@ public class TaskCellController {
     }
     public  TaskCellController() throws IOException{
     	this.fachada = Fachada.getInstancia();
-    }
-    public static void setStage(Stage s){
-        stage = s;
-    }
-    
+    }  
     public void setUser(Usuario user){
     	this.user = user;
     }
@@ -98,7 +75,7 @@ public class TaskCellController {
     	Task novaTask = new Task(date.getValue(), title.getText(), 1, time.getValue(), detail.getText());
 		try{
 			fachada.alterarTask(user,novaTask, task);
-			stage.close();
+			ScreenManager.getInstance().fecharInfoStage();
 			this.atualizarJanela();
 		    
 		}catch(Exception e){
@@ -106,9 +83,6 @@ public class TaskCellController {
 		}
     }
     private void atualizarJanela() throws IOException{
-    	FXMLLoader loader = new FXMLLoader(Taskk.class.getResource("Task.fxml"));
-		    		
-		    AnchorPane root = (AnchorPane) loader.load();
-		   	TaskController.getStage().setScene(new Scene(root));
+    	ScreenManager.getInstance().showMainTask();
     }
 }

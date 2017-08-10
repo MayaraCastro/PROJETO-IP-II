@@ -1,39 +1,23 @@
 package br.ufrpe.my_pigeon_study.gui.login;
-import br.ufrpe.my_pigeon_study.gui.signUp.*;
-import br.ufrpe.my_pigeon_study.gui.task.Taskk;
-import br.ufrpe.my_pigeon_study.gui.task.TaskController;
-
+import br.ufrpe.my_pigeon_study.gui.ScreenManager;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
 import javax.swing.JOptionPane;
-
 import Exceptions.InformacaoEmBrancoException;
 import Exceptions.InformacaoInvalidaException;
 import br.ufrpe.my_pigeon_study.negocio.Fachada;
-
 import br.ufrpe.my_pigeon_study.negocio.beans.Usuario;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import javafx.event.*;
+
 public class LoginController{
-	
-	private Stage stage;
-	
+
 	private Fachada fachada;
 	
 	private static Usuario user;
-    @FXML
-    private Button signIn;
 
     @FXML
     private TextField userName;
@@ -41,25 +25,10 @@ public class LoginController{
     @FXML
     private PasswordField password;
 
-    @FXML
-    private Hyperlink forgotPassword;
-
-    @FXML
-    private Button signUp;
-
-    @FXML
-    private Label sair;
     
     public static void setUser(Usuario user) {
 		LoginController.user = user;
 	}
-	public static Usuario getUser(){
-    	return(user);
-    }
-    public void setStage(Stage stage){
-        this.stage = stage;
-    }
-    
     public LoginController() throws IOException 
 	{
     	this.fachada = Fachada.getInstancia();
@@ -99,26 +68,24 @@ public class LoginController{
 		}
 	}
 	
-	
     public void chamarTelaPrincipal()throws IOException{
-    	
-    	FXMLLoader loader = new FXMLLoader(Taskk.class.getResource("Task.fxml"));
-    		
-    	AnchorPane root = (AnchorPane) loader.load();
-    	TaskController controller = (TaskController) loader.getController();
-		controller.setStage(stage);
-		
-    	stage.setScene(new Scene(root));
+    	ScreenManager.getInstance().showMainTask();
     }
 	@FXML
-	private void signUP(ActionEvent event)throws IOException{
-
-		FXMLLoader loader = new FXMLLoader(SignUP.class.getResource("SignUP.fxml"));
+	private void signUP(ActionEvent event){
+		ScreenManager.getInstance().showSignUp();
 		
-		AnchorPane root = (AnchorPane) loader.load();
-		SignUpController controller = (SignUpController) loader.getController();
-		controller.setStage(stage);
-		stage.setScene(new Scene(root));
+	}
+	public static Usuario getUser() {
 		
+		return LoginController.user;
+	}
+	@FXML
+	public void fechar(){
+		ScreenManager.getInstance().fecharMainStage();
+	}
+	@FXML
+	public void minimizar(){
+		ScreenManager.getInstance().minimizarMainStage();
 	}
 }

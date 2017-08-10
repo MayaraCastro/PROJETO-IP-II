@@ -9,19 +9,15 @@ import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTimePicker;
 
 import Exceptions.InformacaoInvalidaException;
-import br.ufrpe.my_pigeon_study.gui.login.LoginController;
-import br.ufrpe.my_pigeon_study.gui.task.TaskController;
-import br.ufrpe.my_pigeon_study.negocio.Fachada;
+import br.ufrpe.my_pigeon_study.gui.ScreenManager;
+
 import br.ufrpe.my_pigeon_study.negocio.beans.Task;
-import br.ufrpe.my_pigeon_study.negocio.beans.Usuario;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 
 public class TaskInfoController {
 
-	private static Stage stage;
 	
 	private  Task task;
     @FXML
@@ -71,13 +67,9 @@ public class TaskInfoController {
     
     }
     
-    public static void setStage(Stage s){
-        stage = s;
-    }
-    
     @FXML
     void fechar() {
-    	stage.close();
+    	ScreenManager.getInstance().fecharInfoStage();
     }
 }
 

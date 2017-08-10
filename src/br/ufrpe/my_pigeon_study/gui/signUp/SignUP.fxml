@@ -16,7 +16,7 @@
    <children>
       <Pane layoutY="-4.0" prefHeight="684.0" prefWidth="200.0" style="-fx-background-color: #0B173B;">
          <children>
-            <JFXButton fx:id="back" layoutX="62.0" layoutY="285.0" onAction="#chamarTelaInicial" prefHeight="66.0" prefWidth="74.0" text=" ">
+            <JFXButton layoutX="62.0" layoutY="285.0" onAction="#chamarTelaInicial" prefHeight="66.0" prefWidth="74.0" text=" ">
                <graphic>
                   <ImageView fitHeight="71.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -46,9 +46,14 @@
       <Label layoutX="885.0" layoutY="550.0" text="By clicking Create Account, you agree to our Terms." textFill="#6b6b6b" />
       <Label layoutX="1171.0" layoutY="645.0" text="My Pigeon Study © 2017" textFill="#807f7f" />
       <Separator layoutX="263.0" layoutY="132.0" prefHeight="17.0" prefWidth="976.0" />
-      <Label layoutX="1278.0" layoutY="14.0" prefHeight="42.0" prefWidth="23.0" text="X" textFill="#0b173b">
+      <Label layoutX="1278.0" layoutY="14.0" onMouseClicked="#fechar" prefHeight="42.0" prefWidth="14.0" text="X" textFill="#0b173b">
          <font>
             <Font size="27.0" />
+         </font>
+      </Label>
+      <Label layoutX="1241.0" onMouseClicked="#minimizar" prefHeight="58.0" prefWidth="20.0" text="-" textFill="#0b173b">
+         <font>
+            <Font size="48.0" />
          </font>
       </Label>
    </children>
