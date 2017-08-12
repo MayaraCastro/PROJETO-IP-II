@@ -124,7 +124,7 @@ public class ScreenManager {
 	
 	public void loadMainDisciplina(){
 		try {
-			AnchorPane telaDisciplina = FXMLLoader.load(this.getClass().getResource("disciplina/Disciplina.fxml"));
+			AnchorPane telaDisciplina = FXMLLoader.load(this.getClass().getResource("disciplinas/Disciplina.fxml"));
 			this.mainTask = new Scene(telaDisciplina);
 		} catch (IOException e) {
 			
@@ -134,7 +134,7 @@ public class ScreenManager {
 	}
 	public void loadCellDisciplina(){
 		try {
-			AnchorPane telaCellDisciplina = FXMLLoader.load(this.getClass().getResource("disciplina/DisciplinaCell.fxml"));
+			AnchorPane telaCellDisciplina = FXMLLoader.load(this.getClass().getResource("disciplinas/DisciplinaCell.fxml"));
 			this.cellTask = new Scene(telaCellDisciplina);
 		} catch (IOException e) {
 			
@@ -142,8 +142,6 @@ public class ScreenManager {
 		}
 		
 	}
-	
-	
 	
 	public Stage getMainStage(){
 		return mainStage;

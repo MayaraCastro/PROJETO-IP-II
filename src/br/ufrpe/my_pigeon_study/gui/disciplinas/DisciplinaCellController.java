@@ -1,4 +1,4 @@
-package br.ufrpe.my_pigeon_study.gui.Disciplina;
+package br.ufrpe.my_pigeon_study.gui.disciplinas;
 
 import java.io.IOException;
 
