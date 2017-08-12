@@ -72,7 +72,7 @@ public class TaskCellController {
     @FXML
     private void save(){
 
-    	Task novaTask = new Task(date.getValue(), title.getText(), 1, time.getValue(), detail.getText());
+    	Task novaTask = new Task(date.getValue(), title.getText(), time.getValue(), detail.getText());
 		try{
 			fachada.alterarTask(user,novaTask, task);
 			ScreenManager.getInstance().fecharInfoStage();

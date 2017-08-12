@@ -16,8 +16,7 @@ public class ScreenManager {
 	//private FXMLLoader classes,classeCell, calendario, taskInfo,  login, signUp, task, taskCell;
 	private Scene mainDisciplina, cellDisciplina;
 	private Scene mainTask, cellTask;
-	private Scene mainClasses,  cellClasse;
-	private Scene mainCalendario, infoTask, infoClasse;
+	private Scene mainCalendario, infoTask;
 	private Scene mainLogin;
 	private Scene mainSignUp;
 	private Scene mainPerfil, delete;

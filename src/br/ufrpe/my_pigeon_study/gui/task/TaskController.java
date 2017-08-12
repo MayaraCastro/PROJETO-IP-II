@@ -98,7 +98,7 @@ public class TaskController {
     private void cadastrar(){
     	try{
     		
-	    	Task novaTask = new Task( dueDate.getValue(), title.getText(), dueDate.getValue().getDayOfWeek().getValue(), dueTime.getValue(), detail.getText() );
+	    	Task novaTask = new Task( dueDate.getValue(), title.getText(), dueTime.getValue(), detail.getText() );
 			
 			fachada.cadastrarTask(user,novaTask);
 			dueDate.setValue(null);
