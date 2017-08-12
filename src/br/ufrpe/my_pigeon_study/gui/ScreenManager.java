@@ -122,7 +122,27 @@ public class ScreenManager {
 		}
 	}
 	
-	//TODO cenas disciplinas
+	public void loadMainDisciplina(){
+		try {
+			AnchorPane telaDisciplina = FXMLLoader.load(this.getClass().getResource("disciplina/Disciplina.fxml"));
+			this.mainTask = new Scene(telaDisciplina);
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		
+	}
+	public void loadCellDisciplina(){
+		try {
+			AnchorPane telaCellDisciplina = FXMLLoader.load(this.getClass().getResource("disciplina/DisciplinaCell.fxml"));
+			this.cellTask = new Scene(telaCellDisciplina);
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		
+	}
+	
 	
 	
 	public Stage getMainStage(){
