@@ -14,7 +14,7 @@ public class ScreenManager {
 	private Stage infoStage;
 	
 	//private FXMLLoader classes,classeCell, calendario, taskInfo,  login, signUp, task, taskCell;
-	
+	private Scene mainDisciplina, cellDisciplina;
 	private Scene mainTask, cellTask;
 	private Scene mainClasses,  cellClasse;
 	private Scene mainCalendario, infoTask, infoClasse;
@@ -179,6 +179,15 @@ public class ScreenManager {
 	public void showCellTask(){
 		this.loadCellTask();
 		this.infoStage.setScene(this.cellTask);
+		this.showInfoStage();
+	}
+	public void showMainDisciplina(){
+		this.loadMainDisciplina();
+		this.mainStage.setScene(mainDisciplina);
+	}
+	public void showCellDisciplina(){
+		this.loadCellDisciplina();
+		this.infoStage.setScene(this.cellDisciplina);
 		this.showInfoStage();
 	}
 	public void showPerfil(){
