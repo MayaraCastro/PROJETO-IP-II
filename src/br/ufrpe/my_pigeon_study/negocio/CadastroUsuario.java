@@ -84,7 +84,7 @@ public class CadastroUsuario {
 	
 	//Atividades
 	
-	public boolean cadastrarAtividade(Usuario user, Atividade atividade)throws InformacaoInvalidaException, InformacaoEmBrancoException{
+	public boolean cadastrarAtividade(Usuario user, Disciplina atividade)throws InformacaoInvalidaException, InformacaoEmBrancoException{
 		
 		if(atividade.getNome() != "" ){
 			if(atividade.getDia_da_semana() >0 &&atividade.getDia_da_semana() <=7 && atividade.getHorario() != null){
@@ -101,13 +101,13 @@ public class CadastroUsuario {
 		return (false);
 	}
 	
-	public boolean alterarAtividade(Usuario user, Atividade atividade,Atividade antiga)throws InformacaoInvalidaException, InformacaoEmBrancoException{
+	public boolean alterarAtividade(Usuario user, Disciplina atividade,Disciplina antiga)throws InformacaoInvalidaException, InformacaoEmBrancoException{
 		
 		if(atividade.getNome() != ""){
 			if(atividade.getDia_da_semana() >0 &&atividade.getDia_da_semana() <=7 && atividade.getHorario() != null
 				 && atividade.getObs() != ""){
 			
-				Atividade original = this.rep.buscarAtiv(user, antiga.getNome());
+				Disciplina original = this.rep.buscarAtiv(user, antiga.getNome());
 				original.setNome(atividade.getNome());
 				original.setDia_da_semana(atividade.getDia_da_semana());
 				original.setHorario(atividade.getHorario());
@@ -125,7 +125,7 @@ public class CadastroUsuario {
 		return (false);
 	}
 	
-	public Atividade buscarAtividade(Usuario user,String Atividade) throws InformacaoInvalidaException{
+	public Disciplina buscarAtividade(Usuario user,String Atividade) throws InformacaoInvalidaException{
 		if(user==null | Atividade==null){
 			throw new InformacaoInvalidaException();
 		}
@@ -144,9 +144,9 @@ public class CadastroUsuario {
 			 throw new InformacaoEmBrancoException();
 		}
 		
-		ArrayList<Atividade> atividades = user.getAtividades();
+		ArrayList<Disciplina> atividades = user.getAtividades();
 		String mensagem = "Voce tem "+ user.getAtividades().size() +"  atividades";
-		for(Atividade a : atividades){
+		for(Disciplina a : atividades){
 			if(a != null){
 				mensagem += "\n-----------------\n" + a.toString();
 			}		
@@ -214,10 +214,10 @@ public class CadastroUsuario {
 		if(user==null){
 			throw new InformacaoInvalidaException();
 		}
-		ArrayList<Atividade> atividades = user.getAtividades();
+		ArrayList<Disciplina> atividades = user.getAtividades();
 		ArrayList<String> list = new ArrayList<String>();
 		
-		for(Atividade a:atividades){
+		for(Disciplina a:atividades){
 			if(a!=null){
 				if(a.getDia_da_semana()==dayOfWeek){
 					list.add(a.getNome());

@@ -12,16 +12,14 @@ import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTimePicker;
 
 import Exceptions.InformacaoInvalidaException;
-import br.ufrpe.my_pigeon_study.gui.calendar.Calendario;
+import br.ufrpe.my_pigeon_study.gui.ScreenManager;
 import br.ufrpe.my_pigeon_study.gui.calendar.CalendarioController;
-import br.ufrpe.my_pigeon_study.gui.login.Login;
 import br.ufrpe.my_pigeon_study.gui.login.LoginController;
-import br.ufrpe.my_pigeon_study.gui.profile.Profile;
 import br.ufrpe.my_pigeon_study.gui.profile.ProfileController;
 import br.ufrpe.my_pigeon_study.negocio.Fachada;
 
 
-import br.ufrpe.my_pigeon_study.negocio.beans.Atividade;
+import br.ufrpe.my_pigeon_study.negocio.beans.Disciplina;
 import br.ufrpe.my_pigeon_study.negocio.beans.Usuario;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -37,7 +35,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 
-public class AtividadesController {
+public class DisciplinaController {
 
 	private static Stage stage;
 	
@@ -45,7 +43,7 @@ public class AtividadesController {
 	
 	private static Usuario user;
 	
-	private static Atividade activit;
+	private static Disciplina activit;
 	
     @FXML
     private Label userName;
@@ -86,7 +84,7 @@ public class AtividadesController {
     @FXML
     private AnchorPane paneAtividades;
 
-    public AtividadesController() throws IOException{
+    public DisciplinaController() throws IOException{
     	this.fachada = Fachada.getInstancia();
     }
     public void setStage(Stage s){
@@ -118,14 +116,9 @@ public class AtividadesController {
 
             @Override//Quando selecionar no listview a Atividades 
             public void handle(MouseEvent event) {
-        		Atividade t = fachada.buscarAtividade(user, list.getSelectionModel().getSelectedItem());
+        		Disciplina t = fachada.buscarAtividade(user, list.getSelectionModel().getSelectedItem());
         		activit = t;
-        		try {
-					chamarAtividades();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+        		chamarAtividades();
                 
             }
         });
@@ -140,7 +133,7 @@ public class AtividadesController {
     private void cadastrar(){
     	try{
     		
-	    	Atividade novaAtividades = new Atividade(title.getText(), dueDate.getValue().getDayOfWeek().getValue(), dueTime.getValue(), detail.getText() );
+	    	Disciplina novaAtividades = new Disciplina(title.getText(), dueDate.getValue().getDayOfWeek().getValue(), dueTime.getValue(), detail.getText() );
 			
 			fachada.cadastrarAtividade(user,novaAtividades);
 			dueDate.setValue(null);
@@ -153,50 +146,27 @@ public class AtividadesController {
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
     }
-    public void chamarAtividades()throws IOException{
-    	FXMLLoader loader = new FXMLLoader(AtividadesCell.class.getResource("AtividadesCell.fxml"));
-			
-	    AnchorPane root = (AnchorPane) loader.load();
-
-		Stage s = new Stage();
-	    s.setScene(new Scene(root));
-	    AtividadesCellController.setStage(s);
-	    s.show();
+    public void chamarAtividades(){
+    	ScreenManager.getInstance().showCellTask();
     }
     @FXML
-    void chamarTelaInicial()throws IOException{
-    	FXMLLoader loader = new FXMLLoader(Login.class.getResource("Login.fxml"));
-    		
-    	AnchorPane root = (AnchorPane) loader.load();
-    	LoginController controller = (LoginController) loader.getController();
-		controller.setStage(stage);
-    	stage.setScene(new Scene(root));
+    void chamarTelaInicial(){
+    	ScreenManager.getInstance().showLogin();
     }
     @FXML
-    void chamarTelaProfile()throws IOException{
-    	FXMLLoader loader = new FXMLLoader(Profile.class.getResource("Profile.fxml"));
-    		
-    	AnchorPane root = (AnchorPane) loader.load();
-    	ProfileController controller = (ProfileController) loader.getController();
-    	ProfileController.setUser(user);
-		controller.setStage(stage);
-    	stage.setScene(new Scene(root));
+    void chamarTelaProfile(){
+    	ScreenManager.getInstance().showPerfil();
     }
     @FXML
-    void chamarTelaCalendar()throws IOException{
-    	FXMLLoader loader = new FXMLLoader(Calendario.class.getResource("Calendario.fxml"));
-    		
-    	AnchorPane root = (AnchorPane) loader.load();
-    	CalendarioController controller = (CalendarioController) loader.getController();
-		controller.setStage(stage);
-    	stage.setScene(new Scene(root));
+    void chamarTelaCalendar(){
+    	ScreenManager.getInstance().showCalendario();
     }
     
-	public static Atividade getAtividades() {
+	public static Disciplina getAtividades() {
 		return activit;
 	}
-	public static void setAtividades(Atividade Atividades) {
-		AtividadesController.activit = Atividades;
+	public static void setAtividades(Disciplina Atividades) {
+		DisciplinaController.activit = Atividades;
 	}
     
 }

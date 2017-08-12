@@ -106,10 +106,10 @@ public class Fachada {
 	}
 	//DISCIPLINA
 	
-	public boolean cadastrarAtividade(Usuario user, Atividade atividade)throws InformacaoInvalidaException, InformacaoEmBrancoException{
+	public boolean cadastrarAtividade(Usuario user, Disciplina atividade)throws InformacaoInvalidaException, InformacaoEmBrancoException{
 		return(this.cadastroU.cadastrarAtividade(user, atividade));
 	}
-	public Atividade buscarAtividade(Usuario user, String nome){
+	public Disciplina buscarAtividade(Usuario user, String nome){
 		try {
 			return(this.cadastroU.buscarAtividade(user, nome));
 		} catch (InformacaoInvalidaException e) {
@@ -117,7 +117,7 @@ public class Fachada {
 		}
 		return null;
 	}
-	public boolean alterarAtividade(Usuario user,Atividade nova,Atividade original)throws InformacaoInvalidaException, InformacaoEmBrancoException{
+	public boolean alterarAtividade(Usuario user,Disciplina nova,Disciplina original)throws InformacaoInvalidaException, InformacaoEmBrancoException{
 		return(cadastroU.alterarAtividade(user, nova,original));
 	}
 	public boolean deletarAtividade(Usuario user,String nome){

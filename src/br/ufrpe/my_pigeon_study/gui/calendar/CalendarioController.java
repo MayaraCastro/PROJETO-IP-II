@@ -9,7 +9,7 @@ import br.ufrpe.my_pigeon_study.gui.ScreenManager;
 import br.ufrpe.my_pigeon_study.gui.login.LoginController;
 
 import br.ufrpe.my_pigeon_study.negocio.Fachada;
-import br.ufrpe.my_pigeon_study.negocio.beans.Atividade;
+import br.ufrpe.my_pigeon_study.negocio.beans.Disciplina;
 import br.ufrpe.my_pigeon_study.negocio.beans.Task;
 import br.ufrpe.my_pigeon_study.negocio.beans.Usuario;
 import javafx.collections.FXCollections;
@@ -30,7 +30,7 @@ public class CalendarioController {
 	
 	private static Task task;
 	
-	private static Atividade classe;
+	private static Disciplina classe;
 	
 	@FXML
     private Label userName;

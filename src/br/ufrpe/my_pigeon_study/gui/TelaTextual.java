@@ -324,7 +324,7 @@ public class TelaTextual {
 		obs=scanner.nextLine();
 		System.out.flush();
 
-		Atividade atividade = new Atividade(nome,dia_da_semana,horario,obs);
+		Disciplina atividade = new Disciplina(nome,dia_da_semana,horario,obs);
 		try{
 			fachada.cadastrarAtividade(user, atividade);
 		}catch(Exception e){
@@ -382,7 +382,7 @@ public class TelaTextual {
 		System.out.print("Nome: ");
 		String nome=scanner.next();
 		System.out.flush();
-		Atividade ativi=fachada.buscarAtividade(user,nome);
+		Disciplina ativi=fachada.buscarAtividade(user,nome);
 		if(ativi==null){
 			System.out.println("Erro ao Buscar");
 		}
@@ -406,7 +406,7 @@ public class TelaTextual {
 			}
 		}
 	}
-	public void alterarAtividade(Usuario user,Atividade nomeOriginal)throws InformacaoInvalidaException{
+	public void alterarAtividade(Usuario user,Disciplina nomeOriginal)throws InformacaoInvalidaException{
 		if(user==null  || nomeOriginal==null){
 			throw new InformacaoInvalidaException();
 		}
@@ -435,7 +435,7 @@ public class TelaTextual {
 		obs=scanner.nextLine();
 			
 			
-		Atividade novaAtivi = new Atividade(nome,dia_da_semana,horario,obs);
+		Disciplina novaAtivi = new Disciplina(nome,dia_da_semana,horario,obs);
 		
 		try{
 			fachada.alterarAtividade(user,novaAtivi,nomeOriginal);

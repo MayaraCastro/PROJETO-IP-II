@@ -11,9 +11,10 @@ import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTimePicker;
 
 import Exceptions.InformacaoInvalidaException;
+import br.ufrpe.my_pigeon_study.gui.ScreenManager;
 import br.ufrpe.my_pigeon_study.gui.login.LoginController;
 import br.ufrpe.my_pigeon_study.negocio.Fachada;
-import br.ufrpe.my_pigeon_study.negocio.beans.Atividade;
+import br.ufrpe.my_pigeon_study.negocio.beans.Disciplina;
 import br.ufrpe.my_pigeon_study.negocio.beans.Usuario;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,7 +22,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class AtividadesCellController {
+public class DisciplinaCellController {
 
 	private static Stage stage;
 	
@@ -29,7 +30,7 @@ public class AtividadesCellController {
 	
 	private Usuario user;
 	
-	private  Atividade atvdd;
+	private  Disciplina atvdd;
 	
     @FXML
     private AnchorPane cell;
@@ -65,12 +66,12 @@ public class AtividadesCellController {
     private void initialize() throws InformacaoInvalidaException{
     	Usuario c = fachada.buscar(LoginController.getUser().getUsuario());
     	setUser(c);
-    	this.setAtividades(AtividadesController.getAtividades());
+    	this.setAtividades(DisciplinaController.getAtividades());
     	title.setText(this.getAtividades().getNome());
     	time.setValue(this.getAtividades().getHorario());
     	detail.setText(this.getAtividades().getObs());
     }
-    public  AtividadesCellController() throws IOException{
+    public  DisciplinaCellController() throws IOException{
     	this.fachada = Fachada.getInstancia();
     }
     public static void setStage(Stage s){
@@ -83,10 +84,10 @@ public class AtividadesCellController {
     public Usuario getUser(){
     	return(user);
     }
-    public  Atividade getAtividades(){
+    public  Disciplina getAtividades(){
     	return atvdd;
     }
-    public  void setAtividades(Atividade t){
+    public  void setAtividades(Disciplina t){
     	atvdd = t;
     }
     
@@ -94,7 +95,7 @@ public class AtividadesCellController {
     @FXML
     private void save(){
 
-    	Atividade novaAtividade = new Atividade( title.getText(), 1, time.getValue(), detail.getText());
+    	Disciplina novaAtividade = new Disciplina( title.getText(), 1, time.getValue(), detail.getText());
 		try{
 			fachada.alterarAtividade(user,novaAtividade, atvdd);
 			stage.close();
@@ -105,9 +106,6 @@ public class AtividadesCellController {
 		}
     }
     private void atualizarJanela() throws IOException{
-    	FXMLLoader loader = new FXMLLoader(AtividadesCell.class.getResource("Atividades.fxml"));
-		    		
-		    AnchorPane root = (AnchorPane) loader.load();
-		   	AtividadesController.getStage().setScene(new Scene(root));
+    	ScreenManager.getInstance().showMainTask();
     }
 }

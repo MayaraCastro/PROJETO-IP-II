@@ -84,9 +84,9 @@ public class RepositorioUsuario implements Repositorio{
 
 	//ATIVIDADES
 	
-	public Atividade buscarAtiv(Usuario user, String atividade){
-		ArrayList<Atividade> atividades = user.getAtividades();
-		for(Atividade ativ : atividades){
+	public Disciplina buscarAtiv(Usuario user, String atividade){
+		ArrayList<Disciplina> atividades = user.getAtividades();
+		for(Disciplina ativ : atividades){
 			if(ativ != null && ativ.getNome().equals(atividade)){
 				return(ativ);
 			}
@@ -95,11 +95,11 @@ public class RepositorioUsuario implements Repositorio{
 	}
 
 
-	public boolean addAtividade(Usuario user, Atividade atividade){
+	public boolean addAtividade(Usuario user, Disciplina atividade){
 		if(atividade != null){
 			if(this.buscarAtiv(user, atividade.getNome()) ==  null){
 				
-				ArrayList<Atividade> atividades = user.getAtividades();
+				ArrayList<Disciplina> atividades = user.getAtividades();
 				atividades.add(atividade);
 				user.setAtividades(atividades);
 				return (true);
@@ -132,7 +132,7 @@ public class RepositorioUsuario implements Repositorio{
 }
 	
 	
-	public boolean alterarAtiv(Usuario user, Atividade novaAtiv, Atividade antiga){
+	public boolean alterarAtiv(Usuario user, Disciplina novaAtiv, Disciplina antiga){
 		if(novaAtiv!=null && antiga != null){
 			for(int i=0; i < user.getAtividades().size(); i++){
 				if(user.getAtividades().get(i) != null && user.getAtividades().get(i).getNome().equals(antiga.getNome())){

@@ -7,7 +7,7 @@ public class Usuario extends Pessoa{
 	private String usuario;
 	private String senha;
 	private String email;
-	private ArrayList<Atividade> atividades;
+	private ArrayList<Disciplina> atividades;
 	private ArrayList<Task> tasks;
 	
 	public Usuario(){
@@ -25,17 +25,17 @@ public class Usuario extends Pessoa{
 		this.senha = senha;
 		this.email = email;
 		
-		this.atividades = new ArrayList<Atividade>();
+		this.atividades = new ArrayList<Disciplina>();
 		this.tasks = new ArrayList<Task>();
 
 	}
 	
 	//GETTERS AND SETTERS
 	
-	public ArrayList<Atividade> getAtividades() {
+	public ArrayList<Disciplina> getAtividades() {
 		return atividades;
 	}
-	public void setAtividades(ArrayList<Atividade> atividades) {
+	public void setAtividades(ArrayList<Disciplina> atividades) {
 		this.atividades = atividades;
 	}
 	public ArrayList<Task> getTasks() {
