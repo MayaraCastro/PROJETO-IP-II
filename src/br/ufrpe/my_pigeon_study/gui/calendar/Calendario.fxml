@@ -83,12 +83,12 @@
                </font>
             </Label>
             <Separator layoutX="429.0" layoutY="40.0" prefWidth="200.0" />
-            <Label layoutX="343.0" layoutY="88.0" text="Pick a date" textFill="#cb5171">
+            <Label layoutX="342.0" layoutY="69.0" text="Pick a date" textFill="#cb5171">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <JFXDatePicker fx:id="date" defaultColor="#0b173b" layoutX="425.0" layoutY="85.0" prefHeight="25.0" prefWidth="234.0" promptText="date" />
+            <JFXDatePicker fx:id="date" defaultColor="#0b173b" layoutX="424.0" layoutY="66.0" prefHeight="25.0" prefWidth="234.0" promptText="date" />
             <ListView fx:id="classesList" layoutY="163.0" prefHeight="439.0" prefWidth="531.0" />
             <ListView fx:id="taskList" layoutX="529.0" layoutY="163.0" onMouseClicked="#editTask" prefHeight="439.0" prefWidth="529.0" />
             <Separator layoutX="529.0" layoutY="130.0" orientation="VERTICAL" prefHeight="466.0" prefWidth="5.0" />
@@ -112,9 +112,8 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <JFXButton layoutX="659.0" layoutY="85.0" onAction="#listar" prefHeight="25.0" style="-fx-background-color: cb5171;" text="Go" textFill="#e1e1e1" />
-            <ComboBox fx:id="comboA" layoutX="14.0" layoutY="135.0" prefWidth="150.0" />
-            <ComboBox fx:id="comboT" layoutX="901.0" layoutY="134.0" prefWidth="150.0" />
+            <JFXButton layoutX="648.0" layoutY="66.0" onAction="#listar" prefHeight="25.0" style="-fx-background-color: cb5171;" text="Go" textFill="#e1e1e1" />
+            <ComboBox fx:id="comboSort" layoutX="480.0" layoutY="111.0" prefHeight="26.0" prefWidth="95.0" />
          </children>
       </AnchorPane>
    </children>

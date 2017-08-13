@@ -108,10 +108,8 @@ public class DisciplinaController {
     	list.setItems(activities);
     	list.setPrefWidth(528);
     	list.setPrefHeight(490);
-    	System.out.println(days);
     	dueDay.getItems().addAll(days);
-    	dueDay.setPromptText("Day of Week");
-    	
+    	dueDay.setPromptText("Day of Week");    	
     	userName.setText(user.getNome());
     	list.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
@@ -125,6 +123,9 @@ public class DisciplinaController {
         });
 	}
 
+	private void getSelectedDay() {
+		
+	}
 	@FXML 
 	public void handleMouseClick(MouseEvent arg0) throws IOException {
 
@@ -138,6 +139,7 @@ public class DisciplinaController {
 			
 			fachada.cadastrarAtividade(user,novaAtividades);
 			dueDay.setPromptText("Day of Week");
+
 			title.clear();
 			detail.clear();
 			dueTime.setValue(null);

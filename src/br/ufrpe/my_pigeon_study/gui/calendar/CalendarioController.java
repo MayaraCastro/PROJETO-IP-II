@@ -44,10 +44,9 @@ public class CalendarioController {
     @FXML
     private ListView<String> taskList;
     private final String[] opcoes={"Ascending","Descending"};
+   
     @FXML
-    private ComboBox<String> comboT;
-    @FXML
-    private ComboBox<String> comboA;
+    private ComboBox<String> comboSort;
     
     @FXML
     private Label nClass;
@@ -86,11 +85,10 @@ public class CalendarioController {
     	Usuario c = this.fachada.buscar(LoginController.getUser().getUsuario());
     	this.setUser(c);
     	userName.setText(c.getNome());
-    	comboT.getItems().addAll(opcoes);
-    	comboT.setPromptText("Sort");
-    	comboA.getItems().addAll(opcoes);
-    	comboA.setPromptText("Sort");
-
+    	comboSort.getItems().addAll(opcoes);
+    	comboSort.setValue(opcoes[0]);
+    	comboSort.setOnAction(e->getOption());
+    	
     	taskList.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
             @Override//Quando selecionar no listview a task 
@@ -100,7 +98,6 @@ public class CalendarioController {
         		try {
 					chamarTaskInfo();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
                 
@@ -113,19 +110,33 @@ public class CalendarioController {
         });
     	
 	}
-    @FXML
+	
+	private void getOption() {
+		
+		listar();
+	}
+	@FXML
     void editTask() throws IOException{
-        	//TODO
         
     }
     @FXML
     private void listar() {
     	ObservableList<String> classes = FXCollections.observableArrayList(fachada.calendarioAtividades(user, date.getValue().getDayOfWeek().getValue()));
-    	classesList.setItems(classes);
+    	if(comboSort.getValue()==opcoes[0]){
+    		classesList.setItems(classes.sorted());
+    	}
+    	else{
+    		classesList.setItems(classes);
+    	}
     	nClass.setText("(" + classes.size() + ")");
     	
     	ObservableList<String> tasks = FXCollections.observableArrayList(fachada.calendarioTasks(user, date.getValue()));
-    	taskList.setItems(tasks);
+    	if(comboSort.getValue()==opcoes[0]){
+    		classesList.setItems(tasks.sorted());
+    	}
+    	else{
+    		classesList.setItems(tasks);
+    	}
     	nTask.setText("("+ tasks.size() +")");
     }
     @FXML
