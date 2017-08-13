@@ -17,8 +17,6 @@ import br.ufrpe.my_pigeon_study.negocio.Fachada;
 import br.ufrpe.my_pigeon_study.negocio.beans.Disciplina;
 import br.ufrpe.my_pigeon_study.negocio.beans.Usuario;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 

@@ -125,8 +125,8 @@ public class ScreenManager {
 		try {
 			AnchorPane telaDisciplina = FXMLLoader.load(this.getClass().getResource("disciplinas/Disciplina.fxml"));
 			this.mainTask = new Scene(telaDisciplina);
+
 		} catch (IOException e) {
-			
 			e.printStackTrace();
 		}
 		

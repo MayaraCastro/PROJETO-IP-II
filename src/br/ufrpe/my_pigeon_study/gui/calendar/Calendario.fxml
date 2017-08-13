@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Separator?>
@@ -112,6 +113,8 @@
                </font>
             </Label>
             <JFXButton layoutX="659.0" layoutY="85.0" onAction="#listar" prefHeight="25.0" style="-fx-background-color: cb5171;" text="Go" textFill="#e1e1e1" />
+            <ComboBox fx:id="comboA" layoutX="14.0" layoutY="135.0" prefWidth="150.0" />
+            <ComboBox fx:id="comboT" layoutX="901.0" layoutY="134.0" prefWidth="150.0" />
          </children>
       </AnchorPane>
    </children>

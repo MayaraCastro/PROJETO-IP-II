@@ -16,7 +16,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
@@ -43,6 +43,11 @@ public class CalendarioController {
 
     @FXML
     private ListView<String> taskList;
+    private final String[] opcoes={"Ascending","Descending"};
+    @FXML
+    private ComboBox<String> comboT;
+    @FXML
+    private ComboBox<String> comboA;
     
     @FXML
     private Label nClass;
@@ -81,7 +86,11 @@ public class CalendarioController {
     	Usuario c = this.fachada.buscar(LoginController.getUser().getUsuario());
     	this.setUser(c);
     	userName.setText(c.getNome());
-    	
+    	comboT.getItems().addAll(opcoes);
+    	comboT.setPromptText("Sort");
+    	comboA.getItems().addAll(opcoes);
+    	comboA.setPromptText("Sort");
+
     	taskList.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
             @Override//Quando selecionar no listview a task 

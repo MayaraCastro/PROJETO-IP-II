@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTimePicker?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Separator?>
@@ -97,12 +97,12 @@
                </font>
             </Label>
             <Separator layoutX="712.0" layoutY="112.0" prefWidth="200.0" />
-            <JFXDatePicker fx:id="dueDate" defaultColor="#0b173b" layoutX="569.0" layoutY="175.0" prefHeight="25.0" prefWidth="194.0" promptText="Due Date" />
             <JFXTextField fx:id="title" layoutX="569.0" layoutY="131.0" prefHeight="25.0" prefWidth="437.0" promptText="Title" />
             <JFXTextArea fx:id="detail" layoutX="569.0" layoutY="237.0" prefHeight="175.0" prefWidth="437.0" promptText="Detail" />
             <JFXTimePicker fx:id="dueTime" defaultColor="#0b173b" layoutX="815.0" layoutY="175.0" prefHeight="25.0" prefWidth="194.0" promptText="Due Time" />
             <JFXButton fx:id="save" layoutX="715.0" layoutY="467.0" onAction="#cadastrar" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: cb5171;" text="Save" textFill="WHITE" />
             <ListView fx:id="list" fixedCellSize="-4.0" layoutY="115.0" onMouseClicked="#handleMouseClick" prefHeight="487.0" prefWidth="528.0" />
+            <ComboBox fx:id="dueDay" layoutX="569.0" layoutY="175.0" prefWidth="150.0" />
          </children>
       </AnchorPane>
    </children>

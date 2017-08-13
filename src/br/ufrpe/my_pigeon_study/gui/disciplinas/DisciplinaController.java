@@ -6,16 +6,13 @@ import java.io.IOException;
 import javax.swing.JOptionPane;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTimePicker;
 
 import Exceptions.InformacaoInvalidaException;
 import br.ufrpe.my_pigeon_study.gui.ScreenManager;
-import br.ufrpe.my_pigeon_study.gui.calendar.CalendarioController;
 import br.ufrpe.my_pigeon_study.gui.login.LoginController;
-import br.ufrpe.my_pigeon_study.gui.profile.ProfileController;
 import br.ufrpe.my_pigeon_study.negocio.Fachada;
 
 
@@ -25,8 +22,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
 import javafx.scene.control.ListView;
@@ -65,9 +61,11 @@ public class DisciplinaController {
 
     @FXML
     private ListView<String> list;
-
+    
+    private final String[] days ={"MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY","SUNDAY"};
+    
     @FXML
-    private JFXDatePicker dueDate;
+    private ComboBox<String> dueDay;
 
     @FXML
     private JFXTextField title;
@@ -101,7 +99,7 @@ public class DisciplinaController {
     	return(user);
     }
     
-    @FXML
+	@FXML
 	private void initialize() throws InformacaoInvalidaException 
 	{
     	Usuario c = fachada.buscar(LoginController.getUser().getUsuario());
@@ -110,7 +108,10 @@ public class DisciplinaController {
     	list.setItems(activities);
     	list.setPrefWidth(528);
     	list.setPrefHeight(490);
-		
+    	System.out.println(days);
+    	dueDay.getItems().addAll(days);
+    	dueDay.setPromptText("Day of Week");
+    	
     	userName.setText(user.getNome());
     	list.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
@@ -133,10 +134,10 @@ public class DisciplinaController {
     private void cadastrar(){
     	try{
     		
-	    	Disciplina novaAtividades = new Disciplina(title.getText(), dueDate.getValue().getDayOfWeek().getValue(), dueTime.getValue(), detail.getText() );
+	    	Disciplina novaAtividades = new Disciplina(title.getText(), this.dayOfWeek(), dueTime.getValue(), detail.getText() );
 			
 			fachada.cadastrarAtividade(user,novaAtividades);
-			dueDate.setValue(null);
+			dueDay.setPromptText("Day of Week");
 			title.clear();
 			detail.clear();
 			dueTime.setValue(null);
@@ -170,6 +171,31 @@ public class DisciplinaController {
 	}
 	public static void setAtividades(Disciplina Atividades) {
 		DisciplinaController.activit = Atividades;
+	}
+	public int dayOfWeek(){
+		String valor=dueDay.getValue();
+		if(valor=="MONDAY"){
+			return 1;
+		}
+		else if(valor=="TUESDAY"){
+			return 2;
+		}
+		else if(valor=="WEDNESDAY"){
+			return 3;
+		}
+		else if(valor=="THURSDAY"){
+			return 4;
+		}
+		else if(valor=="FRIDAY"){
+			return 5;
+		}
+		else if(valor=="SATURDAY"){
+			return 6;
+		}
+		else if(valor=="SUNDAY"){
+			return 7;
+		}
+		return -1;
 	}
     
 }
