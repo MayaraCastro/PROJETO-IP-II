@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="676.0" prefWidth="1315.0" style="-fx-background-color: #0B3861;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.my_pigeon_study.gui.calendar.CalendarioController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="676.0" prefWidth="1315.0" style="-fx-background-color: #0B3861;" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.my_pigeon_study.gui.calendar.CalendarioController">
    <children>
       <AnchorPane layoutX="20.0" layoutY="52.0" prefHeight="602.0" prefWidth="177.0" style="-fx-background-color: #0B173B;">
          <children>
@@ -40,17 +40,17 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </JFXButton>
-            <JFXButton  layoutX="1.0" layoutY="270.0" prefHeight="42.0" prefWidth="185.0" ripplerFill="#d35778" text="Calendar" textFill="#fc5d87">
+            <JFXButton layoutX="1.0" layoutY="270.0" prefHeight="42.0" prefWidth="185.0" ripplerFill="#d35778" text="Calendar" textFill="#fc5d87">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </JFXButton>
-            <JFXButton  layoutX="1.0" layoutY="315.0" onAction="#chamarTelaTask" prefHeight="42.0" prefWidth="185.0" ripplerFill="#cb5171" text="Tasks" textFill="WHITE">
+            <JFXButton layoutX="1.0" layoutY="315.0" onAction="#chamarTelaTask" prefHeight="42.0" prefWidth="185.0" ripplerFill="#cb5171" text="Tasks" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </JFXButton>
-            <JFXButton  layoutX="1.0" layoutY="359.0" prefHeight="42.0" prefWidth="185.0" ripplerFill="#cb5171" text="Activities" textFill="WHITE">
+            <JFXButton layoutX="1.0" layoutY="359.0" onAction="#chamarTelaDisciplina" prefHeight="42.0" prefWidth="185.0" ripplerFill="#cb5171" text="Disciplines" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -65,7 +65,7 @@
          <buttons>
             <ButtonBar prefHeight="40.0" prefWidth="200.0">
                <buttons>
-                  <JFXButton  onAction="#chamarTelaInicial" prefHeight="25.0" style="-fx-background-color: cb5171;" text="Log Out" textFill="#e1e1e1" />
+                  <JFXButton onAction="#chamarTelaInicial" prefHeight="25.0" style="-fx-background-color: cb5171;" text="Log Out" textFill="#e1e1e1" />
                   <Separator opacity="0.0" prefWidth="200.0" />
                   <Separator opacity="0.0" prefWidth="200.0" />
                </buttons>
@@ -74,7 +74,7 @@
             <Separator opacity="0.0" prefHeight="2.0" prefWidth="682.0" />
          </buttons>
       </ButtonBar>
-      <AnchorPane  layoutX="236.0" layoutY="52.0" prefHeight="602.0" prefWidth="1057.0" style="-fx-background-color: ffffff;">
+      <AnchorPane layoutX="236.0" layoutY="52.0" prefHeight="602.0" prefWidth="1057.0" style="-fx-background-color: ffffff;">
          <children>
             <Label layoutX="492.0" layoutY="14.0" text="Calendar" textFill="#5b5959">
                <font>
@@ -111,7 +111,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <JFXButton  layoutX="659.0" layoutY="85.0" onAction="#listar" prefHeight="25.0" style="-fx-background-color: cb5171;" text="Go" textFill="#e1e1e1" />
+            <JFXButton layoutX="659.0" layoutY="85.0" onAction="#listar" prefHeight="25.0" style="-fx-background-color: cb5171;" text="Go" textFill="#e1e1e1" />
          </children>
       </AnchorPane>
    </children>

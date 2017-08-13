@@ -30,7 +30,7 @@ public class CalendarioController {
 	
 	private static Task task;
 	
-	private static Disciplina classe;
+	private static Disciplina disciplina;
 	
 	@FXML
     private Label userName;
@@ -56,7 +56,14 @@ public class CalendarioController {
     public static void setTask(Task task) {
     	CalendarioController.task = task;
     }
-    public CalendarioController() throws IOException{
+    
+    public static Disciplina getDisciplina() {
+		return disciplina;
+	}
+	public static void setDisciplina(Disciplina disciplina) {
+		CalendarioController.disciplina = disciplina;
+	}
+	public CalendarioController() throws IOException{
     	this.fachada = Fachada.getInstancia();
     }
     
@@ -128,6 +135,10 @@ public class CalendarioController {
     @FXML
     void chamarTelaProfile(){
     	ScreenManager.getInstance().showPerfil();
+    }
+    @FXML
+    void chamarTelaDisciplina(){
+    	ScreenManager.getInstance().showMainDisciplina();
     }
 }
 

@@ -88,6 +88,10 @@ public class ProfileController {
     void chamarTelaTask(){
     	ScreenManager.getInstance().showMainTask();
     }
+    @FXML
+    void chamarTelaDisciplina(){
+    	ScreenManager.getInstance().showMainDisciplina();
+    }
     
     @FXML
     void chamarTelaCalendar(){

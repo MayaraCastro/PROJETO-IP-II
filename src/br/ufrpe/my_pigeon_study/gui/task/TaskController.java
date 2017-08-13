@@ -126,6 +126,10 @@ public class TaskController {
     void chamarTelaCalendar(){
     	ScreenManager.getInstance().showCalendario();
     }
+    @FXML
+    void chamarTelaDisciplina(){
+    	ScreenManager.getInstance().showMainDisciplina();
+    }
     
 	public static Task getTask() {
 		return task;

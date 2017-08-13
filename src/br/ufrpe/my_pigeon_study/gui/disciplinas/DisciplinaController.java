@@ -161,7 +161,10 @@ public class DisciplinaController {
     void chamarTelaCalendar(){
     	ScreenManager.getInstance().showCalendario();
     }
-    
+    @FXML
+    public void chamarTask(){
+    	ScreenManager.getInstance().showCellTask();
+    }
 	public static Disciplina getAtividades() {
 		return activit;
 	}
