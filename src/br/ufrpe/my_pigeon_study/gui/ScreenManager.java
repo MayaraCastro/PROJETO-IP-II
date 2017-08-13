@@ -123,6 +123,7 @@ public class ScreenManager {
 	
 	public void loadMainDisciplina(){
 		try {
+
 			AnchorPane telaDisciplina = FXMLLoader.load(this.getClass().getResource("disciplinas/Disciplina.fxml"));
 			this.mainTask = new Scene(telaDisciplina);
 

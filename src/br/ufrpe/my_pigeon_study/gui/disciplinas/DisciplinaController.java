@@ -48,12 +48,6 @@ public class DisciplinaController {
     private JFXButton profile;
 
     @FXML
-    private JFXButton calendar;
-
-    @FXML
-    private JFXButton Atividadess;
-
-    @FXML
     private JFXButton activities;
 
     @FXML
@@ -85,13 +79,7 @@ public class DisciplinaController {
     public DisciplinaController() throws IOException{
     	this.fachada = Fachada.getInstancia();
     }
-    public void setStage(Stage s){
-        stage = s;
-    }
-    
-    public static Stage getStage() {
-		return stage;
-	}
+   
 	public void setUser(Usuario u){
     	user = u;
     }
@@ -108,9 +96,9 @@ public class DisciplinaController {
     	list.setItems(activities);
     	list.setPrefWidth(528);
     	list.setPrefHeight(490);
-    	dueDay.getItems().addAll(days);
-    	dueDay.setPromptText("Day of Week");    	
+    	
     	userName.setText(user.getNome());
+
     	list.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
             @Override//Quando selecionar no listview a Atividades 
@@ -134,12 +122,13 @@ public class DisciplinaController {
     @FXML
     private void cadastrar(){
     	try{
-    		
+    		dueDay.setPromptText("Day of Week");
+			dueDay.getItems().addAll(days);
+	    	dueDay.setOnAction(e->getSelectedDay());
+	    	    		
 	    	Disciplina novaAtividades = new Disciplina(title.getText(), this.dayOfWeek(), dueTime.getValue(), detail.getText() );
 			
 			fachada.cadastrarAtividade(user,novaAtividades);
-			dueDay.setPromptText("Day of Week");
-
 			title.clear();
 			detail.clear();
 			dueTime.setValue(null);
@@ -150,7 +139,7 @@ public class DisciplinaController {
 		}
     }
     public void chamarAtividades(){
-    	ScreenManager.getInstance().showCellTask();
+    	ScreenManager.getInstance().showCellDisciplina();
     }
     @FXML
     void chamarTelaInicial(){
@@ -166,7 +155,7 @@ public class DisciplinaController {
     }
     @FXML
     public void chamarTask(){
-    	ScreenManager.getInstance().showCellTask();
+    	ScreenManager.getInstance().showMainTask();
     }
 	public static Disciplina getAtividades() {
 		return activit;
@@ -175,6 +164,7 @@ public class DisciplinaController {
 		DisciplinaController.activit = Atividades;
 	}
 	public int dayOfWeek(){
+		
 		String valor=dueDay.getValue();
 		if(valor=="MONDAY"){
 			return 1;
