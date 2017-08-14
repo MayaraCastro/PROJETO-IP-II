@@ -3,16 +3,12 @@ package br.ufrpe.my_pigeon_study.gui.calendar;
 import java.io.IOException;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTimePicker;
-
 import Exceptions.InformacaoInvalidaException;
 import br.ufrpe.my_pigeon_study.gui.ScreenManager;
 import br.ufrpe.my_pigeon_study.negocio.beans.Disciplina;
-import br.ufrpe.my_pigeon_study.negocio.beans.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -43,6 +39,8 @@ public class DisciplinaInfoController {
     @FXML
     private Label hora;
     
+    private final String[] days ={"MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY","SUNDAY"};
+
     
     public Disciplina getDisciplina() {
 		return disciplina;
@@ -53,9 +51,9 @@ public class DisciplinaInfoController {
 	@FXML
     private void initialize() throws InformacaoInvalidaException{
 			
-			this.setDisciplina(CalendarioController.getDisciplina());
+			this.setDisciplina(CalendarioController.getDisciplina());//erro nessa linha nao recebe a disciplina
 	    	title.setText(this.getDisciplina().getNome());
-			day.setText(this.dia_da_semana(this.getDisciplina().getDia_da_semana()));
+			day.setText(days[this.getDisciplina().getDia_da_semana()-1]);
 			hora.setText(this.getDisciplina().getHorario().toString());
 	    	detail.setText(this.getDisciplina().getObs());
     }

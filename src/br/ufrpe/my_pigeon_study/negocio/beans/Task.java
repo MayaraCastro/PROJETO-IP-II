@@ -21,6 +21,9 @@ public class Task extends Atividade{
 	public void setHorario(LocalTime horario) {
 		this.horario = horario;
 	}
+	public LocalTime getHorario(LocalTime horario) {
+		return this.horario;
+	}
 
 	public LocalDate getData() {
 		return data;

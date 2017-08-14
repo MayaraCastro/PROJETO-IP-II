@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="cell" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="404.0" prefWidth="566.0" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.my_pigeon_study.gui.calendar.TaskInfoController">
+<AnchorPane fx:id="cell" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="404.0" prefWidth="566.0" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.my_pigeon_study.gui.calendar.DisciplinaInfoController">
    <children>
       <AnchorPane fx:id="cor" prefHeight="99.0" prefWidth="566.0" style="-fx-background-color: cb5171;">
          <children>

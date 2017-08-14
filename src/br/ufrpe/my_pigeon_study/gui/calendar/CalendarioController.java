@@ -96,7 +96,7 @@ public class CalendarioController {
         		Task t = fachada.buscarTask(user, taskList.getSelectionModel().getSelectedItem());
         		task = t;
         		try {
-					chamarTaskInfo();
+        			chamarTaskInfo();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -105,6 +105,25 @@ public class CalendarioController {
 
 			private void chamarTaskInfo() throws IOException {
 				ScreenManager.getInstance().showInfoTask();
+				
+			}
+        });
+    	classesList.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+            @Override//Quando selecionar no listview a disicplina 
+            public void handle(MouseEvent event) {
+        		Disciplina d = fachada.buscarAtividade(user, taskList.getSelectionModel().getSelectedItem());
+        		disciplina = d;
+        		try {
+        			chamarDisciplinaInfo();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+                
+            }
+
+			private void chamarDisciplinaInfo() throws IOException {
+				ScreenManager.getInstance().showInfoDisciplina();
 				
 			}
         });
@@ -132,10 +151,10 @@ public class CalendarioController {
     	
     	ObservableList<String> tasks = FXCollections.observableArrayList(fachada.calendarioTasks(user, date.getValue()));
     	if(comboSort.getValue()==opcoes[0]){
-    		classesList.setItems(tasks.sorted());
+    		taskList.setItems(tasks.sorted());
     	}
     	else{
-    		classesList.setItems(tasks);
+    		taskList.setItems(tasks);
     	}
     	nTask.setText("("+ tasks.size() +")");
     }

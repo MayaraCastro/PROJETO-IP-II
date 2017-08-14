@@ -14,7 +14,7 @@ public class ScreenManager {
 	private Stage infoStage;
 	
 	//private FXMLLoader classes,classeCell, calendario, taskInfo,  login, signUp, task, taskCell;
-	private Scene mainDisciplina, cellDisciplina;
+	private Scene mainDisciplina, cellDisciplina,infoDisciplina;
 	private Scene mainTask, cellTask;
 	private Scene mainCalendario, infoTask;
 	private Scene mainLogin;
@@ -56,7 +56,16 @@ public class ScreenManager {
 		}
 		
 	}
-	//TODO info classe
+	public void loadInfoDisciplina(){
+		try {
+			AnchorPane telaDisciplinaInfo = FXMLLoader.load(this.getClass().getResource("calendar/DisciplinaInfo.fxml"));
+			this.infoDisciplina = new Scene(telaDisciplinaInfo);
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		
+	}
 	
 	public void loadMainTask(){
 		try {
@@ -204,6 +213,11 @@ public class ScreenManager {
 	public void showInfoTask(){
 		this.loadInfoTask();
 		this.infoStage.setScene(infoTask);
+		this.showInfoStage();
+	}
+	public void showInfoDisciplina(){
+		this.loadInfoDisciplina();
+		this.infoStage.setScene(infoDisciplina);
 		this.showInfoStage();
 	}
 	
