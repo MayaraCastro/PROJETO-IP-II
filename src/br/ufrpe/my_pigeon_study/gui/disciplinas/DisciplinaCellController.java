@@ -17,6 +17,7 @@ import br.ufrpe.my_pigeon_study.negocio.Fachada;
 import br.ufrpe.my_pigeon_study.negocio.beans.Disciplina;
 import br.ufrpe.my_pigeon_study.negocio.beans.Usuario;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -40,7 +41,9 @@ public class DisciplinaCellController {
     private JFXTextField title;
 
     @FXML
-    private JFXDatePicker date;
+    private ComboBox<String> dueDay;
+
+    private final String[] days ={"MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY","SUNDAY"};
 
     @FXML
     private JFXTimePicker time;
@@ -56,8 +59,8 @@ public class DisciplinaCellController {
 
     @FXML
     void deletar() throws IOException {
-    	fachada.deletarAtividade( user, this.getAtividades().getNome());
-    	stage.close();
+    	fachada.deletarTask( user, this.getAtividades().getNome());
+    	ScreenManager.getInstance().fecharInfoStage();
     	this.atualizarJanela();
     }
     @FXML
@@ -68,6 +71,8 @@ public class DisciplinaCellController {
     	title.setText(this.getAtividades().getNome());
     	time.setValue(this.getAtividades().getHorario());
     	detail.setText(this.getAtividades().getObs());
+    	dueDay.setPromptText("Day of Week");
+		dueDay.getItems().addAll(days);
     }
     public  DisciplinaCellController() throws IOException{
     	this.fachada = Fachada.getInstancia();
@@ -92,8 +97,8 @@ public class DisciplinaCellController {
     
     @FXML
     private void save(){
-
-    	Disciplina novaAtividade = new Disciplina( title.getText(), 1, time.getValue(), detail.getText());
+    	int dia=this.dayOfWeek();
+    	Disciplina novaAtividade = new Disciplina( title.getText(), dia, time.getValue(), detail.getText());
 		try{
 			fachada.alterarAtividade(user,novaAtividade, atvdd);
 			stage.close();
@@ -106,4 +111,30 @@ public class DisciplinaCellController {
     private void atualizarJanela() throws IOException{
     	ScreenManager.getInstance().showMainTask();
     }
+    public int dayOfWeek(){
+		
+		String valor=dueDay.getValue();
+		if(valor=="MONDAY"){
+			return 1;
+		}
+		else if(valor=="TUESDAY"){
+			return 2;
+		}
+		else if(valor=="WEDNESDAY"){
+			return 3;
+		}
+		else if(valor=="THURSDAY"){
+			return 4;
+		}
+		else if(valor=="FRIDAY"){
+			return 5;
+		}
+		else if(valor=="SATURDAY"){
+			return 6;
+		}
+		else if(valor=="SUNDAY"){
+			return 7;
+		}
+		return -1;
+	}
 }

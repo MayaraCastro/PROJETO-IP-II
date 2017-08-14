@@ -62,6 +62,7 @@ public class ScreenManager {
 		try {
 			AnchorPane telaTask = FXMLLoader.load(this.getClass().getResource("task/Task.fxml"));
 			this.mainTask = new Scene(telaTask);
+
 		} catch (IOException e) {
 			
 			e.printStackTrace();
@@ -125,8 +126,7 @@ public class ScreenManager {
 		try {
 
 			AnchorPane telaDisciplina = FXMLLoader.load(this.getClass().getResource("disciplinas/Disciplina.fxml"));
-			this.mainTask = new Scene(telaDisciplina);
-
+			this.mainDisciplina = new Scene(telaDisciplina);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -135,7 +135,7 @@ public class ScreenManager {
 	public void loadCellDisciplina(){
 		try {
 			AnchorPane telaCellDisciplina = FXMLLoader.load(this.getClass().getResource("disciplinas/DisciplinaCell.fxml"));
-			this.cellTask = new Scene(telaCellDisciplina);
+			this.cellDisciplina = new Scene(telaCellDisciplina);
 		} catch (IOException e) {
 			
 			e.printStackTrace();

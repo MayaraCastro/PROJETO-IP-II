@@ -94,9 +94,10 @@ public class DisciplinaController {
     	list.setItems(activities);
     	list.setPrefWidth(528);
     	list.setPrefHeight(490);
-    	
+    	dueDay.setPromptText("Day of Week");
+		dueDay.getItems().addAll(days);
     	userName.setText(user.getNome());
-
+  
     	list.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
             @Override//Quando selecionar no listview a Atividades 
@@ -109,9 +110,7 @@ public class DisciplinaController {
         });
 	}
 
-	private void getSelectedDay() {
-		
-	}
+	
 	@FXML 
 	public void handleMouseClick(MouseEvent arg0) throws IOException {
 
@@ -120,11 +119,9 @@ public class DisciplinaController {
     @FXML
     private void cadastrar(){
     	try{
-    		dueDay.setPromptText("Day of Week");
-			dueDay.getItems().addAll(days);
-	    	dueDay.setOnAction(e->getSelectedDay());
-	    	    		
-	    	Disciplina novaAtividades = new Disciplina(title.getText(), this.dayOfWeek(), dueTime.getValue(), detail.getText() );
+    		
+	    	int dia=this.dayOfWeek();
+	    	Disciplina novaAtividades = new Disciplina(title.getText(),dia , dueTime.getValue(), detail.getText() );
 			
 			fachada.cadastrarAtividade(user,novaAtividades);
 			title.clear();
