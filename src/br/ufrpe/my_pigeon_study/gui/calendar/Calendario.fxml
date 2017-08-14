@@ -83,7 +83,7 @@
                </font>
             </Label>
             <Separator layoutX="429.0" layoutY="40.0" prefWidth="200.0" />
-            <Label layoutX="342.0" layoutY="69.0" text="Pick a date" textFill="#cb5171">
+            <Label layoutX="332.0" layoutY="70.0" text="Pick a date" textFill="#cb5171">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -102,17 +102,17 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="nClass" layoutX="302.0" layoutY="130.0" text="(0)" textFill="#cb5171">
+            <Label fx:id="nClass" layoutX="311.0" layoutY="129.0" text="(0)" textFill="#cb5171">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="nTask" layoutX="819.0" layoutY="130.0" text="(0)" textFill="#cb5171">
+            <Label fx:id="nTask" layoutX="823.0" layoutY="129.0" text="(0)" textFill="#cb5171">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <JFXButton layoutX="648.0" layoutY="66.0" onAction="#listar" prefHeight="25.0" style="-fx-background-color: cb5171;" text="Go" textFill="#e1e1e1" />
+            <JFXButton layoutX="658.0" layoutY="66.0" onAction="#listar" prefHeight="25.0" style="-fx-background-color: cb5171;" text="Go" textFill="#e1e1e1" />
             <ComboBox fx:id="comboSort" layoutX="480.0" layoutY="111.0" prefHeight="26.0" prefWidth="95.0" />
          </children>
       </AnchorPane>

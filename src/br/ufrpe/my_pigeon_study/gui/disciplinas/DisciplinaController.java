@@ -90,10 +90,7 @@ public class DisciplinaController {
 	{
     	Usuario c = fachada.buscar(LoginController.getUser().getUsuario());
     	setUser(c);
-    	ObservableList<String> activities = FXCollections.observableArrayList(fachada.showAtividades(user));
-    	list.setItems(activities);
-    	list.setPrefWidth(528);
-    	list.setPrefHeight(490);
+    	listar();
     	dueDay.setPromptText("Day of Week");
 		dueDay.getItems().addAll(days);
     	userName.setText(user.getNome());
@@ -105,7 +102,6 @@ public class DisciplinaController {
         		Disciplina t = fachada.buscarAtividade(user, list.getSelectionModel().getSelectedItem());
         		activit = t;
         		chamarAtividades();
-                
             }
         });
 	}
@@ -122,7 +118,7 @@ public class DisciplinaController {
     		
 	    	int dia=this.dayOfWeek();
 	    	Disciplina novaAtividades = new Disciplina(title.getText(),dia , dueTime.getValue(), detail.getText() );
-			
+	    	listar();
 			fachada.cadastrarAtividade(user,novaAtividades);
 			title.clear();
 			detail.clear();
@@ -132,6 +128,7 @@ public class DisciplinaController {
 		}catch(Exception e){
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
+//modificar a lista na hr que cadastrar
     }
     public void chamarAtividades(){
     	ScreenManager.getInstance().showCellDisciplina();
@@ -184,5 +181,10 @@ public class DisciplinaController {
 		}
 		return -1;
 	}
-    
+	private void listar() {
+		ObservableList<String> activities = FXCollections.observableArrayList(fachada.showAtividades(user));
+    	list.setItems(activities);
+    	list.setPrefWidth(528);
+    	list.setPrefHeight(490);
+	}
 }

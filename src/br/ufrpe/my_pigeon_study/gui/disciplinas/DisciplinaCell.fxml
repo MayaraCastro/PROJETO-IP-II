@@ -24,10 +24,10 @@
       <JFXTimePicker fx:id="time" defaultColor="#7c545f" editable="true" layoutX="318.0" layoutY="149.0" prefHeight="25.0" prefWidth="205.0" />
       <JFXTextArea fx:id="detail" layoutX="26.0" layoutY="202.0" prefHeight="43.0" prefWidth="497.0" />
       <Label layoutX="26.0" layoutY="185.0" text="Detail" />
-      <Label layoutX="26.0" layoutY="118.0" text="Due Date" />
+      <Label layoutX="26.0" layoutY="118.0" text="Due Day" />
       <Label layoutX="318.0" layoutY="118.0" text="Due Time" />
       <JFXButton fx:id="save" layoutX="393.0" layoutY="315.0" onAction="#save" prefHeight="25.0" prefWidth="114.0" ripplerFill="#965f5f" style="-fx-background-color: cb5171;" text="Save" textFill="WHITE" />
       <JFXButton fx:id="delete" layoutX="255.0" layoutY="315.0" onAction="#deletar" prefHeight="25.0" prefWidth="114.0" ripplerFill="#4d4d4d" style="-fx-background-color: #4323;" text="Delete" />
-      <ComboBox layoutX="26.0" layoutY="149.0" prefWidth="150.0" />
+      <ComboBox fx:id="dueDay" layoutX="26.0" layoutY="149.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

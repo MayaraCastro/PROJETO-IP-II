@@ -59,7 +59,7 @@ public class DisciplinaCellController {
 
     @FXML
     void deletar() throws IOException {
-    	fachada.deletarTask( user, this.getAtividades().getNome());
+    	fachada.deletarAtividade( user, this.getAtividades().getNome());
     	ScreenManager.getInstance().fecharInfoStage();
     	this.atualizarJanela();
     }
@@ -71,8 +71,9 @@ public class DisciplinaCellController {
     	title.setText(this.getAtividades().getNome());
     	time.setValue(this.getAtividades().getHorario());
     	detail.setText(this.getAtividades().getObs());
-    	dueDay.setPromptText("Day of Week");
+    	dueDay.setPromptText(days[this.getAtividades().getDia_da_semana()-1]);
 		dueDay.getItems().addAll(days);
+		
     }
     public  DisciplinaCellController() throws IOException{
     	this.fachada = Fachada.getInstancia();
@@ -109,7 +110,7 @@ public class DisciplinaCellController {
 		}
     }
     private void atualizarJanela() throws IOException{
-    	ScreenManager.getInstance().showMainTask();
+    	ScreenManager.getInstance().showMainDisciplina();;
     }
     public int dayOfWeek(){
 		

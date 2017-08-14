@@ -139,22 +139,20 @@ public class CadastroUsuario {
 		return(this.rep.removerAtividade(user,Atividade));
 	}
 	
-	public String showAtividade(Usuario user) throws InformacaoEmBrancoException{
+	public  ArrayList<String> showAtividade(Usuario user) throws InformacaoEmBrancoException{
 		if(user==null){
 			 throw new InformacaoEmBrancoException();
 		}
 		
 		ArrayList<Disciplina> atividades = user.getAtividades();
-		String mensagem = "Voce tem "+ user.getAtividades().size() +"  atividades";
-		for(Disciplina a : atividades){
-			if(a != null){
-				mensagem += "\n-----------------\n" + a.toString();
+		ArrayList<String> list = new ArrayList<String>();
+		for(Disciplina a:atividades){
+			if(a!=null){
+				list.add(a.getNome());
 			}		
 		}
-		return(mensagem);
+		return(list);
 	}
-	
-	
 	
 	//tasks
 	public boolean cadastrarTask(Usuario user, Task task)throws InformacaoInvalidaException, InformacaoEmBrancoException{

@@ -128,7 +128,7 @@ public class Fachada {
 		}
 		return (Boolean) null;
 	}
-	public String showAtividades(Usuario user){
+	public ArrayList<String> showAtividades(Usuario user){
 		try {
 			return(cadastroU.showAtividade(user));
 		} catch (InformacaoEmBrancoException e) {
@@ -136,4 +136,5 @@ public class Fachada {
 		}
 		return null;
 	}
+	
 }
