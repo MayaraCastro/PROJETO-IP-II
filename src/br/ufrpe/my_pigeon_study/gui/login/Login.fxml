@@ -13,17 +13,17 @@
    <children>
       <AnchorPane blendMode="ADD" layoutX="730.0" layoutY="82.0" prefHeight="513.0" prefWidth="487.0" style="-fx-background-color: #0B3861;">
          <children>
-            <Button layoutX="55.0" layoutY="368.0" mnemonicParsing="false" onAction="#entra" prefHeight="40.0" prefWidth="381.0" style="-fx-background-color: e54d42;" text="Sign In" textFill="#ecf0f1">
+            <Button layoutX="55.0" layoutY="368.0" mnemonicParsing="false" onAction="#entra" onKeyPressed="#pressionar" prefHeight="40.0" prefWidth="381.0" style="-fx-background-color: e54d42;" text="Sign In" textFill="#ecf0f1">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <TextField fx:id="userName" layoutX="41.0" layoutY="180.0" prefHeight="48.0" prefWidth="409.0" promptText="UserName" style="-fx-background-color: #ecf0f1;">
+            <TextField fx:id="userName" layoutX="41.0" layoutY="180.0" onKeyPressed="#pressionar" prefHeight="48.0" prefWidth="409.0" promptText="UserName" style="-fx-background-color: #ecf0f1;">
                <font>
                   <Font size="22.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="password" layoutX="41.0" layoutY="257.0" prefHeight="48.0" prefWidth="409.0" promptText="Password">
+            <PasswordField fx:id="password" layoutX="41.0" layoutY="257.0" onKeyPressed="#pressionar" prefHeight="48.0" prefWidth="409.0" promptText="Password">
                <font>
                   <Font size="22.0" />
                </font>

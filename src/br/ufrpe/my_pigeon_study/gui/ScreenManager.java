@@ -32,6 +32,7 @@ public class ScreenManager {
 	
 	private ScreenManager() {
 		this.setInfoStage(new Stage());
+		//LocalDate a = 
 		
 	}
 	

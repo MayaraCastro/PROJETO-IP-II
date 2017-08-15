@@ -11,6 +11,8 @@ import br.ufrpe.my_pigeon_study.negocio.beans.Usuario;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.event.*;
 
 public class LoginController{
@@ -88,4 +90,10 @@ public class LoginController{
 	public void minimizar(){
 		ScreenManager.getInstance().minimizarMainStage();
 	}
+    @FXML
+    void pressionar(KeyEvent e) throws IOException {
+    	if (e.getCode() == KeyCode.ENTER) {
+			this.entra();
+		}
+    }
 }
