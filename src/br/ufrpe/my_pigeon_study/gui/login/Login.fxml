@@ -14,7 +14,7 @@
    <children>
       <AnchorPane blendMode="ADD" layoutX="730.0" layoutY="82.0" prefHeight="513.0" prefWidth="487.0" style="-fx-background-color: #0B3861;">
          <children>
-            <Button fx:id="signIn" layoutX="55.0" layoutY="368.0" mnemonicParsing="false" onAction="#entra" prefHeight="40.0" prefWidth="381.0" style="-fx-background-color: e54d42;" text="Sign In" textFill="#ecf0f1">
+            <Button layoutX="55.0" layoutY="368.0" mnemonicParsing="false" onAction="#entra" prefHeight="40.0" prefWidth="381.0" style="-fx-background-color: e54d42;" text="Sign In" textFill="#ecf0f1">
                <font>
                   <Font size="20.0" />
                </font>
@@ -34,7 +34,7 @@
                   <Font size="35.0" />
                </font>
             </Label>
-            <Hyperlink fx:id="forgotPassword" layoutX="182.0" layoutY="443.0" lineSpacing="1.0" text="Forgot Password?" textAlignment="CENTER" textFill="#ecf0f1" underline="true">
+            <Hyperlink layoutX="182.0" layoutY="443.0" lineSpacing="1.0" text="Forgot Password?" textAlignment="CENTER" textFill="#ecf0f1" underline="true">
                <font>
                   <Font size="15.0" />
                </font>
@@ -46,7 +46,7 @@
             <Image url="@../../../../../../main.png" />
          </image>
       </ImageView>
-      <Button fx:id="signUp" layoutX="293.0" layoutY="421.0" mnemonicParsing="false" onAction="#signUP" prefHeight="25.0" prefWidth="144.0" style="-fx-background-color: cb5171;" text="Sign Up!" textFill="#e8e8e8">
+      <Button layoutX="293.0" layoutY="421.0" mnemonicParsing="false" onAction="#signUP" prefHeight="25.0" prefWidth="144.0" style="-fx-background-color: cb5171;" text="Sign Up!" textFill="#e8e8e8">
          <font>
             <Font size="19.0" />
          </font>
@@ -56,17 +56,17 @@
             <Font size="49.0" />
          </font>
       </Label>
-      <Label layoutX="105.0" layoutY="228.0" prefHeight="35.0" prefWidth="535.0" text="Plan your life, make friends and learn together!" textFill="#dddddd">
+      <Label layoutX="105.0" layoutY="228.0" prefHeight="35.0" prefWidth="535.0" text="Plan your life and learn effectively and efficiently!" textFill="#dddddd">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="sair" layoutX="1278.0" layoutY="16.0" onMouseClicked="#fechar" text="X" textFill="WHITE">
+      <Label layoutX="1278.0" layoutY="16.0" onMouseClicked="#fechar" text="X" textFill="WHITE">
          <font>
             <Font size="27.0" />
          </font>
       </Label>
-      <Label fx:id="sair1" layoutX="1239.0" layoutY="1.0" onMouseClicked="#minimizar" prefHeight="65.0" prefWidth="20.0" text="-" textFill="WHITE">
+      <Label layoutX="1239.0" layoutY="1.0" onMouseClicked="#minimizar" prefHeight="65.0" prefWidth="20.0" text="-" textFill="WHITE">
          <font>
             <Font size="48.0" />
          </font>
