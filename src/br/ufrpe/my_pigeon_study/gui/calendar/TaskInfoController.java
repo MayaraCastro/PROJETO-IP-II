@@ -60,7 +60,7 @@ public class TaskInfoController {
     	this.setTask(CalendarioController.getTask());
     	title.setText(this.getTask().getNome());
     	data.setText(this.getTask().getData().toString());
-    	hora.setText(this.getTask().getHorario().toString());// erro nessa linha
+    	hora.setText(this.getTask().getHorario().toString());
     	detail.setText(this.getTask().getObs());
 
     }

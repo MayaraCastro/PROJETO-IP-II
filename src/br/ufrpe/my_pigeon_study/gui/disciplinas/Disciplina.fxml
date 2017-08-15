@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTimePicker?>
 <?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="676.0" prefWidth="1315.0" style="-fx-background-color: #0B3861;" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.my_pigeon_study.gui.disciplinas.DisciplinaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="676.0" prefWidth="1315.0" style="-fx-background-color: #0B3861;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.my_pigeon_study.gui.disciplinas.DisciplinaController">
    <children>
       <AnchorPane layoutX="20.0" layoutY="52.0" prefHeight="602.0" prefWidth="177.0" style="-fx-background-color: #0B173B;">
          <children>
@@ -48,12 +47,12 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="1.0" layoutY="315.0" onAction="#chamarTask" prefHeight="42.0" prefWidth="185.0" ripplerFill="#cb5171" text="Task" textFill="WHITE">
+            <JFXButton layoutX="1.0" layoutY="315.0" onAction="#chamarTask" prefHeight="42.0" prefWidth="185.0" ripplerFill="#cb5171" text="Tasks" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="1.0" layoutY="359.0" prefHeight="42.0" prefWidth="185.0" ripplerFill="#cb5171" text="Disciplines" textFill="#fc5d87">
+            <JFXButton layoutX="1.0" layoutY="359.0" prefHeight="42.0" prefWidth="185.0" ripplerFill="#cb5171" text="Classes" textFill="#fc5d87">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -73,25 +72,29 @@
                   <Separator opacity="0.0" prefWidth="200.0" />
                </buttons>
             </ButtonBar>
-            <TextField minWidth="0.0" prefHeight="28.0" prefWidth="312.0" promptText="Search" />
+            <Label prefHeight="45.0" text="My Pigeon Study" textFill="#e4e4e4">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
             <Separator opacity="0.0" prefHeight="2.0" prefWidth="682.0" />
          </buttons>
       </ButtonBar>
       <AnchorPane layoutX="236.0" layoutY="52.0" prefHeight="602.0" prefWidth="1057.0" style="-fx-background-color: ffffff;">
          <children>
-            <Label layoutX="500.0" layoutY="14.0" text="Disciplinas" textFill="#5b5959">
+            <Label layoutX="499.0" layoutY="14.0" text="Classes" textFill="#5b5959">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
             <Separator layoutX="429.0" layoutY="40.0" prefWidth="200.0" />
             <Separator layoutX="526.0" layoutY="70.0" orientation="VERTICAL" prefHeight="508.0" prefWidth="0.0" />
-            <Label layoutX="228.0" layoutY="79.0" text="Your Disciplinas" textFill="#cb5171">
+            <Label layoutX="228.0" layoutY="79.0" text="Your Classes" textFill="#cb5171">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="780.0" layoutY="79.0" text="New Disciplinas" textFill="#cb5171">
+            <Label layoutX="763.0" layoutY="79.0" text="New Class" textFill="#cb5171">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -99,10 +102,10 @@
             <Separator layoutX="712.0" layoutY="112.0" prefWidth="200.0" />
             <JFXTextField fx:id="title" layoutX="569.0" layoutY="131.0" prefHeight="25.0" prefWidth="437.0" promptText="Title" />
             <JFXTextArea fx:id="detail" layoutX="569.0" layoutY="237.0" prefHeight="175.0" prefWidth="437.0" promptText="Detail" />
-            <JFXTimePicker fx:id="dueTime" defaultColor="#0b173b" layoutX="815.0" layoutY="175.0" prefHeight="25.0" prefWidth="194.0" promptText="Due Time" />
+            <JFXTimePicker fx:id="dueTime" defaultColor="#0b173b" layoutX="815.0" layoutY="175.0" prefHeight="25.0" prefWidth="194.0" promptText="Time" />
             <JFXButton fx:id="save" layoutX="715.0" layoutY="467.0" onAction="#cadastrar" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: cb5171;" text="Save" textFill="WHITE" />
-            <ListView fx:id="list" fixedCellSize="-4.0" layoutY="115.0" onMouseClicked="#handleMouseClick" prefHeight="487.0" prefWidth="528.0" />
-            <ComboBox fx:id="dueDay" layoutX="569.0" layoutY="175.0" prefWidth="150.0" />
+            <ListView fx:id="list" fixedCellSize="-4.0" layoutY="112.0" onMouseClicked="#handleMouseClick" prefHeight="487.0" prefWidth="528.0" />
+            <JFXComboBox fx:id="dueDay" focusColor="#979797" layoutX="569.0" layoutY="175.0" prefHeight="25.0" prefWidth="194.0" promptText="Day of Week" />
          </children>
       </AnchorPane>
    </children>

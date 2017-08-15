@@ -12,6 +12,7 @@ public class Task extends Atividade{
 
 		super(nome, obs);
 		this.data = data;
+		this.horario = horario;
 	}
 	
 	public LocalTime getHorario() {

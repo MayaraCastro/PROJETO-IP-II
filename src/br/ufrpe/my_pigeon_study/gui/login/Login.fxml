@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -34,11 +33,7 @@
                   <Font size="35.0" />
                </font>
             </Label>
-            <Hyperlink layoutX="182.0" layoutY="443.0" lineSpacing="1.0" text="Forgot Password?" textAlignment="CENTER" textFill="#ecf0f1" underline="true">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Hyperlink>
+            <Label layoutX="177.0" layoutY="443.0" text="My Pigeon Study © 2017" textFill="WHITE" />
          </children>
       </AnchorPane>
       <ImageView fitHeight="520.0" fitWidth="535.0" layoutX="105.0" layoutY="62.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">

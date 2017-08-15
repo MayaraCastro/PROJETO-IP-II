@@ -126,7 +126,7 @@ public class CadastroUsuario {
 	}
 	
 	public Disciplina buscarAtividade(Usuario user,String Atividade) throws InformacaoInvalidaException{
-		if(user==null | Atividade==null){
+		if(user == null | Atividade == null){
 			throw new InformacaoInvalidaException();
 		}
 		return(this.rep.buscarAtiv(user, Atividade));

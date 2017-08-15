@@ -88,45 +88,7 @@ public class CalendarioController {
     	comboSort.getItems().addAll(opcoes);
     	comboSort.setValue(opcoes[0]);
     	comboSort.setOnAction(e->getOption());
-    	
-    	taskList.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
-            @Override//Quando selecionar no listview a task 
-            public void handle(MouseEvent event) {
-        		Task t = fachada.buscarTask(user, taskList.getSelectionModel().getSelectedItem());
-        		task = t;
-        		try {
-        			chamarTaskInfo();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-                
-            }
-
-			private void chamarTaskInfo() throws IOException {
-				ScreenManager.getInstance().showInfoTask();
-				
-			}
-        });
-    	classesList.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-            @Override//Quando selecionar no listview a disicplina 
-            public void handle(MouseEvent event) {
-        		Disciplina d = fachada.buscarAtividade(user, taskList.getSelectionModel().getSelectedItem());
-        		disciplina = d;
-        		try {
-        			chamarDisciplinaInfo();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-                
-            }
-
-			private void chamarDisciplinaInfo() throws IOException {
-				ScreenManager.getInstance().showInfoDisciplina();
-				
-			}
-        });
     	
 	}
 	
@@ -135,9 +97,36 @@ public class CalendarioController {
 		listar();
 	}
 	@FXML
-    void editTask() throws IOException{
-        
+    void showTask() {
+		Task t = fachada.buscarTask(user, taskList.getSelectionModel().getSelectedItem());		
+		task = t;
+		try {
+			chamarTaskInfo();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
     }
+	private void chamarTaskInfo() throws IOException {
+			ScreenManager.getInstance().showInfoTask();
+			
+	}
+	@FXML
+	private void showClass(){
+		Disciplina d = fachada.buscarAtividade(user, classesList.getSelectionModel().getSelectedItem());
+		disciplina = d;
+		try {
+			chamarDisciplinaInfo();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    
+	}
+
+	private void chamarDisciplinaInfo() throws IOException {
+	ScreenManager.getInstance().showInfoDisciplina();
+	}
+
     @FXML
     private void listar() {
     	ObservableList<String> classes = FXCollections.observableArrayList(fachada.calendarioAtividades(user, date.getValue().getDayOfWeek().getValue()));
@@ -156,6 +145,7 @@ public class CalendarioController {
     	else{
     		taskList.setItems(tasks);
     	}
+    	
     	nTask.setText("("+ tasks.size() +")");
     }
     @FXML

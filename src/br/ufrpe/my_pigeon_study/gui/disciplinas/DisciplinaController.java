@@ -176,7 +176,7 @@ public class DisciplinaController {
 		else if(valor=="SATURDAY"){
 			return 6;
 		}
-		else if(valor=="SUNDAY"){
+		else if(valor.equals("SUNDAY")){
 			return 7;
 		}
 		return -1;
