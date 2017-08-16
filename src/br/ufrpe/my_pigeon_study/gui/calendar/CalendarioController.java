@@ -1,6 +1,8 @@
 package br.ufrpe.my_pigeon_study.gui.calendar;
 
 import java.io.IOException;
+import java.time.LocalTime;
+import java.util.Collections;
 
 import com.jfoenix.controls.JFXDatePicker;
 
@@ -14,12 +16,10 @@ import br.ufrpe.my_pigeon_study.negocio.beans.Task;
 import br.ufrpe.my_pigeon_study.negocio.beans.Usuario;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.input.MouseEvent;
 
 
 public class CalendarioController {
@@ -130,22 +130,12 @@ public class CalendarioController {
     @FXML
     private void listar() {
     	ObservableList<String> classes = FXCollections.observableArrayList(fachada.calendarioAtividades(user, date.getValue().getDayOfWeek().getValue()));
-    	if(comboSort.getValue()==opcoes[0]){
-    		classesList.setItems(classes.sorted());
-    	}
-    	else{
-    		classesList.setItems(classes);
-    	}
+    	classesList.setItems(classes);//TODO
+    	
     	nClass.setText("(" + classes.size() + ")");
     	
     	ObservableList<String> tasks = FXCollections.observableArrayList(fachada.calendarioTasks(user, date.getValue()));
-    	if(comboSort.getValue()==opcoes[0]){
-    		taskList.setItems(tasks.sorted());
-    	}
-    	else{
-    		taskList.setItems(tasks);
-    	}
-    	
+    	taskList.setItems(tasks.sorted());//TODO
     	nTask.setText("("+ tasks.size() +")");
     }
     @FXML
@@ -169,5 +159,7 @@ public class CalendarioController {
     void chamarTelaDisciplina(){
     	ScreenManager.getInstance().showMainDisciplina();
     }
+	
+
 }
 

@@ -60,30 +60,7 @@ public class DisciplinaInfoController {
     public  DisciplinaInfoController() throws IOException{
     
     }
-    private String dia_da_semana(int dia){
-    	if(dia==1){
-    		return "Monday";
-    	}
-    	else if(dia==2){
-    		return "Tuesday";
-    	}
-    	else if(dia==3){
-    		return "Wednesday";
-    	}
-    	else if(dia==4){
-    		return "Thursday";
-    	}
-    	else if(dia==5){
-    		return "Friday";
-    	}
-    	else if(dia==6){
-    		return "Saturday";
-    	}
-    	else if(dia==7){
-    		return "Sunday";
-    	}
-    	return null;    	
-    }
+    
     @FXML
     void fechar() {
     	ScreenManager.getInstance().fecharInfoStage();
