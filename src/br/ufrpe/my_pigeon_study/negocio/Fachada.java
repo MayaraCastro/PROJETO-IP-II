@@ -101,7 +101,7 @@ public class Fachada {
 		} catch (InformacaoInvalidaException e) {
 			e.printStackTrace();
 		}
-		return (Boolean) null;
+		return false;
 
 	}
 	//DISCIPLINA
@@ -126,7 +126,7 @@ public class Fachada {
 		} catch (InformacaoInvalidaException e) {
 			e.printStackTrace();
 		}
-		return (Boolean) null;
+		return false;
 	}
 	public ArrayList<String> showAtividades(Usuario user){
 		try {

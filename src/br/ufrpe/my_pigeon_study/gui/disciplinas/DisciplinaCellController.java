@@ -100,12 +100,14 @@ public class DisciplinaCellController {
     private void save(){
     	int dia=this.dayOfWeek();
     	Disciplina novaAtividade = new Disciplina( title.getText(), dia, time.getValue(), detail.getText());
-		try{
+		
+    	try{
 			fachada.alterarAtividade(user,novaAtividade, atvdd);
-			stage.close();
+			ScreenManager.getInstance().fecharInfoStage();
 			this.atualizarJanela();
 		    
 		}catch(Exception e){
+			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
     }

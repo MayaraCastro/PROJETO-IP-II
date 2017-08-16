@@ -102,11 +102,10 @@ public class CadastroUsuario {
 	}
 	
 	public boolean alterarAtividade(Usuario user, Disciplina atividade,Disciplina antiga)throws InformacaoInvalidaException, InformacaoEmBrancoException{
-		
 		if(atividade.getNome() != ""){
-			if(atividade.getDia_da_semana() >0 &&atividade.getDia_da_semana() <=7 && atividade.getHorario() != null
-				 && atividade.getObs() != ""){
-			
+			if(/*atividade.getDia_da_semana() >0 &&atividade.getDia_da_semana() <=7 &&*/ atividade.getHorario() != null
+				 && atividade.getObs() != null){
+
 				Disciplina original = this.rep.buscarAtiv(user, antiga.getNome());
 				original.setNome(atividade.getNome());
 				original.setDia_da_semana(atividade.getDia_da_semana());
