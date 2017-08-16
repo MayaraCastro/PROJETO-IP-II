@@ -139,4 +139,9 @@ public class DisciplinaCellController {
 		}
 		return -1;
 	}
+    
+    @FXML
+    private void fechar() {
+    	ScreenManager.getInstance().fecharInfoStage();
+    }
 }

@@ -1,12 +1,16 @@
 package br.ufrpe.my_pigeon_study.negocio.beans;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Usuario extends Pessoa{
+public class Usuario implements Serializable{
 	private String usuario;
 	private String senha;
 	private String email;
+	private String nome;
+	private LocalDate dataNasc;
+	private String sexo;
 	private ArrayList<Disciplina> atividades;
 	private ArrayList<Task> tasks;
 	
@@ -19,7 +23,9 @@ public class Usuario extends Pessoa{
 	}
 
 	public Usuario(String nome, String usuario, String senha, String sexo, String email, LocalDate dataNasc) {
-		super(nome,sexo,dataNasc);
+		this.nome = nome;
+		this.sexo =sexo;
+		this.dataNasc = dataNasc;
 		
 		this.usuario = usuario;
 		this.senha = senha;
@@ -29,9 +35,26 @@ public class Usuario extends Pessoa{
 		this.tasks = new ArrayList<Task>();
 
 	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Usuario other = (Usuario) obj;
+		if (usuario == null) {
+			if (other.usuario != null)
+				return false;
+		} else if (!usuario.equals(other.usuario))
+			return false;
+		return true;
+	}
 	
 	//GETTERS AND SETTERS
-	
+
+
 	public ArrayList<Disciplina> getAtividades() {
 		return atividades;
 	}
@@ -74,7 +97,26 @@ public class Usuario extends Pessoa{
 		this.email = email;
 	}
 	
+	
 
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public LocalDate getDataNasc() {
+		return dataNasc;
+	}
+	public void setDataNasc(LocalDate dataNasc) {
+		this.dataNasc = dataNasc;
+	}
+	public String getSexo() {
+		return sexo;
+	}
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
 	@Override
 	public String toString() {
 		return "Usuario [nome=" + this.getNome() + ", dataNasc=" + this.getDataNasc() + ", usuario=" + usuario + ", senha=" + senha

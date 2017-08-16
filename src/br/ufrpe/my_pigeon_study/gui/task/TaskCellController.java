@@ -1,6 +1,7 @@
 package br.ufrpe.my_pigeon_study.gui.task;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 import javax.swing.JOptionPane;
 import com.jfoenix.controls.JFXDatePicker;
@@ -15,6 +16,7 @@ import br.ufrpe.my_pigeon_study.negocio.Fachada;
 import br.ufrpe.my_pigeon_study.negocio.beans.Task;
 import br.ufrpe.my_pigeon_study.negocio.beans.Usuario;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 
 public class TaskCellController {
 	
@@ -35,6 +37,9 @@ public class TaskCellController {
 
     @FXML
     private JFXTextArea detail;
+    
+    @FXML
+    private Label overdue;
 
     @FXML
     void deletar() throws IOException {
@@ -51,6 +56,9 @@ public class TaskCellController {
     	date.setValue(this.getTask().getData());
     	time.setValue(this.getTask().getHorario());
     	detail.setText(this.getTask().getObs());
+    	if(this.getTask().getData().compareTo(LocalDate.now())<0) {
+    		overdue.setVisible(true);
+    	}
     }
     public  TaskCellController() throws IOException{
     	this.fachada = Fachada.getInstancia();
@@ -84,5 +92,10 @@ public class TaskCellController {
     }
     private void atualizarJanela() throws IOException{
     	ScreenManager.getInstance().showMainTask();
+    }
+    
+    @FXML
+    private void fechar() {
+    	ScreenManager.getInstance().fecharInfoStage();
     }
 }

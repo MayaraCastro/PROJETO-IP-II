@@ -1,9 +1,10 @@
 package br.ufrpe.my_pigeon_study.dados;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import br.ufrpe.my_pigeon_study.negocio.beans.*;
 
-public class RepositorioUsuario implements Repositorio{
+public class RepositorioUsuario implements Repositorio, Serializable{
 	private ArrayList<Usuario> usuarios;
 	
 	private static RepositorioUsuario instancia;
@@ -26,16 +27,15 @@ public class RepositorioUsuario implements Repositorio{
 	
 	//OUTROS METODOS
 	public boolean inserir(Object obj){
-		Usuario user=(Usuario)obj;
+		Usuario user = (Usuario) obj;
 		if(user!=null){
-			if(this.buscar(user.getUsuario())==null){
+			if(!this.usuarios.contains(user)){
 				this.usuarios.add(user);
 				return(true);
 			}			
 		}
 		return(false);
 	}
-	
 	public Object buscar(String usuario){
 		for(Usuario user:this.usuarios){
 			if(user!=null&&user.getUsuario().equals(usuario)){

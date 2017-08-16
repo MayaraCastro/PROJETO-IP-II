@@ -1,8 +1,9 @@
 package br.ufrpe.my_pigeon_study.negocio.beans;
 
+import java.io.Serializable;
 import java.time.LocalTime;
 
-public class Disciplina extends Atividade{
+public class Disciplina extends Atividade implements Serializable{
 	//ATRIBUTOS
 	private int dia_da_semana;
 	private LocalTime horario;

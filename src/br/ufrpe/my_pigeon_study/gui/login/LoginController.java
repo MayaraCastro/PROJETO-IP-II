@@ -1,4 +1,6 @@
 package br.ufrpe.my_pigeon_study.gui.login;
+import br.ufrpe.my_pigeon_study.dados.ManipuladorArquivo;
+import br.ufrpe.my_pigeon_study.dados.RepositorioUsuario;
 import br.ufrpe.my_pigeon_study.gui.ScreenManager;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -34,9 +36,10 @@ public class LoginController{
     public LoginController() throws IOException 
 	{
     	this.fachada = Fachada.getInstancia();
-    	//USUARIO JA PRONTO PRA TESTES
-
-    	    LocalDate localDate = LocalDate.parse("02-02-1999", DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+    	
+	
+		if(ManipuladorArquivo.leitor("file.dat") == null) {
+			LocalDate localDate = LocalDate.parse("02-02-1999", DateTimeFormatter.ofPattern("dd-MM-yyyy"));
     		Usuario user= new Usuario("Maria", "maria", "maria", "Female", "maria@maria", localDate);
     		Usuario usera= new Usuario("mayara", "mayara", "mayara", "Female", "mayara@mayara", localDate);
    			try{
@@ -48,6 +51,12 @@ public class LoginController{
    			catch (InformacaoInvalidaException e) {
     			JOptionPane.showMessageDialog(null, e.getMessage());
     		}
+
+		}
+		
+		
+	
+    	    
 	}
 	
 	@FXML
@@ -71,7 +80,7 @@ public class LoginController{
 	}
 	
     public void chamarTelaPrincipal()throws IOException{
-    	ScreenManager.getInstance().showMainTask();
+    	ScreenManager.getInstance().showCalendario();
     }
 	@FXML
 	private void signUP(ActionEvent event){

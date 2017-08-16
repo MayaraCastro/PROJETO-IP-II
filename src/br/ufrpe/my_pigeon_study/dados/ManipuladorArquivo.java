@@ -14,24 +14,22 @@ public class ManipuladorArquivo{
 	private static Scanner in;
 	
 	public static void criarArquivo(String path) throws IOException{
-		File arq=new File(path);
+		File arq = new File(path);
 		arq.createNewFile();
 	}
 	public static boolean exist(String path) throws IOException{
 		File f = new File(path);
-		if (f.exists() && !f.isDirectory()) {
-			return false;
-		}
-		return true;
+		return (f.exists());
+
 	}
 
 	public static Repositorio  leitor(String path) throws IOException{
 		RepositorioUsuario usr=null;
-		if(exist(path)!=true){
+		if(exist(path) == true){
 		    try {
 		    	FileInputStream restFile = new FileInputStream(path);
 			    ObjectInputStream stream = new ObjectInputStream(restFile);
-				usr=(RepositorioUsuario) stream.readObject();    
+				usr = (RepositorioUsuario) stream.readObject();    
 				stream.close();
 				restFile.close();
 			} catch (Exception e) {
@@ -42,17 +40,9 @@ public class ManipuladorArquivo{
 	}
 	
 	public static void escritor(String path, RepositorioUsuario rep) throws IOException{
-		if(exist(path)!=true){
-			FileOutputStream saveFile= new FileOutputStream (path);
-			ObjectOutputStream stream = new ObjectOutputStream(saveFile);
-			stream.writeObject(rep);
-			stream.flush();
-			stream.close();
-			saveFile.flush();
-			saveFile.close();
-		}
-		else {
+			//ele vai sempre escrever por cima do arquivo antigo, dai so vai salvar o rep mais novo sempre
 			criarArquivo(path);
+
 			FileOutputStream saveFile= new FileOutputStream (path);
 			ObjectOutputStream stream = new ObjectOutputStream(saveFile);
 			stream.writeObject(rep);
@@ -60,7 +50,7 @@ public class ManipuladorArquivo{
 			stream.close();
 			saveFile.flush();
 			saveFile.close();
-		}
+		
 	}
 	
 }

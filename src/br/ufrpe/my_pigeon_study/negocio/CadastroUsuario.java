@@ -10,18 +10,31 @@ import br.ufrpe.my_pigeon_study.negocio.beans.*;
 
 public class CadastroUsuario {
 	private RepositorioUsuario rep;
-	private final  String PATH="file.txt";
+	private final  String PATH="file.dat";
+	private LocalDate date;
 
 	public CadastroUsuario() throws IOException{
+		date = LocalDate.now();
 		this.Iniciar();
 	}
 	//////////salvar e iniciar arquivos//////////
 	public void Iniciar() throws IOException{
-		if(ManipuladorArquivo.leitor(PATH)!=null) this.rep=(RepositorioUsuario) ManipuladorArquivo.leitor(PATH);
-		else this.rep=RepositorioUsuario.getInstancia();
+		if(ManipuladorArquivo.leitor(PATH) != null) {
+			this.rep=(RepositorioUsuario) ManipuladorArquivo.leitor(PATH);
+
+		}
+		else {
+			this.rep = RepositorioUsuario.getInstancia();
+		}
+		
 	}
-	public void Salve() throws IOException{
-		ManipuladorArquivo.escritor(PATH, this.rep);
+	public void salve() {
+		try {
+			ManipuladorArquivo.escritor(PATH, this.rep);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 		
 	////////////////////////////////////////////
@@ -29,12 +42,12 @@ public class CadastroUsuario {
 			if(user.getNome() != "" && user.getEmail() != "" && user.getUsuario() != ""
 				&& user.getSenha() != "" ){
 				if((user.getSexo()!= "" && user.getSexo() !=null)
-					&& (user.getDataNasc().getMonthValue() < 13 && user.getDataNasc().getMonthValue() > 0 
-					&& user.getDataNasc().getDayOfMonth() < 32 && user.getDataNasc().getDayOfMonth() > 0
-					&& user.getDataNasc().getYear() < 2017 && user.getDataNasc().getYear() > 1900)){
+					&& (user.getDataNasc().compareTo(this.date) < 0 && user.getDataNasc().getYear() > 1900)){
 					
-					if(this.rep.inserir(user)){
+					if( this.rep.inserir(user)){
+						this.salve();
 						return(true);
+						
 					}
 				}else{
 					throw new InformacaoInvalidaException();
@@ -42,15 +55,15 @@ public class CadastroUsuario {
 			}else{
 				throw new InformacaoEmBrancoException();
 			}
-			return(false);
+			throw new InformacaoInvalidaException();
+			
 	}
 	public boolean alterar(Usuario user)throws InformacaoInvalidaException, InformacaoEmBrancoException{
 		if(user.getNome()!=""&&user.getEmail()!=""&&user.getUsuario()!=""
 		&&user.getSenha()!=""){
 			if((user.getSexo() != "" && user.getSexo() != null)
-					&& (user.getDataNasc().getMonthValue() < 13 && user.getDataNasc().getMonthValue() > 0 
-					&& user.getDataNasc().getDayOfMonth() < 32 && user.getDataNasc().getDayOfMonth() > 0
-					&& user.getDataNasc().getYear() < 2017 && user.getDataNasc().getYear() > 1900)){
+					&& user.getDataNasc().compareTo(this.date) < 0 && user.getDataNasc().getYear() > 1900){
+				
 					Usuario original=(Usuario) this.rep.buscar(user.getUsuario());
 					original.setNome(user.getNome());
 					original.setDataNasc(user.getDataNasc());
@@ -58,6 +71,7 @@ public class CadastroUsuario {
 					original.setSenha(user.getSenha());
 					original.setSexo(user.getSexo());
 					if(this.rep.alterar(original)){
+						this.salve();
 						return(true);
 					}
 				}else{
@@ -78,6 +92,7 @@ public class CadastroUsuario {
 		if(usuario==null){
 			throw new InformacaoInvalidaException();
 		}
+		this.salve();
 		return(this.rep.remover(usuario));
 	}
 	
@@ -87,9 +102,11 @@ public class CadastroUsuario {
 	public boolean cadastrarAtividade(Usuario user, Disciplina atividade)throws InformacaoInvalidaException, InformacaoEmBrancoException{
 		
 		if(atividade.getNome() != "" ){
-			if(atividade.getDia_da_semana() >0 &&atividade.getDia_da_semana() <=7 && atividade.getHorario() != null){
+			if( atividade.getHorario() != null
+					&& atividade.getObs() != null){
 			
 				if(this.rep.addAtividade(user, atividade)){
+					this.salve();
 					return (true);
 				}
 			}else{
@@ -103,7 +120,7 @@ public class CadastroUsuario {
 	
 	public boolean alterarAtividade(Usuario user, Disciplina atividade,Disciplina antiga)throws InformacaoInvalidaException, InformacaoEmBrancoException{
 		if(atividade.getNome() != ""){
-			if(/*atividade.getDia_da_semana() >0 &&atividade.getDia_da_semana() <=7 &&*/ atividade.getHorario() != null
+			if(atividade.getHorario() != null
 				 && atividade.getObs() != null){
 
 				Disciplina original = this.rep.buscarAtiv(user, antiga.getNome());
@@ -113,6 +130,7 @@ public class CadastroUsuario {
 				original.setObs(atividade.getObs());
 				
 				if(this.rep.alterarAtiv(user, original, antiga)){
+					this.salve();
 					return (true);
 				}
 			}else{
@@ -135,6 +153,7 @@ public class CadastroUsuario {
 		if(user==null | Atividade==null){
 			throw new InformacaoInvalidaException();
 		}
+		this.salve();
 		return(this.rep.removerAtividade(user,Atividade));
 	}
 	
@@ -155,12 +174,12 @@ public class CadastroUsuario {
 	
 	//tasks
 	public boolean cadastrarTask(Usuario user, Task task)throws InformacaoInvalidaException, InformacaoEmBrancoException{
-		if(task.getNome()!=""){
-			if(task.getData()!=null && task!=null && user!=null
-				&& (task.getData().getMonthValue()<13 &&task.getData().getMonthValue()>0 
-				&&task.getData().getDayOfMonth()<32 &&task.getData().getDayOfMonth()>0
-				&&task.getData().getYear()>=2017)){
+		if(task.getNome()!= null){
+			if( task.getData()!=null && task!=null && user!=null
+					&& task.getData().compareTo(this.date)>=0){
+				
 				if(this.rep.inserirTask(user,task)){
+					this.salve();
 					return(true);
 				}
 			}else{
@@ -172,17 +191,16 @@ public class CadastroUsuario {
 		return(false);
 	}
 	public boolean alterarTask(Usuario user,Task task,Task antiga)throws InformacaoInvalidaException, InformacaoEmBrancoException{
-		if(task.getNome()!=""){
+		if(task.getNome() != null){
 			if(task.getData()!=null&& task!=null && user!=null
-					&& (task.getData().getMonthValue()<13 &&task.getData().getMonthValue()>0 
-					&&task.getData().getDayOfMonth()<32 &&task.getData().getDayOfMonth()>0
-					&&task.getData().getYear() >= 2017)){
+					&& task.getData().compareTo(this.date)>=0){
 				
 					Task original = this.rep.buscarTask(user,antiga.getNome());
 					original.setNome(task.getNome());
 					original.setObs(task.getObs());
 					original.setData(task.getData());
 					if(this.rep.alterarTask(user,original,antiga)){
+						this.salve();
 						return(true);
 					}
 			}else{
@@ -204,6 +222,7 @@ public class CadastroUsuario {
 		if(user==null | Task==null){
 			throw new InformacaoInvalidaException();
 		}
+		this.salve();
 		return(this.rep.removerTask(user,Task));
 	}
 	

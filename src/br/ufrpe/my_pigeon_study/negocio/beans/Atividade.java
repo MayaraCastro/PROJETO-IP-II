@@ -1,6 +1,9 @@
 package br.ufrpe.my_pigeon_study.negocio.beans;
 
-public class Atividade{
+import java.io.Serializable;
+
+public class Atividade implements Serializable{
+	
 	private String nome;
 	private String obs;
 	public Atividade(String nome, String obs) {

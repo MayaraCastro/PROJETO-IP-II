@@ -1,9 +1,10 @@
 package br.ufrpe.my_pigeon_study.negocio.beans;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class Task extends Atividade{
+public class Task extends Atividade implements Serializable{
 
 	private LocalDate data;
 	LocalTime horario;
