@@ -129,7 +129,7 @@ public class CadastroUsuario {
 				original.setDia_da_semana(atividade.getDia_da_semana());
 				original.setHorario(atividade.getHorario());
 				original.setObs(atividade.getObs());
-				
+				original.setHorario(atividade.getHorario());
 				if(this.rep.alterarAtiv(user, original, antiga)){
 					this.salve();
 					return (true);
@@ -200,6 +200,7 @@ public class CadastroUsuario {
 					original.setNome(task.getNome());
 					original.setObs(task.getObs());
 					original.setData(task.getData());
+					original.setHorario(task.getHorario());
 					if(this.rep.alterarTask(user,original,antiga)){
 						this.salve();
 						return(true);

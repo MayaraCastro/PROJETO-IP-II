@@ -193,7 +193,7 @@ public class RepositorioUsuario implements Repositorio, Serializable{
 	}
 
 	public boolean alterarTask(Usuario user, Task novoTask, Task antigaTask){
-		if(novoTask!=null && antigaTask!=null){
+		if(novoTask != null && antigaTask != null){
 			for(int i=0; i < user.getTasks().size(); i++){
 				if(user.getTasks().get(i) != null && user.getTasks().get(i).getNome().equals(antigaTask.getNome())){
 					user.getTasks().set(i, novoTask);
