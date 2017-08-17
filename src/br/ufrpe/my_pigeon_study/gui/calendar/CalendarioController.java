@@ -43,11 +43,7 @@ public class CalendarioController {
 
     @FXML
     private ListView<String> taskList;
-    private final String[] opcoes={"Ascending","Descending"};
-   
-    @FXML
-    private ComboBox<String> comboSort;
-    
+        
     @FXML
     private Label nClass;
 
@@ -85,17 +81,12 @@ public class CalendarioController {
     	Usuario c = this.fachada.buscar(LoginController.getUser().getUsuario());
     	this.setUser(c);
     	userName.setText(c.getNome());
-    	comboSort.getItems().addAll(opcoes);
-    	comboSort.setValue(opcoes[0]);
-    	comboSort.setOnAction(e->getOption());
+    	
 
     	
 	}
 	
-	private void getOption() {
-		
-		listar();
-	}
+	
 	@FXML
     void showTask() {
 		Task t = fachada.buscarTask(user, taskList.getSelectionModel().getSelectedItem());		
@@ -135,7 +126,7 @@ public class CalendarioController {
     	nClass.setText("(" + classes.size() + ")");
     	
     	ObservableList<String> tasks = FXCollections.observableArrayList(fachada.calendarioTasks(user, date.getValue()));
-    	taskList.setItems(tasks.sorted());//TODO
+    	taskList.setItems(tasks);//TODO
     	nTask.setText("("+ tasks.size() +")");
     }
     @FXML

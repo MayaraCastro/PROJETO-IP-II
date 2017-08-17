@@ -2,6 +2,7 @@ package br.ufrpe.my_pigeon_study.negocio;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import Exceptions.InformacaoEmBrancoException;
 import Exceptions.InformacaoInvalidaException;
@@ -231,6 +232,9 @@ public class CadastroUsuario {
 			throw new InformacaoInvalidaException();
 		}
 		ArrayList<Disciplina> atividades = user.getAtividades();
+		Collections.sort(atividades, (d1, d2) -> {
+			return d1.getHorario().compareTo(d2.getHorario());
+		});
 		ArrayList<String> list = new ArrayList<String>();
 		
 		for(Disciplina a:atividades){
@@ -249,9 +253,13 @@ public class CadastroUsuario {
 			throw new InformacaoInvalidaException();
 		}
 		ArrayList<Task> tasks = user.getTasks();
+		Collections.sort(tasks, (t1, t2) -> {
+			return t1.getHorario().compareTo(t2.getHorario());
+		});
 		ArrayList<String> list = new ArrayList<String>();
 		
 		for(Task a:tasks){
+			System.out.println(a);
 			if(a!=null){
 				if(a.getData().equals(data)){
 					list.add(a.getNome());
