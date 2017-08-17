@@ -81,6 +81,7 @@ public class CalendarioController {
     	Usuario c = this.fachada.buscar(LoginController.getUser().getUsuario());
     	this.setUser(c);
     	userName.setText(c.getNome());
+    	System.out.println(task);
     	
 
     	
@@ -92,7 +93,10 @@ public class CalendarioController {
 		Task t = fachada.buscarTask(user, taskList.getSelectionModel().getSelectedItem());		
 		task = t;
 		try {
-			chamarTaskInfo();
+			if(task != null){
+				chamarTaskInfo();
+			}
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -107,7 +111,10 @@ public class CalendarioController {
 		Disciplina d = fachada.buscarAtividade(user, classesList.getSelectionModel().getSelectedItem());
 		disciplina = d;
 		try {
-			chamarDisciplinaInfo();
+			if(disciplina != null){
+				chamarDisciplinaInfo();
+			}
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -121,12 +128,12 @@ public class CalendarioController {
     @FXML
     private void listar() {
     	ObservableList<String> classes = FXCollections.observableArrayList(fachada.calendarioAtividades(user, date.getValue().getDayOfWeek().getValue()));
-    	classesList.setItems(classes);//TODO
+    	classesList.setItems(classes);
     	
     	nClass.setText("(" + classes.size() + ")");
     	
     	ObservableList<String> tasks = FXCollections.observableArrayList(fachada.calendarioTasks(user, date.getValue()));
-    	taskList.setItems(tasks);//TODO
+    	taskList.setItems(tasks);
     	nTask.setText("("+ tasks.size() +")");
     }
     @FXML
