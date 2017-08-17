@@ -81,7 +81,6 @@ public class CalendarioController {
     	Usuario c = this.fachada.buscar(LoginController.getUser().getUsuario());
     	this.setUser(c);
     	userName.setText(c.getNome());
-    	System.out.println(task);
     	
 
     	

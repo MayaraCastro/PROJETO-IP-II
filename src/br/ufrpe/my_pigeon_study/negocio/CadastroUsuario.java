@@ -260,7 +260,6 @@ public class CadastroUsuario {
 		ArrayList<String> list = new ArrayList<String>();
 		
 		for(Task a:tasks){
-			System.out.println(a);
 			if(a!=null){
 				if(a.getData().equals(data)){
 					list.add(a.getNome());
