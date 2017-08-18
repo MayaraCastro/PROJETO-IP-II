@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="676.0" prefWidth="1315.0" style="-fx-background-color: #0B173B;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.my_pigeon_study.gui.login.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="676.0" prefWidth="1315.0" style="-fx-background-color: #0B173B;" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.my_pigeon_study.gui.login.LoginController">
    <children>
       <AnchorPane blendMode="ADD" layoutX="730.0" layoutY="82.0" prefHeight="513.0" prefWidth="487.0" style="-fx-background-color: #0B3861;">
          <children>
@@ -38,7 +38,7 @@
       </AnchorPane>
       <ImageView fitHeight="520.0" fitWidth="535.0" layoutX="105.0" layoutY="62.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../main.png" />
+            <Image url="@main.png" />
          </image>
       </ImageView>
       <Button layoutX="293.0" layoutY="421.0" mnemonicParsing="false" onAction="#signUP" prefHeight="25.0" prefWidth="144.0" style="-fx-background-color: cb5171;" text="Sign Up!" textFill="#e8e8e8">
