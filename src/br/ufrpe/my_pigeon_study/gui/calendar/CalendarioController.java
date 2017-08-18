@@ -1,8 +1,6 @@
 package br.ufrpe.my_pigeon_study.gui.calendar;
 
 import java.io.IOException;
-import java.time.LocalTime;
-import java.util.Collections;
 
 import com.jfoenix.controls.JFXDatePicker;
 
@@ -17,7 +15,6 @@ import br.ufrpe.my_pigeon_study.negocio.beans.Usuario;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 

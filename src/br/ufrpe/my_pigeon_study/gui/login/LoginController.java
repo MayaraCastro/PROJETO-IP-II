@@ -1,6 +1,5 @@
 package br.ufrpe.my_pigeon_study.gui.login;
 import br.ufrpe.my_pigeon_study.dados.ManipuladorArquivo;
-import br.ufrpe.my_pigeon_study.dados.RepositorioUsuario;
 import br.ufrpe.my_pigeon_study.gui.ScreenManager;
 import java.io.IOException;
 import java.time.LocalDate;
