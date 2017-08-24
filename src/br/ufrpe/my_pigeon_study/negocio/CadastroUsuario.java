@@ -29,14 +29,6 @@ public class CadastroUsuario {
 		}
 		
 	}
-	public void salve() {
-		try {
-			ManipuladorArquivo.escritor(PATH, this.rep);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 		
 	////////////////////////////////////////////
 	public boolean cadastrar(Usuario user)throws InformacaoInvalidaException, InformacaoEmBrancoException{
@@ -46,7 +38,6 @@ public class CadastroUsuario {
 					&& (user.getDataNasc().compareTo(this.date) < 0 && user.getDataNasc().getYear() > 1900)){
 					
 					if( this.rep.inserir(user)){
-						this.salve();
 						return(true);
 						
 					}
@@ -72,7 +63,7 @@ public class CadastroUsuario {
 					original.setSenha(user.getSenha());
 					original.setSexo(user.getSexo());
 					if(this.rep.alterar(original)){
-						this.salve();
+						 
 						return(true);
 					}
 				}else{
@@ -93,7 +84,7 @@ public class CadastroUsuario {
 		if(usuario==null){
 			throw new InformacaoInvalidaException();
 		}
-		this.salve();
+		 
 		return(this.rep.remover(usuario));
 	}
 	
@@ -107,7 +98,7 @@ public class CadastroUsuario {
 					&& atividade.getObs() != null){
 			
 				if(this.rep.addAtividade(user, atividade)){
-					this.salve();
+					 
 					return (true);
 				}
 			}else{
@@ -131,7 +122,7 @@ public class CadastroUsuario {
 				original.setObs(atividade.getObs());
 				original.setHorario(atividade.getHorario());
 				if(this.rep.alterarAtiv(user, original, antiga)){
-					this.salve();
+					 
 					return (true);
 				}
 			}else{
@@ -154,7 +145,7 @@ public class CadastroUsuario {
 		if(user==null | Atividade==null){
 			throw new InformacaoInvalidaException();
 		}
-		this.salve();
+		 
 		return(this.rep.removerAtividade(user,Atividade));
 	}
 	
@@ -180,7 +171,7 @@ public class CadastroUsuario {
 					&& task.getData().compareTo(this.date)>=0){
 				
 				if(this.rep.inserirTask(user,task)){
-					this.salve();
+					 
 					return(true);
 				}
 			}else{
@@ -202,7 +193,7 @@ public class CadastroUsuario {
 					original.setData(task.getData());
 					original.setHorario(task.getHorario());
 					if(this.rep.alterarTask(user,original,antiga)){
-						this.salve();
+						 
 						return(true);
 					}
 			}else{
@@ -224,7 +215,7 @@ public class CadastroUsuario {
 		if(user==null | Task==null){
 			throw new InformacaoInvalidaException();
 		}
-		this.salve();
+		 
 		return(this.rep.removerTask(user,Task));
 	}
 	

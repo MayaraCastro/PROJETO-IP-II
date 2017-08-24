@@ -1,4 +1,5 @@
 package br.ufrpe.my_pigeon_study.dados;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -6,12 +7,20 @@ import br.ufrpe.my_pigeon_study.negocio.beans.*;
 
 public class RepositorioUsuario implements Repositorio, Serializable{
 	private ArrayList<Usuario> usuarios;
-	
+	private final  String PATH="file.dat";
 	private static RepositorioUsuario instancia;
 	
 	//CONSTRUTOR
 	public RepositorioUsuario(){
 		this.usuarios=new ArrayList<Usuario>();
+	}
+	public void salve() {
+		try {
+			ManipuladorArquivo.escritor(PATH, this);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	public static RepositorioUsuario getInstancia(){
 		if(instancia==null){
@@ -31,6 +40,7 @@ public class RepositorioUsuario implements Repositorio, Serializable{
 		if(user!=null){
 			if(!this.usuarios.contains(user)){
 				this.usuarios.add(user);
+				this.salve();
 				return(true);
 			}			
 		}
@@ -65,6 +75,9 @@ public class RepositorioUsuario implements Repositorio, Serializable{
 				}
 			}
 		}
+		if(entra) {
+			this.salve();
+		}
 		return(entra);
 	}
 
@@ -74,6 +87,7 @@ public class RepositorioUsuario implements Repositorio, Serializable{
 			for(int i=0; i < this.usuarios.size(); i++){
 				if(this.usuarios.get(i) != null && this.usuarios.get(i).getUsuario().equals(novoUser.getUsuario())){
 					this.usuarios.set(i, novoUser);
+					this.salve();
 					return(true);
 				}
 			}
@@ -102,6 +116,7 @@ public class RepositorioUsuario implements Repositorio, Serializable{
 				ArrayList<Disciplina> atividades = user.getAtividades();
 				atividades.add(atividade);
 				user.setAtividades(atividades);
+				this.salve();
 				return (true);
 			}	
 		}
@@ -128,6 +143,7 @@ public class RepositorioUsuario implements Repositorio, Serializable{
 				}
 			}
 		}
+		this.salve();
 		return (true);
 }
 	
@@ -137,6 +153,7 @@ public class RepositorioUsuario implements Repositorio, Serializable{
 			for(int i=0; i < user.getAtividades().size(); i++){
 				if(user.getAtividades().get(i) != null && user.getAtividades().get(i).getNome().equals(antiga.getNome())){
 					user.getAtividades().set(i, novaAtiv);
+					this.salve();
 					return(true);
 				}
 			}
@@ -152,6 +169,7 @@ public class RepositorioUsuario implements Repositorio, Serializable{
 			if(this.buscarTask(user, task.getNome()) == null){
 				ArrayList<Task> tasks = user.getTasks();
 				tasks.add(task);
+				this.salve();
 				return(true);
 			}			
 		}
@@ -188,6 +206,9 @@ public class RepositorioUsuario implements Repositorio, Serializable{
 				}
 			}
 		}
+		if(entra) {
+			this.salve();
+		}
 		user.setTasks(tasks);
 		return(entra);
 	}
@@ -197,6 +218,7 @@ public class RepositorioUsuario implements Repositorio, Serializable{
 			for(int i=0; i < user.getTasks().size(); i++){
 				if(user.getTasks().get(i) != null && user.getTasks().get(i).getNome().equals(antigaTask.getNome())){
 					user.getTasks().set(i, novoTask);
+					this.salve();
 					return(true);
 				}
 			}
